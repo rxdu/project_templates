@@ -1,6 +1,0 @@
-RTT_LIB = $(LIB_DIR)/RTT
-
-VPATH += $(RTT_LIB)
-INCLUDES += -I$(RTT_LIB)
-
-LIB_OBJ += SEGGER_RTT_printf.o SEGGER_RTT_Syscalls_GCC.o SEGGER_RTT.o
