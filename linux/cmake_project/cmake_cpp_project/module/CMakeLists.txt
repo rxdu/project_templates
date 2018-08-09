@@ -21,9 +21,6 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/lib)
 set(ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
-## Include directories
-include_directories(${CMAKE_CURRENT_SOURCE_DIR})
-
 ## Dependency libraries
 #find_package(LIBRARY_NAME REQUIRED)
 
