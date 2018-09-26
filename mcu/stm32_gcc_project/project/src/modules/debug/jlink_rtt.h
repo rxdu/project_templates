@@ -35,4 +35,7 @@ void JLinkWriteString();
 
 */
 
+
+
+
 #endif /* MODULES_RTT_JLINK_RTT_H */
