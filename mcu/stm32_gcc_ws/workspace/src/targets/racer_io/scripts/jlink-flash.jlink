@@ -1,0 +1,4 @@
+h
+loadfile fw_racerio.hex, 0x8000000
+r
+q
