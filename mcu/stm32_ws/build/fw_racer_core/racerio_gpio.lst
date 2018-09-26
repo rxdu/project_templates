@@ -1,0 +1,378 @@
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 23, 1
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 6
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"racerio_gpio.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.RACERIO_InitLED,"ax",%progbits
+  16              		.align	1
+  17              		.global	RACERIO_InitLED
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  21              		.fpu fpv4-sp-d16
+  23              	RACERIO_InitLED:
+  24              	.LFB123:
+  25              		.file 1 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver
+   1:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c **** /* 
+   2:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****  * racerio_gpio.c
+   3:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****  * 
+   4:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****  * Created on: Feb 18, 2018 12:35
+   5:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****  * Description: 
+   6:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****  * 
+   7:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****  * Copyright (c) 2018 Ruixiang Du (rdu)
+   8:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****  */
+   9:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c **** 
+  10:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c **** #include "racerio_gpio.h"
+  11:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c **** #include "stm32f4xx_gpio.h"
+  12:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c **** 
+  13:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c **** #define LED_RED_PORT GPIOB
+  14:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c **** #define LED_RED_PIN GPIO_Pin_4 
+  15:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c **** 
+  16:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c **** #define LED_BLUE_PORT GPIOB
+  17:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c **** #define LED_BLUE_PIN GPIO_Pin_5
+  18:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c **** 
+  19:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c **** void RACERIO_InitLED()
+  20:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c **** {
+  26              		.loc 1 20 0
+  27              		.cfi_startproc
+  28              		@ args = 0, pretend = 0, frame = 8
+  29              		@ frame_needed = 0, uses_anonymous_args = 0
+  30 0000 00B5     		push	{lr}
+  31              	.LCFI0:
+  32              		.cfi_def_cfa_offset 4
+  33              		.cfi_offset 14, -4
+  34 0002 83B0     		sub	sp, sp, #12
+  35              	.LCFI1:
+  36              		.cfi_def_cfa_offset 16
+  21:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     // PB4, PB5
+  22:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     GPIO_InitTypeDef GPIO_InitStructure;
+  23:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c **** 
+  24:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     /* GPIOG Peripheral clock enable */
+  25:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
+  37              		.loc 1 25 0
+  38 0004 0121     		movs	r1, #1
+  39 0006 0220     		movs	r0, #2
+  40 0008 FFF7FEFF 		bl	RCC_AHB1PeriphClockCmd
+  26:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c **** 
+  27:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     /* Configure PB4 and PB5 in output pushpull mode */
+  28:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     GPIO_InitStructure.GPIO_Pin = LED_RED_PIN | LED_BLUE_PIN;
+  41              		.loc 1 28 0
+  42 000c 3023     		movs	r3, #48
+  43 000e 0093     		str	r3, [sp]
+  29:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+  44              		.loc 1 29 0
+  45 0010 0123     		movs	r3, #1
+  46 0012 8DF80430 		strb	r3, [sp, #4]
+  30:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+  47              		.loc 1 30 0
+  48 0016 0023     		movs	r3, #0
+  49 0018 8DF80630 		strb	r3, [sp, #6]
+  31:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
+  50              		.loc 1 31 0
+  51 001c 0023     		movs	r3, #0
+  52 001e 8DF80530 		strb	r3, [sp, #5]
+  32:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+  53              		.loc 1 32 0
+  54 0022 0023     		movs	r3, #0
+  55 0024 8DF80730 		strb	r3, [sp, #7]
+  33:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     GPIO_Init(LED_RED_PORT, &GPIO_InitStructure);
+  56              		.loc 1 33 0
+  57 0028 6B46     		mov	r3, sp
+  58 002a 1946     		mov	r1, r3
+  59 002c 0748     		ldr	r0, .L2
+  60 002e FFF7FEFF 		bl	GPIO_Init
+  34:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c **** 
+  35:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     GPIO_SetBits(LED_RED_PORT, LED_RED_PIN);
+  61              		.loc 1 35 0
+  62 0032 1021     		movs	r1, #16
+  63 0034 0548     		ldr	r0, .L2
+  64 0036 FFF7FEFF 		bl	GPIO_SetBits
+  36:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     GPIO_SetBits(LED_BLUE_PORT, LED_BLUE_PIN);
+  65              		.loc 1 36 0
+  66 003a 2021     		movs	r1, #32
+  67 003c 0348     		ldr	r0, .L2
+  68 003e FFF7FEFF 		bl	GPIO_SetBits
+  37:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c **** }
+  69              		.loc 1 37 0
+  70 0042 00BF     		nop
+  71 0044 03B0     		add	sp, sp, #12
+  72              	.LCFI2:
+  73              		.cfi_def_cfa_offset 4
+  74              		@ sp needed
+  75 0046 5DF804FB 		ldr	pc, [sp], #4
+  76              	.L3:
+  77 004a 00BF     		.align	2
+  78              	.L2:
+  79 004c 00040240 		.word	1073873920
+  80              		.cfi_endproc
+  81              	.LFE123:
+  83              		.section	.text.RACERIO_TurnOnLED,"ax",%progbits
+  84              		.align	1
+  85              		.global	RACERIO_TurnOnLED
+  86              		.syntax unified
+  87              		.thumb
+  88              		.thumb_func
+  89              		.fpu fpv4-sp-d16
+  91              	RACERIO_TurnOnLED:
+  92              	.LFB124:
+  38:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c **** 
+  39:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c **** void RACERIO_TurnOnLED(LED_ID led)
+  40:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c **** {
+  93              		.loc 1 40 0
+  94              		.cfi_startproc
+  95              		@ args = 0, pretend = 0, frame = 8
+  96              		@ frame_needed = 0, uses_anonymous_args = 0
+  97 0000 00B5     		push	{lr}
+  98              	.LCFI3:
+  99              		.cfi_def_cfa_offset 4
+ 100              		.cfi_offset 14, -4
+ 101 0002 83B0     		sub	sp, sp, #12
+ 102              	.LCFI4:
+ 103              		.cfi_def_cfa_offset 16
+ 104 0004 0346     		mov	r3, r0
+ 105 0006 8DF80730 		strb	r3, [sp, #7]
+  41:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     switch (led)
+ 106              		.loc 1 41 0
+ 107 000a 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 108 000e 002B     		cmp	r3, #0
+ 109 0010 02D0     		beq	.L6
+ 110 0012 012B     		cmp	r3, #1
+ 111 0014 05D0     		beq	.L7
+  42:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     {
+  43:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     case RED:
+  44:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****         GPIO_SetBits(LED_RED_PORT, LED_RED_PIN);
+  45:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****         break;
+  46:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     case BLUE:
+  47:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****         GPIO_SetBits(LED_BLUE_PORT, LED_BLUE_PIN);
+  48:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****         break;
+  49:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     default:
+  50:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****         break;
+ 112              		.loc 1 50 0
+ 113 0016 09E0     		b	.L8
+ 114              	.L6:
+  44:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****         break;
+ 115              		.loc 1 44 0
+ 116 0018 1021     		movs	r1, #16
+ 117 001a 0648     		ldr	r0, .L9
+ 118 001c FFF7FEFF 		bl	GPIO_SetBits
+  45:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     case BLUE:
+ 119              		.loc 1 45 0
+ 120 0020 04E0     		b	.L8
+ 121              	.L7:
+  47:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****         break;
+ 122              		.loc 1 47 0
+ 123 0022 2021     		movs	r1, #32
+ 124 0024 0348     		ldr	r0, .L9
+ 125 0026 FFF7FEFF 		bl	GPIO_SetBits
+  48:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     default:
+ 126              		.loc 1 48 0
+ 127 002a 00BF     		nop
+ 128              	.L8:
+  51:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     }
+  52:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c **** }
+ 129              		.loc 1 52 0
+ 130 002c 00BF     		nop
+ 131 002e 03B0     		add	sp, sp, #12
+ 132              	.LCFI5:
+ 133              		.cfi_def_cfa_offset 4
+ 134              		@ sp needed
+ 135 0030 5DF804FB 		ldr	pc, [sp], #4
+ 136              	.L10:
+ 137              		.align	2
+ 138              	.L9:
+ 139 0034 00040240 		.word	1073873920
+ 140              		.cfi_endproc
+ 141              	.LFE124:
+ 143              		.section	.text.RACERIO_TurOffLED,"ax",%progbits
+ 144              		.align	1
+ 145              		.global	RACERIO_TurOffLED
+ 146              		.syntax unified
+ 147              		.thumb
+ 148              		.thumb_func
+ 149              		.fpu fpv4-sp-d16
+ 151              	RACERIO_TurOffLED:
+ 152              	.LFB125:
+  53:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c **** 
+  54:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c **** void RACERIO_TurOffLED(LED_ID led)
+  55:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c **** {
+ 153              		.loc 1 55 0
+ 154              		.cfi_startproc
+ 155              		@ args = 0, pretend = 0, frame = 8
+ 156              		@ frame_needed = 0, uses_anonymous_args = 0
+ 157 0000 00B5     		push	{lr}
+ 158              	.LCFI6:
+ 159              		.cfi_def_cfa_offset 4
+ 160              		.cfi_offset 14, -4
+ 161 0002 83B0     		sub	sp, sp, #12
+ 162              	.LCFI7:
+ 163              		.cfi_def_cfa_offset 16
+ 164 0004 0346     		mov	r3, r0
+ 165 0006 8DF80730 		strb	r3, [sp, #7]
+  56:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     switch (led)
+ 166              		.loc 1 56 0
+ 167 000a 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 168 000e 002B     		cmp	r3, #0
+ 169 0010 02D0     		beq	.L13
+ 170 0012 012B     		cmp	r3, #1
+ 171 0014 05D0     		beq	.L14
+  57:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     {
+  58:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     case RED:
+  59:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****         GPIO_ResetBits(LED_RED_PORT, LED_RED_PIN);
+  60:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****         break;
+  61:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     case BLUE:
+  62:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****         GPIO_ResetBits(LED_BLUE_PORT, LED_BLUE_PIN);
+  63:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****         break;
+  64:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     default:
+  65:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****         break;
+ 172              		.loc 1 65 0
+ 173 0016 09E0     		b	.L15
+ 174              	.L13:
+  59:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****         break;
+ 175              		.loc 1 59 0
+ 176 0018 1021     		movs	r1, #16
+ 177 001a 0648     		ldr	r0, .L16
+ 178 001c FFF7FEFF 		bl	GPIO_ResetBits
+  60:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     case BLUE:
+ 179              		.loc 1 60 0
+ 180 0020 04E0     		b	.L15
+ 181              	.L14:
+  62:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****         break;
+ 182              		.loc 1 62 0
+ 183 0022 2021     		movs	r1, #32
+ 184 0024 0348     		ldr	r0, .L16
+ 185 0026 FFF7FEFF 		bl	GPIO_ResetBits
+  63:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     default:
+ 186              		.loc 1 63 0
+ 187 002a 00BF     		nop
+ 188              	.L15:
+  66:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     }
+  67:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c **** }
+ 189              		.loc 1 67 0
+ 190 002c 00BF     		nop
+ 191 002e 03B0     		add	sp, sp, #12
+ 192              	.LCFI8:
+ 193              		.cfi_def_cfa_offset 4
+ 194              		@ sp needed
+ 195 0030 5DF804FB 		ldr	pc, [sp], #4
+ 196              	.L17:
+ 197              		.align	2
+ 198              	.L16:
+ 199 0034 00040240 		.word	1073873920
+ 200              		.cfi_endproc
+ 201              	.LFE125:
+ 203              		.section	.text.RACERIO_ToggleLED,"ax",%progbits
+ 204              		.align	1
+ 205              		.global	RACERIO_ToggleLED
+ 206              		.syntax unified
+ 207              		.thumb
+ 208              		.thumb_func
+ 209              		.fpu fpv4-sp-d16
+ 211              	RACERIO_ToggleLED:
+ 212              	.LFB126:
+  68:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c **** 
+  69:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c **** void RACERIO_ToggleLED(LED_ID led)
+  70:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c **** {
+ 213              		.loc 1 70 0
+ 214              		.cfi_startproc
+ 215              		@ args = 0, pretend = 0, frame = 8
+ 216              		@ frame_needed = 0, uses_anonymous_args = 0
+ 217 0000 00B5     		push	{lr}
+ 218              	.LCFI9:
+ 219              		.cfi_def_cfa_offset 4
+ 220              		.cfi_offset 14, -4
+ 221 0002 83B0     		sub	sp, sp, #12
+ 222              	.LCFI10:
+ 223              		.cfi_def_cfa_offset 16
+ 224 0004 0346     		mov	r3, r0
+ 225 0006 8DF80730 		strb	r3, [sp, #7]
+  71:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     switch (led)
+ 226              		.loc 1 71 0
+ 227 000a 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 228 000e 002B     		cmp	r3, #0
+ 229 0010 02D0     		beq	.L20
+ 230 0012 012B     		cmp	r3, #1
+ 231 0014 05D0     		beq	.L21
+  72:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     {
+  73:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     case RED:
+  74:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****         GPIO_ToggleBits(LED_RED_PORT, LED_RED_PIN);
+  75:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****         break;
+  76:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     case BLUE:
+  77:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****         GPIO_ToggleBits(LED_BLUE_PORT, LED_BLUE_PIN);
+  78:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****         break;
+  79:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     default:
+  80:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****         break;
+ 232              		.loc 1 80 0
+ 233 0016 09E0     		b	.L22
+ 234              	.L20:
+  74:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****         break;
+ 235              		.loc 1 74 0
+ 236 0018 1021     		movs	r1, #16
+ 237 001a 0648     		ldr	r0, .L23
+ 238 001c FFF7FEFF 		bl	GPIO_ToggleBits
+  75:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     case BLUE:
+ 239              		.loc 1 75 0
+ 240 0020 04E0     		b	.L22
+ 241              	.L21:
+  77:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****         break;
+ 242              		.loc 1 77 0
+ 243 0022 2021     		movs	r1, #32
+ 244 0024 0348     		ldr	r0, .L23
+ 245 0026 FFF7FEFF 		bl	GPIO_ToggleBits
+  78:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     default:
+ 246              		.loc 1 78 0
+ 247 002a 00BF     		nop
+ 248              	.L22:
+  81:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c ****     }
+  82:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_gpio.c **** }...
+ 249              		.loc 1 82 0
+ 250 002c 00BF     		nop
+ 251 002e 03B0     		add	sp, sp, #12
+ 252              	.LCFI11:
+ 253              		.cfi_def_cfa_offset 4
+ 254              		@ sp needed
+ 255 0030 5DF804FB 		ldr	pc, [sp], #4
+ 256              	.L24:
+ 257              		.align	2
+ 258              	.L23:
+ 259 0034 00040240 		.word	1073873920
+ 260              		.cfi_endproc
+ 261              	.LFE126:
+ 263              		.text
+ 264              	.Letext0:
+ 265              		.file 2 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver
+ 266              		.file 3 "/home/rdu/Software/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/_defau
+ 267              		.file 4 "/home/rdu/Software/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_stdint.h"
+ 268              		.file 5 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/CMSIS/CMSIS_STM32F4/Incl
+ 269              		.file 6 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/CMSIS/CMSIS_STM32F4/Devi
+ 270              		.file 7 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/CMSIS/CMSIS_STM32F4/Devi
+ 271              		.file 8 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driv
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 racerio_gpio.c
+     /tmp/ccj6GZ2o.s:16     .text.RACERIO_InitLED:0000000000000000 $t
+     /tmp/ccj6GZ2o.s:23     .text.RACERIO_InitLED:0000000000000000 RACERIO_InitLED
+     /tmp/ccj6GZ2o.s:79     .text.RACERIO_InitLED:000000000000004c $d
+     /tmp/ccj6GZ2o.s:84     .text.RACERIO_TurnOnLED:0000000000000000 $t
+     /tmp/ccj6GZ2o.s:91     .text.RACERIO_TurnOnLED:0000000000000000 RACERIO_TurnOnLED
+     /tmp/ccj6GZ2o.s:139    .text.RACERIO_TurnOnLED:0000000000000034 $d
+     /tmp/ccj6GZ2o.s:144    .text.RACERIO_TurOffLED:0000000000000000 $t
+     /tmp/ccj6GZ2o.s:151    .text.RACERIO_TurOffLED:0000000000000000 RACERIO_TurOffLED
+     /tmp/ccj6GZ2o.s:199    .text.RACERIO_TurOffLED:0000000000000034 $d
+     /tmp/ccj6GZ2o.s:204    .text.RACERIO_ToggleLED:0000000000000000 $t
+     /tmp/ccj6GZ2o.s:211    .text.RACERIO_ToggleLED:0000000000000000 RACERIO_ToggleLED
+     /tmp/ccj6GZ2o.s:259    .text.RACERIO_ToggleLED:0000000000000034 $d
+
+UNDEFINED SYMBOLS
+RCC_AHB1PeriphClockCmd
+GPIO_Init
+GPIO_SetBits
+GPIO_ResetBits
+GPIO_ToggleBits

@@ -1,0 +1,1429 @@
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 23, 1
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 6
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"stm32f4xx_dcmi.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.DCMI_DeInit,"ax",%progbits
+  16              		.align	1
+  17              		.global	DCMI_DeInit
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  21              		.fpu fpv4-sp-d16
+  23              	DCMI_DeInit:
+  24              	.LFB123:
+  25              		.file 1 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driv
+   1:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** /**
+   2:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   ******************************************************************************
+   3:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @file    stm32f4xx_dcmi.c
+   4:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @author  MCD Application Team
+   5:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @version V1.8.0
+   6:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @date    04-November-2016
+   7:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @brief   This file provides firmware functions to manage the following 
+   8:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *          functionalities of the DCMI peripheral:           
+   9:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *           + Initialization and Configuration
+  10:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *           + Image capture functions  
+  11:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *           + Interrupts and flags management
+  12:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *
+  13:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****  @verbatim          
+  14:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****  ===============================================================================
+  15:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****                         ##### How to use this driver #####
+  16:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****  ===============================================================================  
+  17:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****     [..]       
+  18:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****       The sequence below describes how to use this driver to capture image
+  19:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****       from a camera module connected to the DCMI Interface.
+  20:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****       This sequence does not take into account the configuration of the  
+  21:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****       camera module, which should be made before to configure and enable
+  22:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****       the DCMI to capture images.
+  23:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****              
+  24:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****       (#) Enable the clock for the DCMI and associated GPIOs using the following 
+  25:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****           functions:
+  26:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****           RCC_AHB2PeriphClockCmd(RCC_AHB2Periph_DCMI, ENABLE);
+  27:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****           RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOx, ENABLE);
+  28:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   
+  29:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****       (#) DCMI pins configuration 
+  30:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****         (++) Connect the involved DCMI pins to AF13 using the following function 
+  31:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****             GPIO_PinAFConfig(GPIOx, GPIO_PinSourcex, GPIO_AF_DCMI); 
+  32:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****         (++) Configure these DCMI pins in alternate function mode by calling 
+  33:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****             the function GPIO_Init();
+  34:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****       
+  35:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****       (#) Declare a DCMI_InitTypeDef structure, for example:
+  36:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****           DCMI_InitTypeDef  DCMI_InitStructure;
+  37:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****           and fill the DCMI_InitStructure variable with the allowed values
+  38:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****           of the structure member.
+  39:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****     
+  40:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****       (#) Initialize the DCMI interface by calling the function
+  41:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****           DCMI_Init(&DCMI_InitStructure); 
+  42:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****     
+  43:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****       (#) Configure the DMA2_Stream1 channel1 to transfer Data from DCMI DR
+  44:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****           register to the destination memory buffer.
+  45:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****     
+  46:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****       (#) Enable DCMI interface using the function
+  47:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****           DCMI_Cmd(ENABLE);
+  48:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****                    
+  49:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****       (#) Start the image capture using the function
+  50:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****           DCMI_CaptureCmd(ENABLE);
+  51:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****                    
+  52:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****       (#) At this stage the DCMI interface waits for the first start of frame,
+  53:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****           then a DMA request is generated continuously/once (depending on the
+  54:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****           mode used, Continuous/Snapshot) to transfer the received data into
+  55:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****           the destination memory. 
+  56:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****      
+  57:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****       -@-  If you need to capture only a rectangular window from the received
+  58:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****            image, you have to use the DCMI_CROPConfig() function to configure 
+  59:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****            the coordinates and size of the window to be captured, then enable 
+  60:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****            the Crop feature using DCMI_CROPCmd(ENABLE);  
+  61:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****            In this case, the Crop configuration should be made before to enable
+  62:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****            and start the DCMI interface. 
+  63:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** 
+  64:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****  @endverbatim     
+  65:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   ******************************************************************************
+  66:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @attention
+  67:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *
+  68:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * <h2><center>&copy; COPYRIGHT 2016 STMicroelectronics</center></h2>
+  69:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *
+  70:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
+  71:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * You may not use this file except in compliance with the License.
+  72:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * You may obtain a copy of the License at:
+  73:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *
+  74:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *        http://www.st.com/software_license_agreement_liberty_v2
+  75:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *
+  76:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * Unless required by applicable law or agreed to in writing, software 
+  77:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * distributed under the License is distributed on an "AS IS" BASIS, 
+  78:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  79:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * See the License for the specific language governing permissions and
+  80:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * limitations under the License.
+  81:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *
+  82:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   ******************************************************************************
+  83:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   */
+  84:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** 
+  85:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** /* Includes ------------------------------------------------------------------*/
+  86:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** #include "stm32f4xx_dcmi.h"
+  87:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** #include "stm32f4xx_rcc.h"
+  88:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** 
+  89:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** /** @addtogroup STM32F4xx_StdPeriph_Driver
+  90:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @{
+  91:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   */
+  92:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** 
+  93:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** /** @defgroup DCMI 
+  94:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @brief DCMI driver modules
+  95:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @{
+  96:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   */ 
+  97:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** 
+  98:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** /* Private typedef -----------------------------------------------------------*/
+  99:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** /* Private define ------------------------------------------------------------*/
+ 100:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** /* Private macro -------------------------------------------------------------*/
+ 101:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** /* Private variables ---------------------------------------------------------*/
+ 102:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** /* Private function prototypes -----------------------------------------------*/
+ 103:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** /* Private functions ---------------------------------------------------------*/
+ 104:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** 
+ 105:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** /** @defgroup DCMI_Private_Functions
+ 106:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @{
+ 107:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   */ 
+ 108:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** 
+ 109:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** /** @defgroup DCMI_Group1 Initialization and Configuration functions
+ 110:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****  *  @brief   Initialization and Configuration functions 
+ 111:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****  *
+ 112:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** @verbatim   
+ 113:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****  ===============================================================================
+ 114:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****               ##### Initialization and Configuration functions #####
+ 115:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****  ===============================================================================  
+ 116:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** 
+ 117:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** @endverbatim
+ 118:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @{
+ 119:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   */
+ 120:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** 
+ 121:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** /**
+ 122:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @brief  Deinitializes the DCMI registers to their default reset values.
+ 123:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @param  None
+ 124:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @retval None
+ 125:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   */
+ 126:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** void DCMI_DeInit(void)
+ 127:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** {
+  26              		.loc 1 127 0
+  27              		.cfi_startproc
+  28              		@ args = 0, pretend = 0, frame = 0
+  29              		@ frame_needed = 0, uses_anonymous_args = 0
+  30              		@ link register save eliminated.
+ 128:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   DCMI->CR = 0x0;
+  31              		.loc 1 128 0
+  32 0000 0B4B     		ldr	r3, .L2
+  33 0002 0022     		movs	r2, #0
+  34 0004 1A60     		str	r2, [r3]
+ 129:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   DCMI->IER = 0x0;
+  35              		.loc 1 129 0
+  36 0006 0A4B     		ldr	r3, .L2
+  37 0008 0022     		movs	r2, #0
+  38 000a DA60     		str	r2, [r3, #12]
+ 130:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   DCMI->ICR = 0x1F;
+  39              		.loc 1 130 0
+  40 000c 084B     		ldr	r3, .L2
+  41 000e 1F22     		movs	r2, #31
+  42 0010 5A61     		str	r2, [r3, #20]
+ 131:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   DCMI->ESCR = 0x0;
+  43              		.loc 1 131 0
+  44 0012 074B     		ldr	r3, .L2
+  45 0014 0022     		movs	r2, #0
+  46 0016 9A61     		str	r2, [r3, #24]
+ 132:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   DCMI->ESUR = 0x0;
+  47              		.loc 1 132 0
+  48 0018 054B     		ldr	r3, .L2
+  49 001a 0022     		movs	r2, #0
+  50 001c DA61     		str	r2, [r3, #28]
+ 133:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   DCMI->CWSTRTR = 0x0;
+  51              		.loc 1 133 0
+  52 001e 044B     		ldr	r3, .L2
+  53 0020 0022     		movs	r2, #0
+  54 0022 1A62     		str	r2, [r3, #32]
+ 134:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   DCMI->CWSIZER = 0x0;
+  55              		.loc 1 134 0
+  56 0024 024B     		ldr	r3, .L2
+  57 0026 0022     		movs	r2, #0
+  58 0028 5A62     		str	r2, [r3, #36]
+ 135:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** }
+  59              		.loc 1 135 0
+  60 002a 00BF     		nop
+  61 002c 7047     		bx	lr
+  62              	.L3:
+  63 002e 00BF     		.align	2
+  64              	.L2:
+  65 0030 00000550 		.word	1342504960
+  66              		.cfi_endproc
+  67              	.LFE123:
+  69              		.section	.text.DCMI_Init,"ax",%progbits
+  70              		.align	1
+  71              		.global	DCMI_Init
+  72              		.syntax unified
+  73              		.thumb
+  74              		.thumb_func
+  75              		.fpu fpv4-sp-d16
+  77              	DCMI_Init:
+  78              	.LFB124:
+ 136:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** 
+ 137:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** /**
+ 138:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @brief  Initializes the DCMI according to the specified parameters in the DCMI_InitStruct.
+ 139:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @param  DCMI_InitStruct: pointer to a DCMI_InitTypeDef structure that contains 
+ 140:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *         the configuration information for the DCMI.
+ 141:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @retval None
+ 142:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   */
+ 143:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** void DCMI_Init(DCMI_InitTypeDef* DCMI_InitStruct)
+ 144:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** {
+  79              		.loc 1 144 0
+  80              		.cfi_startproc
+  81              		@ args = 0, pretend = 0, frame = 16
+  82              		@ frame_needed = 0, uses_anonymous_args = 0
+  83              		@ link register save eliminated.
+  84 0000 84B0     		sub	sp, sp, #16
+  85              	.LCFI0:
+  86              		.cfi_def_cfa_offset 16
+  87 0002 0190     		str	r0, [sp, #4]
+ 145:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   uint32_t temp = 0x0;
+  88              		.loc 1 145 0
+  89 0004 0023     		movs	r3, #0
+  90 0006 0393     		str	r3, [sp, #12]
+ 146:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   
+ 147:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   /* Check the parameters */
+ 148:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   assert_param(IS_DCMI_CAPTURE_MODE(DCMI_InitStruct->DCMI_CaptureMode));
+ 149:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   assert_param(IS_DCMI_SYNCHRO(DCMI_InitStruct->DCMI_SynchroMode));
+ 150:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   assert_param(IS_DCMI_PCKPOLARITY(DCMI_InitStruct->DCMI_PCKPolarity));
+ 151:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   assert_param(IS_DCMI_VSPOLARITY(DCMI_InitStruct->DCMI_VSPolarity));
+ 152:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   assert_param(IS_DCMI_HSPOLARITY(DCMI_InitStruct->DCMI_HSPolarity));
+ 153:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   assert_param(IS_DCMI_CAPTURE_RATE(DCMI_InitStruct->DCMI_CaptureRate));
+ 154:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   assert_param(IS_DCMI_EXTENDED_DATA(DCMI_InitStruct->DCMI_ExtendedDataMode));
+ 155:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** 
+ 156:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   /* The DCMI configuration registers should be programmed correctly before 
+ 157:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   enabling the CR_ENABLE Bit and the CR_CAPTURE Bit */
+ 158:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   DCMI->CR &= ~(DCMI_CR_ENABLE | DCMI_CR_CAPTURE);
+  91              		.loc 1 158 0
+  92 0008 1A4B     		ldr	r3, .L5
+  93 000a 1B68     		ldr	r3, [r3]
+  94 000c 194A     		ldr	r2, .L5
+  95 000e 23F48043 		bic	r3, r3, #16384
+  96 0012 23F00103 		bic	r3, r3, #1
+  97 0016 1360     		str	r3, [r2]
+ 159:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****    
+ 160:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   /* Reset the old DCMI configuration */
+ 161:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   temp = DCMI->CR;
+  98              		.loc 1 161 0
+  99 0018 164B     		ldr	r3, .L5
+ 100 001a 1B68     		ldr	r3, [r3]
+ 101 001c 0393     		str	r3, [sp, #12]
+ 162:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   
+ 163:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   temp &= ~((uint32_t)DCMI_CR_CM     | DCMI_CR_ESS   | DCMI_CR_PCKPOL |
+ 102              		.loc 1 163 0
+ 103 001e 039B     		ldr	r3, [sp, #12]
+ 104 0020 23F47F63 		bic	r3, r3, #4080
+ 105 0024 23F00203 		bic	r3, r3, #2
+ 106 0028 0393     		str	r3, [sp, #12]
+ 164:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****                       DCMI_CR_HSPOL  | DCMI_CR_VSPOL | DCMI_CR_FCRC_0 | 
+ 165:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****                       DCMI_CR_FCRC_1 | DCMI_CR_EDM_0 | DCMI_CR_EDM_1); 
+ 166:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****                   
+ 167:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   /* Sets the new configuration of the DCMI peripheral */
+ 168:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   temp |= ((uint32_t)DCMI_InitStruct->DCMI_CaptureMode |
+ 107              		.loc 1 168 0
+ 108 002a 019B     		ldr	r3, [sp, #4]
+ 109 002c 1A88     		ldrh	r2, [r3]
+ 169:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****                      DCMI_InitStruct->DCMI_SynchroMode |
+ 110              		.loc 1 169 0
+ 111 002e 019B     		ldr	r3, [sp, #4]
+ 112 0030 5B88     		ldrh	r3, [r3, #2]
+ 170:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****                      DCMI_InitStruct->DCMI_PCKPolarity |
+ 171:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****                      DCMI_InitStruct->DCMI_VSPolarity |
+ 172:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****                      DCMI_InitStruct->DCMI_HSPolarity |
+ 173:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****                      DCMI_InitStruct->DCMI_CaptureRate |
+ 113              		.loc 1 173 0
+ 114 0032 1343     		orrs	r3, r3, r2
+ 115 0034 9AB2     		uxth	r2, r3
+ 170:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****                      DCMI_InitStruct->DCMI_PCKPolarity |
+ 116              		.loc 1 170 0
+ 117 0036 019B     		ldr	r3, [sp, #4]
+ 118 0038 9B88     		ldrh	r3, [r3, #4]
+ 119              		.loc 1 173 0
+ 120 003a 1343     		orrs	r3, r3, r2
+ 121 003c 9AB2     		uxth	r2, r3
+ 171:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****                      DCMI_InitStruct->DCMI_HSPolarity |
+ 122              		.loc 1 171 0
+ 123 003e 019B     		ldr	r3, [sp, #4]
+ 124 0040 DB88     		ldrh	r3, [r3, #6]
+ 125              		.loc 1 173 0
+ 126 0042 1343     		orrs	r3, r3, r2
+ 127 0044 9AB2     		uxth	r2, r3
+ 172:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****                      DCMI_InitStruct->DCMI_CaptureRate |
+ 128              		.loc 1 172 0
+ 129 0046 019B     		ldr	r3, [sp, #4]
+ 130 0048 1B89     		ldrh	r3, [r3, #8]
+ 131              		.loc 1 173 0
+ 132 004a 1343     		orrs	r3, r3, r2
+ 133 004c 9AB2     		uxth	r2, r3
+ 134 004e 019B     		ldr	r3, [sp, #4]
+ 135 0050 5B89     		ldrh	r3, [r3, #10]
+ 136 0052 1343     		orrs	r3, r3, r2
+ 137 0054 9AB2     		uxth	r2, r3
+ 174:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****                      DCMI_InitStruct->DCMI_ExtendedDataMode);
+ 138              		.loc 1 174 0
+ 139 0056 019B     		ldr	r3, [sp, #4]
+ 140 0058 9B89     		ldrh	r3, [r3, #12]
+ 173:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****                      DCMI_InitStruct->DCMI_ExtendedDataMode);
+ 141              		.loc 1 173 0
+ 142 005a 1343     		orrs	r3, r3, r2
+ 143 005c 9BB2     		uxth	r3, r3
+ 144 005e 1A46     		mov	r2, r3
+ 168:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****                      DCMI_InitStruct->DCMI_SynchroMode |
+ 145              		.loc 1 168 0
+ 146 0060 039B     		ldr	r3, [sp, #12]
+ 147 0062 1343     		orrs	r3, r3, r2
+ 148 0064 0393     		str	r3, [sp, #12]
+ 175:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** 
+ 176:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   DCMI->CR = temp;                              
+ 149              		.loc 1 176 0
+ 150 0066 034A     		ldr	r2, .L5
+ 151 0068 039B     		ldr	r3, [sp, #12]
+ 152 006a 1360     		str	r3, [r2]
+ 177:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** }
+ 153              		.loc 1 177 0
+ 154 006c 00BF     		nop
+ 155 006e 04B0     		add	sp, sp, #16
+ 156              	.LCFI1:
+ 157              		.cfi_def_cfa_offset 0
+ 158              		@ sp needed
+ 159 0070 7047     		bx	lr
+ 160              	.L6:
+ 161 0072 00BF     		.align	2
+ 162              	.L5:
+ 163 0074 00000550 		.word	1342504960
+ 164              		.cfi_endproc
+ 165              	.LFE124:
+ 167              		.section	.text.DCMI_StructInit,"ax",%progbits
+ 168              		.align	1
+ 169              		.global	DCMI_StructInit
+ 170              		.syntax unified
+ 171              		.thumb
+ 172              		.thumb_func
+ 173              		.fpu fpv4-sp-d16
+ 175              	DCMI_StructInit:
+ 176              	.LFB125:
+ 178:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** 
+ 179:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** /**
+ 180:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @brief  Fills each DCMI_InitStruct member with its default value.
+ 181:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @param  DCMI_InitStruct : pointer to a DCMI_InitTypeDef structure which will
+ 182:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *         be initialized.
+ 183:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @retval None
+ 184:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   */
+ 185:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** void DCMI_StructInit(DCMI_InitTypeDef* DCMI_InitStruct)
+ 186:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** {
+ 177              		.loc 1 186 0
+ 178              		.cfi_startproc
+ 179              		@ args = 0, pretend = 0, frame = 8
+ 180              		@ frame_needed = 0, uses_anonymous_args = 0
+ 181              		@ link register save eliminated.
+ 182 0000 82B0     		sub	sp, sp, #8
+ 183              	.LCFI2:
+ 184              		.cfi_def_cfa_offset 8
+ 185 0002 0190     		str	r0, [sp, #4]
+ 187:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   /* Set the default configuration */
+ 188:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   DCMI_InitStruct->DCMI_CaptureMode = DCMI_CaptureMode_Continuous;
+ 186              		.loc 1 188 0
+ 187 0004 019B     		ldr	r3, [sp, #4]
+ 188 0006 0022     		movs	r2, #0
+ 189 0008 1A80     		strh	r2, [r3]	@ movhi
+ 189:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   DCMI_InitStruct->DCMI_SynchroMode = DCMI_SynchroMode_Hardware;
+ 190              		.loc 1 189 0
+ 191 000a 019B     		ldr	r3, [sp, #4]
+ 192 000c 0022     		movs	r2, #0
+ 193 000e 5A80     		strh	r2, [r3, #2]	@ movhi
+ 190:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   DCMI_InitStruct->DCMI_PCKPolarity = DCMI_PCKPolarity_Falling;
+ 194              		.loc 1 190 0
+ 195 0010 019B     		ldr	r3, [sp, #4]
+ 196 0012 0022     		movs	r2, #0
+ 197 0014 9A80     		strh	r2, [r3, #4]	@ movhi
+ 191:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   DCMI_InitStruct->DCMI_VSPolarity = DCMI_VSPolarity_Low;
+ 198              		.loc 1 191 0
+ 199 0016 019B     		ldr	r3, [sp, #4]
+ 200 0018 0022     		movs	r2, #0
+ 201 001a DA80     		strh	r2, [r3, #6]	@ movhi
+ 192:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   DCMI_InitStruct->DCMI_HSPolarity = DCMI_HSPolarity_Low;
+ 202              		.loc 1 192 0
+ 203 001c 019B     		ldr	r3, [sp, #4]
+ 204 001e 0022     		movs	r2, #0
+ 205 0020 1A81     		strh	r2, [r3, #8]	@ movhi
+ 193:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   DCMI_InitStruct->DCMI_CaptureRate = DCMI_CaptureRate_All_Frame;
+ 206              		.loc 1 193 0
+ 207 0022 019B     		ldr	r3, [sp, #4]
+ 208 0024 0022     		movs	r2, #0
+ 209 0026 5A81     		strh	r2, [r3, #10]	@ movhi
+ 194:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   DCMI_InitStruct->DCMI_ExtendedDataMode = DCMI_ExtendedDataMode_8b;
+ 210              		.loc 1 194 0
+ 211 0028 019B     		ldr	r3, [sp, #4]
+ 212 002a 0022     		movs	r2, #0
+ 213 002c 9A81     		strh	r2, [r3, #12]	@ movhi
+ 195:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** }
+ 214              		.loc 1 195 0
+ 215 002e 00BF     		nop
+ 216 0030 02B0     		add	sp, sp, #8
+ 217              	.LCFI3:
+ 218              		.cfi_def_cfa_offset 0
+ 219              		@ sp needed
+ 220 0032 7047     		bx	lr
+ 221              		.cfi_endproc
+ 222              	.LFE125:
+ 224              		.section	.text.DCMI_CROPConfig,"ax",%progbits
+ 225              		.align	1
+ 226              		.global	DCMI_CROPConfig
+ 227              		.syntax unified
+ 228              		.thumb
+ 229              		.thumb_func
+ 230              		.fpu fpv4-sp-d16
+ 232              	DCMI_CROPConfig:
+ 233              	.LFB126:
+ 196:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** 
+ 197:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** /**
+ 198:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @brief  Initializes the DCMI peripheral CROP mode according to the specified
+ 199:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *         parameters in the DCMI_CROPInitStruct.
+ 200:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @note   This function should be called before to enable and start the DCMI interface.   
+ 201:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @param  DCMI_CROPInitStruct:  pointer to a DCMI_CROPInitTypeDef structure that 
+ 202:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *         contains the configuration information for the DCMI peripheral CROP mode.
+ 203:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @retval None
+ 204:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   */
+ 205:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** void DCMI_CROPConfig(DCMI_CROPInitTypeDef* DCMI_CROPInitStruct)
+ 206:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** {  
+ 234              		.loc 1 206 0
+ 235              		.cfi_startproc
+ 236              		@ args = 0, pretend = 0, frame = 8
+ 237              		@ frame_needed = 0, uses_anonymous_args = 0
+ 238              		@ link register save eliminated.
+ 239 0000 82B0     		sub	sp, sp, #8
+ 240              	.LCFI4:
+ 241              		.cfi_def_cfa_offset 8
+ 242 0002 0190     		str	r0, [sp, #4]
+ 207:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   /* Sets the CROP window coordinates */
+ 208:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   DCMI->CWSTRTR = (uint32_t)((uint32_t)DCMI_CROPInitStruct->DCMI_HorizontalOffsetCount |
+ 243              		.loc 1 208 0
+ 244 0004 019B     		ldr	r3, [sp, #4]
+ 245 0006 5B88     		ldrh	r3, [r3, #2]
+ 246 0008 1946     		mov	r1, r3
+ 209:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****                   ((uint32_t)DCMI_CROPInitStruct->DCMI_VerticalStartLine << 16));
+ 247              		.loc 1 209 0
+ 248 000a 019B     		ldr	r3, [sp, #4]
+ 249 000c 1B88     		ldrh	r3, [r3]
+ 250 000e 1B04     		lsls	r3, r3, #16
+ 208:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****                   ((uint32_t)DCMI_CROPInitStruct->DCMI_VerticalStartLine << 16));
+ 251              		.loc 1 208 0
+ 252 0010 074A     		ldr	r2, .L9
+ 253 0012 0B43     		orrs	r3, r3, r1
+ 254 0014 1362     		str	r3, [r2, #32]
+ 210:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** 
+ 211:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   /* Sets the CROP window size */
+ 212:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   DCMI->CWSIZER = (uint32_t)(DCMI_CROPInitStruct->DCMI_CaptureCount |
+ 255              		.loc 1 212 0
+ 256 0016 019B     		ldr	r3, [sp, #4]
+ 257 0018 DB88     		ldrh	r3, [r3, #6]
+ 258 001a 1946     		mov	r1, r3
+ 213:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****                   ((uint32_t)DCMI_CROPInitStruct->DCMI_VerticalLineCount << 16));
+ 259              		.loc 1 213 0
+ 260 001c 019B     		ldr	r3, [sp, #4]
+ 261 001e 9B88     		ldrh	r3, [r3, #4]
+ 262 0020 1B04     		lsls	r3, r3, #16
+ 212:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****                   ((uint32_t)DCMI_CROPInitStruct->DCMI_VerticalLineCount << 16));
+ 263              		.loc 1 212 0
+ 264 0022 034A     		ldr	r2, .L9
+ 265 0024 0B43     		orrs	r3, r3, r1
+ 266 0026 5362     		str	r3, [r2, #36]
+ 214:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** }
+ 267              		.loc 1 214 0
+ 268 0028 00BF     		nop
+ 269 002a 02B0     		add	sp, sp, #8
+ 270              	.LCFI5:
+ 271              		.cfi_def_cfa_offset 0
+ 272              		@ sp needed
+ 273 002c 7047     		bx	lr
+ 274              	.L10:
+ 275 002e 00BF     		.align	2
+ 276              	.L9:
+ 277 0030 00000550 		.word	1342504960
+ 278              		.cfi_endproc
+ 279              	.LFE126:
+ 281              		.section	.text.DCMI_CROPCmd,"ax",%progbits
+ 282              		.align	1
+ 283              		.global	DCMI_CROPCmd
+ 284              		.syntax unified
+ 285              		.thumb
+ 286              		.thumb_func
+ 287              		.fpu fpv4-sp-d16
+ 289              	DCMI_CROPCmd:
+ 290              	.LFB127:
+ 215:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** 
+ 216:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** /**
+ 217:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @brief  Enables or disables the DCMI Crop feature.
+ 218:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @note   This function should be called before to enable and start the DCMI interface.
+ 219:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @param  NewState: new state of the DCMI Crop feature. 
+ 220:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *          This parameter can be: ENABLE or DISABLE.
+ 221:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @retval None
+ 222:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   */
+ 223:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** void DCMI_CROPCmd(FunctionalState NewState)
+ 224:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** {
+ 291              		.loc 1 224 0
+ 292              		.cfi_startproc
+ 293              		@ args = 0, pretend = 0, frame = 8
+ 294              		@ frame_needed = 0, uses_anonymous_args = 0
+ 295              		@ link register save eliminated.
+ 296 0000 82B0     		sub	sp, sp, #8
+ 297              	.LCFI6:
+ 298              		.cfi_def_cfa_offset 8
+ 299 0002 0346     		mov	r3, r0
+ 300 0004 8DF80730 		strb	r3, [sp, #7]
+ 225:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   /* Check the parameters */
+ 226:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
+ 227:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****     
+ 228:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   if (NewState != DISABLE)
+ 301              		.loc 1 228 0
+ 302 0008 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 303 000c 002B     		cmp	r3, #0
+ 304 000e 06D0     		beq	.L12
+ 229:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   {
+ 230:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****     /* Enable the DCMI Crop feature */
+ 231:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****     DCMI->CR |= (uint32_t)DCMI_CR_CROP;
+ 305              		.loc 1 231 0
+ 306 0010 074B     		ldr	r3, .L15
+ 307 0012 1B68     		ldr	r3, [r3]
+ 308 0014 064A     		ldr	r2, .L15
+ 309 0016 43F00403 		orr	r3, r3, #4
+ 310 001a 1360     		str	r3, [r2]
+ 232:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   }
+ 233:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   else
+ 234:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   {
+ 235:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****     /* Disable the DCMI Crop feature */
+ 236:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****     DCMI->CR &= ~(uint32_t)DCMI_CR_CROP;
+ 237:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   }
+ 238:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** }
+ 311              		.loc 1 238 0
+ 312 001c 05E0     		b	.L14
+ 313              	.L12:
+ 236:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   }
+ 314              		.loc 1 236 0
+ 315 001e 044B     		ldr	r3, .L15
+ 316 0020 1B68     		ldr	r3, [r3]
+ 317 0022 034A     		ldr	r2, .L15
+ 318 0024 23F00403 		bic	r3, r3, #4
+ 319 0028 1360     		str	r3, [r2]
+ 320              	.L14:
+ 321              		.loc 1 238 0
+ 322 002a 00BF     		nop
+ 323 002c 02B0     		add	sp, sp, #8
+ 324              	.LCFI7:
+ 325              		.cfi_def_cfa_offset 0
+ 326              		@ sp needed
+ 327 002e 7047     		bx	lr
+ 328              	.L16:
+ 329              		.align	2
+ 330              	.L15:
+ 331 0030 00000550 		.word	1342504960
+ 332              		.cfi_endproc
+ 333              	.LFE127:
+ 335              		.section	.text.DCMI_SetEmbeddedSynchroCodes,"ax",%progbits
+ 336              		.align	1
+ 337              		.global	DCMI_SetEmbeddedSynchroCodes
+ 338              		.syntax unified
+ 339              		.thumb
+ 340              		.thumb_func
+ 341              		.fpu fpv4-sp-d16
+ 343              	DCMI_SetEmbeddedSynchroCodes:
+ 344              	.LFB128:
+ 239:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** 
+ 240:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** /**
+ 241:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @brief  Sets the embedded synchronization codes
+ 242:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @param  DCMI_CodesInitTypeDef: pointer to a DCMI_CodesInitTypeDef structure that
+ 243:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *         contains the embedded synchronization codes for the DCMI peripheral.
+ 244:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @retval None
+ 245:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   */
+ 246:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** void DCMI_SetEmbeddedSynchroCodes(DCMI_CodesInitTypeDef* DCMI_CodesInitStruct)
+ 247:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** {
+ 345              		.loc 1 247 0
+ 346              		.cfi_startproc
+ 347              		@ args = 0, pretend = 0, frame = 8
+ 348              		@ frame_needed = 0, uses_anonymous_args = 0
+ 349              		@ link register save eliminated.
+ 350 0000 82B0     		sub	sp, sp, #8
+ 351              	.LCFI8:
+ 352              		.cfi_def_cfa_offset 8
+ 353 0002 0190     		str	r0, [sp, #4]
+ 248:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   DCMI->ESCR = (uint32_t)(DCMI_CodesInitStruct->DCMI_FrameStartCode |
+ 354              		.loc 1 248 0
+ 355 0004 019B     		ldr	r3, [sp, #4]
+ 356 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 357 0008 1A46     		mov	r2, r3
+ 249:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****                           ((uint32_t)DCMI_CodesInitStruct->DCMI_LineStartCode << 8)|
+ 358              		.loc 1 249 0
+ 359 000a 019B     		ldr	r3, [sp, #4]
+ 360 000c 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 361 000e 1B02     		lsls	r3, r3, #8
+ 248:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   DCMI->ESCR = (uint32_t)(DCMI_CodesInitStruct->DCMI_FrameStartCode |
+ 362              		.loc 1 248 0
+ 363 0010 1A43     		orrs	r2, r2, r3
+ 250:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****                           ((uint32_t)DCMI_CodesInitStruct->DCMI_LineEndCode << 16)|
+ 364              		.loc 1 250 0
+ 365 0012 019B     		ldr	r3, [sp, #4]
+ 366 0014 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 367 0016 1B04     		lsls	r3, r3, #16
+ 249:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****                           ((uint32_t)DCMI_CodesInitStruct->DCMI_LineStartCode << 8)|
+ 368              		.loc 1 249 0
+ 369 0018 1A43     		orrs	r2, r2, r3
+ 251:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****                           ((uint32_t)DCMI_CodesInitStruct->DCMI_FrameEndCode << 24));
+ 370              		.loc 1 251 0
+ 371 001a 019B     		ldr	r3, [sp, #4]
+ 372 001c DB78     		ldrb	r3, [r3, #3]	@ zero_extendqisi2
+ 373 001e 1B06     		lsls	r3, r3, #24
+ 248:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****                           ((uint32_t)DCMI_CodesInitStruct->DCMI_LineStartCode << 8)|
+ 374              		.loc 1 248 0
+ 375 0020 0249     		ldr	r1, .L18
+ 376 0022 1343     		orrs	r3, r3, r2
+ 377 0024 8B61     		str	r3, [r1, #24]
+ 252:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** }
+ 378              		.loc 1 252 0
+ 379 0026 00BF     		nop
+ 380 0028 02B0     		add	sp, sp, #8
+ 381              	.LCFI9:
+ 382              		.cfi_def_cfa_offset 0
+ 383              		@ sp needed
+ 384 002a 7047     		bx	lr
+ 385              	.L19:
+ 386              		.align	2
+ 387              	.L18:
+ 388 002c 00000550 		.word	1342504960
+ 389              		.cfi_endproc
+ 390              	.LFE128:
+ 392              		.section	.text.DCMI_JPEGCmd,"ax",%progbits
+ 393              		.align	1
+ 394              		.global	DCMI_JPEGCmd
+ 395              		.syntax unified
+ 396              		.thumb
+ 397              		.thumb_func
+ 398              		.fpu fpv4-sp-d16
+ 400              	DCMI_JPEGCmd:
+ 401              	.LFB129:
+ 253:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** 
+ 254:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** /**
+ 255:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @brief  Enables or disables the DCMI JPEG format.
+ 256:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @note   The Crop and Embedded Synchronization features cannot be used in this mode.  
+ 257:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @param  NewState: new state of the DCMI JPEG format. 
+ 258:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *          This parameter can be: ENABLE or DISABLE.
+ 259:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @retval None
+ 260:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   */
+ 261:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** void DCMI_JPEGCmd(FunctionalState NewState)
+ 262:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** {
+ 402              		.loc 1 262 0
+ 403              		.cfi_startproc
+ 404              		@ args = 0, pretend = 0, frame = 8
+ 405              		@ frame_needed = 0, uses_anonymous_args = 0
+ 406              		@ link register save eliminated.
+ 407 0000 82B0     		sub	sp, sp, #8
+ 408              	.LCFI10:
+ 409              		.cfi_def_cfa_offset 8
+ 410 0002 0346     		mov	r3, r0
+ 411 0004 8DF80730 		strb	r3, [sp, #7]
+ 263:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   /* Check the parameters */
+ 264:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
+ 265:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****  
+ 266:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   if (NewState != DISABLE)
+ 412              		.loc 1 266 0
+ 413 0008 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 414 000c 002B     		cmp	r3, #0
+ 415 000e 06D0     		beq	.L21
+ 267:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   {
+ 268:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****     /* Enable the DCMI JPEG format */
+ 269:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****     DCMI->CR |= (uint32_t)DCMI_CR_JPEG;
+ 416              		.loc 1 269 0
+ 417 0010 074B     		ldr	r3, .L24
+ 418 0012 1B68     		ldr	r3, [r3]
+ 419 0014 064A     		ldr	r2, .L24
+ 420 0016 43F00803 		orr	r3, r3, #8
+ 421 001a 1360     		str	r3, [r2]
+ 270:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   }
+ 271:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   else
+ 272:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   {
+ 273:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****     /* Disable the DCMI JPEG format */
+ 274:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****     DCMI->CR &= ~(uint32_t)DCMI_CR_JPEG;
+ 275:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   }
+ 276:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** }
+ 422              		.loc 1 276 0
+ 423 001c 05E0     		b	.L23
+ 424              	.L21:
+ 274:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   }
+ 425              		.loc 1 274 0
+ 426 001e 044B     		ldr	r3, .L24
+ 427 0020 1B68     		ldr	r3, [r3]
+ 428 0022 034A     		ldr	r2, .L24
+ 429 0024 23F00803 		bic	r3, r3, #8
+ 430 0028 1360     		str	r3, [r2]
+ 431              	.L23:
+ 432              		.loc 1 276 0
+ 433 002a 00BF     		nop
+ 434 002c 02B0     		add	sp, sp, #8
+ 435              	.LCFI11:
+ 436              		.cfi_def_cfa_offset 0
+ 437              		@ sp needed
+ 438 002e 7047     		bx	lr
+ 439              	.L25:
+ 440              		.align	2
+ 441              	.L24:
+ 442 0030 00000550 		.word	1342504960
+ 443              		.cfi_endproc
+ 444              	.LFE129:
+ 446              		.section	.text.DCMI_Cmd,"ax",%progbits
+ 447              		.align	1
+ 448              		.global	DCMI_Cmd
+ 449              		.syntax unified
+ 450              		.thumb
+ 451              		.thumb_func
+ 452              		.fpu fpv4-sp-d16
+ 454              	DCMI_Cmd:
+ 455              	.LFB130:
+ 277:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** /**
+ 278:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @}
+ 279:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   */
+ 280:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** 
+ 281:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** /** @defgroup DCMI_Group2 Image capture functions
+ 282:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****  *  @brief   Image capture functions
+ 283:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****  *
+ 284:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** @verbatim   
+ 285:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****  ===============================================================================
+ 286:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****                     ##### Image capture functions #####
+ 287:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****  ===============================================================================  
+ 288:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** 
+ 289:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** @endverbatim
+ 290:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @{
+ 291:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   */
+ 292:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   
+ 293:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** /**
+ 294:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @brief  Enables or disables the DCMI interface.
+ 295:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @param  NewState: new state of the DCMI interface. 
+ 296:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *          This parameter can be: ENABLE or DISABLE.
+ 297:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @retval None
+ 298:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   */
+ 299:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** void DCMI_Cmd(FunctionalState NewState)
+ 300:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** {
+ 456              		.loc 1 300 0
+ 457              		.cfi_startproc
+ 458              		@ args = 0, pretend = 0, frame = 8
+ 459              		@ frame_needed = 0, uses_anonymous_args = 0
+ 460              		@ link register save eliminated.
+ 461 0000 82B0     		sub	sp, sp, #8
+ 462              	.LCFI12:
+ 463              		.cfi_def_cfa_offset 8
+ 464 0002 0346     		mov	r3, r0
+ 465 0004 8DF80730 		strb	r3, [sp, #7]
+ 301:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   /* Check the parameters */
+ 302:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
+ 303:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   
+ 304:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   if (NewState != DISABLE)
+ 466              		.loc 1 304 0
+ 467 0008 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 468 000c 002B     		cmp	r3, #0
+ 469 000e 06D0     		beq	.L27
+ 305:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   {
+ 306:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****     /* Enable the DCMI by setting ENABLE bit */
+ 307:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****     DCMI->CR |= (uint32_t)DCMI_CR_ENABLE;
+ 470              		.loc 1 307 0
+ 471 0010 074B     		ldr	r3, .L30
+ 472 0012 1B68     		ldr	r3, [r3]
+ 473 0014 064A     		ldr	r2, .L30
+ 474 0016 43F48043 		orr	r3, r3, #16384
+ 475 001a 1360     		str	r3, [r2]
+ 308:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   }
+ 309:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   else
+ 310:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   {
+ 311:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****     /* Disable the DCMI by clearing ENABLE bit */
+ 312:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****     DCMI->CR &= ~(uint32_t)DCMI_CR_ENABLE;
+ 313:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   }
+ 314:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** }
+ 476              		.loc 1 314 0
+ 477 001c 05E0     		b	.L29
+ 478              	.L27:
+ 312:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   }
+ 479              		.loc 1 312 0
+ 480 001e 044B     		ldr	r3, .L30
+ 481 0020 1B68     		ldr	r3, [r3]
+ 482 0022 034A     		ldr	r2, .L30
+ 483 0024 23F48043 		bic	r3, r3, #16384
+ 484 0028 1360     		str	r3, [r2]
+ 485              	.L29:
+ 486              		.loc 1 314 0
+ 487 002a 00BF     		nop
+ 488 002c 02B0     		add	sp, sp, #8
+ 489              	.LCFI13:
+ 490              		.cfi_def_cfa_offset 0
+ 491              		@ sp needed
+ 492 002e 7047     		bx	lr
+ 493              	.L31:
+ 494              		.align	2
+ 495              	.L30:
+ 496 0030 00000550 		.word	1342504960
+ 497              		.cfi_endproc
+ 498              	.LFE130:
+ 500              		.section	.text.DCMI_CaptureCmd,"ax",%progbits
+ 501              		.align	1
+ 502              		.global	DCMI_CaptureCmd
+ 503              		.syntax unified
+ 504              		.thumb
+ 505              		.thumb_func
+ 506              		.fpu fpv4-sp-d16
+ 508              	DCMI_CaptureCmd:
+ 509              	.LFB131:
+ 315:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** 
+ 316:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** /**
+ 317:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @brief  Enables or disables the DCMI Capture.
+ 318:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @param  NewState: new state of the DCMI capture. 
+ 319:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *          This parameter can be: ENABLE or DISABLE.
+ 320:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @retval None
+ 321:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   */
+ 322:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** void DCMI_CaptureCmd(FunctionalState NewState)
+ 323:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** {
+ 510              		.loc 1 323 0
+ 511              		.cfi_startproc
+ 512              		@ args = 0, pretend = 0, frame = 8
+ 513              		@ frame_needed = 0, uses_anonymous_args = 0
+ 514              		@ link register save eliminated.
+ 515 0000 82B0     		sub	sp, sp, #8
+ 516              	.LCFI14:
+ 517              		.cfi_def_cfa_offset 8
+ 518 0002 0346     		mov	r3, r0
+ 519 0004 8DF80730 		strb	r3, [sp, #7]
+ 324:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   /* Check the parameters */
+ 325:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
+ 326:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****     
+ 327:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   if (NewState != DISABLE)
+ 520              		.loc 1 327 0
+ 521 0008 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 522 000c 002B     		cmp	r3, #0
+ 523 000e 06D0     		beq	.L33
+ 328:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   {
+ 329:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****     /* Enable the DCMI Capture */
+ 330:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****     DCMI->CR |= (uint32_t)DCMI_CR_CAPTURE;
+ 524              		.loc 1 330 0
+ 525 0010 074B     		ldr	r3, .L36
+ 526 0012 1B68     		ldr	r3, [r3]
+ 527 0014 064A     		ldr	r2, .L36
+ 528 0016 43F00103 		orr	r3, r3, #1
+ 529 001a 1360     		str	r3, [r2]
+ 331:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   }
+ 332:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   else
+ 333:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   {
+ 334:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****     /* Disable the DCMI Capture */
+ 335:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****     DCMI->CR &= ~(uint32_t)DCMI_CR_CAPTURE;
+ 336:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   }
+ 337:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** }
+ 530              		.loc 1 337 0
+ 531 001c 05E0     		b	.L35
+ 532              	.L33:
+ 335:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   }
+ 533              		.loc 1 335 0
+ 534 001e 044B     		ldr	r3, .L36
+ 535 0020 1B68     		ldr	r3, [r3]
+ 536 0022 034A     		ldr	r2, .L36
+ 537 0024 23F00103 		bic	r3, r3, #1
+ 538 0028 1360     		str	r3, [r2]
+ 539              	.L35:
+ 540              		.loc 1 337 0
+ 541 002a 00BF     		nop
+ 542 002c 02B0     		add	sp, sp, #8
+ 543              	.LCFI15:
+ 544              		.cfi_def_cfa_offset 0
+ 545              		@ sp needed
+ 546 002e 7047     		bx	lr
+ 547              	.L37:
+ 548              		.align	2
+ 549              	.L36:
+ 550 0030 00000550 		.word	1342504960
+ 551              		.cfi_endproc
+ 552              	.LFE131:
+ 554              		.section	.text.DCMI_ReadData,"ax",%progbits
+ 555              		.align	1
+ 556              		.global	DCMI_ReadData
+ 557              		.syntax unified
+ 558              		.thumb
+ 559              		.thumb_func
+ 560              		.fpu fpv4-sp-d16
+ 562              	DCMI_ReadData:
+ 563              	.LFB132:
+ 338:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** 
+ 339:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** /**
+ 340:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @brief  Reads the data stored in the DR register.
+ 341:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @param  None 
+ 342:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @retval Data register value
+ 343:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   */
+ 344:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** uint32_t DCMI_ReadData(void)
+ 345:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** {
+ 564              		.loc 1 345 0
+ 565              		.cfi_startproc
+ 566              		@ args = 0, pretend = 0, frame = 0
+ 567              		@ frame_needed = 0, uses_anonymous_args = 0
+ 568              		@ link register save eliminated.
+ 346:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   return DCMI->DR;
+ 569              		.loc 1 346 0
+ 570 0000 014B     		ldr	r3, .L40
+ 571 0002 9B6A     		ldr	r3, [r3, #40]
+ 347:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** }
+ 572              		.loc 1 347 0
+ 573 0004 1846     		mov	r0, r3
+ 574 0006 7047     		bx	lr
+ 575              	.L41:
+ 576              		.align	2
+ 577              	.L40:
+ 578 0008 00000550 		.word	1342504960
+ 579              		.cfi_endproc
+ 580              	.LFE132:
+ 582              		.section	.text.DCMI_ITConfig,"ax",%progbits
+ 583              		.align	1
+ 584              		.global	DCMI_ITConfig
+ 585              		.syntax unified
+ 586              		.thumb
+ 587              		.thumb_func
+ 588              		.fpu fpv4-sp-d16
+ 590              	DCMI_ITConfig:
+ 591              	.LFB133:
+ 348:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** /**
+ 349:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @}
+ 350:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   */
+ 351:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** 
+ 352:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** /** @defgroup DCMI_Group3 Interrupts and flags management functions
+ 353:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****  *  @brief   Interrupts and flags management functions
+ 354:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****  *
+ 355:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** @verbatim   
+ 356:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****  ===============================================================================
+ 357:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****              ##### Interrupts and flags management functions #####
+ 358:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****  ===============================================================================  
+ 359:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** 
+ 360:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** @endverbatim
+ 361:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @{
+ 362:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   */
+ 363:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** 
+ 364:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** /**
+ 365:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @brief  Enables or disables the DCMI interface interrupts.
+ 366:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @param  DCMI_IT: specifies the DCMI interrupt sources to be enabled or disabled. 
+ 367:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *          This parameter can be any combination of the following values:
+ 368:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_IT_FRAME: Frame capture complete interrupt mask
+ 369:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_IT_OVF: Overflow interrupt mask
+ 370:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_IT_ERR: Synchronization error interrupt mask
+ 371:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_IT_VSYNC: VSYNC interrupt mask
+ 372:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_IT_LINE: Line interrupt mask
+ 373:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @param  NewState: new state of the specified DCMI interrupts.
+ 374:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *          This parameter can be: ENABLE or DISABLE.
+ 375:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @retval None
+ 376:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   */
+ 377:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** void DCMI_ITConfig(uint16_t DCMI_IT, FunctionalState NewState)
+ 378:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** {
+ 592              		.loc 1 378 0
+ 593              		.cfi_startproc
+ 594              		@ args = 0, pretend = 0, frame = 8
+ 595              		@ frame_needed = 0, uses_anonymous_args = 0
+ 596              		@ link register save eliminated.
+ 597 0000 82B0     		sub	sp, sp, #8
+ 598              	.LCFI16:
+ 599              		.cfi_def_cfa_offset 8
+ 600 0002 0346     		mov	r3, r0
+ 601 0004 0A46     		mov	r2, r1
+ 602 0006 ADF80630 		strh	r3, [sp, #6]	@ movhi
+ 603 000a 1346     		mov	r3, r2
+ 604 000c 8DF80530 		strb	r3, [sp, #5]
+ 379:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   /* Check the parameters */
+ 380:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   assert_param(IS_DCMI_CONFIG_IT(DCMI_IT));
+ 381:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
+ 382:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   
+ 383:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   if (NewState != DISABLE)
+ 605              		.loc 1 383 0
+ 606 0010 9DF80530 		ldrb	r3, [sp, #5]	@ zero_extendqisi2
+ 607 0014 002B     		cmp	r3, #0
+ 608 0016 07D0     		beq	.L43
+ 384:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   {
+ 385:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****     /* Enable the Interrupt sources */
+ 386:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****     DCMI->IER |= DCMI_IT;
+ 609              		.loc 1 386 0
+ 610 0018 0A4B     		ldr	r3, .L46
+ 611 001a DA68     		ldr	r2, [r3, #12]
+ 612 001c BDF80630 		ldrh	r3, [sp, #6]
+ 613 0020 0849     		ldr	r1, .L46
+ 614 0022 1343     		orrs	r3, r3, r2
+ 615 0024 CB60     		str	r3, [r1, #12]
+ 387:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   }
+ 388:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   else
+ 389:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   {
+ 390:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****     /* Disable the Interrupt sources */
+ 391:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****     DCMI->IER &= (uint16_t)(~DCMI_IT);
+ 392:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   }  
+ 393:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** }
+ 616              		.loc 1 393 0
+ 617 0026 09E0     		b	.L45
+ 618              	.L43:
+ 391:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   }  
+ 619              		.loc 1 391 0
+ 620 0028 064B     		ldr	r3, .L46
+ 621 002a DB68     		ldr	r3, [r3, #12]
+ 622 002c BDF80620 		ldrh	r2, [sp, #6]	@ movhi
+ 623 0030 D243     		mvns	r2, r2
+ 624 0032 92B2     		uxth	r2, r2
+ 625 0034 1146     		mov	r1, r2
+ 626 0036 034A     		ldr	r2, .L46
+ 627 0038 0B40     		ands	r3, r3, r1
+ 628 003a D360     		str	r3, [r2, #12]
+ 629              	.L45:
+ 630              		.loc 1 393 0
+ 631 003c 00BF     		nop
+ 632 003e 02B0     		add	sp, sp, #8
+ 633              	.LCFI17:
+ 634              		.cfi_def_cfa_offset 0
+ 635              		@ sp needed
+ 636 0040 7047     		bx	lr
+ 637              	.L47:
+ 638 0042 00BF     		.align	2
+ 639              	.L46:
+ 640 0044 00000550 		.word	1342504960
+ 641              		.cfi_endproc
+ 642              	.LFE133:
+ 644              		.section	.text.DCMI_GetFlagStatus,"ax",%progbits
+ 645              		.align	1
+ 646              		.global	DCMI_GetFlagStatus
+ 647              		.syntax unified
+ 648              		.thumb
+ 649              		.thumb_func
+ 650              		.fpu fpv4-sp-d16
+ 652              	DCMI_GetFlagStatus:
+ 653              	.LFB134:
+ 394:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** 
+ 395:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** /**
+ 396:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @brief  Checks whether the  DCMI interface flag is set or not.
+ 397:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @param  DCMI_FLAG: specifies the flag to check.
+ 398:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *          This parameter can be one of the following values:
+ 399:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_FLAG_FRAMERI: Frame capture complete Raw flag mask
+ 400:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_FLAG_OVFRI: Overflow Raw flag mask
+ 401:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_FLAG_ERRRI: Synchronization error Raw flag mask
+ 402:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_FLAG_VSYNCRI: VSYNC Raw flag mask
+ 403:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_FLAG_LINERI: Line Raw flag mask
+ 404:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_FLAG_FRAMEMI: Frame capture complete Masked flag mask
+ 405:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_FLAG_OVFMI: Overflow Masked flag mask
+ 406:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_FLAG_ERRMI: Synchronization error Masked flag mask
+ 407:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_FLAG_VSYNCMI: VSYNC Masked flag mask
+ 408:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_FLAG_LINEMI: Line Masked flag mask
+ 409:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_FLAG_HSYNC: HSYNC flag mask
+ 410:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_FLAG_VSYNC: VSYNC flag mask
+ 411:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_FLAG_FNE: Fifo not empty flag mask
+ 412:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @retval The new state of DCMI_FLAG (SET or RESET).
+ 413:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   */
+ 414:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** FlagStatus DCMI_GetFlagStatus(uint16_t DCMI_FLAG)
+ 415:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** {
+ 654              		.loc 1 415 0
+ 655              		.cfi_startproc
+ 656              		@ args = 0, pretend = 0, frame = 24
+ 657              		@ frame_needed = 0, uses_anonymous_args = 0
+ 658              		@ link register save eliminated.
+ 659 0000 86B0     		sub	sp, sp, #24
+ 660              	.LCFI18:
+ 661              		.cfi_def_cfa_offset 24
+ 662 0002 0346     		mov	r3, r0
+ 663 0004 ADF80630 		strh	r3, [sp, #6]	@ movhi
+ 416:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   FlagStatus bitstatus = RESET;
+ 664              		.loc 1 416 0
+ 665 0008 0023     		movs	r3, #0
+ 666 000a 8DF81730 		strb	r3, [sp, #23]
+ 417:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   uint32_t dcmireg, tempreg = 0;
+ 667              		.loc 1 417 0
+ 668 000e 0023     		movs	r3, #0
+ 669 0010 0493     		str	r3, [sp, #16]
+ 418:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** 
+ 419:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   /* Check the parameters */
+ 420:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   assert_param(IS_DCMI_GET_FLAG(DCMI_FLAG));
+ 421:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   
+ 422:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   /* Get the DCMI register index */
+ 423:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   dcmireg = (((uint16_t)DCMI_FLAG) >> 12);
+ 670              		.loc 1 423 0
+ 671 0012 BDF80630 		ldrh	r3, [sp, #6]
+ 672 0016 1B0B     		lsrs	r3, r3, #12
+ 673 0018 9BB2     		uxth	r3, r3
+ 674 001a 0393     		str	r3, [sp, #12]
+ 424:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   
+ 425:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   if (dcmireg == 0x00) /* The FLAG is in RISR register */
+ 675              		.loc 1 425 0
+ 676 001c 039B     		ldr	r3, [sp, #12]
+ 677 001e 002B     		cmp	r3, #0
+ 678 0020 03D1     		bne	.L49
+ 426:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   {
+ 427:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****     tempreg= DCMI->RISR;
+ 679              		.loc 1 427 0
+ 680 0022 104B     		ldr	r3, .L55
+ 681 0024 9B68     		ldr	r3, [r3, #8]
+ 682 0026 0493     		str	r3, [sp, #16]
+ 683 0028 09E0     		b	.L50
+ 684              	.L49:
+ 428:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   }
+ 429:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   else if (dcmireg == 0x02) /* The FLAG is in SR register */
+ 685              		.loc 1 429 0
+ 686 002a 039B     		ldr	r3, [sp, #12]
+ 687 002c 022B     		cmp	r3, #2
+ 688 002e 03D1     		bne	.L51
+ 430:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   {
+ 431:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****     tempreg = DCMI->SR;
+ 689              		.loc 1 431 0
+ 690 0030 0C4B     		ldr	r3, .L55
+ 691 0032 5B68     		ldr	r3, [r3, #4]
+ 692 0034 0493     		str	r3, [sp, #16]
+ 693 0036 02E0     		b	.L50
+ 694              	.L51:
+ 432:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   }
+ 433:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   else /* The FLAG is in MISR register */
+ 434:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   {
+ 435:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****     tempreg = DCMI->MISR;
+ 695              		.loc 1 435 0
+ 696 0038 0A4B     		ldr	r3, .L55
+ 697 003a 1B69     		ldr	r3, [r3, #16]
+ 698 003c 0493     		str	r3, [sp, #16]
+ 699              	.L50:
+ 436:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   }
+ 437:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   
+ 438:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   if ((tempreg & DCMI_FLAG) != (uint16_t)RESET )
+ 700              		.loc 1 438 0
+ 701 003e BDF80620 		ldrh	r2, [sp, #6]
+ 702 0042 049B     		ldr	r3, [sp, #16]
+ 703 0044 1340     		ands	r3, r3, r2
+ 704 0046 002B     		cmp	r3, #0
+ 705 0048 03D0     		beq	.L52
+ 439:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   {
+ 440:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****     bitstatus = SET;
+ 706              		.loc 1 440 0
+ 707 004a 0123     		movs	r3, #1
+ 708 004c 8DF81730 		strb	r3, [sp, #23]
+ 709 0050 02E0     		b	.L53
+ 710              	.L52:
+ 441:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   }
+ 442:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   else
+ 443:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   {
+ 444:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****     bitstatus = RESET;
+ 711              		.loc 1 444 0
+ 712 0052 0023     		movs	r3, #0
+ 713 0054 8DF81730 		strb	r3, [sp, #23]
+ 714              	.L53:
+ 445:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   }
+ 446:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   /* Return the DCMI_FLAG status */
+ 447:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   return  bitstatus;
+ 715              		.loc 1 447 0
+ 716 0058 9DF81730 		ldrb	r3, [sp, #23]	@ zero_extendqisi2
+ 448:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** }
+ 717              		.loc 1 448 0
+ 718 005c 1846     		mov	r0, r3
+ 719 005e 06B0     		add	sp, sp, #24
+ 720              	.LCFI19:
+ 721              		.cfi_def_cfa_offset 0
+ 722              		@ sp needed
+ 723 0060 7047     		bx	lr
+ 724              	.L56:
+ 725 0062 00BF     		.align	2
+ 726              	.L55:
+ 727 0064 00000550 		.word	1342504960
+ 728              		.cfi_endproc
+ 729              	.LFE134:
+ 731              		.section	.text.DCMI_ClearFlag,"ax",%progbits
+ 732              		.align	1
+ 733              		.global	DCMI_ClearFlag
+ 734              		.syntax unified
+ 735              		.thumb
+ 736              		.thumb_func
+ 737              		.fpu fpv4-sp-d16
+ 739              	DCMI_ClearFlag:
+ 740              	.LFB135:
+ 449:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** 
+ 450:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** /**
+ 451:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @brief  Clears the DCMI's pending flags.
+ 452:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @param  DCMI_FLAG: specifies the flag to clear.
+ 453:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *          This parameter can be any combination of the following values:
+ 454:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_FLAG_FRAMERI: Frame capture complete Raw flag mask
+ 455:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_FLAG_OVFRI: Overflow Raw flag mask
+ 456:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_FLAG_ERRRI: Synchronization error Raw flag mask
+ 457:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_FLAG_VSYNCRI: VSYNC Raw flag mask
+ 458:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_FLAG_LINERI: Line Raw flag mask
+ 459:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @retval None
+ 460:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   */
+ 461:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** void DCMI_ClearFlag(uint16_t DCMI_FLAG)
+ 462:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** {
+ 741              		.loc 1 462 0
+ 742              		.cfi_startproc
+ 743              		@ args = 0, pretend = 0, frame = 8
+ 744              		@ frame_needed = 0, uses_anonymous_args = 0
+ 745              		@ link register save eliminated.
+ 746 0000 82B0     		sub	sp, sp, #8
+ 747              	.LCFI20:
+ 748              		.cfi_def_cfa_offset 8
+ 749 0002 0346     		mov	r3, r0
+ 750 0004 ADF80630 		strh	r3, [sp, #6]	@ movhi
+ 463:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   /* Check the parameters */
+ 464:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   assert_param(IS_DCMI_CLEAR_FLAG(DCMI_FLAG));
+ 465:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   
+ 466:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   /* Clear the flag by writing in the ICR register 1 in the corresponding 
+ 467:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   Flag position*/
+ 468:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   
+ 469:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   DCMI->ICR = DCMI_FLAG;
+ 751              		.loc 1 469 0
+ 752 0008 034A     		ldr	r2, .L58
+ 753 000a BDF80630 		ldrh	r3, [sp, #6]
+ 754 000e 5361     		str	r3, [r2, #20]
+ 470:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** }
+ 755              		.loc 1 470 0
+ 756 0010 00BF     		nop
+ 757 0012 02B0     		add	sp, sp, #8
+ 758              	.LCFI21:
+ 759              		.cfi_def_cfa_offset 0
+ 760              		@ sp needed
+ 761 0014 7047     		bx	lr
+ 762              	.L59:
+ 763 0016 00BF     		.align	2
+ 764              	.L58:
+ 765 0018 00000550 		.word	1342504960
+ 766              		.cfi_endproc
+ 767              	.LFE135:
+ 769              		.section	.text.DCMI_GetITStatus,"ax",%progbits
+ 770              		.align	1
+ 771              		.global	DCMI_GetITStatus
+ 772              		.syntax unified
+ 773              		.thumb
+ 774              		.thumb_func
+ 775              		.fpu fpv4-sp-d16
+ 777              	DCMI_GetITStatus:
+ 778              	.LFB136:
+ 471:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** 
+ 472:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** /**
+ 473:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @brief  Checks whether the DCMI interrupt has occurred or not.
+ 474:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @param  DCMI_IT: specifies the DCMI interrupt source to check.
+ 475:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *          This parameter can be one of the following values:
+ 476:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_IT_FRAME: Frame capture complete interrupt mask
+ 477:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_IT_OVF: Overflow interrupt mask
+ 478:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_IT_ERR: Synchronization error interrupt mask
+ 479:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_IT_VSYNC: VSYNC interrupt mask
+ 480:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_IT_LINE: Line interrupt mask
+ 481:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @retval The new state of DCMI_IT (SET or RESET).
+ 482:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   */
+ 483:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** ITStatus DCMI_GetITStatus(uint16_t DCMI_IT)
+ 484:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** {
+ 779              		.loc 1 484 0
+ 780              		.cfi_startproc
+ 781              		@ args = 0, pretend = 0, frame = 16
+ 782              		@ frame_needed = 0, uses_anonymous_args = 0
+ 783              		@ link register save eliminated.
+ 784 0000 84B0     		sub	sp, sp, #16
+ 785              	.LCFI22:
+ 786              		.cfi_def_cfa_offset 16
+ 787 0002 0346     		mov	r3, r0
+ 788 0004 ADF80630 		strh	r3, [sp, #6]	@ movhi
+ 485:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   ITStatus bitstatus = RESET;
+ 789              		.loc 1 485 0
+ 790 0008 0023     		movs	r3, #0
+ 791 000a 8DF80F30 		strb	r3, [sp, #15]
+ 486:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   uint32_t itstatus = 0;
+ 792              		.loc 1 486 0
+ 793 000e 0023     		movs	r3, #0
+ 794 0010 0293     		str	r3, [sp, #8]
+ 487:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   
+ 488:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   /* Check the parameters */
+ 489:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   assert_param(IS_DCMI_GET_IT(DCMI_IT));
+ 490:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   
+ 491:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   itstatus = DCMI->MISR & DCMI_IT; /* Only masked interrupts are checked */
+ 795              		.loc 1 491 0
+ 796 0012 0A4B     		ldr	r3, .L64
+ 797 0014 1A69     		ldr	r2, [r3, #16]
+ 798 0016 BDF80630 		ldrh	r3, [sp, #6]
+ 799 001a 1340     		ands	r3, r3, r2
+ 800 001c 0293     		str	r3, [sp, #8]
+ 492:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   
+ 493:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   if ((itstatus != (uint16_t)RESET))
+ 801              		.loc 1 493 0
+ 802 001e 029B     		ldr	r3, [sp, #8]
+ 803 0020 002B     		cmp	r3, #0
+ 804 0022 03D0     		beq	.L61
+ 494:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   {
+ 495:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****     bitstatus = SET;
+ 805              		.loc 1 495 0
+ 806 0024 0123     		movs	r3, #1
+ 807 0026 8DF80F30 		strb	r3, [sp, #15]
+ 808 002a 02E0     		b	.L62
+ 809              	.L61:
+ 496:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   }
+ 497:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   else
+ 498:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   {
+ 499:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****     bitstatus = RESET;
+ 810              		.loc 1 499 0
+ 811 002c 0023     		movs	r3, #0
+ 812 002e 8DF80F30 		strb	r3, [sp, #15]
+ 813              	.L62:
+ 500:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   }
+ 501:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   return bitstatus;
+ 814              		.loc 1 501 0
+ 815 0032 9DF80F30 		ldrb	r3, [sp, #15]	@ zero_extendqisi2
+ 502:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** }
+ 816              		.loc 1 502 0
+ 817 0036 1846     		mov	r0, r3
+ 818 0038 04B0     		add	sp, sp, #16
+ 819              	.LCFI23:
+ 820              		.cfi_def_cfa_offset 0
+ 821              		@ sp needed
+ 822 003a 7047     		bx	lr
+ 823              	.L65:
+ 824              		.align	2
+ 825              	.L64:
+ 826 003c 00000550 		.word	1342504960
+ 827              		.cfi_endproc
+ 828              	.LFE136:
+ 830              		.section	.text.DCMI_ClearITPendingBit,"ax",%progbits
+ 831              		.align	1
+ 832              		.global	DCMI_ClearITPendingBit
+ 833              		.syntax unified
+ 834              		.thumb
+ 835              		.thumb_func
+ 836              		.fpu fpv4-sp-d16
+ 838              	DCMI_ClearITPendingBit:
+ 839              	.LFB137:
+ 503:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** 
+ 504:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** /**
+ 505:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @brief  Clears the DCMI's interrupt pending bits.
+ 506:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @param  DCMI_IT: specifies the DCMI interrupt pending bit to clear.
+ 507:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *          This parameter can be any combination of the following values:
+ 508:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_IT_FRAME: Frame capture complete interrupt mask
+ 509:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_IT_OVF: Overflow interrupt mask
+ 510:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_IT_ERR: Synchronization error interrupt mask
+ 511:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_IT_VSYNC: VSYNC interrupt mask
+ 512:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_IT_LINE: Line interrupt mask
+ 513:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @retval None
+ 514:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   */
+ 515:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** void DCMI_ClearITPendingBit(uint16_t DCMI_IT)
+ 516:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** {
+ 840              		.loc 1 516 0
+ 841              		.cfi_startproc
+ 842              		@ args = 0, pretend = 0, frame = 8
+ 843              		@ frame_needed = 0, uses_anonymous_args = 0
+ 844              		@ link register save eliminated.
+ 845 0000 82B0     		sub	sp, sp, #8
+ 846              	.LCFI24:
+ 847              		.cfi_def_cfa_offset 8
+ 848 0002 0346     		mov	r3, r0
+ 849 0004 ADF80630 		strh	r3, [sp, #6]	@ movhi
+ 517:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   /* Clear the interrupt pending Bit by writing in the ICR register 1 in the 
+ 518:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   corresponding pending Bit position*/
+ 519:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   
+ 520:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   DCMI->ICR = DCMI_IT;
+ 850              		.loc 1 520 0
+ 851 0008 034A     		ldr	r2, .L67
+ 852 000a BDF80630 		ldrh	r3, [sp, #6]
+ 853 000e 5361     		str	r3, [r2, #20]
+ 521:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** }
+ 854              		.loc 1 521 0
+ 855 0010 00BF     		nop
+ 856 0012 02B0     		add	sp, sp, #8
+ 857              	.LCFI25:
+ 858              		.cfi_def_cfa_offset 0
+ 859              		@ sp needed
+ 860 0014 7047     		bx	lr
+ 861              	.L68:
+ 862 0016 00BF     		.align	2
+ 863              	.L67:
+ 864 0018 00000550 		.word	1342504960
+ 865              		.cfi_endproc
+ 866              	.LFE137:
+ 868              		.text
+ 869              	.Letext0:
+ 870              		.file 2 "/home/rdu/Software/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/_defau
+ 871              		.file 3 "/home/rdu/Software/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_stdint.h"
+ 872              		.file 4 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/CMSIS/CMSIS_STM32F4/Incl
+ 873              		.file 5 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/CMSIS/CMSIS_STM32F4/Devi
+ 874              		.file 6 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/CMSIS/CMSIS_STM32F4/Devi
+ 875              		.file 7 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driv
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 stm32f4xx_dcmi.c
+     /tmp/ccqwIc3Y.s:16     .text.DCMI_DeInit:0000000000000000 $t
+     /tmp/ccqwIc3Y.s:23     .text.DCMI_DeInit:0000000000000000 DCMI_DeInit
+     /tmp/ccqwIc3Y.s:65     .text.DCMI_DeInit:0000000000000030 $d
+     /tmp/ccqwIc3Y.s:70     .text.DCMI_Init:0000000000000000 $t
+     /tmp/ccqwIc3Y.s:77     .text.DCMI_Init:0000000000000000 DCMI_Init
+     /tmp/ccqwIc3Y.s:163    .text.DCMI_Init:0000000000000074 $d
+     /tmp/ccqwIc3Y.s:168    .text.DCMI_StructInit:0000000000000000 $t
+     /tmp/ccqwIc3Y.s:175    .text.DCMI_StructInit:0000000000000000 DCMI_StructInit
+     /tmp/ccqwIc3Y.s:225    .text.DCMI_CROPConfig:0000000000000000 $t
+     /tmp/ccqwIc3Y.s:232    .text.DCMI_CROPConfig:0000000000000000 DCMI_CROPConfig
+     /tmp/ccqwIc3Y.s:277    .text.DCMI_CROPConfig:0000000000000030 $d
+     /tmp/ccqwIc3Y.s:282    .text.DCMI_CROPCmd:0000000000000000 $t
+     /tmp/ccqwIc3Y.s:289    .text.DCMI_CROPCmd:0000000000000000 DCMI_CROPCmd
+     /tmp/ccqwIc3Y.s:331    .text.DCMI_CROPCmd:0000000000000030 $d
+     /tmp/ccqwIc3Y.s:336    .text.DCMI_SetEmbeddedSynchroCodes:0000000000000000 $t
+     /tmp/ccqwIc3Y.s:343    .text.DCMI_SetEmbeddedSynchroCodes:0000000000000000 DCMI_SetEmbeddedSynchroCodes
+     /tmp/ccqwIc3Y.s:388    .text.DCMI_SetEmbeddedSynchroCodes:000000000000002c $d
+     /tmp/ccqwIc3Y.s:393    .text.DCMI_JPEGCmd:0000000000000000 $t
+     /tmp/ccqwIc3Y.s:400    .text.DCMI_JPEGCmd:0000000000000000 DCMI_JPEGCmd
+     /tmp/ccqwIc3Y.s:442    .text.DCMI_JPEGCmd:0000000000000030 $d
+     /tmp/ccqwIc3Y.s:447    .text.DCMI_Cmd:0000000000000000 $t
+     /tmp/ccqwIc3Y.s:454    .text.DCMI_Cmd:0000000000000000 DCMI_Cmd
+     /tmp/ccqwIc3Y.s:496    .text.DCMI_Cmd:0000000000000030 $d
+     /tmp/ccqwIc3Y.s:501    .text.DCMI_CaptureCmd:0000000000000000 $t
+     /tmp/ccqwIc3Y.s:508    .text.DCMI_CaptureCmd:0000000000000000 DCMI_CaptureCmd
+     /tmp/ccqwIc3Y.s:550    .text.DCMI_CaptureCmd:0000000000000030 $d
+     /tmp/ccqwIc3Y.s:555    .text.DCMI_ReadData:0000000000000000 $t
+     /tmp/ccqwIc3Y.s:562    .text.DCMI_ReadData:0000000000000000 DCMI_ReadData
+     /tmp/ccqwIc3Y.s:578    .text.DCMI_ReadData:0000000000000008 $d
+     /tmp/ccqwIc3Y.s:583    .text.DCMI_ITConfig:0000000000000000 $t
+     /tmp/ccqwIc3Y.s:590    .text.DCMI_ITConfig:0000000000000000 DCMI_ITConfig
+     /tmp/ccqwIc3Y.s:640    .text.DCMI_ITConfig:0000000000000044 $d
+     /tmp/ccqwIc3Y.s:645    .text.DCMI_GetFlagStatus:0000000000000000 $t
+     /tmp/ccqwIc3Y.s:652    .text.DCMI_GetFlagStatus:0000000000000000 DCMI_GetFlagStatus
+     /tmp/ccqwIc3Y.s:727    .text.DCMI_GetFlagStatus:0000000000000064 $d
+     /tmp/ccqwIc3Y.s:732    .text.DCMI_ClearFlag:0000000000000000 $t
+     /tmp/ccqwIc3Y.s:739    .text.DCMI_ClearFlag:0000000000000000 DCMI_ClearFlag
+     /tmp/ccqwIc3Y.s:765    .text.DCMI_ClearFlag:0000000000000018 $d
+     /tmp/ccqwIc3Y.s:770    .text.DCMI_GetITStatus:0000000000000000 $t
+     /tmp/ccqwIc3Y.s:777    .text.DCMI_GetITStatus:0000000000000000 DCMI_GetITStatus
+     /tmp/ccqwIc3Y.s:826    .text.DCMI_GetITStatus:000000000000003c $d
+     /tmp/ccqwIc3Y.s:831    .text.DCMI_ClearITPendingBit:0000000000000000 $t
+     /tmp/ccqwIc3Y.s:838    .text.DCMI_ClearITPendingBit:0000000000000000 DCMI_ClearITPendingBit
+     /tmp/ccqwIc3Y.s:864    .text.DCMI_ClearITPendingBit:0000000000000018 $d
+
+NO UNDEFINED SYMBOLS

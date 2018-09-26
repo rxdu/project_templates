@@ -1,0 +1,2190 @@
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 23, 1
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 6
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"stm32f4xx_dma2d.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.DMA2D_DeInit,"ax",%progbits
+  16              		.align	1
+  17              		.global	DMA2D_DeInit
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  21              		.fpu fpv4-sp-d16
+  23              	DMA2D_DeInit:
+  24              	.LFB123:
+  25              		.file 1 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driv
+   1:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
+   2:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   ******************************************************************************
+   3:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @file    stm32f4xx_dma2d.c
+   4:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @author  MCD Application Team
+   5:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @version V1.8.0
+   6:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @date    04-November-2016
+   7:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief   This file provides firmware functions to manage the following 
+   8:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *          functionalities of the DMA2D controller (DMA2D) peripheral:
+   9:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *           + Initialization and configuration
+  10:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *           + Interrupts and flags management
+  11:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *           
+  12:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   @verbatim  
+  13:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****  ===============================================================================
+  14:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****                       ##### How to use this driver #####
+  15:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****  ===============================================================================
+  16:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     [..]
+  17:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****         (#) Enable DMA2D clock using 
+  18:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****             RCC_APB2PeriphResetCmd(RCC_APB2Periph_DMA2D, ENABLE) function.
+  19:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****             
+  20:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****         (#) Configures DMA2D
+  21:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****           (++) transfer mode 
+  22:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****           (++) pixel format, line_number, pixel_per_line
+  23:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****           (++) output memory address
+  24:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****           (++) alpha value
+  25:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****           (++) output offset
+  26:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****           (++) Default color (RGB)
+  27:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****            
+  28:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****         (#) Configures Foreground or/and background
+  29:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****           (++) memory address
+  30:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****           (++) alpha value
+  31:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****           (++) offset and default color
+  32:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   
+  33:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****         (#) Call the DMA2D_Start() to enable the DMA2D controller.
+  34:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****         
+  35:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     @endverbatim
+  36:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   
+  37:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   ******************************************************************************
+  38:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @attention
+  39:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *
+  40:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * <h2><center>&copy; COPYRIGHT 2016 STMicroelectronics</center></h2>
+  41:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *
+  42:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
+  43:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * You may not use this file except in compliance with the License.
+  44:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * You may obtain a copy of the License at:
+  45:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *
+  46:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *        http://www.st.com/software_license_agreement_liberty_v2
+  47:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *
+  48:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * Unless required by applicable law or agreed to in writing, software 
+  49:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * distributed under the License is distributed on an "AS IS" BASIS, 
+  50:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  51:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * See the License for the specific language governing permissions and
+  52:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * limitations under the License.
+  53:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *
+  54:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   ******************************************************************************
+  55:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */ 
+  56:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+  57:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /* Includes ------------------------------------------------------------------*/
+  58:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** #include "stm32f4xx_dma2d.h"
+  59:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** #include "stm32f4xx_rcc.h"
+  60:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+  61:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /** @addtogroup STM32F4xx_StdPeriph_Driver
+  62:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @{
+  63:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
+  64:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+  65:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /** @defgroup DMA2D 
+  66:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief DMA2D driver modules
+  67:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @{
+  68:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
+  69:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+  70:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /* Private typedef -----------------------------------------------------------*/
+  71:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /* Private define ------------------------------------------------------------*/
+  72:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /* Private macro -------------------------------------------------------------*/
+  73:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /* Private variables ---------------------------------------------------------*/
+  74:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /* Private function prototypes -----------------------------------------------*/
+  75:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /* Private functions ---------------------------------------------------------*/
+  76:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+  77:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** #define CR_MASK                     ((uint32_t)0xFFFCE0FC)  /* DMA2D CR Mask */
+  78:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** #define PFCCR_MASK                  ((uint32_t)0x00FC00C0)  /* DMA2D FGPFCCR Mask */
+  79:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** #define DEAD_MASK                   ((uint32_t)0xFFFF00FE)  /* DMA2D DEAD Mask */
+  80:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+  81:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /** @defgroup DMA2D_Private_Functions
+  82:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @{
+  83:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
+  84:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+  85:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /** @defgroup DMA2D_Group1 Initialization and Configuration functions
+  86:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****  *  @brief   Initialization and Configuration functions 
+  87:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****  *
+  88:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** @verbatim
+  89:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****  ===============================================================================
+  90:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****             ##### Initialization and Configuration functions #####
+  91:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****  ===============================================================================
+  92:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     [..]  This section provides functions allowing to:
+  93:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       (+) Initialize and configure the DMA2D
+  94:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       (+) Start/Abort/Suspend Transfer
+  95:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       (+) Initialize, configure and set Foreground and background
+  96:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       (+) configure and enable DeadTime
+  97:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       (+) configure lineWatermark
+  98:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     
+  99:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     
+ 100:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** @endverbatim
+ 101:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @{
+ 102:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
+ 103:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 104:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
+ 105:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief  Deinitializes the DMA2D peripheral registers to their default reset
+ 106:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *         values.
+ 107:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @param  None
+ 108:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @retval None
+ 109:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
+ 110:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 111:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** void DMA2D_DeInit(void)
+ 112:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
+  26              		.loc 1 112 0
+  27              		.cfi_startproc
+  28              		@ args = 0, pretend = 0, frame = 0
+  29              		@ frame_needed = 0, uses_anonymous_args = 0
+  30 0000 08B5     		push	{r3, lr}
+  31              	.LCFI0:
+  32              		.cfi_def_cfa_offset 8
+  33              		.cfi_offset 3, -8
+  34              		.cfi_offset 14, -4
+ 113:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Enable DMA2D reset state */
+ 114:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   RCC_AHB1PeriphResetCmd(RCC_AHB1Periph_DMA2D, ENABLE);
+  35              		.loc 1 114 0
+  36 0002 0121     		movs	r1, #1
+  37 0004 4FF40000 		mov	r0, #8388608
+  38 0008 FFF7FEFF 		bl	RCC_AHB1PeriphResetCmd
+ 115:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Release DMA2D from reset state */
+ 116:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   RCC_AHB1PeriphResetCmd(RCC_AHB1Periph_DMA2D, DISABLE);
+  39              		.loc 1 116 0
+  40 000c 0021     		movs	r1, #0
+  41 000e 4FF40000 		mov	r0, #8388608
+  42 0012 FFF7FEFF 		bl	RCC_AHB1PeriphResetCmd
+ 117:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
+  43              		.loc 1 117 0
+  44 0016 00BF     		nop
+  45 0018 08BD     		pop	{r3, pc}
+  46              		.cfi_endproc
+  47              	.LFE123:
+  49              		.section	.text.DMA2D_Init,"ax",%progbits
+  50              		.align	1
+  51              		.global	DMA2D_Init
+  52              		.syntax unified
+  53              		.thumb
+  54              		.thumb_func
+  55              		.fpu fpv4-sp-d16
+  57              	DMA2D_Init:
+  58              	.LFB124:
+ 118:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 119:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 120:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
+ 121:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief  Initializes the DMA2D peripheral according to the specified parameters
+ 122:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *         in the DMA2D_InitStruct.
+ 123:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @note   This function can be used only when the DMA2D is disabled.
+ 124:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @param  DMA2D_InitStruct: pointer to a DMA2D_InitTypeDef structure that contains
+ 125:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *         the configuration information for the specified DMA2D peripheral.
+ 126:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @retval None
+ 127:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
+ 128:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** void DMA2D_Init(DMA2D_InitTypeDef* DMA2D_InitStruct)
+ 129:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
+  59              		.loc 1 129 0
+  60              		.cfi_startproc
+  61              		@ args = 0, pretend = 0, frame = 24
+  62              		@ frame_needed = 0, uses_anonymous_args = 0
+  63              		@ link register save eliminated.
+  64 0000 86B0     		sub	sp, sp, #24
+  65              	.LCFI1:
+  66              		.cfi_def_cfa_offset 24
+  67 0002 0190     		str	r0, [sp, #4]
+ 130:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 131:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   uint32_t outgreen = 0;
+  68              		.loc 1 131 0
+  69 0004 0023     		movs	r3, #0
+  70 0006 0593     		str	r3, [sp, #20]
+ 132:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   uint32_t outred   = 0;
+  71              		.loc 1 132 0
+  72 0008 0023     		movs	r3, #0
+  73 000a 0493     		str	r3, [sp, #16]
+ 133:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   uint32_t outalpha = 0;
+  74              		.loc 1 133 0
+  75 000c 0023     		movs	r3, #0
+  76 000e 0393     		str	r3, [sp, #12]
+ 134:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   uint32_t pixline  = 0;
+  77              		.loc 1 134 0
+  78 0010 0023     		movs	r3, #0
+  79 0012 0293     		str	r3, [sp, #8]
+ 135:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 136:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Check the parameters */
+ 137:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_MODE(DMA2D_InitStruct->DMA2D_Mode));
+ 138:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_CMODE(DMA2D_InitStruct->DMA2D_CMode));
+ 139:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_OGREEN(DMA2D_InitStruct->DMA2D_OutputGreen));
+ 140:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_ORED(DMA2D_InitStruct->DMA2D_OutputRed));
+ 141:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_OBLUE(DMA2D_InitStruct->DMA2D_OutputBlue));
+ 142:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_OALPHA(DMA2D_InitStruct->DMA2D_OutputAlpha));
+ 143:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_OUTPUT_OFFSET(DMA2D_InitStruct->DMA2D_OutputOffset));
+ 144:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_LINE(DMA2D_InitStruct->DMA2D_NumberOfLine));
+ 145:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_PIXEL(DMA2D_InitStruct->DMA2D_PixelPerLine));
+ 146:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 147:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Configures the DMA2D operation mode */
+ 148:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->CR &= (uint32_t)CR_MASK;
+  80              		.loc 1 148 0
+  81 0014 4E4B     		ldr	r3, .L8
+  82 0016 1B68     		ldr	r3, [r3]
+  83 0018 4D4A     		ldr	r2, .L8
+  84 001a 23F00313 		bic	r3, r3, #196611
+  85 001e 23F4F853 		bic	r3, r3, #7936
+  86 0022 1360     		str	r3, [r2]
+ 149:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->CR |= (DMA2D_InitStruct->DMA2D_Mode);
+  87              		.loc 1 149 0
+  88 0024 4A4B     		ldr	r3, .L8
+  89 0026 1A68     		ldr	r2, [r3]
+  90 0028 019B     		ldr	r3, [sp, #4]
+  91 002a 1B68     		ldr	r3, [r3]
+  92 002c 4849     		ldr	r1, .L8
+  93 002e 1343     		orrs	r3, r3, r2
+  94 0030 0B60     		str	r3, [r1]
+ 150:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 151:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Configures the color mode of the output image */
+ 152:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->OPFCCR &= ~(uint32_t)DMA2D_OPFCCR_CM;
+  95              		.loc 1 152 0
+  96 0032 474B     		ldr	r3, .L8
+  97 0034 5B6B     		ldr	r3, [r3, #52]
+  98 0036 464A     		ldr	r2, .L8
+  99 0038 23F00703 		bic	r3, r3, #7
+ 100 003c 5363     		str	r3, [r2, #52]
+ 153:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->OPFCCR |= (DMA2D_InitStruct->DMA2D_CMode);
+ 101              		.loc 1 153 0
+ 102 003e 444B     		ldr	r3, .L8
+ 103 0040 5A6B     		ldr	r2, [r3, #52]
+ 104 0042 019B     		ldr	r3, [sp, #4]
+ 105 0044 5B68     		ldr	r3, [r3, #4]
+ 106 0046 4249     		ldr	r1, .L8
+ 107 0048 1343     		orrs	r3, r3, r2
+ 108 004a 4B63     		str	r3, [r1, #52]
+ 154:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 155:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Configures the output color */
+ 156:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 157:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   if (DMA2D_InitStruct->DMA2D_CMode == DMA2D_ARGB8888)
+ 109              		.loc 1 157 0
+ 110 004c 019B     		ldr	r3, [sp, #4]
+ 111 004e 5B68     		ldr	r3, [r3, #4]
+ 112 0050 002B     		cmp	r3, #0
+ 113 0052 0CD1     		bne	.L3
+ 158:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
+ 159:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     outgreen = DMA2D_InitStruct->DMA2D_OutputGreen << 8;
+ 114              		.loc 1 159 0
+ 115 0054 019B     		ldr	r3, [sp, #4]
+ 116 0056 DB68     		ldr	r3, [r3, #12]
+ 117 0058 1B02     		lsls	r3, r3, #8
+ 118 005a 0593     		str	r3, [sp, #20]
+ 160:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     outred = DMA2D_InitStruct->DMA2D_OutputRed << 16;
+ 119              		.loc 1 160 0
+ 120 005c 019B     		ldr	r3, [sp, #4]
+ 121 005e 1B69     		ldr	r3, [r3, #16]
+ 122 0060 1B04     		lsls	r3, r3, #16
+ 123 0062 0493     		str	r3, [sp, #16]
+ 161:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     outalpha = DMA2D_InitStruct->DMA2D_OutputAlpha << 24;
+ 124              		.loc 1 161 0
+ 125 0064 019B     		ldr	r3, [sp, #4]
+ 126 0066 5B69     		ldr	r3, [r3, #20]
+ 127 0068 1B06     		lsls	r3, r3, #24
+ 128 006a 0393     		str	r3, [sp, #12]
+ 129 006c 3AE0     		b	.L4
+ 130              	.L3:
+ 162:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
+ 163:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   else
+ 164:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   
+ 165:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     if (DMA2D_InitStruct->DMA2D_CMode == DMA2D_RGB888)
+ 131              		.loc 1 165 0
+ 132 006e 019B     		ldr	r3, [sp, #4]
+ 133 0070 5B68     		ldr	r3, [r3, #4]
+ 134 0072 012B     		cmp	r3, #1
+ 135 0074 0AD1     		bne	.L5
+ 166:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     {
+ 167:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       outgreen = DMA2D_InitStruct->DMA2D_OutputGreen << 8;
+ 136              		.loc 1 167 0
+ 137 0076 019B     		ldr	r3, [sp, #4]
+ 138 0078 DB68     		ldr	r3, [r3, #12]
+ 139 007a 1B02     		lsls	r3, r3, #8
+ 140 007c 0593     		str	r3, [sp, #20]
+ 168:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       outred = DMA2D_InitStruct->DMA2D_OutputRed << 16;
+ 141              		.loc 1 168 0
+ 142 007e 019B     		ldr	r3, [sp, #4]
+ 143 0080 1B69     		ldr	r3, [r3, #16]
+ 144 0082 1B04     		lsls	r3, r3, #16
+ 145 0084 0493     		str	r3, [sp, #16]
+ 169:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       outalpha = (uint32_t)0x00000000;
+ 146              		.loc 1 169 0
+ 147 0086 0023     		movs	r3, #0
+ 148 0088 0393     		str	r3, [sp, #12]
+ 149 008a 2BE0     		b	.L4
+ 150              	.L5:
+ 170:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     }
+ 171:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****      
+ 172:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   else
+ 173:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 174:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     if (DMA2D_InitStruct->DMA2D_CMode == DMA2D_RGB565)
+ 151              		.loc 1 174 0
+ 152 008c 019B     		ldr	r3, [sp, #4]
+ 153 008e 5B68     		ldr	r3, [r3, #4]
+ 154 0090 022B     		cmp	r3, #2
+ 155 0092 0AD1     		bne	.L6
+ 175:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     {
+ 176:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       outgreen = DMA2D_InitStruct->DMA2D_OutputGreen << 5;
+ 156              		.loc 1 176 0
+ 157 0094 019B     		ldr	r3, [sp, #4]
+ 158 0096 DB68     		ldr	r3, [r3, #12]
+ 159 0098 5B01     		lsls	r3, r3, #5
+ 160 009a 0593     		str	r3, [sp, #20]
+ 177:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       outred = DMA2D_InitStruct->DMA2D_OutputRed << 11;
+ 161              		.loc 1 177 0
+ 162 009c 019B     		ldr	r3, [sp, #4]
+ 163 009e 1B69     		ldr	r3, [r3, #16]
+ 164 00a0 DB02     		lsls	r3, r3, #11
+ 165 00a2 0493     		str	r3, [sp, #16]
+ 178:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       outalpha = (uint32_t)0x00000000;
+ 166              		.loc 1 178 0
+ 167 00a4 0023     		movs	r3, #0
+ 168 00a6 0393     		str	r3, [sp, #12]
+ 169 00a8 1CE0     		b	.L4
+ 170              	.L6:
+ 179:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     }
+ 180:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 181:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   else
+ 182:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 183:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     if (DMA2D_InitStruct->DMA2D_CMode == DMA2D_ARGB1555)
+ 171              		.loc 1 183 0
+ 172 00aa 019B     		ldr	r3, [sp, #4]
+ 173 00ac 5B68     		ldr	r3, [r3, #4]
+ 174 00ae 032B     		cmp	r3, #3
+ 175 00b0 0CD1     		bne	.L7
+ 184:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     {  
+ 185:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       outgreen = DMA2D_InitStruct->DMA2D_OutputGreen << 5;
+ 176              		.loc 1 185 0
+ 177 00b2 019B     		ldr	r3, [sp, #4]
+ 178 00b4 DB68     		ldr	r3, [r3, #12]
+ 179 00b6 5B01     		lsls	r3, r3, #5
+ 180 00b8 0593     		str	r3, [sp, #20]
+ 186:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       outred = DMA2D_InitStruct->DMA2D_OutputRed << 10;
+ 181              		.loc 1 186 0
+ 182 00ba 019B     		ldr	r3, [sp, #4]
+ 183 00bc 1B69     		ldr	r3, [r3, #16]
+ 184 00be 9B02     		lsls	r3, r3, #10
+ 185 00c0 0493     		str	r3, [sp, #16]
+ 187:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       outalpha = DMA2D_InitStruct->DMA2D_OutputAlpha << 15;
+ 186              		.loc 1 187 0
+ 187 00c2 019B     		ldr	r3, [sp, #4]
+ 188 00c4 5B69     		ldr	r3, [r3, #20]
+ 189 00c6 DB03     		lsls	r3, r3, #15
+ 190 00c8 0393     		str	r3, [sp, #12]
+ 191 00ca 0BE0     		b	.L4
+ 192              	.L7:
+ 188:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     }
+ 189:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 190:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   else /* DMA2D_CMode = DMA2D_ARGB4444 */
+ 191:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
+ 192:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     outgreen = DMA2D_InitStruct->DMA2D_OutputGreen << 4;
+ 193              		.loc 1 192 0
+ 194 00cc 019B     		ldr	r3, [sp, #4]
+ 195 00ce DB68     		ldr	r3, [r3, #12]
+ 196 00d0 1B01     		lsls	r3, r3, #4
+ 197 00d2 0593     		str	r3, [sp, #20]
+ 193:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     outred = DMA2D_InitStruct->DMA2D_OutputRed << 8;
+ 198              		.loc 1 193 0
+ 199 00d4 019B     		ldr	r3, [sp, #4]
+ 200 00d6 1B69     		ldr	r3, [r3, #16]
+ 201 00d8 1B02     		lsls	r3, r3, #8
+ 202 00da 0493     		str	r3, [sp, #16]
+ 194:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     outalpha = DMA2D_InitStruct->DMA2D_OutputAlpha << 12;
+ 203              		.loc 1 194 0
+ 204 00dc 019B     		ldr	r3, [sp, #4]
+ 205 00de 5B69     		ldr	r3, [r3, #20]
+ 206 00e0 1B03     		lsls	r3, r3, #12
+ 207 00e2 0393     		str	r3, [sp, #12]
+ 208              	.L4:
+ 195:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }  
+ 196:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->OCOLR |= ((outgreen) | (outred) | (DMA2D_InitStruct->DMA2D_OutputBlue) | (outalpha));
+ 209              		.loc 1 196 0
+ 210 00e4 1A4B     		ldr	r3, .L8
+ 211 00e6 9A6B     		ldr	r2, [r3, #56]
+ 212 00e8 0599     		ldr	r1, [sp, #20]
+ 213 00ea 049B     		ldr	r3, [sp, #16]
+ 214 00ec 1943     		orrs	r1, r1, r3
+ 215 00ee 019B     		ldr	r3, [sp, #4]
+ 216 00f0 9B68     		ldr	r3, [r3, #8]
+ 217 00f2 1943     		orrs	r1, r1, r3
+ 218 00f4 039B     		ldr	r3, [sp, #12]
+ 219 00f6 0B43     		orrs	r3, r3, r1
+ 220 00f8 1549     		ldr	r1, .L8
+ 221 00fa 1343     		orrs	r3, r3, r2
+ 222 00fc 8B63     		str	r3, [r1, #56]
+ 197:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 198:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Configures the output memory address */
+ 199:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->OMAR = (DMA2D_InitStruct->DMA2D_OutputMemoryAdd);
+ 223              		.loc 1 199 0
+ 224 00fe 144A     		ldr	r2, .L8
+ 225 0100 019B     		ldr	r3, [sp, #4]
+ 226 0102 9B69     		ldr	r3, [r3, #24]
+ 227 0104 D363     		str	r3, [r2, #60]
+ 200:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 201:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Configure  the line Offset */
+ 202:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->OOR &= ~(uint32_t)DMA2D_OOR_LO;
+ 228              		.loc 1 202 0
+ 229 0106 124B     		ldr	r3, .L8
+ 230 0108 1B6C     		ldr	r3, [r3, #64]
+ 231 010a 114A     		ldr	r2, .L8
+ 232 010c 23F47F53 		bic	r3, r3, #16320
+ 233 0110 23F03F03 		bic	r3, r3, #63
+ 234 0114 1364     		str	r3, [r2, #64]
+ 203:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->OOR |= (DMA2D_InitStruct->DMA2D_OutputOffset);
+ 235              		.loc 1 203 0
+ 236 0116 0E4B     		ldr	r3, .L8
+ 237 0118 1A6C     		ldr	r2, [r3, #64]
+ 238 011a 019B     		ldr	r3, [sp, #4]
+ 239 011c DB69     		ldr	r3, [r3, #28]
+ 240 011e 0C49     		ldr	r1, .L8
+ 241 0120 1343     		orrs	r3, r3, r2
+ 242 0122 0B64     		str	r3, [r1, #64]
+ 204:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 205:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Configure the number of line and pixel per line */
+ 206:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   pixline = DMA2D_InitStruct->DMA2D_PixelPerLine << 16; 
+ 243              		.loc 1 206 0
+ 244 0124 019B     		ldr	r3, [sp, #4]
+ 245 0126 5B6A     		ldr	r3, [r3, #36]
+ 246 0128 1B04     		lsls	r3, r3, #16
+ 247 012a 0293     		str	r3, [sp, #8]
+ 207:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->NLR &= ~(DMA2D_NLR_NL | DMA2D_NLR_PL);
+ 248              		.loc 1 207 0
+ 249 012c 084B     		ldr	r3, .L8
+ 250 012e 5B6C     		ldr	r3, [r3, #68]
+ 251 0130 074A     		ldr	r2, .L8
+ 252 0132 03F04043 		and	r3, r3, #-1073741824
+ 253 0136 5364     		str	r3, [r2, #68]
+ 208:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->NLR |= ((DMA2D_InitStruct->DMA2D_NumberOfLine) | (pixline));
+ 254              		.loc 1 208 0
+ 255 0138 054B     		ldr	r3, .L8
+ 256 013a 5A6C     		ldr	r2, [r3, #68]
+ 257 013c 019B     		ldr	r3, [sp, #4]
+ 258 013e 196A     		ldr	r1, [r3, #32]
+ 259 0140 029B     		ldr	r3, [sp, #8]
+ 260 0142 0B43     		orrs	r3, r3, r1
+ 261 0144 0249     		ldr	r1, .L8
+ 262 0146 1343     		orrs	r3, r3, r2
+ 263 0148 4B64     		str	r3, [r1, #68]
+ 209:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 210:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
+ 211:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief  Fills each DMA2D_InitStruct member with its default value.
+ 212:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @param  DMA2D_InitStruct: pointer to a DMA2D_InitTypeDef structure which will
+ 213:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *         be initialized.
+ 214:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @retval None
+ 215:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
+ 216:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
+ 264              		.loc 1 216 0
+ 265 014a 00BF     		nop
+ 266 014c 06B0     		add	sp, sp, #24
+ 267              	.LCFI2:
+ 268              		.cfi_def_cfa_offset 0
+ 269              		@ sp needed
+ 270 014e 7047     		bx	lr
+ 271              	.L9:
+ 272              		.align	2
+ 273              	.L8:
+ 274 0150 00B00240 		.word	1073917952
+ 275              		.cfi_endproc
+ 276              	.LFE124:
+ 278              		.section	.text.DMA2D_StructInit,"ax",%progbits
+ 279              		.align	1
+ 280              		.global	DMA2D_StructInit
+ 281              		.syntax unified
+ 282              		.thumb
+ 283              		.thumb_func
+ 284              		.fpu fpv4-sp-d16
+ 286              	DMA2D_StructInit:
+ 287              	.LFB125:
+ 217:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** void DMA2D_StructInit(DMA2D_InitTypeDef* DMA2D_InitStruct)
+ 218:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
+ 288              		.loc 1 218 0
+ 289              		.cfi_startproc
+ 290              		@ args = 0, pretend = 0, frame = 8
+ 291              		@ frame_needed = 0, uses_anonymous_args = 0
+ 292              		@ link register save eliminated.
+ 293 0000 82B0     		sub	sp, sp, #8
+ 294              	.LCFI3:
+ 295              		.cfi_def_cfa_offset 8
+ 296 0002 0190     		str	r0, [sp, #4]
+ 219:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Initialize the transfer mode member */
+ 220:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_InitStruct->DMA2D_Mode = DMA2D_M2M;
+ 297              		.loc 1 220 0
+ 298 0004 019B     		ldr	r3, [sp, #4]
+ 299 0006 0022     		movs	r2, #0
+ 300 0008 1A60     		str	r2, [r3]
+ 221:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 222:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Initialize the output color mode members */
+ 223:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_InitStruct->DMA2D_CMode = DMA2D_ARGB8888;
+ 301              		.loc 1 223 0
+ 302 000a 019B     		ldr	r3, [sp, #4]
+ 303 000c 0022     		movs	r2, #0
+ 304 000e 5A60     		str	r2, [r3, #4]
+ 224:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 225:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Initialize the alpha and RGB values */
+ 226:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_InitStruct->DMA2D_OutputGreen = 0x00;
+ 305              		.loc 1 226 0
+ 306 0010 019B     		ldr	r3, [sp, #4]
+ 307 0012 0022     		movs	r2, #0
+ 308 0014 DA60     		str	r2, [r3, #12]
+ 227:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_InitStruct->DMA2D_OutputBlue = 0x00;
+ 309              		.loc 1 227 0
+ 310 0016 019B     		ldr	r3, [sp, #4]
+ 311 0018 0022     		movs	r2, #0
+ 312 001a 9A60     		str	r2, [r3, #8]
+ 228:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_InitStruct->DMA2D_OutputRed = 0x00;
+ 313              		.loc 1 228 0
+ 314 001c 019B     		ldr	r3, [sp, #4]
+ 315 001e 0022     		movs	r2, #0
+ 316 0020 1A61     		str	r2, [r3, #16]
+ 229:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_InitStruct->DMA2D_OutputAlpha = 0x00;
+ 317              		.loc 1 229 0
+ 318 0022 019B     		ldr	r3, [sp, #4]
+ 319 0024 0022     		movs	r2, #0
+ 320 0026 5A61     		str	r2, [r3, #20]
+ 230:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 231:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Initialize the output memory address */
+ 232:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_InitStruct->DMA2D_OutputMemoryAdd = 0x00;
+ 321              		.loc 1 232 0
+ 322 0028 019B     		ldr	r3, [sp, #4]
+ 323 002a 0022     		movs	r2, #0
+ 324 002c 9A61     		str	r2, [r3, #24]
+ 233:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 234:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Initialize the output offset */
+ 235:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_InitStruct->DMA2D_OutputOffset = 0x00;
+ 325              		.loc 1 235 0
+ 326 002e 019B     		ldr	r3, [sp, #4]
+ 327 0030 0022     		movs	r2, #0
+ 328 0032 DA61     		str	r2, [r3, #28]
+ 236:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 237:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Initialize the number of line and the number of pixel per line */
+ 238:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_InitStruct->DMA2D_NumberOfLine = 0x00;
+ 329              		.loc 1 238 0
+ 330 0034 019B     		ldr	r3, [sp, #4]
+ 331 0036 0022     		movs	r2, #0
+ 332 0038 1A62     		str	r2, [r3, #32]
+ 239:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_InitStruct->DMA2D_PixelPerLine = 0x00;
+ 333              		.loc 1 239 0
+ 334 003a 019B     		ldr	r3, [sp, #4]
+ 335 003c 0022     		movs	r2, #0
+ 336 003e 5A62     		str	r2, [r3, #36]
+ 240:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
+ 337              		.loc 1 240 0
+ 338 0040 00BF     		nop
+ 339 0042 02B0     		add	sp, sp, #8
+ 340              	.LCFI4:
+ 341              		.cfi_def_cfa_offset 0
+ 342              		@ sp needed
+ 343 0044 7047     		bx	lr
+ 344              		.cfi_endproc
+ 345              	.LFE125:
+ 347              		.section	.text.DMA2D_StartTransfer,"ax",%progbits
+ 348              		.align	1
+ 349              		.global	DMA2D_StartTransfer
+ 350              		.syntax unified
+ 351              		.thumb
+ 352              		.thumb_func
+ 353              		.fpu fpv4-sp-d16
+ 355              	DMA2D_StartTransfer:
+ 356              	.LFB126:
+ 241:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 242:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
+ 243:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief  Start the DMA2D transfer.
+ 244:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @param 
+ 245:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @retval None
+ 246:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
+ 247:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 248:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** void DMA2D_StartTransfer(void)
+ 249:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
+ 357              		.loc 1 249 0
+ 358              		.cfi_startproc
+ 359              		@ args = 0, pretend = 0, frame = 0
+ 360              		@ frame_needed = 0, uses_anonymous_args = 0
+ 361              		@ link register save eliminated.
+ 250:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     /* Start DMA2D transfer by setting START bit */
+ 251:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     DMA2D->CR |= (uint32_t)DMA2D_CR_START;
+ 362              		.loc 1 251 0
+ 363 0000 034B     		ldr	r3, .L12
+ 364 0002 1B68     		ldr	r3, [r3]
+ 365 0004 024A     		ldr	r2, .L12
+ 366 0006 43F00103 		orr	r3, r3, #1
+ 367 000a 1360     		str	r3, [r2]
+ 252:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
+ 368              		.loc 1 252 0
+ 369 000c 00BF     		nop
+ 370 000e 7047     		bx	lr
+ 371              	.L13:
+ 372              		.align	2
+ 373              	.L12:
+ 374 0010 00B00240 		.word	1073917952
+ 375              		.cfi_endproc
+ 376              	.LFE126:
+ 378              		.section	.text.DMA2D_AbortTransfer,"ax",%progbits
+ 379              		.align	1
+ 380              		.global	DMA2D_AbortTransfer
+ 381              		.syntax unified
+ 382              		.thumb
+ 383              		.thumb_func
+ 384              		.fpu fpv4-sp-d16
+ 386              	DMA2D_AbortTransfer:
+ 387              	.LFB127:
+ 253:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 254:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
+ 255:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief  Abort the DMA2D transfer.
+ 256:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @param
+ 257:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @retval None
+ 258:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
+ 259:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 260:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** void DMA2D_AbortTransfer(void)
+ 261:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
+ 388              		.loc 1 261 0
+ 389              		.cfi_startproc
+ 390              		@ args = 0, pretend = 0, frame = 0
+ 391              		@ frame_needed = 0, uses_anonymous_args = 0
+ 392              		@ link register save eliminated.
+ 262:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     /* Start DMA2D transfer by setting START bit */
+ 263:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     DMA2D->CR |= (uint32_t)DMA2D_CR_ABORT;
+ 393              		.loc 1 263 0
+ 394 0000 034B     		ldr	r3, .L15
+ 395 0002 1B68     		ldr	r3, [r3]
+ 396 0004 024A     		ldr	r2, .L15
+ 397 0006 43F00403 		orr	r3, r3, #4
+ 398 000a 1360     		str	r3, [r2]
+ 264:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 265:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
+ 399              		.loc 1 265 0
+ 400 000c 00BF     		nop
+ 401 000e 7047     		bx	lr
+ 402              	.L16:
+ 403              		.align	2
+ 404              	.L15:
+ 405 0010 00B00240 		.word	1073917952
+ 406              		.cfi_endproc
+ 407              	.LFE127:
+ 409              		.section	.text.DMA2D_Suspend,"ax",%progbits
+ 410              		.align	1
+ 411              		.global	DMA2D_Suspend
+ 412              		.syntax unified
+ 413              		.thumb
+ 414              		.thumb_func
+ 415              		.fpu fpv4-sp-d16
+ 417              	DMA2D_Suspend:
+ 418              	.LFB128:
+ 266:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 267:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
+ 268:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief  Stop or continue the DMA2D transfer.
+ 269:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @param  NewState: new state of the DMA2D peripheral.
+ 270:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *   This parameter can be: ENABLE or DISABLE.
+ 271:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @retval None
+ 272:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
+ 273:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** void DMA2D_Suspend(FunctionalState NewState)
+ 274:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
+ 419              		.loc 1 274 0
+ 420              		.cfi_startproc
+ 421              		@ args = 0, pretend = 0, frame = 8
+ 422              		@ frame_needed = 0, uses_anonymous_args = 0
+ 423              		@ link register save eliminated.
+ 424 0000 82B0     		sub	sp, sp, #8
+ 425              	.LCFI5:
+ 426              		.cfi_def_cfa_offset 8
+ 427 0002 0346     		mov	r3, r0
+ 428 0004 8DF80730 		strb	r3, [sp, #7]
+ 275:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Check the parameters */
+ 276:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
+ 277:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 278:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   if (NewState != DISABLE)
+ 429              		.loc 1 278 0
+ 430 0008 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 431 000c 002B     		cmp	r3, #0
+ 432 000e 06D0     		beq	.L18
+ 279:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
+ 280:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     /* Suspend DMA2D transfer by setting STOP bit */
+ 281:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     DMA2D->CR |= (uint32_t)DMA2D_CR_SUSP;
+ 433              		.loc 1 281 0
+ 434 0010 074B     		ldr	r3, .L21
+ 435 0012 1B68     		ldr	r3, [r3]
+ 436 0014 064A     		ldr	r2, .L21
+ 437 0016 43F00203 		orr	r3, r3, #2
+ 438 001a 1360     		str	r3, [r2]
+ 282:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
+ 283:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   else
+ 284:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
+ 285:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     /* Continue DMA2D transfer by clearing STOP bit */
+ 286:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     DMA2D->CR &= ~(uint32_t)DMA2D_CR_SUSP;
+ 287:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
+ 288:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
+ 439              		.loc 1 288 0
+ 440 001c 05E0     		b	.L20
+ 441              	.L18:
+ 286:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
+ 442              		.loc 1 286 0
+ 443 001e 044B     		ldr	r3, .L21
+ 444 0020 1B68     		ldr	r3, [r3]
+ 445 0022 034A     		ldr	r2, .L21
+ 446 0024 23F00203 		bic	r3, r3, #2
+ 447 0028 1360     		str	r3, [r2]
+ 448              	.L20:
+ 449              		.loc 1 288 0
+ 450 002a 00BF     		nop
+ 451 002c 02B0     		add	sp, sp, #8
+ 452              	.LCFI6:
+ 453              		.cfi_def_cfa_offset 0
+ 454              		@ sp needed
+ 455 002e 7047     		bx	lr
+ 456              	.L22:
+ 457              		.align	2
+ 458              	.L21:
+ 459 0030 00B00240 		.word	1073917952
+ 460              		.cfi_endproc
+ 461              	.LFE128:
+ 463              		.section	.text.DMA2D_FGConfig,"ax",%progbits
+ 464              		.align	1
+ 465              		.global	DMA2D_FGConfig
+ 466              		.syntax unified
+ 467              		.thumb
+ 468              		.thumb_func
+ 469              		.fpu fpv4-sp-d16
+ 471              	DMA2D_FGConfig:
+ 472              	.LFB129:
+ 289:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 290:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
+ 291:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief  Configures the Foreground according to the specified parameters
+ 292:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *         in the DMA2D_FGStruct.
+ 293:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @note   This function can be used only when the transfer is disabled.
+ 294:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @param  DMA2D_FGStruct: pointer to a DMA2D_FGTypeDef structure that contains
+ 295:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *         the configuration information for the specified Background.
+ 296:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @retval None
+ 297:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
+ 298:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** void DMA2D_FGConfig(DMA2D_FG_InitTypeDef* DMA2D_FG_InitStruct)
+ 299:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
+ 473              		.loc 1 299 0
+ 474              		.cfi_startproc
+ 475              		@ args = 0, pretend = 0, frame = 32
+ 476              		@ frame_needed = 0, uses_anonymous_args = 0
+ 477              		@ link register save eliminated.
+ 478 0000 88B0     		sub	sp, sp, #32
+ 479              	.LCFI7:
+ 480              		.cfi_def_cfa_offset 32
+ 481 0002 0190     		str	r0, [sp, #4]
+ 300:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 301:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   uint32_t fg_clutcolormode = 0;
+ 482              		.loc 1 301 0
+ 483 0004 0023     		movs	r3, #0
+ 484 0006 0793     		str	r3, [sp, #28]
+ 302:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   uint32_t fg_clutsize = 0;
+ 485              		.loc 1 302 0
+ 486 0008 0023     		movs	r3, #0
+ 487 000a 0693     		str	r3, [sp, #24]
+ 303:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   uint32_t fg_alpha_mode = 0;
+ 488              		.loc 1 303 0
+ 489 000c 0023     		movs	r3, #0
+ 490 000e 0593     		str	r3, [sp, #20]
+ 304:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   uint32_t fg_alphavalue = 0;
+ 491              		.loc 1 304 0
+ 492 0010 0023     		movs	r3, #0
+ 493 0012 0493     		str	r3, [sp, #16]
+ 305:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   uint32_t fg_colorgreen = 0;
+ 494              		.loc 1 305 0
+ 495 0014 0023     		movs	r3, #0
+ 496 0016 0393     		str	r3, [sp, #12]
+ 306:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   uint32_t fg_colorred = 0;
+ 497              		.loc 1 306 0
+ 498 0018 0023     		movs	r3, #0
+ 499 001a 0293     		str	r3, [sp, #8]
+ 307:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 308:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_FGO(DMA2D_FG_InitStruct->DMA2D_FGO));
+ 309:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_FGCM(DMA2D_FG_InitStruct->DMA2D_FGCM));
+ 310:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_FG_CLUT_CM(DMA2D_FG_InitStruct->DMA2D_FG_CLUT_CM));
+ 311:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_FG_CLUT_SIZE(DMA2D_FG_InitStruct->DMA2D_FG_CLUT_SIZE));
+ 312:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_FG_ALPHA_MODE(DMA2D_FG_InitStruct->DMA2D_FGPFC_ALPHA_MODE));
+ 313:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_FG_ALPHA_VALUE(DMA2D_FG_InitStruct->DMA2D_FGPFC_ALPHA_VALUE));
+ 314:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_FGC_BLUE(DMA2D_FG_InitStruct->DMA2D_FGC_BLUE));
+ 315:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_FGC_GREEN(DMA2D_FG_InitStruct->DMA2D_FGC_GREEN));
+ 316:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_FGC_RED(DMA2D_FG_InitStruct->DMA2D_FGC_RED));
+ 317:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 318:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Configures the FG memory address */
+ 319:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->FGMAR = (DMA2D_FG_InitStruct->DMA2D_FGMA);
+ 500              		.loc 1 319 0
+ 501 001c 2B4A     		ldr	r2, .L24
+ 502 001e 019B     		ldr	r3, [sp, #4]
+ 503 0020 1B68     		ldr	r3, [r3]
+ 504 0022 D360     		str	r3, [r2, #12]
+ 320:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 321:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Configures the FG offset */
+ 322:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->FGOR &= ~(uint32_t)DMA2D_FGOR_LO;
+ 505              		.loc 1 322 0
+ 506 0024 294B     		ldr	r3, .L24
+ 507 0026 1B69     		ldr	r3, [r3, #16]
+ 508 0028 284A     		ldr	r2, .L24
+ 509 002a 23F47F53 		bic	r3, r3, #16320
+ 510 002e 23F03F03 		bic	r3, r3, #63
+ 511 0032 1361     		str	r3, [r2, #16]
+ 323:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->FGOR |= (DMA2D_FG_InitStruct->DMA2D_FGO);
+ 512              		.loc 1 323 0
+ 513 0034 254B     		ldr	r3, .L24
+ 514 0036 1A69     		ldr	r2, [r3, #16]
+ 515 0038 019B     		ldr	r3, [sp, #4]
+ 516 003a 5B68     		ldr	r3, [r3, #4]
+ 517 003c 2349     		ldr	r1, .L24
+ 518 003e 1343     		orrs	r3, r3, r2
+ 519 0040 0B61     		str	r3, [r1, #16]
+ 324:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 325:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Configures foreground Pixel Format Convertor */
+ 326:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->FGPFCCR &= (uint32_t)PFCCR_MASK;
+ 520              		.loc 1 326 0
+ 521 0042 224B     		ldr	r3, .L24
+ 522 0044 DA69     		ldr	r2, [r3, #28]
+ 523 0046 2149     		ldr	r1, .L24
+ 524 0048 214B     		ldr	r3, .L24+4
+ 525 004a 1340     		ands	r3, r3, r2
+ 526 004c CB61     		str	r3, [r1, #28]
+ 327:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   fg_clutcolormode = DMA2D_FG_InitStruct->DMA2D_FG_CLUT_CM << 4;
+ 527              		.loc 1 327 0
+ 528 004e 019B     		ldr	r3, [sp, #4]
+ 529 0050 DB68     		ldr	r3, [r3, #12]
+ 530 0052 1B01     		lsls	r3, r3, #4
+ 531 0054 0793     		str	r3, [sp, #28]
+ 328:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   fg_clutsize = DMA2D_FG_InitStruct->DMA2D_FG_CLUT_SIZE << 8;
+ 532              		.loc 1 328 0
+ 533 0056 019B     		ldr	r3, [sp, #4]
+ 534 0058 1B69     		ldr	r3, [r3, #16]
+ 535 005a 1B02     		lsls	r3, r3, #8
+ 536 005c 0693     		str	r3, [sp, #24]
+ 329:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   fg_alpha_mode = DMA2D_FG_InitStruct->DMA2D_FGPFC_ALPHA_MODE << 16;
+ 537              		.loc 1 329 0
+ 538 005e 019B     		ldr	r3, [sp, #4]
+ 539 0060 5B69     		ldr	r3, [r3, #20]
+ 540 0062 1B04     		lsls	r3, r3, #16
+ 541 0064 0593     		str	r3, [sp, #20]
+ 330:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   fg_alphavalue = DMA2D_FG_InitStruct->DMA2D_FGPFC_ALPHA_VALUE << 24;
+ 542              		.loc 1 330 0
+ 543 0066 019B     		ldr	r3, [sp, #4]
+ 544 0068 9B69     		ldr	r3, [r3, #24]
+ 545 006a 1B06     		lsls	r3, r3, #24
+ 546 006c 0493     		str	r3, [sp, #16]
+ 331:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->FGPFCCR |= (DMA2D_FG_InitStruct->DMA2D_FGCM | fg_clutcolormode | fg_clutsize | \
+ 547              		.loc 1 331 0
+ 548 006e 174B     		ldr	r3, .L24
+ 549 0070 DA69     		ldr	r2, [r3, #28]
+ 550 0072 019B     		ldr	r3, [sp, #4]
+ 551 0074 9968     		ldr	r1, [r3, #8]
+ 552 0076 079B     		ldr	r3, [sp, #28]
+ 553 0078 1943     		orrs	r1, r1, r3
+ 554 007a 069B     		ldr	r3, [sp, #24]
+ 555 007c 1943     		orrs	r1, r1, r3
+ 556 007e 059B     		ldr	r3, [sp, #20]
+ 557 0080 1943     		orrs	r1, r1, r3
+ 332:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****                     fg_alpha_mode | fg_alphavalue);
+ 558              		.loc 1 332 0
+ 559 0082 049B     		ldr	r3, [sp, #16]
+ 560 0084 0B43     		orrs	r3, r3, r1
+ 331:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->FGPFCCR |= (DMA2D_FG_InitStruct->DMA2D_FGCM | fg_clutcolormode | fg_clutsize | \
+ 561              		.loc 1 331 0
+ 562 0086 1149     		ldr	r1, .L24
+ 563 0088 1343     		orrs	r3, r3, r2
+ 564 008a CB61     		str	r3, [r1, #28]
+ 333:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 334:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Configures foreground color */
+ 335:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->FGCOLR &= ~(DMA2D_FGCOLR_BLUE | DMA2D_FGCOLR_GREEN | DMA2D_FGCOLR_RED);
+ 565              		.loc 1 335 0
+ 566 008c 0F4B     		ldr	r3, .L24
+ 567 008e 1B6A     		ldr	r3, [r3, #32]
+ 568 0090 0E4A     		ldr	r2, .L24
+ 569 0092 03F07F43 		and	r3, r3, #-16777216
+ 570 0096 1362     		str	r3, [r2, #32]
+ 336:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   fg_colorgreen = DMA2D_FG_InitStruct->DMA2D_FGC_GREEN << 8;
+ 571              		.loc 1 336 0
+ 572 0098 019B     		ldr	r3, [sp, #4]
+ 573 009a 1B6A     		ldr	r3, [r3, #32]
+ 574 009c 1B02     		lsls	r3, r3, #8
+ 575 009e 0393     		str	r3, [sp, #12]
+ 337:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   fg_colorred = DMA2D_FG_InitStruct->DMA2D_FGC_RED << 16;
+ 576              		.loc 1 337 0
+ 577 00a0 019B     		ldr	r3, [sp, #4]
+ 578 00a2 5B6A     		ldr	r3, [r3, #36]
+ 579 00a4 1B04     		lsls	r3, r3, #16
+ 580 00a6 0293     		str	r3, [sp, #8]
+ 338:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->FGCOLR |= (DMA2D_FG_InitStruct->DMA2D_FGC_BLUE | fg_colorgreen | fg_colorred);
+ 581              		.loc 1 338 0
+ 582 00a8 084B     		ldr	r3, .L24
+ 583 00aa 1A6A     		ldr	r2, [r3, #32]
+ 584 00ac 019B     		ldr	r3, [sp, #4]
+ 585 00ae D969     		ldr	r1, [r3, #28]
+ 586 00b0 039B     		ldr	r3, [sp, #12]
+ 587 00b2 1943     		orrs	r1, r1, r3
+ 588 00b4 029B     		ldr	r3, [sp, #8]
+ 589 00b6 0B43     		orrs	r3, r3, r1
+ 590 00b8 0449     		ldr	r1, .L24
+ 591 00ba 1343     		orrs	r3, r3, r2
+ 592 00bc 0B62     		str	r3, [r1, #32]
+ 339:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 340:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Configures foreground CLUT memory address */
+ 341:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->FGCMAR = DMA2D_FG_InitStruct->DMA2D_FGCMAR;
+ 593              		.loc 1 341 0
+ 594 00be 034A     		ldr	r2, .L24
+ 595 00c0 019B     		ldr	r3, [sp, #4]
+ 596 00c2 9B6A     		ldr	r3, [r3, #40]
+ 597 00c4 D362     		str	r3, [r2, #44]
+ 342:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
+ 598              		.loc 1 342 0
+ 599 00c6 00BF     		nop
+ 600 00c8 08B0     		add	sp, sp, #32
+ 601              	.LCFI8:
+ 602              		.cfi_def_cfa_offset 0
+ 603              		@ sp needed
+ 604 00ca 7047     		bx	lr
+ 605              	.L25:
+ 606              		.align	2
+ 607              	.L24:
+ 608 00cc 00B00240 		.word	1073917952
+ 609 00d0 C000FC00 		.word	16515264
+ 610              		.cfi_endproc
+ 611              	.LFE129:
+ 613              		.section	.text.DMA2D_FG_StructInit,"ax",%progbits
+ 614              		.align	1
+ 615              		.global	DMA2D_FG_StructInit
+ 616              		.syntax unified
+ 617              		.thumb
+ 618              		.thumb_func
+ 619              		.fpu fpv4-sp-d16
+ 621              	DMA2D_FG_StructInit:
+ 622              	.LFB130:
+ 343:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 344:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
+ 345:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief  Fills each DMA2D_FGStruct member with its default value.
+ 346:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @param  DMA2D_FGStruct: pointer to a DMA2D_FGTypeDef structure which will
+ 347:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *         be initialized.
+ 348:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @retval None
+ 349:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
+ 350:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** void DMA2D_FG_StructInit(DMA2D_FG_InitTypeDef* DMA2D_FG_InitStruct)
+ 351:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
+ 623              		.loc 1 351 0
+ 624              		.cfi_startproc
+ 625              		@ args = 0, pretend = 0, frame = 8
+ 626              		@ frame_needed = 0, uses_anonymous_args = 0
+ 627              		@ link register save eliminated.
+ 628 0000 82B0     		sub	sp, sp, #8
+ 629              	.LCFI9:
+ 630              		.cfi_def_cfa_offset 8
+ 631 0002 0190     		str	r0, [sp, #4]
+ 352:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D foreground memory address */
+ 353:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_FG_InitStruct->DMA2D_FGMA = 0x00;
+ 632              		.loc 1 353 0
+ 633 0004 019B     		ldr	r3, [sp, #4]
+ 634 0006 0022     		movs	r2, #0
+ 635 0008 1A60     		str	r2, [r3]
+ 354:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 355:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D foreground offset */
+ 356:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_FG_InitStruct->DMA2D_FGO = 0x00;
+ 636              		.loc 1 356 0
+ 637 000a 019B     		ldr	r3, [sp, #4]
+ 638 000c 0022     		movs	r2, #0
+ 639 000e 5A60     		str	r2, [r3, #4]
+ 357:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 358:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D foreground color mode */
+ 359:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_FG_InitStruct->DMA2D_FGCM = CM_ARGB8888;
+ 640              		.loc 1 359 0
+ 641 0010 019B     		ldr	r3, [sp, #4]
+ 642 0012 0022     		movs	r2, #0
+ 643 0014 9A60     		str	r2, [r3, #8]
+ 360:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 361:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D foreground CLUT color mode */
+ 362:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_FG_InitStruct->DMA2D_FG_CLUT_CM = CLUT_CM_ARGB8888;
+ 644              		.loc 1 362 0
+ 645 0016 019B     		ldr	r3, [sp, #4]
+ 646 0018 0022     		movs	r2, #0
+ 647 001a DA60     		str	r2, [r3, #12]
+ 363:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 364:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D foreground CLUT size */
+ 365:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_FG_InitStruct->DMA2D_FG_CLUT_SIZE = 0x00;
+ 648              		.loc 1 365 0
+ 649 001c 019B     		ldr	r3, [sp, #4]
+ 650 001e 0022     		movs	r2, #0
+ 651 0020 1A61     		str	r2, [r3, #16]
+ 366:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 367:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D foreground alpha mode */
+ 368:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_FG_InitStruct->DMA2D_FGPFC_ALPHA_MODE = NO_MODIF_ALPHA_VALUE;
+ 652              		.loc 1 368 0
+ 653 0022 019B     		ldr	r3, [sp, #4]
+ 654 0024 0022     		movs	r2, #0
+ 655 0026 5A61     		str	r2, [r3, #20]
+ 369:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 370:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D foreground alpha value */
+ 371:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_FG_InitStruct->DMA2D_FGPFC_ALPHA_VALUE = 0x00;
+ 656              		.loc 1 371 0
+ 657 0028 019B     		ldr	r3, [sp, #4]
+ 658 002a 0022     		movs	r2, #0
+ 659 002c 9A61     		str	r2, [r3, #24]
+ 372:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 373:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D foreground blue value */
+ 374:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_FG_InitStruct->DMA2D_FGC_BLUE = 0x00;
+ 660              		.loc 1 374 0
+ 661 002e 019B     		ldr	r3, [sp, #4]
+ 662 0030 0022     		movs	r2, #0
+ 663 0032 DA61     		str	r2, [r3, #28]
+ 375:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 376:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D foreground green value */
+ 377:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_FG_InitStruct->DMA2D_FGC_GREEN = 0x00;
+ 664              		.loc 1 377 0
+ 665 0034 019B     		ldr	r3, [sp, #4]
+ 666 0036 0022     		movs	r2, #0
+ 667 0038 1A62     		str	r2, [r3, #32]
+ 378:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 379:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D foreground red value */
+ 380:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_FG_InitStruct->DMA2D_FGC_RED = 0x00;
+ 668              		.loc 1 380 0
+ 669 003a 019B     		ldr	r3, [sp, #4]
+ 670 003c 0022     		movs	r2, #0
+ 671 003e 5A62     		str	r2, [r3, #36]
+ 381:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 382:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D foreground CLUT memory address */
+ 383:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_FG_InitStruct->DMA2D_FGCMAR = 0x00;
+ 672              		.loc 1 383 0
+ 673 0040 019B     		ldr	r3, [sp, #4]
+ 674 0042 0022     		movs	r2, #0
+ 675 0044 9A62     		str	r2, [r3, #40]
+ 384:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
+ 676              		.loc 1 384 0
+ 677 0046 00BF     		nop
+ 678 0048 02B0     		add	sp, sp, #8
+ 679              	.LCFI10:
+ 680              		.cfi_def_cfa_offset 0
+ 681              		@ sp needed
+ 682 004a 7047     		bx	lr
+ 683              		.cfi_endproc
+ 684              	.LFE130:
+ 686              		.section	.text.DMA2D_BGConfig,"ax",%progbits
+ 687              		.align	1
+ 688              		.global	DMA2D_BGConfig
+ 689              		.syntax unified
+ 690              		.thumb
+ 691              		.thumb_func
+ 692              		.fpu fpv4-sp-d16
+ 694              	DMA2D_BGConfig:
+ 695              	.LFB131:
+ 385:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 386:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 387:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
+ 388:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief  Configures the Background according to the specified parameters
+ 389:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *         in the DMA2D_BGStruct.
+ 390:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @note   This function can be used only when the transfer is disabled.
+ 391:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @param  DMA2D_BGStruct: pointer to a DMA2D_BGTypeDef structure that contains
+ 392:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *         the configuration information for the specified Background.
+ 393:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @retval None
+ 394:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
+ 395:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** void DMA2D_BGConfig(DMA2D_BG_InitTypeDef* DMA2D_BG_InitStruct)
+ 396:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
+ 696              		.loc 1 396 0
+ 697              		.cfi_startproc
+ 698              		@ args = 0, pretend = 0, frame = 32
+ 699              		@ frame_needed = 0, uses_anonymous_args = 0
+ 700              		@ link register save eliminated.
+ 701 0000 88B0     		sub	sp, sp, #32
+ 702              	.LCFI11:
+ 703              		.cfi_def_cfa_offset 32
+ 704 0002 0190     		str	r0, [sp, #4]
+ 397:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 398:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   uint32_t bg_clutcolormode = 0;
+ 705              		.loc 1 398 0
+ 706 0004 0023     		movs	r3, #0
+ 707 0006 0793     		str	r3, [sp, #28]
+ 399:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   uint32_t bg_clutsize = 0;
+ 708              		.loc 1 399 0
+ 709 0008 0023     		movs	r3, #0
+ 710 000a 0693     		str	r3, [sp, #24]
+ 400:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   uint32_t bg_alpha_mode = 0;
+ 711              		.loc 1 400 0
+ 712 000c 0023     		movs	r3, #0
+ 713 000e 0593     		str	r3, [sp, #20]
+ 401:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   uint32_t bg_alphavalue = 0;
+ 714              		.loc 1 401 0
+ 715 0010 0023     		movs	r3, #0
+ 716 0012 0493     		str	r3, [sp, #16]
+ 402:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   uint32_t bg_colorgreen = 0;
+ 717              		.loc 1 402 0
+ 718 0014 0023     		movs	r3, #0
+ 719 0016 0393     		str	r3, [sp, #12]
+ 403:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   uint32_t bg_colorred = 0;
+ 720              		.loc 1 403 0
+ 721 0018 0023     		movs	r3, #0
+ 722 001a 0293     		str	r3, [sp, #8]
+ 404:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 405:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_BGO(DMA2D_BG_InitStruct->DMA2D_BGO));
+ 406:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_BGCM(DMA2D_BG_InitStruct->DMA2D_BGCM));
+ 407:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_BG_CLUT_CM(DMA2D_BG_InitStruct->DMA2D_BG_CLUT_CM));
+ 408:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_BG_CLUT_SIZE(DMA2D_BG_InitStruct->DMA2D_BG_CLUT_SIZE));
+ 409:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_BG_ALPHA_MODE(DMA2D_BG_InitStruct->DMA2D_BGPFC_ALPHA_MODE));
+ 410:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_BG_ALPHA_VALUE(DMA2D_BG_InitStruct->DMA2D_BGPFC_ALPHA_VALUE));
+ 411:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_BGC_BLUE(DMA2D_BG_InitStruct->DMA2D_BGC_BLUE));
+ 412:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_BGC_GREEN(DMA2D_BG_InitStruct->DMA2D_BGC_GREEN));
+ 413:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_BGC_RED(DMA2D_BG_InitStruct->DMA2D_BGC_RED));
+ 414:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 415:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Configures the BG memory address */
+ 416:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->BGMAR = (DMA2D_BG_InitStruct->DMA2D_BGMA);
+ 723              		.loc 1 416 0
+ 724 001c 2B4A     		ldr	r2, .L28
+ 725 001e 019B     		ldr	r3, [sp, #4]
+ 726 0020 1B68     		ldr	r3, [r3]
+ 727 0022 5361     		str	r3, [r2, #20]
+ 417:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 418:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Configures the BG offset */
+ 419:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->BGOR &= ~(uint32_t)DMA2D_BGOR_LO;
+ 728              		.loc 1 419 0
+ 729 0024 294B     		ldr	r3, .L28
+ 730 0026 9B69     		ldr	r3, [r3, #24]
+ 731 0028 284A     		ldr	r2, .L28
+ 732 002a 23F47F53 		bic	r3, r3, #16320
+ 733 002e 23F03F03 		bic	r3, r3, #63
+ 734 0032 9361     		str	r3, [r2, #24]
+ 420:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->BGOR |= (DMA2D_BG_InitStruct->DMA2D_BGO);
+ 735              		.loc 1 420 0
+ 736 0034 254B     		ldr	r3, .L28
+ 737 0036 9A69     		ldr	r2, [r3, #24]
+ 738 0038 019B     		ldr	r3, [sp, #4]
+ 739 003a 5B68     		ldr	r3, [r3, #4]
+ 740 003c 2349     		ldr	r1, .L28
+ 741 003e 1343     		orrs	r3, r3, r2
+ 742 0040 8B61     		str	r3, [r1, #24]
+ 421:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 422:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Configures background Pixel Format Convertor */
+ 423:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->BGPFCCR &= (uint32_t)PFCCR_MASK;
+ 743              		.loc 1 423 0
+ 744 0042 224B     		ldr	r3, .L28
+ 745 0044 5A6A     		ldr	r2, [r3, #36]
+ 746 0046 2149     		ldr	r1, .L28
+ 747 0048 214B     		ldr	r3, .L28+4
+ 748 004a 1340     		ands	r3, r3, r2
+ 749 004c 4B62     		str	r3, [r1, #36]
+ 424:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   bg_clutcolormode = DMA2D_BG_InitStruct->DMA2D_BG_CLUT_CM << 4;
+ 750              		.loc 1 424 0
+ 751 004e 019B     		ldr	r3, [sp, #4]
+ 752 0050 DB68     		ldr	r3, [r3, #12]
+ 753 0052 1B01     		lsls	r3, r3, #4
+ 754 0054 0793     		str	r3, [sp, #28]
+ 425:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   bg_clutsize = DMA2D_BG_InitStruct->DMA2D_BG_CLUT_SIZE << 8;
+ 755              		.loc 1 425 0
+ 756 0056 019B     		ldr	r3, [sp, #4]
+ 757 0058 1B69     		ldr	r3, [r3, #16]
+ 758 005a 1B02     		lsls	r3, r3, #8
+ 759 005c 0693     		str	r3, [sp, #24]
+ 426:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   bg_alpha_mode = DMA2D_BG_InitStruct->DMA2D_BGPFC_ALPHA_MODE << 16;
+ 760              		.loc 1 426 0
+ 761 005e 019B     		ldr	r3, [sp, #4]
+ 762 0060 5B69     		ldr	r3, [r3, #20]
+ 763 0062 1B04     		lsls	r3, r3, #16
+ 764 0064 0593     		str	r3, [sp, #20]
+ 427:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   bg_alphavalue = DMA2D_BG_InitStruct->DMA2D_BGPFC_ALPHA_VALUE << 24;
+ 765              		.loc 1 427 0
+ 766 0066 019B     		ldr	r3, [sp, #4]
+ 767 0068 9B69     		ldr	r3, [r3, #24]
+ 768 006a 1B06     		lsls	r3, r3, #24
+ 769 006c 0493     		str	r3, [sp, #16]
+ 428:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->BGPFCCR |= (DMA2D_BG_InitStruct->DMA2D_BGCM | bg_clutcolormode | bg_clutsize | \
+ 770              		.loc 1 428 0
+ 771 006e 174B     		ldr	r3, .L28
+ 772 0070 5A6A     		ldr	r2, [r3, #36]
+ 773 0072 019B     		ldr	r3, [sp, #4]
+ 774 0074 9968     		ldr	r1, [r3, #8]
+ 775 0076 079B     		ldr	r3, [sp, #28]
+ 776 0078 1943     		orrs	r1, r1, r3
+ 777 007a 069B     		ldr	r3, [sp, #24]
+ 778 007c 1943     		orrs	r1, r1, r3
+ 779 007e 059B     		ldr	r3, [sp, #20]
+ 780 0080 1943     		orrs	r1, r1, r3
+ 429:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****                     bg_alpha_mode | bg_alphavalue);
+ 781              		.loc 1 429 0
+ 782 0082 049B     		ldr	r3, [sp, #16]
+ 783 0084 0B43     		orrs	r3, r3, r1
+ 428:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->BGPFCCR |= (DMA2D_BG_InitStruct->DMA2D_BGCM | bg_clutcolormode | bg_clutsize | \
+ 784              		.loc 1 428 0
+ 785 0086 1149     		ldr	r1, .L28
+ 786 0088 1343     		orrs	r3, r3, r2
+ 787 008a 4B62     		str	r3, [r1, #36]
+ 430:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 431:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Configures background color */
+ 432:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->BGCOLR &= ~(DMA2D_BGCOLR_BLUE | DMA2D_BGCOLR_GREEN | DMA2D_BGCOLR_RED);
+ 788              		.loc 1 432 0
+ 789 008c 0F4B     		ldr	r3, .L28
+ 790 008e 9B6A     		ldr	r3, [r3, #40]
+ 791 0090 0E4A     		ldr	r2, .L28
+ 792 0092 03F07F43 		and	r3, r3, #-16777216
+ 793 0096 9362     		str	r3, [r2, #40]
+ 433:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   bg_colorgreen = DMA2D_BG_InitStruct->DMA2D_BGC_GREEN << 8;
+ 794              		.loc 1 433 0
+ 795 0098 019B     		ldr	r3, [sp, #4]
+ 796 009a 1B6A     		ldr	r3, [r3, #32]
+ 797 009c 1B02     		lsls	r3, r3, #8
+ 798 009e 0393     		str	r3, [sp, #12]
+ 434:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   bg_colorred = DMA2D_BG_InitStruct->DMA2D_BGC_RED << 16;
+ 799              		.loc 1 434 0
+ 800 00a0 019B     		ldr	r3, [sp, #4]
+ 801 00a2 5B6A     		ldr	r3, [r3, #36]
+ 802 00a4 1B04     		lsls	r3, r3, #16
+ 803 00a6 0293     		str	r3, [sp, #8]
+ 435:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->BGCOLR |= (DMA2D_BG_InitStruct->DMA2D_BGC_BLUE | bg_colorgreen | bg_colorred);
+ 804              		.loc 1 435 0
+ 805 00a8 084B     		ldr	r3, .L28
+ 806 00aa 9A6A     		ldr	r2, [r3, #40]
+ 807 00ac 019B     		ldr	r3, [sp, #4]
+ 808 00ae D969     		ldr	r1, [r3, #28]
+ 809 00b0 039B     		ldr	r3, [sp, #12]
+ 810 00b2 1943     		orrs	r1, r1, r3
+ 811 00b4 029B     		ldr	r3, [sp, #8]
+ 812 00b6 0B43     		orrs	r3, r3, r1
+ 813 00b8 0449     		ldr	r1, .L28
+ 814 00ba 1343     		orrs	r3, r3, r2
+ 815 00bc 8B62     		str	r3, [r1, #40]
+ 436:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   
+ 437:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Configures background CLUT memory address */
+ 438:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->BGCMAR = DMA2D_BG_InitStruct->DMA2D_BGCMAR;
+ 816              		.loc 1 438 0
+ 817 00be 034A     		ldr	r2, .L28
+ 818 00c0 019B     		ldr	r3, [sp, #4]
+ 819 00c2 9B6A     		ldr	r3, [r3, #40]
+ 820 00c4 1363     		str	r3, [r2, #48]
+ 439:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 440:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
+ 821              		.loc 1 440 0
+ 822 00c6 00BF     		nop
+ 823 00c8 08B0     		add	sp, sp, #32
+ 824              	.LCFI12:
+ 825              		.cfi_def_cfa_offset 0
+ 826              		@ sp needed
+ 827 00ca 7047     		bx	lr
+ 828              	.L29:
+ 829              		.align	2
+ 830              	.L28:
+ 831 00cc 00B00240 		.word	1073917952
+ 832 00d0 C000FC00 		.word	16515264
+ 833              		.cfi_endproc
+ 834              	.LFE131:
+ 836              		.section	.text.DMA2D_BG_StructInit,"ax",%progbits
+ 837              		.align	1
+ 838              		.global	DMA2D_BG_StructInit
+ 839              		.syntax unified
+ 840              		.thumb
+ 841              		.thumb_func
+ 842              		.fpu fpv4-sp-d16
+ 844              	DMA2D_BG_StructInit:
+ 845              	.LFB132:
+ 441:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 442:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
+ 443:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief  Fills each DMA2D_BGStruct member with its default value.
+ 444:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @param  DMA2D_BGStruct: pointer to a DMA2D_BGTypeDef structure which will
+ 445:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *         be initialized.
+ 446:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @retval None
+ 447:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
+ 448:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** void DMA2D_BG_StructInit(DMA2D_BG_InitTypeDef* DMA2D_BG_InitStruct)
+ 449:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
+ 846              		.loc 1 449 0
+ 847              		.cfi_startproc
+ 848              		@ args = 0, pretend = 0, frame = 8
+ 849              		@ frame_needed = 0, uses_anonymous_args = 0
+ 850              		@ link register save eliminated.
+ 851 0000 82B0     		sub	sp, sp, #8
+ 852              	.LCFI13:
+ 853              		.cfi_def_cfa_offset 8
+ 854 0002 0190     		str	r0, [sp, #4]
+ 450:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D background memory address */
+ 451:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_BG_InitStruct->DMA2D_BGMA = 0x00;
+ 855              		.loc 1 451 0
+ 856 0004 019B     		ldr	r3, [sp, #4]
+ 857 0006 0022     		movs	r2, #0
+ 858 0008 1A60     		str	r2, [r3]
+ 452:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 453:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D background offset */
+ 454:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_BG_InitStruct->DMA2D_BGO = 0x00;
+ 859              		.loc 1 454 0
+ 860 000a 019B     		ldr	r3, [sp, #4]
+ 861 000c 0022     		movs	r2, #0
+ 862 000e 5A60     		str	r2, [r3, #4]
+ 455:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 456:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D background color mode */
+ 457:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_BG_InitStruct->DMA2D_BGCM = CM_ARGB8888;
+ 863              		.loc 1 457 0
+ 864 0010 019B     		ldr	r3, [sp, #4]
+ 865 0012 0022     		movs	r2, #0
+ 866 0014 9A60     		str	r2, [r3, #8]
+ 458:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 459:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D background CLUT color mode */
+ 460:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_BG_InitStruct->DMA2D_BG_CLUT_CM = CLUT_CM_ARGB8888;
+ 867              		.loc 1 460 0
+ 868 0016 019B     		ldr	r3, [sp, #4]
+ 869 0018 0022     		movs	r2, #0
+ 870 001a DA60     		str	r2, [r3, #12]
+ 461:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 462:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D background CLUT size */
+ 463:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_BG_InitStruct->DMA2D_BG_CLUT_SIZE = 0x00;
+ 871              		.loc 1 463 0
+ 872 001c 019B     		ldr	r3, [sp, #4]
+ 873 001e 0022     		movs	r2, #0
+ 874 0020 1A61     		str	r2, [r3, #16]
+ 464:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 465:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D background alpha mode */
+ 466:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_BG_InitStruct->DMA2D_BGPFC_ALPHA_MODE = NO_MODIF_ALPHA_VALUE;
+ 875              		.loc 1 466 0
+ 876 0022 019B     		ldr	r3, [sp, #4]
+ 877 0024 0022     		movs	r2, #0
+ 878 0026 5A61     		str	r2, [r3, #20]
+ 467:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 468:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D background alpha value */
+ 469:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_BG_InitStruct->DMA2D_BGPFC_ALPHA_VALUE = 0x00;
+ 879              		.loc 1 469 0
+ 880 0028 019B     		ldr	r3, [sp, #4]
+ 881 002a 0022     		movs	r2, #0
+ 882 002c 9A61     		str	r2, [r3, #24]
+ 470:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 471:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D background blue value */
+ 472:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_BG_InitStruct->DMA2D_BGC_BLUE = 0x00;
+ 883              		.loc 1 472 0
+ 884 002e 019B     		ldr	r3, [sp, #4]
+ 885 0030 0022     		movs	r2, #0
+ 886 0032 DA61     		str	r2, [r3, #28]
+ 473:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 474:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D background green value */
+ 475:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_BG_InitStruct->DMA2D_BGC_GREEN = 0x00;
+ 887              		.loc 1 475 0
+ 888 0034 019B     		ldr	r3, [sp, #4]
+ 889 0036 0022     		movs	r2, #0
+ 890 0038 1A62     		str	r2, [r3, #32]
+ 476:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 477:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D background red value */
+ 478:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_BG_InitStruct->DMA2D_BGC_RED = 0x00;
+ 891              		.loc 1 478 0
+ 892 003a 019B     		ldr	r3, [sp, #4]
+ 893 003c 0022     		movs	r2, #0
+ 894 003e 5A62     		str	r2, [r3, #36]
+ 479:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 480:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /*!< Initialize the DMA2D background CLUT memory address */
+ 481:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_BG_InitStruct->DMA2D_BGCMAR = 0x00;
+ 895              		.loc 1 481 0
+ 896 0040 019B     		ldr	r3, [sp, #4]
+ 897 0042 0022     		movs	r2, #0
+ 898 0044 9A62     		str	r2, [r3, #40]
+ 482:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
+ 899              		.loc 1 482 0
+ 900 0046 00BF     		nop
+ 901 0048 02B0     		add	sp, sp, #8
+ 902              	.LCFI14:
+ 903              		.cfi_def_cfa_offset 0
+ 904              		@ sp needed
+ 905 004a 7047     		bx	lr
+ 906              		.cfi_endproc
+ 907              	.LFE132:
+ 909              		.section	.text.DMA2D_FGStart,"ax",%progbits
+ 910              		.align	1
+ 911              		.global	DMA2D_FGStart
+ 912              		.syntax unified
+ 913              		.thumb
+ 914              		.thumb_func
+ 915              		.fpu fpv4-sp-d16
+ 917              	DMA2D_FGStart:
+ 918              	.LFB133:
+ 483:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 484:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
+ 485:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief  Start the automatic loading of the CLUT or abort the transfer.
+ 486:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @param  NewState: new state of the DMA2D peripheral.
+ 487:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *   This parameter can be: ENABLE or DISABLE.
+ 488:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @retval None
+ 489:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
+ 490:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 491:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** void DMA2D_FGStart(FunctionalState NewState) 
+ 492:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
+ 919              		.loc 1 492 0
+ 920              		.cfi_startproc
+ 921              		@ args = 0, pretend = 0, frame = 8
+ 922              		@ frame_needed = 0, uses_anonymous_args = 0
+ 923              		@ link register save eliminated.
+ 924 0000 82B0     		sub	sp, sp, #8
+ 925              	.LCFI15:
+ 926              		.cfi_def_cfa_offset 8
+ 927 0002 0346     		mov	r3, r0
+ 928 0004 8DF80730 		strb	r3, [sp, #7]
+ 493:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Check the parameters */
+ 494:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
+ 495:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 496:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   if (NewState != DISABLE)
+ 929              		.loc 1 496 0
+ 930 0008 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 931 000c 002B     		cmp	r3, #0
+ 932 000e 06D0     		beq	.L32
+ 497:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
+ 498:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     /* Start the automatic loading of the CLUT */
+ 499:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     DMA2D->FGPFCCR |= DMA2D_FGPFCCR_START;
+ 933              		.loc 1 499 0
+ 934 0010 074B     		ldr	r3, .L35
+ 935 0012 DB69     		ldr	r3, [r3, #28]
+ 936 0014 064A     		ldr	r2, .L35
+ 937 0016 43F02003 		orr	r3, r3, #32
+ 938 001a D361     		str	r3, [r2, #28]
+ 500:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
+ 501:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   else
+ 502:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
+ 503:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     /* abort the transfer */
+ 504:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     DMA2D->FGPFCCR &= (uint32_t)~DMA2D_FGPFCCR_START;
+ 505:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
+ 506:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
+ 939              		.loc 1 506 0
+ 940 001c 05E0     		b	.L34
+ 941              	.L32:
+ 504:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
+ 942              		.loc 1 504 0
+ 943 001e 044B     		ldr	r3, .L35
+ 944 0020 DB69     		ldr	r3, [r3, #28]
+ 945 0022 034A     		ldr	r2, .L35
+ 946 0024 23F02003 		bic	r3, r3, #32
+ 947 0028 D361     		str	r3, [r2, #28]
+ 948              	.L34:
+ 949              		.loc 1 506 0
+ 950 002a 00BF     		nop
+ 951 002c 02B0     		add	sp, sp, #8
+ 952              	.LCFI16:
+ 953              		.cfi_def_cfa_offset 0
+ 954              		@ sp needed
+ 955 002e 7047     		bx	lr
+ 956              	.L36:
+ 957              		.align	2
+ 958              	.L35:
+ 959 0030 00B00240 		.word	1073917952
+ 960              		.cfi_endproc
+ 961              	.LFE133:
+ 963              		.section	.text.DMA2D_BGStart,"ax",%progbits
+ 964              		.align	1
+ 965              		.global	DMA2D_BGStart
+ 966              		.syntax unified
+ 967              		.thumb
+ 968              		.thumb_func
+ 969              		.fpu fpv4-sp-d16
+ 971              	DMA2D_BGStart:
+ 972              	.LFB134:
+ 507:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 508:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
+ 509:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief  Start the automatic loading of the CLUT or abort the transfer.
+ 510:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @param  NewState: new state of the DMA2D peripheral.
+ 511:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *   This parameter can be: ENABLE or DISABLE.
+ 512:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @retval None
+ 513:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
+ 514:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   
+ 515:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** void DMA2D_BGStart(FunctionalState NewState) 
+ 516:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
+ 973              		.loc 1 516 0
+ 974              		.cfi_startproc
+ 975              		@ args = 0, pretend = 0, frame = 8
+ 976              		@ frame_needed = 0, uses_anonymous_args = 0
+ 977              		@ link register save eliminated.
+ 978 0000 82B0     		sub	sp, sp, #8
+ 979              	.LCFI17:
+ 980              		.cfi_def_cfa_offset 8
+ 981 0002 0346     		mov	r3, r0
+ 982 0004 8DF80730 		strb	r3, [sp, #7]
+ 517:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Check the parameters */
+ 518:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
+ 519:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   
+ 520:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   if (NewState != DISABLE)
+ 983              		.loc 1 520 0
+ 984 0008 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 985 000c 002B     		cmp	r3, #0
+ 986 000e 06D0     		beq	.L38
+ 521:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
+ 522:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     /* Start the automatic loading of the CLUT */
+ 523:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     DMA2D->BGPFCCR |= DMA2D_BGPFCCR_START;
+ 987              		.loc 1 523 0
+ 988 0010 074B     		ldr	r3, .L41
+ 989 0012 5B6A     		ldr	r3, [r3, #36]
+ 990 0014 064A     		ldr	r2, .L41
+ 991 0016 43F02003 		orr	r3, r3, #32
+ 992 001a 5362     		str	r3, [r2, #36]
+ 524:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
+ 525:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   else
+ 526:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
+ 527:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     /* abort the transfer */
+ 528:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     DMA2D->BGPFCCR &= (uint32_t)~DMA2D_BGPFCCR_START;
+ 529:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
+ 530:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
+ 993              		.loc 1 530 0
+ 994 001c 05E0     		b	.L40
+ 995              	.L38:
+ 528:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
+ 996              		.loc 1 528 0
+ 997 001e 044B     		ldr	r3, .L41
+ 998 0020 5B6A     		ldr	r3, [r3, #36]
+ 999 0022 034A     		ldr	r2, .L41
+ 1000 0024 23F02003 		bic	r3, r3, #32
+ 1001 0028 5362     		str	r3, [r2, #36]
+ 1002              	.L40:
+ 1003              		.loc 1 530 0
+ 1004 002a 00BF     		nop
+ 1005 002c 02B0     		add	sp, sp, #8
+ 1006              	.LCFI18:
+ 1007              		.cfi_def_cfa_offset 0
+ 1008              		@ sp needed
+ 1009 002e 7047     		bx	lr
+ 1010              	.L42:
+ 1011              		.align	2
+ 1012              	.L41:
+ 1013 0030 00B00240 		.word	1073917952
+ 1014              		.cfi_endproc
+ 1015              	.LFE134:
+ 1017              		.section	.text.DMA2D_DeadTimeConfig,"ax",%progbits
+ 1018              		.align	1
+ 1019              		.global	DMA2D_DeadTimeConfig
+ 1020              		.syntax unified
+ 1021              		.thumb
+ 1022              		.thumb_func
+ 1023              		.fpu fpv4-sp-d16
+ 1025              	DMA2D_DeadTimeConfig:
+ 1026              	.LFB135:
+ 531:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 532:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
+ 533:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief  Configures the DMA2D dead time.
+ 534:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @param  DMA2D_DeadTime: specifies the DMA2D dead time.
+ 535:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *   This parameter can be one of the following values:
+ 536:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @retval None
+ 537:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
+ 538:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** void DMA2D_DeadTimeConfig(uint32_t DMA2D_DeadTime, FunctionalState NewState)
+ 539:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
+ 1027              		.loc 1 539 0
+ 1028              		.cfi_startproc
+ 1029              		@ args = 0, pretend = 0, frame = 16
+ 1030              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1031              		@ link register save eliminated.
+ 1032 0000 84B0     		sub	sp, sp, #16
+ 1033              	.LCFI19:
+ 1034              		.cfi_def_cfa_offset 16
+ 1035 0002 0190     		str	r0, [sp, #4]
+ 1036 0004 0B46     		mov	r3, r1
+ 1037 0006 8DF80330 		strb	r3, [sp, #3]
+ 540:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****    uint32_t DeadTime;
+ 541:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 542:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Check the parameters */
+ 543:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_DEAD_TIME(DMA2D_DeadTime));
+ 544:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
+ 545:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 546:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   if (NewState != DISABLE)
+ 1038              		.loc 1 546 0
+ 1039 000a 9DF80330 		ldrb	r3, [sp, #3]	@ zero_extendqisi2
+ 1040 000e 002B     		cmp	r3, #0
+ 1041 0010 13D0     		beq	.L44
+ 547:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
+ 548:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     /* Enable and Configures the dead time */
+ 549:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     DMA2D->AMTCR &= (uint32_t)DEAD_MASK;
+ 1042              		.loc 1 549 0
+ 1043 0012 0E4B     		ldr	r3, .L47
+ 1044 0014 DB6C     		ldr	r3, [r3, #76]
+ 1045 0016 0D4A     		ldr	r2, .L47
+ 1046 0018 23F47F43 		bic	r3, r3, #65280
+ 1047 001c 23F00103 		bic	r3, r3, #1
+ 1048 0020 D364     		str	r3, [r2, #76]
+ 550:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     DeadTime = DMA2D_DeadTime << 8;
+ 1049              		.loc 1 550 0
+ 1050 0022 019B     		ldr	r3, [sp, #4]
+ 1051 0024 1B02     		lsls	r3, r3, #8
+ 1052 0026 0393     		str	r3, [sp, #12]
+ 551:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     DMA2D->AMTCR |= (DeadTime | DMA2D_AMTCR_EN);
+ 1053              		.loc 1 551 0
+ 1054 0028 084B     		ldr	r3, .L47
+ 1055 002a DA6C     		ldr	r2, [r3, #76]
+ 1056 002c 039B     		ldr	r3, [sp, #12]
+ 1057 002e 1343     		orrs	r3, r3, r2
+ 1058 0030 064A     		ldr	r2, .L47
+ 1059 0032 43F00103 		orr	r3, r3, #1
+ 1060 0036 D364     		str	r3, [r2, #76]
+ 552:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
+ 553:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   else
+ 554:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
+ 555:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****      DMA2D->AMTCR &= ~(uint32_t)DMA2D_AMTCR_EN;
+ 556:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
+ 557:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
+ 1061              		.loc 1 557 0
+ 1062 0038 05E0     		b	.L46
+ 1063              	.L44:
+ 555:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
+ 1064              		.loc 1 555 0
+ 1065 003a 044B     		ldr	r3, .L47
+ 1066 003c DB6C     		ldr	r3, [r3, #76]
+ 1067 003e 034A     		ldr	r2, .L47
+ 1068 0040 23F00103 		bic	r3, r3, #1
+ 1069 0044 D364     		str	r3, [r2, #76]
+ 1070              	.L46:
+ 1071              		.loc 1 557 0
+ 1072 0046 00BF     		nop
+ 1073 0048 04B0     		add	sp, sp, #16
+ 1074              	.LCFI20:
+ 1075              		.cfi_def_cfa_offset 0
+ 1076              		@ sp needed
+ 1077 004a 7047     		bx	lr
+ 1078              	.L48:
+ 1079              		.align	2
+ 1080              	.L47:
+ 1081 004c 00B00240 		.word	1073917952
+ 1082              		.cfi_endproc
+ 1083              	.LFE135:
+ 1085              		.section	.text.DMA2D_LineWatermarkConfig,"ax",%progbits
+ 1086              		.align	1
+ 1087              		.global	DMA2D_LineWatermarkConfig
+ 1088              		.syntax unified
+ 1089              		.thumb
+ 1090              		.thumb_func
+ 1091              		.fpu fpv4-sp-d16
+ 1093              	DMA2D_LineWatermarkConfig:
+ 1094              	.LFB136:
+ 558:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 559:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
+ 560:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief  Define the configuration of the line watermark .
+ 561:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @param  DMA2D_LWatermarkConfig: Line Watermark configuration.
+ 562:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @retval None
+ 563:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
+ 564:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 565:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** void DMA2D_LineWatermarkConfig(uint32_t DMA2D_LWatermarkConfig)
+ 566:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
+ 1095              		.loc 1 566 0
+ 1096              		.cfi_startproc
+ 1097              		@ args = 0, pretend = 0, frame = 8
+ 1098              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1099              		@ link register save eliminated.
+ 1100 0000 82B0     		sub	sp, sp, #8
+ 1101              	.LCFI21:
+ 1102              		.cfi_def_cfa_offset 8
+ 1103 0002 0190     		str	r0, [sp, #4]
+ 567:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Check the parameters */
+ 568:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_LineWatermark(DMA2D_LWatermarkConfig));
+ 569:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 570:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Sets the Line watermark configuration */
+ 571:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->LWR = (uint32_t)DMA2D_LWatermarkConfig;
+ 1104              		.loc 1 571 0
+ 1105 0004 024A     		ldr	r2, .L50
+ 1106 0006 019B     		ldr	r3, [sp, #4]
+ 1107 0008 9364     		str	r3, [r2, #72]
+ 572:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
+ 1108              		.loc 1 572 0
+ 1109 000a 00BF     		nop
+ 1110 000c 02B0     		add	sp, sp, #8
+ 1111              	.LCFI22:
+ 1112              		.cfi_def_cfa_offset 0
+ 1113              		@ sp needed
+ 1114 000e 7047     		bx	lr
+ 1115              	.L51:
+ 1116              		.align	2
+ 1117              	.L50:
+ 1118 0010 00B00240 		.word	1073917952
+ 1119              		.cfi_endproc
+ 1120              	.LFE136:
+ 1122              		.section	.text.DMA2D_ITConfig,"ax",%progbits
+ 1123              		.align	1
+ 1124              		.global	DMA2D_ITConfig
+ 1125              		.syntax unified
+ 1126              		.thumb
+ 1127              		.thumb_func
+ 1128              		.fpu fpv4-sp-d16
+ 1130              	DMA2D_ITConfig:
+ 1131              	.LFB137:
+ 573:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 574:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
+ 575:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @}
+ 576:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
+ 577:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 578:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /** @defgroup DMA2D_Group2 Interrupts and flags management functions
+ 579:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****  *  @brief   Interrupts and flags management functions
+ 580:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****  *
+ 581:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** @verbatim
+ 582:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****  ===============================================================================
+ 583:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****             ##### Interrupts and flags management functions #####
+ 584:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****  ===============================================================================
+ 585:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 586:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     [..] This section provides functions allowing to configure the DMA2D 
+ 587:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****          Interrupts and to get the status and clear flags and Interrupts 
+ 588:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****          pending bits.
+ 589:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     [..] The DMA2D provides 6 Interrupts sources and 6 Flags
+ 590:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     
+ 591:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     *** Flags ***
+ 592:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     =============
+ 593:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     [..]
+ 594:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       (+) DMA2D_FLAG_CE : Configuration Error Interrupt flag
+ 595:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       (+) DMA2D_FLAG_CAE: CLUT Access Error Interrupt flag
+ 596:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       (+) DMA2D_FLAG_TW:  Transfer Watermark Interrupt flag
+ 597:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       (+) DMA2D_FLAG_TC:  Transfer Complete interrupt flag
+ 598:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       (+) DMA2D_FLAG_TE:  Transfer Error interrupt flag
+ 599:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       (+) DMA2D_FLAG_CTC: CLUT Transfer Complete Interrupt flag
+ 600:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       
+ 601:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     *** Interrupts ***
+ 602:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     ==================
+ 603:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     [..]
+ 604:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       (+) DMA2D_IT_CE: Configuration Error Interrupt is generated when a wrong 
+ 605:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****                        configuration is detected
+ 606:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       (+) DMA2D_IT_CAE: CLUT Access Error Interrupt
+ 607:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       (+) DMA2D_IT_TW: Transfer Watermark Interrupt is generated when 
+ 608:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****                        the programmed watermark is reached 
+ 609:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       (+) DMA2D_IT_TE: Transfer Error interrupt is generated when the CPU trying 
+ 610:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****                        to access the CLUT while a CLUT loading or a DMA2D1 transfer 
+ 611:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****                        is on going       
+ 612:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       (+) DMA2D_IT_CTC: CLUT Transfer Complete Interrupt 
+ 613:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****       (+) DMA2D_IT_TC: Transfer Complete interrupt         
+ 614:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** @endverbatim
+ 615:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @{
+ 616:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
+ 617:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
+ 618:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief  Enables or disables the specified DMA2D's interrupts.
+ 619:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @param  DMA2D_IT: specifies the DMA2D interrupts sources to be enabled or disabled.
+ 620:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *   This parameter can be any combination of the following values:
+ 621:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *     @arg DMA2D_IT_CE:   Configuration Error Interrupt Enable.
+ 622:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *     @arg DMA2D_IT_CTC:  CLUT Transfer Complete Interrupt Enable.
+ 623:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *     @arg DMA2D_IT_CAE:  CLUT Access Error Interrupt Enable.
+ 624:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *     @arg DMA2D_IT_TW:   Transfer Watermark Interrupt Enable.
+ 625:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *     @arg DMA2D_IT_TC:   Transfer Complete interrupt enable.
+ 626:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *     @arg DMA2D_IT_TE:   Transfer Error interrupt enable.
+ 627:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @param NewState: new state of the specified DMA2D interrupts.
+ 628:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *   This parameter can be: ENABLE or DISABLE.
+ 629:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @retval None
+ 630:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
+ 631:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 632:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** void DMA2D_ITConfig(uint32_t DMA2D_IT, FunctionalState NewState)
+ 633:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
+ 1132              		.loc 1 633 0
+ 1133              		.cfi_startproc
+ 1134              		@ args = 0, pretend = 0, frame = 8
+ 1135              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1136              		@ link register save eliminated.
+ 1137 0000 82B0     		sub	sp, sp, #8
+ 1138              	.LCFI23:
+ 1139              		.cfi_def_cfa_offset 8
+ 1140 0002 0190     		str	r0, [sp, #4]
+ 1141 0004 0B46     		mov	r3, r1
+ 1142 0006 8DF80330 		strb	r3, [sp, #3]
+ 634:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Check the parameters */
+ 635:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_IT(DMA2D_IT));
+ 636:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
+ 637:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 638:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   if (NewState != DISABLE)
+ 1143              		.loc 1 638 0
+ 1144 000a 9DF80330 		ldrb	r3, [sp, #3]	@ zero_extendqisi2
+ 1145 000e 002B     		cmp	r3, #0
+ 1146 0010 06D0     		beq	.L53
+ 639:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
+ 640:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     /* Enable the selected DMA2D interrupts */
+ 641:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     DMA2D->CR |= DMA2D_IT;
+ 1147              		.loc 1 641 0
+ 1148 0012 084B     		ldr	r3, .L56
+ 1149 0014 1A68     		ldr	r2, [r3]
+ 1150 0016 0749     		ldr	r1, .L56
+ 1151 0018 019B     		ldr	r3, [sp, #4]
+ 1152 001a 1343     		orrs	r3, r3, r2
+ 1153 001c 0B60     		str	r3, [r1]
+ 642:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
+ 643:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   else
+ 644:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
+ 645:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     /* Disable the selected DMA2D interrupts */
+ 646:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     DMA2D->CR &= (uint32_t)~DMA2D_IT;
+ 647:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
+ 648:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
+ 1154              		.loc 1 648 0
+ 1155 001e 06E0     		b	.L55
+ 1156              	.L53:
+ 646:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
+ 1157              		.loc 1 646 0
+ 1158 0020 044B     		ldr	r3, .L56
+ 1159 0022 1A68     		ldr	r2, [r3]
+ 1160 0024 019B     		ldr	r3, [sp, #4]
+ 1161 0026 DB43     		mvns	r3, r3
+ 1162 0028 0249     		ldr	r1, .L56
+ 1163 002a 1340     		ands	r3, r3, r2
+ 1164 002c 0B60     		str	r3, [r1]
+ 1165              	.L55:
+ 1166              		.loc 1 648 0
+ 1167 002e 00BF     		nop
+ 1168 0030 02B0     		add	sp, sp, #8
+ 1169              	.LCFI24:
+ 1170              		.cfi_def_cfa_offset 0
+ 1171              		@ sp needed
+ 1172 0032 7047     		bx	lr
+ 1173              	.L57:
+ 1174              		.align	2
+ 1175              	.L56:
+ 1176 0034 00B00240 		.word	1073917952
+ 1177              		.cfi_endproc
+ 1178              	.LFE137:
+ 1180              		.section	.text.DMA2D_GetFlagStatus,"ax",%progbits
+ 1181              		.align	1
+ 1182              		.global	DMA2D_GetFlagStatus
+ 1183              		.syntax unified
+ 1184              		.thumb
+ 1185              		.thumb_func
+ 1186              		.fpu fpv4-sp-d16
+ 1188              	DMA2D_GetFlagStatus:
+ 1189              	.LFB138:
+ 649:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 650:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
+ 651:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief  Checks whether the specified DMA2D's flag is set or not.
+ 652:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @param  DMA2D_FLAG: specifies the flag to check.
+ 653:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *   This parameter can be one of the following values:
+ 654:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *     @arg DMA2D_FLAG_CE:   Configuration Error Interrupt flag.
+ 655:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *     @arg DMA2D_FLAG_CTC:  CLUT Transfer Complete Interrupt flag.
+ 656:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *     @arg DMA2D_FLAG_CAE:  CLUT Access Error Interrupt flag.
+ 657:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *     @arg DMA2D_FLAG_TW:   Transfer Watermark Interrupt flag.
+ 658:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *     @arg DMA2D_FLAG_TC:   Transfer Complete interrupt flag.
+ 659:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *     @arg DMA2D_FLAG_TE:   Transfer Error interrupt flag.
+ 660:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @retval The new state of DMA2D_FLAG (SET or RESET).
+ 661:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
+ 662:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 663:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** FlagStatus DMA2D_GetFlagStatus(uint32_t DMA2D_FLAG)
+ 664:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
+ 1190              		.loc 1 664 0
+ 1191              		.cfi_startproc
+ 1192              		@ args = 0, pretend = 0, frame = 16
+ 1193              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1194              		@ link register save eliminated.
+ 1195 0000 84B0     		sub	sp, sp, #16
+ 1196              	.LCFI25:
+ 1197              		.cfi_def_cfa_offset 16
+ 1198 0002 0190     		str	r0, [sp, #4]
+ 665:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   FlagStatus bitstatus = RESET;
+ 1199              		.loc 1 665 0
+ 1200 0004 0023     		movs	r3, #0
+ 1201 0006 8DF80F30 		strb	r3, [sp, #15]
+ 666:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   
+ 667:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Check the parameters */
+ 668:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_GET_FLAG(DMA2D_FLAG));
+ 669:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   
+ 670:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Check the status of the specified DMA2D flag */
+ 671:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   if (((DMA2D->ISR) & DMA2D_FLAG) != (uint32_t)RESET)
+ 1202              		.loc 1 671 0
+ 1203 000a 094B     		ldr	r3, .L62
+ 1204 000c 5A68     		ldr	r2, [r3, #4]
+ 1205 000e 019B     		ldr	r3, [sp, #4]
+ 1206 0010 1340     		ands	r3, r3, r2
+ 1207 0012 002B     		cmp	r3, #0
+ 1208 0014 03D0     		beq	.L59
+ 672:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
+ 673:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     /* DMA2D_FLAG is set */
+ 674:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     bitstatus = SET;
+ 1209              		.loc 1 674 0
+ 1210 0016 0123     		movs	r3, #1
+ 1211 0018 8DF80F30 		strb	r3, [sp, #15]
+ 1212 001c 02E0     		b	.L60
+ 1213              	.L59:
+ 675:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
+ 676:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   else
+ 677:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
+ 678:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     /* DMA2D_FLAG is reset */
+ 679:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     bitstatus = RESET;
+ 1214              		.loc 1 679 0
+ 1215 001e 0023     		movs	r3, #0
+ 1216 0020 8DF80F30 		strb	r3, [sp, #15]
+ 1217              	.L60:
+ 680:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
+ 681:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Return the DMA2D_FLAG status */
+ 682:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   return bitstatus;
+ 1218              		.loc 1 682 0
+ 1219 0024 9DF80F30 		ldrb	r3, [sp, #15]	@ zero_extendqisi2
+ 683:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
+ 1220              		.loc 1 683 0
+ 1221 0028 1846     		mov	r0, r3
+ 1222 002a 04B0     		add	sp, sp, #16
+ 1223              	.LCFI26:
+ 1224              		.cfi_def_cfa_offset 0
+ 1225              		@ sp needed
+ 1226 002c 7047     		bx	lr
+ 1227              	.L63:
+ 1228 002e 00BF     		.align	2
+ 1229              	.L62:
+ 1230 0030 00B00240 		.word	1073917952
+ 1231              		.cfi_endproc
+ 1232              	.LFE138:
+ 1234              		.section	.text.DMA2D_ClearFlag,"ax",%progbits
+ 1235              		.align	1
+ 1236              		.global	DMA2D_ClearFlag
+ 1237              		.syntax unified
+ 1238              		.thumb
+ 1239              		.thumb_func
+ 1240              		.fpu fpv4-sp-d16
+ 1242              	DMA2D_ClearFlag:
+ 1243              	.LFB139:
+ 684:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 685:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
+ 686:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief  Clears the DMA2D's pending flags.
+ 687:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @param  DMA2D_FLAG: specifies the flag to clear.
+ 688:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *   This parameter can be any combination of the following values:
+ 689:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *     @arg DMA2D_FLAG_CE:   Configuration Error Interrupt flag.
+ 690:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *     @arg DMA2D_FLAG_CTC:  CLUT Transfer Complete Interrupt flag.
+ 691:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *     @arg DMA2D_FLAG_CAE:  CLUT Access Error Interrupt flag.
+ 692:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *     @arg DMA2D_FLAG_TW:   Transfer Watermark Interrupt flag.
+ 693:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *     @arg DMA2D_FLAG_TC:   Transfer Complete interrupt flag.
+ 694:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *     @arg DMA2D_FLAG_TE:   Transfer Error interrupt flag.
+ 695:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @retval None
+ 696:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
+ 697:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** void DMA2D_ClearFlag(uint32_t DMA2D_FLAG)
+ 698:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
+ 1244              		.loc 1 698 0
+ 1245              		.cfi_startproc
+ 1246              		@ args = 0, pretend = 0, frame = 8
+ 1247              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1248              		@ link register save eliminated.
+ 1249 0000 82B0     		sub	sp, sp, #8
+ 1250              	.LCFI27:
+ 1251              		.cfi_def_cfa_offset 8
+ 1252 0002 0190     		str	r0, [sp, #4]
+ 699:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Check the parameters */
+ 700:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_GET_FLAG(DMA2D_FLAG));
+ 701:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     
+ 702:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Clear the corresponding DMA2D flag */
+ 703:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->IFCR = (uint32_t)DMA2D_FLAG;
+ 1253              		.loc 1 703 0
+ 1254 0004 024A     		ldr	r2, .L65
+ 1255 0006 019B     		ldr	r3, [sp, #4]
+ 1256 0008 9360     		str	r3, [r2, #8]
+ 704:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
+ 1257              		.loc 1 704 0
+ 1258 000a 00BF     		nop
+ 1259 000c 02B0     		add	sp, sp, #8
+ 1260              	.LCFI28:
+ 1261              		.cfi_def_cfa_offset 0
+ 1262              		@ sp needed
+ 1263 000e 7047     		bx	lr
+ 1264              	.L66:
+ 1265              		.align	2
+ 1266              	.L65:
+ 1267 0010 00B00240 		.word	1073917952
+ 1268              		.cfi_endproc
+ 1269              	.LFE139:
+ 1271              		.section	.text.DMA2D_GetITStatus,"ax",%progbits
+ 1272              		.align	1
+ 1273              		.global	DMA2D_GetITStatus
+ 1274              		.syntax unified
+ 1275              		.thumb
+ 1276              		.thumb_func
+ 1277              		.fpu fpv4-sp-d16
+ 1279              	DMA2D_GetITStatus:
+ 1280              	.LFB140:
+ 705:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 706:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
+ 707:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief  Checks whether the specified DMA2D's interrupt has occurred or not.
+ 708:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @param  DMA2D_IT: specifies the DMA2D interrupts sources to check.
+ 709:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *   This parameter can be one of the following values:
+ 710:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *     @arg DMA2D_IT_CE:   Configuration Error Interrupt Enable.
+ 711:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *     @arg DMA2D_IT_CTC:  CLUT Transfer Complete Interrupt Enable.
+ 712:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *     @arg DMA2D_IT_CAE:  CLUT Access Error Interrupt Enable.
+ 713:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *     @arg DMA2D_IT_TW:   Transfer Watermark Interrupt Enable.
+ 714:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *     @arg DMA2D_IT_TC:   Transfer Complete interrupt enable.
+ 715:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *     @arg DMA2D_IT_TE:   Transfer Error interrupt enable.
+ 716:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @retval The new state of the DMA2D_IT (SET or RESET).
+ 717:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
+ 718:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** ITStatus DMA2D_GetITStatus(uint32_t DMA2D_IT)
+ 719:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
+ 1281              		.loc 1 719 0
+ 1282              		.cfi_startproc
+ 1283              		@ args = 0, pretend = 0, frame = 16
+ 1284              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1285              		@ link register save eliminated.
+ 1286 0000 84B0     		sub	sp, sp, #16
+ 1287              	.LCFI29:
+ 1288              		.cfi_def_cfa_offset 16
+ 1289 0002 0190     		str	r0, [sp, #4]
+ 720:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   ITStatus bitstatus = RESET;
+ 1290              		.loc 1 720 0
+ 1291 0004 0023     		movs	r3, #0
+ 1292 0006 8DF80F30 		strb	r3, [sp, #15]
+ 721:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   uint32_t DMA2D_IT_FLAG = DMA2D_IT >> 8;
+ 1293              		.loc 1 721 0
+ 1294 000a 019B     		ldr	r3, [sp, #4]
+ 1295 000c 1B0A     		lsrs	r3, r3, #8
+ 1296 000e 0293     		str	r3, [sp, #8]
+ 722:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   
+ 723:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Check the parameters */
+ 724:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_IT(DMA2D_IT));
+ 725:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 726:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   if ((DMA2D->ISR & DMA2D_IT_FLAG) != (uint32_t)RESET)
+ 1297              		.loc 1 726 0
+ 1298 0010 114B     		ldr	r3, .L73
+ 1299 0012 5A68     		ldr	r2, [r3, #4]
+ 1300 0014 029B     		ldr	r3, [sp, #8]
+ 1301 0016 1340     		ands	r3, r3, r2
+ 1302 0018 002B     		cmp	r3, #0
+ 1303 001a 03D0     		beq	.L68
+ 727:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
+ 728:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     bitstatus = SET;
+ 1304              		.loc 1 728 0
+ 1305 001c 0123     		movs	r3, #1
+ 1306 001e 8DF80F30 		strb	r3, [sp, #15]
+ 1307 0022 02E0     		b	.L69
+ 1308              	.L68:
+ 729:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
+ 730:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   else
+ 731:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
+ 732:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     bitstatus = RESET;
+ 1309              		.loc 1 732 0
+ 1310 0024 0023     		movs	r3, #0
+ 1311 0026 8DF80F30 		strb	r3, [sp, #15]
+ 1312              	.L69:
+ 733:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
+ 734:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   
+ 735:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   if (((DMA2D->CR & DMA2D_IT) != (uint32_t)RESET) && (bitstatus != (uint32_t)RESET))
+ 1313              		.loc 1 735 0
+ 1314 002a 0B4B     		ldr	r3, .L73
+ 1315 002c 1A68     		ldr	r2, [r3]
+ 1316 002e 019B     		ldr	r3, [sp, #4]
+ 1317 0030 1340     		ands	r3, r3, r2
+ 1318 0032 002B     		cmp	r3, #0
+ 1319 0034 07D0     		beq	.L70
+ 1320              		.loc 1 735 0 is_stmt 0 discriminator 1
+ 1321 0036 9DF80F30 		ldrb	r3, [sp, #15]	@ zero_extendqisi2
+ 1322 003a 002B     		cmp	r3, #0
+ 1323 003c 03D0     		beq	.L70
+ 736:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
+ 737:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     bitstatus = SET;
+ 1324              		.loc 1 737 0 is_stmt 1
+ 1325 003e 0123     		movs	r3, #1
+ 1326 0040 8DF80F30 		strb	r3, [sp, #15]
+ 1327 0044 02E0     		b	.L71
+ 1328              	.L70:
+ 738:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
+ 739:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   else
+ 740:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   {
+ 741:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     bitstatus = RESET;
+ 1329              		.loc 1 741 0
+ 1330 0046 0023     		movs	r3, #0
+ 1331 0048 8DF80F30 		strb	r3, [sp, #15]
+ 1332              	.L71:
+ 742:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   }
+ 743:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   return bitstatus;
+ 1333              		.loc 1 743 0
+ 1334 004c 9DF80F30 		ldrb	r3, [sp, #15]	@ zero_extendqisi2
+ 744:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
+ 1335              		.loc 1 744 0
+ 1336 0050 1846     		mov	r0, r3
+ 1337 0052 04B0     		add	sp, sp, #16
+ 1338              	.LCFI30:
+ 1339              		.cfi_def_cfa_offset 0
+ 1340              		@ sp needed
+ 1341 0054 7047     		bx	lr
+ 1342              	.L74:
+ 1343 0056 00BF     		.align	2
+ 1344              	.L73:
+ 1345 0058 00B00240 		.word	1073917952
+ 1346              		.cfi_endproc
+ 1347              	.LFE140:
+ 1349              		.section	.text.DMA2D_ClearITPendingBit,"ax",%progbits
+ 1350              		.align	1
+ 1351              		.global	DMA2D_ClearITPendingBit
+ 1352              		.syntax unified
+ 1353              		.thumb
+ 1354              		.thumb_func
+ 1355              		.fpu fpv4-sp-d16
+ 1357              	DMA2D_ClearITPendingBit:
+ 1358              	.LFB141:
+ 745:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** 
+ 746:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** /**
+ 747:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @brief  Clears the DMA2D's interrupt pending bits.
+ 748:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @param  DMA2D_IT: specifies the interrupt pending bit to clear.
+ 749:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *   This parameter can be any combination of the following values:
+ 750:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *     @arg DMA2D_IT_CE:   Configuration Error Interrupt.
+ 751:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *     @arg DMA2D_IT_CTC:  CLUT Transfer Complete Interrupt.
+ 752:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *     @arg DMA2D_IT_CAE:  CLUT Access Error Interrupt.
+ 753:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *     @arg DMA2D_IT_TW:   Transfer Watermark Interrupt.
+ 754:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *     @arg DMA2D_IT_TC:   Transfer Complete interrupt.
+ 755:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   *     @arg DMA2D_IT_TE:   Transfer Error interrupt.
+ 756:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   * @retval None
+ 757:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   */
+ 758:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** void DMA2D_ClearITPendingBit(uint32_t DMA2D_IT)
+ 759:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** {
+ 1359              		.loc 1 759 0
+ 1360              		.cfi_startproc
+ 1361              		@ args = 0, pretend = 0, frame = 8
+ 1362              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1363              		@ link register save eliminated.
+ 1364 0000 82B0     		sub	sp, sp, #8
+ 1365              	.LCFI31:
+ 1366              		.cfi_def_cfa_offset 8
+ 1367 0002 0190     		str	r0, [sp, #4]
+ 760:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Check the parameters */
+ 761:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   assert_param(IS_DMA2D_IT(DMA2D_IT));
+ 762:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D_IT = DMA2D_IT >> 8;
+ 1368              		.loc 1 762 0
+ 1369 0004 019B     		ldr	r3, [sp, #4]
+ 1370 0006 1B0A     		lsrs	r3, r3, #8
+ 1371 0008 0193     		str	r3, [sp, #4]
+ 763:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****     
+ 764:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   /* Clear the corresponding DMA2D Interrupt */
+ 765:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c ****   DMA2D->IFCR = (uint32_t)DMA2D_IT;
+ 1372              		.loc 1 765 0
+ 1373 000a 034A     		ldr	r2, .L76
+ 1374 000c 019B     		ldr	r3, [sp, #4]
+ 1375 000e 9360     		str	r3, [r2, #8]
+ 766:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma2d.c **** }
+ 1376              		.loc 1 766 0
+ 1377 0010 00BF     		nop
+ 1378 0012 02B0     		add	sp, sp, #8
+ 1379              	.LCFI32:
+ 1380              		.cfi_def_cfa_offset 0
+ 1381              		@ sp needed
+ 1382 0014 7047     		bx	lr
+ 1383              	.L77:
+ 1384 0016 00BF     		.align	2
+ 1385              	.L76:
+ 1386 0018 00B00240 		.word	1073917952
+ 1387              		.cfi_endproc
+ 1388              	.LFE141:
+ 1390              		.text
+ 1391              	.Letext0:
+ 1392              		.file 2 "/home/rdu/Software/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/_defau
+ 1393              		.file 3 "/home/rdu/Software/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_stdint.h"
+ 1394              		.file 4 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/CMSIS/CMSIS_STM32F4/Incl
+ 1395              		.file 5 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/CMSIS/CMSIS_STM32F4/Devi
+ 1396              		.file 6 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/CMSIS/CMSIS_STM32F4/Devi
+ 1397              		.file 7 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driv
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 stm32f4xx_dma2d.c
+     /tmp/ccX2BYYc.s:16     .text.DMA2D_DeInit:0000000000000000 $t
+     /tmp/ccX2BYYc.s:23     .text.DMA2D_DeInit:0000000000000000 DMA2D_DeInit
+     /tmp/ccX2BYYc.s:50     .text.DMA2D_Init:0000000000000000 $t
+     /tmp/ccX2BYYc.s:57     .text.DMA2D_Init:0000000000000000 DMA2D_Init
+     /tmp/ccX2BYYc.s:274    .text.DMA2D_Init:0000000000000150 $d
+     /tmp/ccX2BYYc.s:279    .text.DMA2D_StructInit:0000000000000000 $t
+     /tmp/ccX2BYYc.s:286    .text.DMA2D_StructInit:0000000000000000 DMA2D_StructInit
+     /tmp/ccX2BYYc.s:348    .text.DMA2D_StartTransfer:0000000000000000 $t
+     /tmp/ccX2BYYc.s:355    .text.DMA2D_StartTransfer:0000000000000000 DMA2D_StartTransfer
+     /tmp/ccX2BYYc.s:374    .text.DMA2D_StartTransfer:0000000000000010 $d
+     /tmp/ccX2BYYc.s:379    .text.DMA2D_AbortTransfer:0000000000000000 $t
+     /tmp/ccX2BYYc.s:386    .text.DMA2D_AbortTransfer:0000000000000000 DMA2D_AbortTransfer
+     /tmp/ccX2BYYc.s:405    .text.DMA2D_AbortTransfer:0000000000000010 $d
+     /tmp/ccX2BYYc.s:410    .text.DMA2D_Suspend:0000000000000000 $t
+     /tmp/ccX2BYYc.s:417    .text.DMA2D_Suspend:0000000000000000 DMA2D_Suspend
+     /tmp/ccX2BYYc.s:459    .text.DMA2D_Suspend:0000000000000030 $d
+     /tmp/ccX2BYYc.s:464    .text.DMA2D_FGConfig:0000000000000000 $t
+     /tmp/ccX2BYYc.s:471    .text.DMA2D_FGConfig:0000000000000000 DMA2D_FGConfig
+     /tmp/ccX2BYYc.s:608    .text.DMA2D_FGConfig:00000000000000cc $d
+     /tmp/ccX2BYYc.s:614    .text.DMA2D_FG_StructInit:0000000000000000 $t
+     /tmp/ccX2BYYc.s:621    .text.DMA2D_FG_StructInit:0000000000000000 DMA2D_FG_StructInit
+     /tmp/ccX2BYYc.s:687    .text.DMA2D_BGConfig:0000000000000000 $t
+     /tmp/ccX2BYYc.s:694    .text.DMA2D_BGConfig:0000000000000000 DMA2D_BGConfig
+     /tmp/ccX2BYYc.s:831    .text.DMA2D_BGConfig:00000000000000cc $d
+     /tmp/ccX2BYYc.s:837    .text.DMA2D_BG_StructInit:0000000000000000 $t
+     /tmp/ccX2BYYc.s:844    .text.DMA2D_BG_StructInit:0000000000000000 DMA2D_BG_StructInit
+     /tmp/ccX2BYYc.s:910    .text.DMA2D_FGStart:0000000000000000 $t
+     /tmp/ccX2BYYc.s:917    .text.DMA2D_FGStart:0000000000000000 DMA2D_FGStart
+     /tmp/ccX2BYYc.s:959    .text.DMA2D_FGStart:0000000000000030 $d
+     /tmp/ccX2BYYc.s:964    .text.DMA2D_BGStart:0000000000000000 $t
+     /tmp/ccX2BYYc.s:971    .text.DMA2D_BGStart:0000000000000000 DMA2D_BGStart
+     /tmp/ccX2BYYc.s:1013   .text.DMA2D_BGStart:0000000000000030 $d
+     /tmp/ccX2BYYc.s:1018   .text.DMA2D_DeadTimeConfig:0000000000000000 $t
+     /tmp/ccX2BYYc.s:1025   .text.DMA2D_DeadTimeConfig:0000000000000000 DMA2D_DeadTimeConfig
+     /tmp/ccX2BYYc.s:1081   .text.DMA2D_DeadTimeConfig:000000000000004c $d
+     /tmp/ccX2BYYc.s:1086   .text.DMA2D_LineWatermarkConfig:0000000000000000 $t
+     /tmp/ccX2BYYc.s:1093   .text.DMA2D_LineWatermarkConfig:0000000000000000 DMA2D_LineWatermarkConfig
+     /tmp/ccX2BYYc.s:1118   .text.DMA2D_LineWatermarkConfig:0000000000000010 $d
+     /tmp/ccX2BYYc.s:1123   .text.DMA2D_ITConfig:0000000000000000 $t
+     /tmp/ccX2BYYc.s:1130   .text.DMA2D_ITConfig:0000000000000000 DMA2D_ITConfig
+     /tmp/ccX2BYYc.s:1176   .text.DMA2D_ITConfig:0000000000000034 $d
+     /tmp/ccX2BYYc.s:1181   .text.DMA2D_GetFlagStatus:0000000000000000 $t
+     /tmp/ccX2BYYc.s:1188   .text.DMA2D_GetFlagStatus:0000000000000000 DMA2D_GetFlagStatus
+     /tmp/ccX2BYYc.s:1230   .text.DMA2D_GetFlagStatus:0000000000000030 $d
+     /tmp/ccX2BYYc.s:1235   .text.DMA2D_ClearFlag:0000000000000000 $t
+     /tmp/ccX2BYYc.s:1242   .text.DMA2D_ClearFlag:0000000000000000 DMA2D_ClearFlag
+     /tmp/ccX2BYYc.s:1267   .text.DMA2D_ClearFlag:0000000000000010 $d
+     /tmp/ccX2BYYc.s:1272   .text.DMA2D_GetITStatus:0000000000000000 $t
+     /tmp/ccX2BYYc.s:1279   .text.DMA2D_GetITStatus:0000000000000000 DMA2D_GetITStatus
+     /tmp/ccX2BYYc.s:1345   .text.DMA2D_GetITStatus:0000000000000058 $d
+     /tmp/ccX2BYYc.s:1350   .text.DMA2D_ClearITPendingBit:0000000000000000 $t
+     /tmp/ccX2BYYc.s:1357   .text.DMA2D_ClearITPendingBit:0000000000000000 DMA2D_ClearITPendingBit
+     /tmp/ccX2BYYc.s:1386   .text.DMA2D_ClearITPendingBit:0000000000000018 $d
+
+UNDEFINED SYMBOLS
+RCC_AHB1PeriphResetCmd

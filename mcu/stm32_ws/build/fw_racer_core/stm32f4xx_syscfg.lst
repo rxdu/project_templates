@@ -1,0 +1,583 @@
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 23, 1
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 6
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"stm32f4xx_syscfg.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.SYSCFG_DeInit,"ax",%progbits
+  16              		.align	1
+  17              		.global	SYSCFG_DeInit
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  21              		.fpu fpv4-sp-d16
+  23              	SYSCFG_DeInit:
+  24              	.LFB123:
+  25              		.file 1 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driv
+   1:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** /**
+   2:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   ******************************************************************************
+   3:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * @file    stm32f4xx_syscfg.c
+   4:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * @author  MCD Application Team
+   5:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * @version V1.8.0
+   6:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * @date    04-November-2016
+   7:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * @brief   This file provides firmware functions to manage the SYSCFG peripheral.
+   8:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *
+   9:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****  @verbatim
+  10:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****     
+  11:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****  ===============================================================================
+  12:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****                      ##### How to use this driver #####
+  13:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****  ===============================================================================
+  14:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****     [..] This driver provides functions for:
+  15:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****             
+  16:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****        (#) Remapping the memory accessible in the code area using SYSCFG_MemoryRemapConfig()
+  17:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****             
+  18:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****        (#) Swapping the internal flash Bank1 and Bank2 this features is only visible for 
+  19:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****            STM32F42xxx/43xxx devices Devices. 
+  20:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****                 
+  21:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****        (#) Manage the EXTI lines connection to the GPIOs using SYSCFG_EXTILineConfig()
+  22:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****               
+  23:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****        (#) Select the ETHERNET media interface (RMII/RII) using SYSCFG_ETH_MediaInterfaceConfig()
+  24:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   
+  25:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****        -@- SYSCFG APB clock must be enabled to get write access to SYSCFG registers,
+  26:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****            using RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
+  27:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****                    
+  28:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****  @endverbatim      
+  29:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   ******************************************************************************
+  30:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * @attention
+  31:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *
+  32:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * <h2><center>&copy; COPYRIGHT 2016 STMicroelectronics</center></h2>
+  33:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *
+  34:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
+  35:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * You may not use this file except in compliance with the License.
+  36:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * You may obtain a copy of the License at:
+  37:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *
+  38:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *        http://www.st.com/software_license_agreement_liberty_v2
+  39:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *
+  40:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * Unless required by applicable law or agreed to in writing, software 
+  41:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * distributed under the License is distributed on an "AS IS" BASIS, 
+  42:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  43:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * See the License for the specific language governing permissions and
+  44:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * limitations under the License.
+  45:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *
+  46:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   ******************************************************************************
+  47:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   */
+  48:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** 
+  49:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** /* Includes ------------------------------------------------------------------*/
+  50:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** #include "stm32f4xx_syscfg.h"
+  51:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** #include "stm32f4xx_rcc.h"
+  52:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** 
+  53:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** /** @addtogroup STM32F4xx_StdPeriph_Driver
+  54:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * @{
+  55:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   */
+  56:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** 
+  57:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** /** @defgroup SYSCFG 
+  58:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * @brief SYSCFG driver modules
+  59:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * @{
+  60:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   */ 
+  61:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** 
+  62:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** /* Private typedef -----------------------------------------------------------*/
+  63:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** /* Private define ------------------------------------------------------------*/
+  64:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** /* ------------ RCC registers bit address in the alias region ----------- */
+  65:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** #define SYSCFG_OFFSET             (SYSCFG_BASE - PERIPH_BASE)
+  66:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** /* ---  MEMRMP Register ---*/ 
+  67:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** /* Alias word address of UFB_MODE bit */ 
+  68:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** #define MEMRMP_OFFSET             SYSCFG_OFFSET 
+  69:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** #define UFB_MODE_BitNumber        ((uint8_t)0x8) 
+  70:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** #define UFB_MODE_BB               (PERIPH_BB_BASE + (MEMRMP_OFFSET * 32) + (UFB_MODE_BitNumber * 4)
+  71:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****     
+  72:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** /* ---  PMC Register ---*/ 
+  73:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** /* Alias word address of MII_RMII_SEL bit */ 
+  74:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** #define PMC_OFFSET                (SYSCFG_OFFSET + 0x04) 
+  75:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** #define MII_RMII_SEL_BitNumber    ((uint8_t)0x17) 
+  76:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** #define PMC_MII_RMII_SEL_BB       (PERIPH_BB_BASE + (PMC_OFFSET * 32) + (MII_RMII_SEL_BitNumber * 4
+  77:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****     
+  78:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** /* ---  CMPCR Register ---*/ 
+  79:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** /* Alias word address of CMP_PD bit */ 
+  80:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** #define CMPCR_OFFSET              (SYSCFG_OFFSET + 0x20) 
+  81:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** #define CMP_PD_BitNumber          ((uint8_t)0x00) 
+  82:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** #define CMPCR_CMP_PD_BB           (PERIPH_BB_BASE + (CMPCR_OFFSET * 32) + (CMP_PD_BitNumber * 4)) 
+  83:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** 
+  84:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** /* ---  MCHDLYCR Register ---*/ 
+  85:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** /* Alias word address of BSCKSEL bit */ 
+  86:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** #define MCHDLYCR_OFFSET            (SYSCFG_OFFSET + 0x30) 
+  87:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** #define BSCKSEL_BIT_NUMBER         POSITION_VAL(SYSCFG_MCHDLYCR_BSCKSEL)
+  88:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** #define MCHDLYCR_BSCKSEL_BB        (uint32_t)(PERIPH_BB_BASE + (MCHDLYCR_OFFSET * 32) + (BSCKSEL_BI
+  89:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** 
+  90:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** /* Private macro -------------------------------------------------------------*/
+  91:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** /* Private variables ---------------------------------------------------------*/
+  92:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** /* Private function prototypes -----------------------------------------------*/
+  93:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** /* Private functions ---------------------------------------------------------*/
+  94:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** 
+  95:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** /** @defgroup SYSCFG_Private_Functions
+  96:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * @{
+  97:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   */ 
+  98:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** 
+  99:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** /**
+ 100:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * @brief  Deinitializes the Alternate Functions (remap and EXTI configuration)
+ 101:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *   registers to their default reset values.
+ 102:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * @param  None
+ 103:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * @retval None
+ 104:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   */
+ 105:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** void SYSCFG_DeInit(void)
+ 106:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** {
+  26              		.loc 1 106 0
+  27              		.cfi_startproc
+  28              		@ args = 0, pretend = 0, frame = 0
+  29              		@ frame_needed = 0, uses_anonymous_args = 0
+  30 0000 08B5     		push	{r3, lr}
+  31              	.LCFI0:
+  32              		.cfi_def_cfa_offset 8
+  33              		.cfi_offset 3, -8
+  34              		.cfi_offset 14, -4
+ 107:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****    RCC_APB2PeriphResetCmd(RCC_APB2Periph_SYSCFG, ENABLE);
+  35              		.loc 1 107 0
+  36 0002 0121     		movs	r1, #1
+  37 0004 4FF48040 		mov	r0, #16384
+  38 0008 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 108:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****    RCC_APB2PeriphResetCmd(RCC_APB2Periph_SYSCFG, DISABLE);
+  39              		.loc 1 108 0
+  40 000c 0021     		movs	r1, #0
+  41 000e 4FF48040 		mov	r0, #16384
+  42 0012 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 109:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** }
+  43              		.loc 1 109 0
+  44 0016 00BF     		nop
+  45 0018 08BD     		pop	{r3, pc}
+  46              		.cfi_endproc
+  47              	.LFE123:
+  49              		.section	.text.SYSCFG_MemoryRemapConfig,"ax",%progbits
+  50              		.align	1
+  51              		.global	SYSCFG_MemoryRemapConfig
+  52              		.syntax unified
+  53              		.thumb
+  54              		.thumb_func
+  55              		.fpu fpv4-sp-d16
+  57              	SYSCFG_MemoryRemapConfig:
+  58              	.LFB124:
+ 110:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** 
+ 111:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** /**
+ 112:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * @brief  Changes the mapping of the specified pin.
+ 113:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * @param  SYSCFG_Memory: selects the memory remapping.
+ 114:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *         This parameter can be one of the following values:
+ 115:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *            @arg SYSCFG_MemoryRemap_Flash:       Main Flash memory mapped at 0x00000000  
+ 116:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *            @arg SYSCFG_MemoryRemap_SystemFlash: System Flash memory mapped at 0x00000000
+ 117:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *            @arg SYSCFG_MemoryRemap_FSMC:        FSMC (Bank1 (NOR/PSRAM 1 and 2) mapped at 0x000
+ 118:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *            @arg SYSCFG_MemoryRemap_FMC:         FMC (Bank1 (NOR/PSRAM 1 and 2) mapped at 0x0000
+ 119:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *            @arg SYSCFG_MemoryRemap_ExtMEM:      External Memory mapped at 0x00000000 for STM32F
+ 120:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *            @arg SYSCFG_MemoryRemap_SRAM:        Embedded SRAM (112kB) mapped at 0x00000000
+ 121:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *            @arg SYSCFG_MemoryRemap_SDRAM:       FMC (External SDRAM)  mapped at 0x00000000 for 
+ 122:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * @retval None
+ 123:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   */
+ 124:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** void SYSCFG_MemoryRemapConfig(uint8_t SYSCFG_MemoryRemap)
+ 125:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** {
+  59              		.loc 1 125 0
+  60              		.cfi_startproc
+  61              		@ args = 0, pretend = 0, frame = 8
+  62              		@ frame_needed = 0, uses_anonymous_args = 0
+  63              		@ link register save eliminated.
+  64 0000 82B0     		sub	sp, sp, #8
+  65              	.LCFI1:
+  66              		.cfi_def_cfa_offset 8
+  67 0002 0346     		mov	r3, r0
+  68 0004 8DF80730 		strb	r3, [sp, #7]
+ 126:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   /* Check the parameters */
+ 127:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   assert_param(IS_SYSCFG_MEMORY_REMAP_CONFING(SYSCFG_MemoryRemap));
+ 128:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** 
+ 129:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   SYSCFG->MEMRMP = SYSCFG_MemoryRemap;
+  69              		.loc 1 129 0
+  70 0008 034A     		ldr	r2, .L3
+  71 000a 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+  72 000e 1360     		str	r3, [r2]
+ 130:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** }
+  73              		.loc 1 130 0
+  74 0010 00BF     		nop
+  75 0012 02B0     		add	sp, sp, #8
+  76              	.LCFI2:
+  77              		.cfi_def_cfa_offset 0
+  78              		@ sp needed
+  79 0014 7047     		bx	lr
+  80              	.L4:
+  81 0016 00BF     		.align	2
+  82              	.L3:
+  83 0018 00380140 		.word	1073821696
+  84              		.cfi_endproc
+  85              	.LFE124:
+  87              		.section	.text.SYSCFG_MemorySwappingBank,"ax",%progbits
+  88              		.align	1
+  89              		.global	SYSCFG_MemorySwappingBank
+  90              		.syntax unified
+  91              		.thumb
+  92              		.thumb_func
+  93              		.fpu fpv4-sp-d16
+  95              	SYSCFG_MemorySwappingBank:
+  96              	.LFB125:
+ 131:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** 
+ 132:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** /**
+ 133:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * @brief  Enables or disables the Internal FLASH Bank Swapping.
+ 134:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *   
+ 135:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * @note   This function can be used only for STM32F42xxx/43xxx devices. 
+ 136:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *
+ 137:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * @param  NewState: new state of Internal FLASH Bank swapping.
+ 138:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *          This parameter can be one of the following values:
+ 139:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *            @arg ENABLE: Flash Bank2 mapped at 0x08000000 (and aliased @0x00000000) 
+ 140:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *                         and Flash Bank1 mapped at 0x08100000 (and aliased at 0x00100000)   
+ 141:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *            @arg DISABLE:(the default state) Flash Bank1 mapped at 0x08000000 (and aliased @0x00
+ 142:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****                             and Flash Bank2 mapped at 0x08100000 (and aliased at 0x00100000)  
+ 143:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * @retval None
+ 144:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   */
+ 145:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** void SYSCFG_MemorySwappingBank(FunctionalState NewState)
+ 146:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** {
+  97              		.loc 1 146 0
+  98              		.cfi_startproc
+  99              		@ args = 0, pretend = 0, frame = 8
+ 100              		@ frame_needed = 0, uses_anonymous_args = 0
+ 101              		@ link register save eliminated.
+ 102 0000 82B0     		sub	sp, sp, #8
+ 103              	.LCFI3:
+ 104              		.cfi_def_cfa_offset 8
+ 105 0002 0346     		mov	r3, r0
+ 106 0004 8DF80730 		strb	r3, [sp, #7]
+ 147:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   /* Check the parameters */
+ 148:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
+ 149:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** 
+ 150:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *(__IO uint32_t *) UFB_MODE_BB = (uint32_t)NewState;
+ 107              		.loc 1 150 0
+ 108 0008 034A     		ldr	r2, .L6
+ 109 000a 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 110 000e 1360     		str	r3, [r2]
+ 151:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** }
+ 111              		.loc 1 151 0
+ 112 0010 00BF     		nop
+ 113 0012 02B0     		add	sp, sp, #8
+ 114              	.LCFI4:
+ 115              		.cfi_def_cfa_offset 0
+ 116              		@ sp needed
+ 117 0014 7047     		bx	lr
+ 118              	.L7:
+ 119 0016 00BF     		.align	2
+ 120              	.L6:
+ 121 0018 20002742 		.word	1109852192
+ 122              		.cfi_endproc
+ 123              	.LFE125:
+ 125              		.section	.text.SYSCFG_EXTILineConfig,"ax",%progbits
+ 126              		.align	1
+ 127              		.global	SYSCFG_EXTILineConfig
+ 128              		.syntax unified
+ 129              		.thumb
+ 130              		.thumb_func
+ 131              		.fpu fpv4-sp-d16
+ 133              	SYSCFG_EXTILineConfig:
+ 134              	.LFB126:
+ 152:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** 
+ 153:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** /**
+ 154:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * @brief  Selects the GPIO pin used as EXTI Line.
+ 155:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * @param  EXTI_PortSourceGPIOx : selects the GPIO port to be used as source for
+ 156:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *          EXTI lines where x can be (A..K) for STM32F42xxx/43xxx devices, (A..I) 
+ 157:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *          for STM32F405xx/407xx and STM32F415xx/417xx devices or (A, B, C, D and H)
+ 158:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *          for STM32401xx devices.  
+ 159:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *            
+ 160:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * @param  EXTI_PinSourcex: specifies the EXTI line to be configured.
+ 161:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *           This parameter can be EXTI_PinSourcex where x can be (0..15, except
+ 162:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *           for EXTI_PortSourceGPIOI x can be (0..11) for STM32F405xx/407xx
+ 163:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *           and STM32F405xx/407xx devices and for EXTI_PortSourceGPIOK x can   
+ 164:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *           be (0..7) for STM32F42xxx/43xxx devices. 
+ 165:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *             
+ 166:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * @retval None
+ 167:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   */
+ 168:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** void SYSCFG_EXTILineConfig(uint8_t EXTI_PortSourceGPIOx, uint8_t EXTI_PinSourcex)
+ 169:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** {
+ 135              		.loc 1 169 0
+ 136              		.cfi_startproc
+ 137              		@ args = 0, pretend = 0, frame = 16
+ 138              		@ frame_needed = 0, uses_anonymous_args = 0
+ 139              		@ link register save eliminated.
+ 140 0000 84B0     		sub	sp, sp, #16
+ 141              	.LCFI5:
+ 142              		.cfi_def_cfa_offset 16
+ 143 0002 0346     		mov	r3, r0
+ 144 0004 0A46     		mov	r2, r1
+ 145 0006 8DF80730 		strb	r3, [sp, #7]
+ 146 000a 1346     		mov	r3, r2
+ 147 000c 8DF80630 		strb	r3, [sp, #6]
+ 170:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   uint32_t tmp = 0x00;
+ 148              		.loc 1 170 0
+ 149 0010 0023     		movs	r3, #0
+ 150 0012 0393     		str	r3, [sp, #12]
+ 171:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** 
+ 172:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   /* Check the parameters */
+ 173:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   assert_param(IS_EXTI_PORT_SOURCE(EXTI_PortSourceGPIOx));
+ 174:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   assert_param(IS_EXTI_PIN_SOURCE(EXTI_PinSourcex));
+ 175:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** 
+ 176:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   tmp = ((uint32_t)0x0F) << (0x04 * (EXTI_PinSourcex & (uint8_t)0x03));
+ 151              		.loc 1 176 0
+ 152 0014 9DF80630 		ldrb	r3, [sp, #6]	@ zero_extendqisi2
+ 153 0018 03F00303 		and	r3, r3, #3
+ 154 001c 9B00     		lsls	r3, r3, #2
+ 155 001e 0F22     		movs	r2, #15
+ 156 0020 02FA03F3 		lsl	r3, r2, r3
+ 157 0024 0393     		str	r3, [sp, #12]
+ 177:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   SYSCFG->EXTICR[EXTI_PinSourcex >> 0x02] &= ~tmp;
+ 158              		.loc 1 177 0
+ 159 0026 184A     		ldr	r2, .L9
+ 160 0028 9DF80630 		ldrb	r3, [sp, #6]	@ zero_extendqisi2
+ 161 002c 9B08     		lsrs	r3, r3, #2
+ 162 002e DBB2     		uxtb	r3, r3
+ 163 0030 0233     		adds	r3, r3, #2
+ 164 0032 52F82320 		ldr	r2, [r2, r3, lsl #2]
+ 165 0036 039B     		ldr	r3, [sp, #12]
+ 166 0038 DB43     		mvns	r3, r3
+ 167 003a 1348     		ldr	r0, .L9
+ 168 003c 9DF80610 		ldrb	r1, [sp, #6]	@ zero_extendqisi2
+ 169 0040 8908     		lsrs	r1, r1, #2
+ 170 0042 C9B2     		uxtb	r1, r1
+ 171 0044 1A40     		ands	r2, r2, r3
+ 172 0046 8B1C     		adds	r3, r1, #2
+ 173 0048 40F82320 		str	r2, [r0, r3, lsl #2]
+ 178:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   SYSCFG->EXTICR[EXTI_PinSourcex >> 0x02] |= (((uint32_t)EXTI_PortSourceGPIOx) << (0x04 * (EXTI_Pin
+ 174              		.loc 1 178 0
+ 175 004c 0E4A     		ldr	r2, .L9
+ 176 004e 9DF80630 		ldrb	r3, [sp, #6]	@ zero_extendqisi2
+ 177 0052 9B08     		lsrs	r3, r3, #2
+ 178 0054 DBB2     		uxtb	r3, r3
+ 179 0056 0233     		adds	r3, r3, #2
+ 180 0058 52F82320 		ldr	r2, [r2, r3, lsl #2]
+ 181 005c 9DF80710 		ldrb	r1, [sp, #7]	@ zero_extendqisi2
+ 182 0060 9DF80630 		ldrb	r3, [sp, #6]	@ zero_extendqisi2
+ 183 0064 03F00303 		and	r3, r3, #3
+ 184 0068 9B00     		lsls	r3, r3, #2
+ 185 006a 01FA03F3 		lsl	r3, r1, r3
+ 186 006e 0648     		ldr	r0, .L9
+ 187 0070 9DF80610 		ldrb	r1, [sp, #6]	@ zero_extendqisi2
+ 188 0074 8908     		lsrs	r1, r1, #2
+ 189 0076 C9B2     		uxtb	r1, r1
+ 190 0078 1A43     		orrs	r2, r2, r3
+ 191 007a 8B1C     		adds	r3, r1, #2
+ 192 007c 40F82320 		str	r2, [r0, r3, lsl #2]
+ 179:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** }
+ 193              		.loc 1 179 0
+ 194 0080 00BF     		nop
+ 195 0082 04B0     		add	sp, sp, #16
+ 196              	.LCFI6:
+ 197              		.cfi_def_cfa_offset 0
+ 198              		@ sp needed
+ 199 0084 7047     		bx	lr
+ 200              	.L10:
+ 201 0086 00BF     		.align	2
+ 202              	.L9:
+ 203 0088 00380140 		.word	1073821696
+ 204              		.cfi_endproc
+ 205              	.LFE126:
+ 207              		.section	.text.SYSCFG_ETH_MediaInterfaceConfig,"ax",%progbits
+ 208              		.align	1
+ 209              		.global	SYSCFG_ETH_MediaInterfaceConfig
+ 210              		.syntax unified
+ 211              		.thumb
+ 212              		.thumb_func
+ 213              		.fpu fpv4-sp-d16
+ 215              	SYSCFG_ETH_MediaInterfaceConfig:
+ 216              	.LFB127:
+ 180:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** 
+ 181:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** /**
+ 182:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * @brief  Selects the ETHERNET media interface 
+ 183:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * @param  SYSCFG_ETH_MediaInterface: specifies the Media Interface mode. 
+ 184:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *          This parameter can be one of the following values: 
+ 185:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *            @arg SYSCFG_ETH_MediaInterface_MII: MII mode selected
+ 186:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *            @arg SYSCFG_ETH_MediaInterface_RMII: RMII mode selected 
+ 187:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * @retval None 
+ 188:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   */
+ 189:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** void SYSCFG_ETH_MediaInterfaceConfig(uint32_t SYSCFG_ETH_MediaInterface) 
+ 190:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** { 
+ 217              		.loc 1 190 0
+ 218              		.cfi_startproc
+ 219              		@ args = 0, pretend = 0, frame = 8
+ 220              		@ frame_needed = 0, uses_anonymous_args = 0
+ 221              		@ link register save eliminated.
+ 222 0000 82B0     		sub	sp, sp, #8
+ 223              	.LCFI7:
+ 224              		.cfi_def_cfa_offset 8
+ 225 0002 0190     		str	r0, [sp, #4]
+ 191:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   assert_param(IS_SYSCFG_ETH_MEDIA_INTERFACE(SYSCFG_ETH_MediaInterface)); 
+ 192:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   /* Configure MII_RMII selection bit */ 
+ 193:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *(__IO uint32_t *) PMC_MII_RMII_SEL_BB = SYSCFG_ETH_MediaInterface; 
+ 226              		.loc 1 193 0
+ 227 0004 024A     		ldr	r2, .L12
+ 228 0006 019B     		ldr	r3, [sp, #4]
+ 229 0008 1360     		str	r3, [r2]
+ 194:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** }
+ 230              		.loc 1 194 0
+ 231 000a 00BF     		nop
+ 232 000c 02B0     		add	sp, sp, #8
+ 233              	.LCFI8:
+ 234              		.cfi_def_cfa_offset 0
+ 235              		@ sp needed
+ 236 000e 7047     		bx	lr
+ 237              	.L13:
+ 238              		.align	2
+ 239              	.L12:
+ 240 0010 DC002742 		.word	1109852380
+ 241              		.cfi_endproc
+ 242              	.LFE127:
+ 244              		.section	.text.SYSCFG_CompensationCellCmd,"ax",%progbits
+ 245              		.align	1
+ 246              		.global	SYSCFG_CompensationCellCmd
+ 247              		.syntax unified
+ 248              		.thumb
+ 249              		.thumb_func
+ 250              		.fpu fpv4-sp-d16
+ 252              	SYSCFG_CompensationCellCmd:
+ 253              	.LFB128:
+ 195:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** 
+ 196:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** /**
+ 197:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * @brief  Enables or disables the I/O Compensation Cell.
+ 198:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * @note   The I/O compensation cell can be used only when the device supply
+ 199:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *         voltage ranges from 2.4 to 3.6 V.  
+ 200:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * @param  NewState: new state of the I/O Compensation Cell.
+ 201:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *          This parameter can be one of the following values:
+ 202:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *            @arg ENABLE: I/O compensation cell enabled  
+ 203:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *            @arg DISABLE: I/O compensation cell power-down mode  
+ 204:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * @retval None
+ 205:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   */
+ 206:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** void SYSCFG_CompensationCellCmd(FunctionalState NewState)
+ 207:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** {
+ 254              		.loc 1 207 0
+ 255              		.cfi_startproc
+ 256              		@ args = 0, pretend = 0, frame = 8
+ 257              		@ frame_needed = 0, uses_anonymous_args = 0
+ 258              		@ link register save eliminated.
+ 259 0000 82B0     		sub	sp, sp, #8
+ 260              	.LCFI9:
+ 261              		.cfi_def_cfa_offset 8
+ 262 0002 0346     		mov	r3, r0
+ 263 0004 8DF80730 		strb	r3, [sp, #7]
+ 208:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   /* Check the parameters */
+ 209:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
+ 210:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** 
+ 211:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   *(__IO uint32_t *) CMPCR_CMP_PD_BB = (uint32_t)NewState;
+ 264              		.loc 1 211 0
+ 265 0008 034A     		ldr	r2, .L15
+ 266 000a 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 267 000e 1360     		str	r3, [r2]
+ 212:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** }
+ 268              		.loc 1 212 0
+ 269 0010 00BF     		nop
+ 270 0012 02B0     		add	sp, sp, #8
+ 271              	.LCFI10:
+ 272              		.cfi_def_cfa_offset 0
+ 273              		@ sp needed
+ 274 0014 7047     		bx	lr
+ 275              	.L16:
+ 276 0016 00BF     		.align	2
+ 277              	.L15:
+ 278 0018 00042742 		.word	1109853184
+ 279              		.cfi_endproc
+ 280              	.LFE128:
+ 282              		.section	.text.SYSCFG_GetCompensationCellStatus,"ax",%progbits
+ 283              		.align	1
+ 284              		.global	SYSCFG_GetCompensationCellStatus
+ 285              		.syntax unified
+ 286              		.thumb
+ 287              		.thumb_func
+ 288              		.fpu fpv4-sp-d16
+ 290              	SYSCFG_GetCompensationCellStatus:
+ 291              	.LFB129:
+ 213:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** 
+ 214:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** /**
+ 215:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * @brief  Checks whether the I/O Compensation Cell ready flag is set or not.
+ 216:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * @param  None
+ 217:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   * @retval The new state of the I/O Compensation Cell ready flag (SET or RESET)
+ 218:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   */
+ 219:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** FlagStatus SYSCFG_GetCompensationCellStatus(void)
+ 220:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** {
+ 292              		.loc 1 220 0
+ 293              		.cfi_startproc
+ 294              		@ args = 0, pretend = 0, frame = 8
+ 295              		@ frame_needed = 0, uses_anonymous_args = 0
+ 296              		@ link register save eliminated.
+ 297 0000 82B0     		sub	sp, sp, #8
+ 298              	.LCFI11:
+ 299              		.cfi_def_cfa_offset 8
+ 221:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   FlagStatus bitstatus = RESET;
+ 300              		.loc 1 221 0
+ 301 0002 0023     		movs	r3, #0
+ 302 0004 8DF80730 		strb	r3, [sp, #7]
+ 222:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****     
+ 223:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   if ((SYSCFG->CMPCR & SYSCFG_CMPCR_READY ) != (uint32_t)RESET)
+ 303              		.loc 1 223 0
+ 304 0008 084B     		ldr	r3, .L21
+ 305 000a 1B6A     		ldr	r3, [r3, #32]
+ 306 000c 03F48073 		and	r3, r3, #256
+ 307 0010 002B     		cmp	r3, #0
+ 308 0012 03D0     		beq	.L18
+ 224:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   {
+ 225:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****     bitstatus = SET;
+ 309              		.loc 1 225 0
+ 310 0014 0123     		movs	r3, #1
+ 311 0016 8DF80730 		strb	r3, [sp, #7]
+ 312 001a 02E0     		b	.L19
+ 313              	.L18:
+ 226:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   }
+ 227:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   else
+ 228:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   {
+ 229:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****     bitstatus = RESET;
+ 314              		.loc 1 229 0
+ 315 001c 0023     		movs	r3, #0
+ 316 001e 8DF80730 		strb	r3, [sp, #7]
+ 317              	.L19:
+ 230:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   }
+ 231:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c ****   return bitstatus;
+ 318              		.loc 1 231 0
+ 319 0022 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 232:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c **** }
+ 320              		.loc 1 232 0
+ 321 0026 1846     		mov	r0, r3
+ 322 0028 02B0     		add	sp, sp, #8
+ 323              	.LCFI12:
+ 324              		.cfi_def_cfa_offset 0
+ 325              		@ sp needed
+ 326 002a 7047     		bx	lr
+ 327              	.L22:
+ 328              		.align	2
+ 329              	.L21:
+ 330 002c 00380140 		.word	1073821696
+ 331              		.cfi_endproc
+ 332              	.LFE129:
+ 334              		.text
+ 335              	.Letext0:
+ 336              		.file 2 "/home/rdu/Software/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/_defau
+ 337              		.file 3 "/home/rdu/Software/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_stdint.h"
+ 338              		.file 4 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/CMSIS/CMSIS_STM32F4/Incl
+ 339              		.file 5 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/CMSIS/CMSIS_STM32F4/Devi
+ 340              		.file 6 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/CMSIS/CMSIS_STM32F4/Devi
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 stm32f4xx_syscfg.c
+     /tmp/ccaUbuBW.s:16     .text.SYSCFG_DeInit:0000000000000000 $t
+     /tmp/ccaUbuBW.s:23     .text.SYSCFG_DeInit:0000000000000000 SYSCFG_DeInit
+     /tmp/ccaUbuBW.s:50     .text.SYSCFG_MemoryRemapConfig:0000000000000000 $t
+     /tmp/ccaUbuBW.s:57     .text.SYSCFG_MemoryRemapConfig:0000000000000000 SYSCFG_MemoryRemapConfig
+     /tmp/ccaUbuBW.s:83     .text.SYSCFG_MemoryRemapConfig:0000000000000018 $d
+     /tmp/ccaUbuBW.s:88     .text.SYSCFG_MemorySwappingBank:0000000000000000 $t
+     /tmp/ccaUbuBW.s:95     .text.SYSCFG_MemorySwappingBank:0000000000000000 SYSCFG_MemorySwappingBank
+     /tmp/ccaUbuBW.s:121    .text.SYSCFG_MemorySwappingBank:0000000000000018 $d
+     /tmp/ccaUbuBW.s:126    .text.SYSCFG_EXTILineConfig:0000000000000000 $t
+     /tmp/ccaUbuBW.s:133    .text.SYSCFG_EXTILineConfig:0000000000000000 SYSCFG_EXTILineConfig
+     /tmp/ccaUbuBW.s:203    .text.SYSCFG_EXTILineConfig:0000000000000088 $d
+     /tmp/ccaUbuBW.s:208    .text.SYSCFG_ETH_MediaInterfaceConfig:0000000000000000 $t
+     /tmp/ccaUbuBW.s:215    .text.SYSCFG_ETH_MediaInterfaceConfig:0000000000000000 SYSCFG_ETH_MediaInterfaceConfig
+     /tmp/ccaUbuBW.s:240    .text.SYSCFG_ETH_MediaInterfaceConfig:0000000000000010 $d
+     /tmp/ccaUbuBW.s:245    .text.SYSCFG_CompensationCellCmd:0000000000000000 $t
+     /tmp/ccaUbuBW.s:252    .text.SYSCFG_CompensationCellCmd:0000000000000000 SYSCFG_CompensationCellCmd
+     /tmp/ccaUbuBW.s:278    .text.SYSCFG_CompensationCellCmd:0000000000000018 $d
+     /tmp/ccaUbuBW.s:283    .text.SYSCFG_GetCompensationCellStatus:0000000000000000 $t
+     /tmp/ccaUbuBW.s:290    .text.SYSCFG_GetCompensationCellStatus:0000000000000000 SYSCFG_GetCompensationCellStatus
+     /tmp/ccaUbuBW.s:330    .text.SYSCFG_GetCompensationCellStatus:000000000000002c $d
+
+UNDEFINED SYMBOLS
+RCC_APB2PeriphResetCmd

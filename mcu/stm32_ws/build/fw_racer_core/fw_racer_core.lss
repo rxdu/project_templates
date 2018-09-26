@@ -1,0 +1,3212 @@
+
+/home/rdu/Workspace/project_templates/mcu/stm32_ws/build/fw_racer_core/fw_racer_core.elf:     file format elf32-littlearm
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .isr_vector   00000188  08000000  08000000  00010000  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  1 .text         0000128c  08000190  08000190  00010190  2**4
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .rodata       00000064  0800141c  0800141c  0001141c  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  3 .data         00000000  20000000  20000000  00011480  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  4 .bss          00000544  20000000  08001480  00020000  2**2
+                  ALLOC
+  5 ._user_heap_stack 00000600  20000544  08001480  00020544  2**0
+                  ALLOC
+  6 .ARM.attributes 00000035  00000000  00000000  00011480  2**0
+                  CONTENTS, READONLY
+  7 .debug_info   0000b306  00000000  00000000  000114b5  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_abbrev 000015cb  00000000  00000000  0001c7bb  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_loc    00002b6a  00000000  00000000  0001dd86  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_aranges 00000878  00000000  00000000  000208f0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 000007e0  00000000  00000000  00021168  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_line   00003e26  00000000  00000000  00021948  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 13 .debug_str    00003979  00000000  00000000  0002576e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 14 .comment      0000007e  00000000  00000000  000290e7  2**0
+                  CONTENTS, READONLY
+ 15 .debug_frame  000018fc  00000000  00000000  00029168  2**2
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+08000190 <memcpy>:
+ 8000190:	4684      	mov	ip, r0
+ 8000192:	ea41 0300 	orr.w	r3, r1, r0
+ 8000196:	f013 0303 	ands.w	r3, r3, #3
+ 800019a:	d16d      	bne.n	8000278 <memcpy+0xe8>
+ 800019c:	3a40      	subs	r2, #64	; 0x40
+ 800019e:	d341      	bcc.n	8000224 <memcpy+0x94>
+ 80001a0:	f851 3b04 	ldr.w	r3, [r1], #4
+ 80001a4:	f840 3b04 	str.w	r3, [r0], #4
+ 80001a8:	f851 3b04 	ldr.w	r3, [r1], #4
+ 80001ac:	f840 3b04 	str.w	r3, [r0], #4
+ 80001b0:	f851 3b04 	ldr.w	r3, [r1], #4
+ 80001b4:	f840 3b04 	str.w	r3, [r0], #4
+ 80001b8:	f851 3b04 	ldr.w	r3, [r1], #4
+ 80001bc:	f840 3b04 	str.w	r3, [r0], #4
+ 80001c0:	f851 3b04 	ldr.w	r3, [r1], #4
+ 80001c4:	f840 3b04 	str.w	r3, [r0], #4
+ 80001c8:	f851 3b04 	ldr.w	r3, [r1], #4
+ 80001cc:	f840 3b04 	str.w	r3, [r0], #4
+ 80001d0:	f851 3b04 	ldr.w	r3, [r1], #4
+ 80001d4:	f840 3b04 	str.w	r3, [r0], #4
+ 80001d8:	f851 3b04 	ldr.w	r3, [r1], #4
+ 80001dc:	f840 3b04 	str.w	r3, [r0], #4
+ 80001e0:	f851 3b04 	ldr.w	r3, [r1], #4
+ 80001e4:	f840 3b04 	str.w	r3, [r0], #4
+ 80001e8:	f851 3b04 	ldr.w	r3, [r1], #4
+ 80001ec:	f840 3b04 	str.w	r3, [r0], #4
+ 80001f0:	f851 3b04 	ldr.w	r3, [r1], #4
+ 80001f4:	f840 3b04 	str.w	r3, [r0], #4
+ 80001f8:	f851 3b04 	ldr.w	r3, [r1], #4
+ 80001fc:	f840 3b04 	str.w	r3, [r0], #4
+ 8000200:	f851 3b04 	ldr.w	r3, [r1], #4
+ 8000204:	f840 3b04 	str.w	r3, [r0], #4
+ 8000208:	f851 3b04 	ldr.w	r3, [r1], #4
+ 800020c:	f840 3b04 	str.w	r3, [r0], #4
+ 8000210:	f851 3b04 	ldr.w	r3, [r1], #4
+ 8000214:	f840 3b04 	str.w	r3, [r0], #4
+ 8000218:	f851 3b04 	ldr.w	r3, [r1], #4
+ 800021c:	f840 3b04 	str.w	r3, [r0], #4
+ 8000220:	3a40      	subs	r2, #64	; 0x40
+ 8000222:	d2bd      	bcs.n	80001a0 <memcpy+0x10>
+ 8000224:	3230      	adds	r2, #48	; 0x30
+ 8000226:	d311      	bcc.n	800024c <memcpy+0xbc>
+ 8000228:	f851 3b04 	ldr.w	r3, [r1], #4
+ 800022c:	f840 3b04 	str.w	r3, [r0], #4
+ 8000230:	f851 3b04 	ldr.w	r3, [r1], #4
+ 8000234:	f840 3b04 	str.w	r3, [r0], #4
+ 8000238:	f851 3b04 	ldr.w	r3, [r1], #4
+ 800023c:	f840 3b04 	str.w	r3, [r0], #4
+ 8000240:	f851 3b04 	ldr.w	r3, [r1], #4
+ 8000244:	f840 3b04 	str.w	r3, [r0], #4
+ 8000248:	3a10      	subs	r2, #16
+ 800024a:	d2ed      	bcs.n	8000228 <memcpy+0x98>
+ 800024c:	320c      	adds	r2, #12
+ 800024e:	d305      	bcc.n	800025c <memcpy+0xcc>
+ 8000250:	f851 3b04 	ldr.w	r3, [r1], #4
+ 8000254:	f840 3b04 	str.w	r3, [r0], #4
+ 8000258:	3a04      	subs	r2, #4
+ 800025a:	d2f9      	bcs.n	8000250 <memcpy+0xc0>
+ 800025c:	3204      	adds	r2, #4
+ 800025e:	d008      	beq.n	8000272 <memcpy+0xe2>
+ 8000260:	07d2      	lsls	r2, r2, #31
+ 8000262:	bf1c      	itt	ne
+ 8000264:	f811 3b01 	ldrbne.w	r3, [r1], #1
+ 8000268:	f800 3b01 	strbne.w	r3, [r0], #1
+ 800026c:	d301      	bcc.n	8000272 <memcpy+0xe2>
+ 800026e:	880b      	ldrh	r3, [r1, #0]
+ 8000270:	8003      	strh	r3, [r0, #0]
+ 8000272:	4660      	mov	r0, ip
+ 8000274:	4770      	bx	lr
+ 8000276:	bf00      	nop
+ 8000278:	2a08      	cmp	r2, #8
+ 800027a:	d313      	bcc.n	80002a4 <memcpy+0x114>
+ 800027c:	078b      	lsls	r3, r1, #30
+ 800027e:	d08d      	beq.n	800019c <memcpy+0xc>
+ 8000280:	f010 0303 	ands.w	r3, r0, #3
+ 8000284:	d08a      	beq.n	800019c <memcpy+0xc>
+ 8000286:	f1c3 0304 	rsb	r3, r3, #4
+ 800028a:	1ad2      	subs	r2, r2, r3
+ 800028c:	07db      	lsls	r3, r3, #31
+ 800028e:	bf1c      	itt	ne
+ 8000290:	f811 3b01 	ldrbne.w	r3, [r1], #1
+ 8000294:	f800 3b01 	strbne.w	r3, [r0], #1
+ 8000298:	d380      	bcc.n	800019c <memcpy+0xc>
+ 800029a:	f831 3b02 	ldrh.w	r3, [r1], #2
+ 800029e:	f820 3b02 	strh.w	r3, [r0], #2
+ 80002a2:	e77b      	b.n	800019c <memcpy+0xc>
+ 80002a4:	3a04      	subs	r2, #4
+ 80002a6:	d3d9      	bcc.n	800025c <memcpy+0xcc>
+ 80002a8:	3a01      	subs	r2, #1
+ 80002aa:	f811 3b01 	ldrb.w	r3, [r1], #1
+ 80002ae:	f800 3b01 	strb.w	r3, [r0], #1
+ 80002b2:	d2f9      	bcs.n	80002a8 <memcpy+0x118>
+ 80002b4:	780b      	ldrb	r3, [r1, #0]
+ 80002b6:	7003      	strb	r3, [r0, #0]
+ 80002b8:	784b      	ldrb	r3, [r1, #1]
+ 80002ba:	7043      	strb	r3, [r0, #1]
+ 80002bc:	788b      	ldrb	r3, [r1, #2]
+ 80002be:	7083      	strb	r3, [r0, #2]
+ 80002c0:	4660      	mov	r0, ip
+ 80002c2:	4770      	bx	lr
+
+080002c4 <Reset_Handler>:
+ 80002c4:	2100      	movs	r1, #0
+ 80002c6:	e003      	b.n	80002d0 <LoopCopyDataInit>
+
+080002c8 <CopyDataInit>:
+ 80002c8:	4b0a      	ldr	r3, [pc, #40]	; (80002f4 <LoopFillZerobss+0x10>)
+ 80002ca:	585b      	ldr	r3, [r3, r1]
+ 80002cc:	5043      	str	r3, [r0, r1]
+ 80002ce:	3104      	adds	r1, #4
+
+080002d0 <LoopCopyDataInit>:
+ 80002d0:	4809      	ldr	r0, [pc, #36]	; (80002f8 <LoopFillZerobss+0x14>)
+ 80002d2:	4b0a      	ldr	r3, [pc, #40]	; (80002fc <LoopFillZerobss+0x18>)
+ 80002d4:	1842      	adds	r2, r0, r1
+ 80002d6:	429a      	cmp	r2, r3
+ 80002d8:	d3f6      	bcc.n	80002c8 <CopyDataInit>
+ 80002da:	4a09      	ldr	r2, [pc, #36]	; (8000300 <LoopFillZerobss+0x1c>)
+ 80002dc:	e002      	b.n	80002e4 <LoopFillZerobss>
+
+080002de <FillZerobss>:
+ 80002de:	2300      	movs	r3, #0
+ 80002e0:	f842 3b04 	str.w	r3, [r2], #4
+
+080002e4 <LoopFillZerobss>:
+ 80002e4:	4b07      	ldr	r3, [pc, #28]	; (8000304 <LoopFillZerobss+0x20>)
+ 80002e6:	429a      	cmp	r2, r3
+ 80002e8:	d3f9      	bcc.n	80002de <FillZerobss>
+ 80002ea:	f000 fedd 	bl	80010a8 <SystemInit>
+ 80002ee:	f000 fcb3 	bl	8000c58 <main>
+ 80002f2:	4770      	bx	lr
+ 80002f4:	08001480 	.word	0x08001480
+ 80002f8:	20000000 	.word	0x20000000
+ 80002fc:	20000000 	.word	0x20000000
+ 8000300:	20000000 	.word	0x20000000
+ 8000304:	20000544 	.word	0x20000544
+
+08000308 <ADC_IRQHandler>:
+ 8000308:	e7fe      	b.n	8000308 <ADC_IRQHandler>
+	...
+
+0800030c <_DoInit>:
+*
+*/
+#define INIT()  do {                                            \
+                  if (_SEGGER_RTT.acID[0] == '\0') { _DoInit(); }  \
+                } while (0)
+static void _DoInit(void) {
+ 800030c:	b082      	sub	sp, #8
+  SEGGER_RTT_CB* p;
+  //
+  // Initialize control block
+  //
+  p = &_SEGGER_RTT;
+ 800030e:	4b20      	ldr	r3, [pc, #128]	; (8000390 <_DoInit+0x84>)
+ 8000310:	9301      	str	r3, [sp, #4]
+  p->MaxNumUpBuffers    = SEGGER_RTT_MAX_NUM_UP_BUFFERS;
+ 8000312:	9b01      	ldr	r3, [sp, #4]
+ 8000314:	2203      	movs	r2, #3
+ 8000316:	611a      	str	r2, [r3, #16]
+  p->MaxNumDownBuffers  = SEGGER_RTT_MAX_NUM_DOWN_BUFFERS;
+ 8000318:	9b01      	ldr	r3, [sp, #4]
+ 800031a:	2203      	movs	r2, #3
+ 800031c:	615a      	str	r2, [r3, #20]
+  //
+  // Initialize up buffer 0
+  //
+  p->aUp[0].sName         = "Terminal";
+ 800031e:	9b01      	ldr	r3, [sp, #4]
+ 8000320:	4a1c      	ldr	r2, [pc, #112]	; (8000394 <_DoInit+0x88>)
+ 8000322:	619a      	str	r2, [r3, #24]
+  p->aUp[0].pBuffer       = _acUpBuffer;
+ 8000324:	9b01      	ldr	r3, [sp, #4]
+ 8000326:	4a1c      	ldr	r2, [pc, #112]	; (8000398 <_DoInit+0x8c>)
+ 8000328:	61da      	str	r2, [r3, #28]
+  p->aUp[0].SizeOfBuffer  = sizeof(_acUpBuffer);
+ 800032a:	9b01      	ldr	r3, [sp, #4]
+ 800032c:	f44f 6280 	mov.w	r2, #1024	; 0x400
+ 8000330:	621a      	str	r2, [r3, #32]
+  p->aUp[0].RdOff         = 0u;
+ 8000332:	9b01      	ldr	r3, [sp, #4]
+ 8000334:	2200      	movs	r2, #0
+ 8000336:	629a      	str	r2, [r3, #40]	; 0x28
+  p->aUp[0].WrOff         = 0u;
+ 8000338:	9b01      	ldr	r3, [sp, #4]
+ 800033a:	2200      	movs	r2, #0
+ 800033c:	625a      	str	r2, [r3, #36]	; 0x24
+  p->aUp[0].Flags         = SEGGER_RTT_MODE_DEFAULT;
+ 800033e:	9b01      	ldr	r3, [sp, #4]
+ 8000340:	2200      	movs	r2, #0
+ 8000342:	62da      	str	r2, [r3, #44]	; 0x2c
+  //
+  // Initialize down buffer 0
+  //
+  p->aDown[0].sName         = "Terminal";
+ 8000344:	9b01      	ldr	r3, [sp, #4]
+ 8000346:	4a13      	ldr	r2, [pc, #76]	; (8000394 <_DoInit+0x88>)
+ 8000348:	661a      	str	r2, [r3, #96]	; 0x60
+  p->aDown[0].pBuffer       = _acDownBuffer;
+ 800034a:	9b01      	ldr	r3, [sp, #4]
+ 800034c:	4a13      	ldr	r2, [pc, #76]	; (800039c <_DoInit+0x90>)
+ 800034e:	665a      	str	r2, [r3, #100]	; 0x64
+  p->aDown[0].SizeOfBuffer  = sizeof(_acDownBuffer);
+ 8000350:	9b01      	ldr	r3, [sp, #4]
+ 8000352:	2210      	movs	r2, #16
+ 8000354:	669a      	str	r2, [r3, #104]	; 0x68
+  p->aDown[0].RdOff         = 0u;
+ 8000356:	9b01      	ldr	r3, [sp, #4]
+ 8000358:	2200      	movs	r2, #0
+ 800035a:	671a      	str	r2, [r3, #112]	; 0x70
+  p->aDown[0].WrOff         = 0u;
+ 800035c:	9b01      	ldr	r3, [sp, #4]
+ 800035e:	2200      	movs	r2, #0
+ 8000360:	66da      	str	r2, [r3, #108]	; 0x6c
+  p->aDown[0].Flags         = SEGGER_RTT_MODE_DEFAULT;
+ 8000362:	9b01      	ldr	r3, [sp, #4]
+ 8000364:	2200      	movs	r2, #0
+ 8000366:	675a      	str	r2, [r3, #116]	; 0x74
+  //
+  // Finish initialization of the control block.
+  // Copy Id string in three steps to make sure "SEGGER RTT" is not found
+  // in initializer memory (usually flash) by J-Link
+  //
+  strcpy(&p->acID[7], "RTT");
+ 8000368:	9b01      	ldr	r3, [sp, #4]
+ 800036a:	3307      	adds	r3, #7
+ 800036c:	4a0c      	ldr	r2, [pc, #48]	; (80003a0 <_DoInit+0x94>)
+ 800036e:	6810      	ldr	r0, [r2, #0]
+ 8000370:	6018      	str	r0, [r3, #0]
+  strcpy(&p->acID[0], "SEGGER");
+ 8000372:	9b01      	ldr	r3, [sp, #4]
+ 8000374:	4a0b      	ldr	r2, [pc, #44]	; (80003a4 <_DoInit+0x98>)
+ 8000376:	6810      	ldr	r0, [r2, #0]
+ 8000378:	6018      	str	r0, [r3, #0]
+ 800037a:	8891      	ldrh	r1, [r2, #4]
+ 800037c:	7992      	ldrb	r2, [r2, #6]
+ 800037e:	8099      	strh	r1, [r3, #4]
+ 8000380:	719a      	strb	r2, [r3, #6]
+  p->acID[6] = ' ';
+ 8000382:	9b01      	ldr	r3, [sp, #4]
+ 8000384:	2220      	movs	r2, #32
+ 8000386:	719a      	strb	r2, [r3, #6]
+}
+ 8000388:	bf00      	nop
+ 800038a:	b002      	add	sp, #8
+ 800038c:	4770      	bx	lr
+ 800038e:	bf00      	nop
+ 8000390:	2000049c 	.word	0x2000049c
+ 8000394:	0800141c 	.word	0x0800141c
+ 8000398:	20000000 	.word	0x20000000
+ 800039c:	20000400 	.word	0x20000400
+ 80003a0:	08001428 	.word	0x08001428
+ 80003a4:	0800142c 	.word	0x0800142c
+
+080003a8 <_WriteBlocking>:
+*    NumBytes     Number of bytes to be stored in the SEGGER RTT control block.
+*
+*  Return value
+*    >= 0 - Number of bytes written into buffer.
+*/
+static unsigned _WriteBlocking(SEGGER_RTT_BUFFER_UP* pRing, const char* pBuffer, unsigned NumBytes) {
+ 80003a8:	b500      	push	{lr}
+ 80003aa:	b089      	sub	sp, #36	; 0x24
+ 80003ac:	9003      	str	r0, [sp, #12]
+ 80003ae:	9102      	str	r1, [sp, #8]
+ 80003b0:	9201      	str	r2, [sp, #4]
+  unsigned RdOff;
+  unsigned WrOff;
+  //
+  // Write data to buffer and handle wrap-around if necessary
+  //
+  NumBytesWritten = 0u;
+ 80003b2:	2300      	movs	r3, #0
+ 80003b4:	9306      	str	r3, [sp, #24]
+  WrOff = pRing->WrOff;
+ 80003b6:	9b03      	ldr	r3, [sp, #12]
+ 80003b8:	68db      	ldr	r3, [r3, #12]
+ 80003ba:	9305      	str	r3, [sp, #20]
+  do {
+    RdOff = pRing->RdOff;                         // May be changed by host (debug probe) in the meantime
+ 80003bc:	9b03      	ldr	r3, [sp, #12]
+ 80003be:	691b      	ldr	r3, [r3, #16]
+ 80003c0:	9304      	str	r3, [sp, #16]
+    if (RdOff > WrOff) {
+ 80003c2:	9a04      	ldr	r2, [sp, #16]
+ 80003c4:	9b05      	ldr	r3, [sp, #20]
+ 80003c6:	429a      	cmp	r2, r3
+ 80003c8:	d905      	bls.n	80003d6 <_WriteBlocking+0x2e>
+      NumBytesToWrite = RdOff - WrOff - 1u;
+ 80003ca:	9a04      	ldr	r2, [sp, #16]
+ 80003cc:	9b05      	ldr	r3, [sp, #20]
+ 80003ce:	1ad3      	subs	r3, r2, r3
+ 80003d0:	3b01      	subs	r3, #1
+ 80003d2:	9307      	str	r3, [sp, #28]
+ 80003d4:	e007      	b.n	80003e6 <_WriteBlocking+0x3e>
+    } else {
+      NumBytesToWrite = pRing->SizeOfBuffer - (WrOff - RdOff + 1u);
+ 80003d6:	9b03      	ldr	r3, [sp, #12]
+ 80003d8:	689a      	ldr	r2, [r3, #8]
+ 80003da:	9904      	ldr	r1, [sp, #16]
+ 80003dc:	9b05      	ldr	r3, [sp, #20]
+ 80003de:	1acb      	subs	r3, r1, r3
+ 80003e0:	4413      	add	r3, r2
+ 80003e2:	3b01      	subs	r3, #1
+ 80003e4:	9307      	str	r3, [sp, #28]
+    }
+    NumBytesToWrite = MIN(NumBytesToWrite, (pRing->SizeOfBuffer - WrOff));      // Number of bytes that can be written until buffer wrap-around
+ 80003e6:	9b03      	ldr	r3, [sp, #12]
+ 80003e8:	689a      	ldr	r2, [r3, #8]
+ 80003ea:	9b05      	ldr	r3, [sp, #20]
+ 80003ec:	1ad3      	subs	r3, r2, r3
+ 80003ee:	9a07      	ldr	r2, [sp, #28]
+ 80003f0:	4293      	cmp	r3, r2
+ 80003f2:	bf28      	it	cs
+ 80003f4:	4613      	movcs	r3, r2
+ 80003f6:	9307      	str	r3, [sp, #28]
+    NumBytesToWrite = MIN(NumBytesToWrite, NumBytes);
+ 80003f8:	9a07      	ldr	r2, [sp, #28]
+ 80003fa:	9b01      	ldr	r3, [sp, #4]
+ 80003fc:	4293      	cmp	r3, r2
+ 80003fe:	bf28      	it	cs
+ 8000400:	4613      	movcs	r3, r2
+ 8000402:	9307      	str	r3, [sp, #28]
+    memcpy(pRing->pBuffer + WrOff, pBuffer, NumBytesToWrite);
+ 8000404:	9b03      	ldr	r3, [sp, #12]
+ 8000406:	685a      	ldr	r2, [r3, #4]
+ 8000408:	9b05      	ldr	r3, [sp, #20]
+ 800040a:	4413      	add	r3, r2
+ 800040c:	9a07      	ldr	r2, [sp, #28]
+ 800040e:	9902      	ldr	r1, [sp, #8]
+ 8000410:	4618      	mov	r0, r3
+ 8000412:	f7ff febd 	bl	8000190 <memcpy>
+    NumBytesWritten += NumBytesToWrite;
+ 8000416:	9a06      	ldr	r2, [sp, #24]
+ 8000418:	9b07      	ldr	r3, [sp, #28]
+ 800041a:	4413      	add	r3, r2
+ 800041c:	9306      	str	r3, [sp, #24]
+    pBuffer         += NumBytesToWrite;
+ 800041e:	9a02      	ldr	r2, [sp, #8]
+ 8000420:	9b07      	ldr	r3, [sp, #28]
+ 8000422:	4413      	add	r3, r2
+ 8000424:	9302      	str	r3, [sp, #8]
+    NumBytes        -= NumBytesToWrite;
+ 8000426:	9a01      	ldr	r2, [sp, #4]
+ 8000428:	9b07      	ldr	r3, [sp, #28]
+ 800042a:	1ad3      	subs	r3, r2, r3
+ 800042c:	9301      	str	r3, [sp, #4]
+    WrOff           += NumBytesToWrite;
+ 800042e:	9a05      	ldr	r2, [sp, #20]
+ 8000430:	9b07      	ldr	r3, [sp, #28]
+ 8000432:	4413      	add	r3, r2
+ 8000434:	9305      	str	r3, [sp, #20]
+    if (WrOff == pRing->SizeOfBuffer) {
+ 8000436:	9b03      	ldr	r3, [sp, #12]
+ 8000438:	689b      	ldr	r3, [r3, #8]
+ 800043a:	9a05      	ldr	r2, [sp, #20]
+ 800043c:	429a      	cmp	r2, r3
+ 800043e:	d101      	bne.n	8000444 <_WriteBlocking+0x9c>
+      WrOff = 0u;
+ 8000440:	2300      	movs	r3, #0
+ 8000442:	9305      	str	r3, [sp, #20]
+    }
+    pRing->WrOff = WrOff;
+ 8000444:	9b03      	ldr	r3, [sp, #12]
+ 8000446:	9a05      	ldr	r2, [sp, #20]
+ 8000448:	60da      	str	r2, [r3, #12]
+  } while (NumBytes);
+ 800044a:	9b01      	ldr	r3, [sp, #4]
+ 800044c:	2b00      	cmp	r3, #0
+ 800044e:	d1b5      	bne.n	80003bc <_WriteBlocking+0x14>
+  //
+  return NumBytesWritten;
+ 8000450:	9b06      	ldr	r3, [sp, #24]
+}
+ 8000452:	4618      	mov	r0, r3
+ 8000454:	b009      	add	sp, #36	; 0x24
+ 8000456:	f85d fb04 	ldr.w	pc, [sp], #4
+
+0800045a <_WriteNoCheck>:
+*    NumBytes     Number of bytes to be stored in the SEGGER RTT control block.
+*
+*  Notes
+*    (1) If there might not be enough space in the "Up"-buffer, call _WriteBlocking
+*/
+static void _WriteNoCheck(SEGGER_RTT_BUFFER_UP* pRing, const char* pData, unsigned NumBytes) {
+ 800045a:	b500      	push	{lr}
+ 800045c:	b089      	sub	sp, #36	; 0x24
+ 800045e:	9003      	str	r0, [sp, #12]
+ 8000460:	9102      	str	r1, [sp, #8]
+ 8000462:	9201      	str	r2, [sp, #4]
+  unsigned NumBytesAtOnce;
+  unsigned WrOff;
+  unsigned Rem;
+
+  WrOff = pRing->WrOff;
+ 8000464:	9b03      	ldr	r3, [sp, #12]
+ 8000466:	68db      	ldr	r3, [r3, #12]
+ 8000468:	9307      	str	r3, [sp, #28]
+  Rem = pRing->SizeOfBuffer - WrOff;
+ 800046a:	9b03      	ldr	r3, [sp, #12]
+ 800046c:	689a      	ldr	r2, [r3, #8]
+ 800046e:	9b07      	ldr	r3, [sp, #28]
+ 8000470:	1ad3      	subs	r3, r2, r3
+ 8000472:	9306      	str	r3, [sp, #24]
+  if (Rem > NumBytes) {
+ 8000474:	9a06      	ldr	r2, [sp, #24]
+ 8000476:	9b01      	ldr	r3, [sp, #4]
+ 8000478:	429a      	cmp	r2, r3
+ 800047a:	d90e      	bls.n	800049a <_WriteNoCheck+0x40>
+    //
+    // All data fits before wrap around
+    //
+    memcpy(pRing->pBuffer + WrOff, pData, NumBytes);
+ 800047c:	9b03      	ldr	r3, [sp, #12]
+ 800047e:	685a      	ldr	r2, [r3, #4]
+ 8000480:	9b07      	ldr	r3, [sp, #28]
+ 8000482:	4413      	add	r3, r2
+ 8000484:	9a01      	ldr	r2, [sp, #4]
+ 8000486:	9902      	ldr	r1, [sp, #8]
+ 8000488:	4618      	mov	r0, r3
+ 800048a:	f7ff fe81 	bl	8000190 <memcpy>
+    pRing->WrOff = WrOff + NumBytes;
+ 800048e:	9a07      	ldr	r2, [sp, #28]
+ 8000490:	9b01      	ldr	r3, [sp, #4]
+ 8000492:	441a      	add	r2, r3
+ 8000494:	9b03      	ldr	r3, [sp, #12]
+ 8000496:	60da      	str	r2, [r3, #12]
+    memcpy(pRing->pBuffer + WrOff, pData, NumBytesAtOnce);
+    NumBytesAtOnce = NumBytes - Rem;
+    memcpy(pRing->pBuffer, pData + Rem, NumBytesAtOnce);
+    pRing->WrOff = NumBytesAtOnce;
+  }
+}
+ 8000498:	e01a      	b.n	80004d0 <_WriteNoCheck+0x76>
+    NumBytesAtOnce = Rem;
+ 800049a:	9b06      	ldr	r3, [sp, #24]
+ 800049c:	9305      	str	r3, [sp, #20]
+    memcpy(pRing->pBuffer + WrOff, pData, NumBytesAtOnce);
+ 800049e:	9b03      	ldr	r3, [sp, #12]
+ 80004a0:	685a      	ldr	r2, [r3, #4]
+ 80004a2:	9b07      	ldr	r3, [sp, #28]
+ 80004a4:	4413      	add	r3, r2
+ 80004a6:	9a05      	ldr	r2, [sp, #20]
+ 80004a8:	9902      	ldr	r1, [sp, #8]
+ 80004aa:	4618      	mov	r0, r3
+ 80004ac:	f7ff fe70 	bl	8000190 <memcpy>
+    NumBytesAtOnce = NumBytes - Rem;
+ 80004b0:	9a01      	ldr	r2, [sp, #4]
+ 80004b2:	9b06      	ldr	r3, [sp, #24]
+ 80004b4:	1ad3      	subs	r3, r2, r3
+ 80004b6:	9305      	str	r3, [sp, #20]
+    memcpy(pRing->pBuffer, pData + Rem, NumBytesAtOnce);
+ 80004b8:	9b03      	ldr	r3, [sp, #12]
+ 80004ba:	6858      	ldr	r0, [r3, #4]
+ 80004bc:	9a02      	ldr	r2, [sp, #8]
+ 80004be:	9b06      	ldr	r3, [sp, #24]
+ 80004c0:	4413      	add	r3, r2
+ 80004c2:	9a05      	ldr	r2, [sp, #20]
+ 80004c4:	4619      	mov	r1, r3
+ 80004c6:	f7ff fe63 	bl	8000190 <memcpy>
+    pRing->WrOff = NumBytesAtOnce;
+ 80004ca:	9b03      	ldr	r3, [sp, #12]
+ 80004cc:	9a05      	ldr	r2, [sp, #20]
+ 80004ce:	60da      	str	r2, [r3, #12]
+}
+ 80004d0:	bf00      	nop
+ 80004d2:	b009      	add	sp, #36	; 0x24
+ 80004d4:	f85d fb04 	ldr.w	pc, [sp], #4
+
+080004d8 <_GetAvailWriteSpace>:
+*    pRing        Ring buffer to check.
+*
+*  Return value
+*    Number of bytes that are free in the buffer.
+*/
+static unsigned _GetAvailWriteSpace(SEGGER_RTT_BUFFER_UP* pRing) {
+ 80004d8:	b086      	sub	sp, #24
+ 80004da:	9001      	str	r0, [sp, #4]
+  unsigned r;
+  //
+  // Avoid warnings regarding volatile access order.  It's not a problem
+  // in this case, but dampen compiler enthusiasm.
+  //
+  RdOff = pRing->RdOff;
+ 80004dc:	9b01      	ldr	r3, [sp, #4]
+ 80004de:	691b      	ldr	r3, [r3, #16]
+ 80004e0:	9304      	str	r3, [sp, #16]
+  WrOff = pRing->WrOff;
+ 80004e2:	9b01      	ldr	r3, [sp, #4]
+ 80004e4:	68db      	ldr	r3, [r3, #12]
+ 80004e6:	9303      	str	r3, [sp, #12]
+  if (RdOff <= WrOff) {
+ 80004e8:	9a04      	ldr	r2, [sp, #16]
+ 80004ea:	9b03      	ldr	r3, [sp, #12]
+ 80004ec:	429a      	cmp	r2, r3
+ 80004ee:	d808      	bhi.n	8000502 <_GetAvailWriteSpace+0x2a>
+    r = pRing->SizeOfBuffer - 1u - WrOff + RdOff;
+ 80004f0:	9b01      	ldr	r3, [sp, #4]
+ 80004f2:	689a      	ldr	r2, [r3, #8]
+ 80004f4:	9b03      	ldr	r3, [sp, #12]
+ 80004f6:	1ad2      	subs	r2, r2, r3
+ 80004f8:	9b04      	ldr	r3, [sp, #16]
+ 80004fa:	4413      	add	r3, r2
+ 80004fc:	3b01      	subs	r3, #1
+ 80004fe:	9305      	str	r3, [sp, #20]
+ 8000500:	e004      	b.n	800050c <_GetAvailWriteSpace+0x34>
+  } else {
+    r = RdOff - WrOff - 1u;
+ 8000502:	9a04      	ldr	r2, [sp, #16]
+ 8000504:	9b03      	ldr	r3, [sp, #12]
+ 8000506:	1ad3      	subs	r3, r2, r3
+ 8000508:	3b01      	subs	r3, #1
+ 800050a:	9305      	str	r3, [sp, #20]
+  }
+  return r;
+ 800050c:	9b05      	ldr	r3, [sp, #20]
+}
+ 800050e:	4618      	mov	r0, r3
+ 8000510:	b006      	add	sp, #24
+ 8000512:	4770      	bx	lr
+
+08000514 <SEGGER_RTT_WriteNoLock>:
+*    (1) If there is not enough space in the "Up"-buffer, remaining characters of pBuffer are dropped.
+*    (2) For performance reasons this function does not call Init()
+*        and may only be called after RTT has been initialized.
+*        Either by calling SEGGER_RTT_Init() or calling another RTT API function first.
+*/
+unsigned SEGGER_RTT_WriteNoLock(unsigned BufferIndex, const void* pBuffer, unsigned NumBytes) {
+ 8000514:	b500      	push	{lr}
+ 8000516:	b089      	sub	sp, #36	; 0x24
+ 8000518:	9003      	str	r0, [sp, #12]
+ 800051a:	9102      	str	r1, [sp, #8]
+ 800051c:	9201      	str	r2, [sp, #4]
+  unsigned              Status;
+  unsigned              Avail;
+  const char*           pData;
+  SEGGER_RTT_BUFFER_UP* pRing;
+
+  pData = (const char *)pBuffer;
+ 800051e:	9b02      	ldr	r3, [sp, #8]
+ 8000520:	9306      	str	r3, [sp, #24]
+  //
+  // Get "to-host" ring buffer.
+  //
+  pRing = &_SEGGER_RTT.aUp[BufferIndex];
+ 8000522:	9b03      	ldr	r3, [sp, #12]
+ 8000524:	1c5a      	adds	r2, r3, #1
+ 8000526:	4613      	mov	r3, r2
+ 8000528:	005b      	lsls	r3, r3, #1
+ 800052a:	4413      	add	r3, r2
+ 800052c:	00db      	lsls	r3, r3, #3
+ 800052e:	4a1f      	ldr	r2, [pc, #124]	; (80005ac <SEGGER_RTT_WriteNoLock+0x98>)
+ 8000530:	4413      	add	r3, r2
+ 8000532:	9305      	str	r3, [sp, #20]
+  //
+  // How we output depends upon the mode...
+  //
+  switch (pRing->Flags) {
+ 8000534:	9b05      	ldr	r3, [sp, #20]
+ 8000536:	695b      	ldr	r3, [r3, #20]
+ 8000538:	2b01      	cmp	r3, #1
+ 800053a:	d017      	beq.n	800056c <SEGGER_RTT_WriteNoLock+0x58>
+ 800053c:	2b01      	cmp	r3, #1
+ 800053e:	d302      	bcc.n	8000546 <SEGGER_RTT_WriteNoLock+0x32>
+ 8000540:	2b02      	cmp	r3, #2
+ 8000542:	d023      	beq.n	800058c <SEGGER_RTT_WriteNoLock+0x78>
+ 8000544:	e029      	b.n	800059a <SEGGER_RTT_WriteNoLock+0x86>
+  case SEGGER_RTT_MODE_NO_BLOCK_SKIP:
+    //
+    // If we are in skip mode and there is no space for the whole
+    // of this output, don't bother.
+    //
+    Avail = _GetAvailWriteSpace(pRing);
+ 8000546:	9805      	ldr	r0, [sp, #20]
+ 8000548:	f7ff ffc6 	bl	80004d8 <_GetAvailWriteSpace>
+ 800054c:	9004      	str	r0, [sp, #16]
+    if (Avail < NumBytes) {
+ 800054e:	9a04      	ldr	r2, [sp, #16]
+ 8000550:	9b01      	ldr	r3, [sp, #4]
+ 8000552:	429a      	cmp	r2, r3
+ 8000554:	d202      	bcs.n	800055c <SEGGER_RTT_WriteNoLock+0x48>
+      Status = 0u;
+ 8000556:	2300      	movs	r3, #0
+ 8000558:	9307      	str	r3, [sp, #28]
+    } else {
+      Status = NumBytes;
+      _WriteNoCheck(pRing, pData, NumBytes);
+    }
+    break;
+ 800055a:	e021      	b.n	80005a0 <SEGGER_RTT_WriteNoLock+0x8c>
+      Status = NumBytes;
+ 800055c:	9b01      	ldr	r3, [sp, #4]
+ 800055e:	9307      	str	r3, [sp, #28]
+      _WriteNoCheck(pRing, pData, NumBytes);
+ 8000560:	9a01      	ldr	r2, [sp, #4]
+ 8000562:	9906      	ldr	r1, [sp, #24]
+ 8000564:	9805      	ldr	r0, [sp, #20]
+ 8000566:	f7ff ff78 	bl	800045a <_WriteNoCheck>
+    break;
+ 800056a:	e019      	b.n	80005a0 <SEGGER_RTT_WriteNoLock+0x8c>
+  case SEGGER_RTT_MODE_NO_BLOCK_TRIM:
+    //
+    // If we are in trim mode, trim to what we can output without blocking.
+    //
+    Avail = _GetAvailWriteSpace(pRing);
+ 800056c:	9805      	ldr	r0, [sp, #20]
+ 800056e:	f7ff ffb3 	bl	80004d8 <_GetAvailWriteSpace>
+ 8000572:	9004      	str	r0, [sp, #16]
+    Status = Avail < NumBytes ? Avail : NumBytes;
+ 8000574:	9a01      	ldr	r2, [sp, #4]
+ 8000576:	9b04      	ldr	r3, [sp, #16]
+ 8000578:	4293      	cmp	r3, r2
+ 800057a:	bf28      	it	cs
+ 800057c:	4613      	movcs	r3, r2
+ 800057e:	9307      	str	r3, [sp, #28]
+    _WriteNoCheck(pRing, pData, Status);
+ 8000580:	9a07      	ldr	r2, [sp, #28]
+ 8000582:	9906      	ldr	r1, [sp, #24]
+ 8000584:	9805      	ldr	r0, [sp, #20]
+ 8000586:	f7ff ff68 	bl	800045a <_WriteNoCheck>
+    break;
+ 800058a:	e009      	b.n	80005a0 <SEGGER_RTT_WriteNoLock+0x8c>
+  case SEGGER_RTT_MODE_BLOCK_IF_FIFO_FULL:
+    //
+    // If we are in blocking mode, output everything.
+    //
+    Status = _WriteBlocking(pRing, pData, NumBytes);
+ 800058c:	9a01      	ldr	r2, [sp, #4]
+ 800058e:	9906      	ldr	r1, [sp, #24]
+ 8000590:	9805      	ldr	r0, [sp, #20]
+ 8000592:	f7ff ff09 	bl	80003a8 <_WriteBlocking>
+ 8000596:	9007      	str	r0, [sp, #28]
+    break;
+ 8000598:	e002      	b.n	80005a0 <SEGGER_RTT_WriteNoLock+0x8c>
+  default:
+    Status = 0u;
+ 800059a:	2300      	movs	r3, #0
+ 800059c:	9307      	str	r3, [sp, #28]
+    break;
+ 800059e:	bf00      	nop
+  }
+  //
+  // Finish up.
+  //
+  return Status;
+ 80005a0:	9b07      	ldr	r3, [sp, #28]
+}
+ 80005a2:	4618      	mov	r0, r3
+ 80005a4:	b009      	add	sp, #36	; 0x24
+ 80005a6:	f85d fb04 	ldr.w	pc, [sp], #4
+ 80005aa:	bf00      	nop
+ 80005ac:	2000049c 	.word	0x2000049c
+
+080005b0 <SEGGER_RTT_Write>:
+*    Number of bytes which have been stored in the "Up"-buffer.
+*
+*  Notes
+*    (1) If there is not enough space in the "Up"-buffer, remaining characters of pBuffer are dropped.
+*/
+unsigned SEGGER_RTT_Write(unsigned BufferIndex, const void* pBuffer, unsigned NumBytes) {
+ 80005b0:	b500      	push	{lr}
+ 80005b2:	b087      	sub	sp, #28
+ 80005b4:	9003      	str	r0, [sp, #12]
+ 80005b6:	9102      	str	r1, [sp, #8]
+ 80005b8:	9201      	str	r2, [sp, #4]
+  unsigned Status;
+  //
+  INIT();
+ 80005ba:	4b0d      	ldr	r3, [pc, #52]	; (80005f0 <SEGGER_RTT_Write+0x40>)
+ 80005bc:	781b      	ldrb	r3, [r3, #0]
+ 80005be:	2b00      	cmp	r3, #0
+ 80005c0:	d101      	bne.n	80005c6 <SEGGER_RTT_Write+0x16>
+ 80005c2:	f7ff fea3 	bl	800030c <_DoInit>
+  SEGGER_RTT_LOCK();
+ 80005c6:	f3ef 8311 	mrs	r3, BASEPRI
+ 80005ca:	f04f 0120 	mov.w	r1, #32
+ 80005ce:	f381 8811 	msr	BASEPRI, r1
+ 80005d2:	9305      	str	r3, [sp, #20]
+  //
+  // Call the non-locking write function
+  //
+  Status = SEGGER_RTT_WriteNoLock(BufferIndex, pBuffer, NumBytes);
+ 80005d4:	9a01      	ldr	r2, [sp, #4]
+ 80005d6:	9902      	ldr	r1, [sp, #8]
+ 80005d8:	9803      	ldr	r0, [sp, #12]
+ 80005da:	f7ff ff9b 	bl	8000514 <SEGGER_RTT_WriteNoLock>
+ 80005de:	9004      	str	r0, [sp, #16]
+  //
+  // Finish up.
+  //
+  SEGGER_RTT_UNLOCK();
+ 80005e0:	9b05      	ldr	r3, [sp, #20]
+ 80005e2:	f383 8811 	msr	BASEPRI, r3
+  //
+  return Status;
+ 80005e6:	9b04      	ldr	r3, [sp, #16]
+}
+ 80005e8:	4618      	mov	r0, r3
+ 80005ea:	b007      	add	sp, #28
+ 80005ec:	f85d fb04 	ldr.w	pc, [sp], #4
+ 80005f0:	2000049c 	.word	0x2000049c
+
+080005f4 <_StoreChar>:
+*/
+/*********************************************************************
+*
+*       _StoreChar
+*/
+static void _StoreChar(SEGGER_RTT_PRINTF_DESC * p, char c) {
+ 80005f4:	b500      	push	{lr}
+ 80005f6:	b085      	sub	sp, #20
+ 80005f8:	9001      	str	r0, [sp, #4]
+ 80005fa:	460b      	mov	r3, r1
+ 80005fc:	f88d 3003 	strb.w	r3, [sp, #3]
+  unsigned Cnt;
+
+  Cnt = p->Cnt;
+ 8000600:	9b01      	ldr	r3, [sp, #4]
+ 8000602:	689b      	ldr	r3, [r3, #8]
+ 8000604:	9303      	str	r3, [sp, #12]
+  if ((Cnt + 1u) <= p->BufferSize) {
+ 8000606:	9b03      	ldr	r3, [sp, #12]
+ 8000608:	1c5a      	adds	r2, r3, #1
+ 800060a:	9b01      	ldr	r3, [sp, #4]
+ 800060c:	685b      	ldr	r3, [r3, #4]
+ 800060e:	429a      	cmp	r2, r3
+ 8000610:	d80f      	bhi.n	8000632 <_StoreChar+0x3e>
+    *(p->pBuffer + Cnt) = c;
+ 8000612:	9b01      	ldr	r3, [sp, #4]
+ 8000614:	681a      	ldr	r2, [r3, #0]
+ 8000616:	9b03      	ldr	r3, [sp, #12]
+ 8000618:	4413      	add	r3, r2
+ 800061a:	f89d 2003 	ldrb.w	r2, [sp, #3]
+ 800061e:	701a      	strb	r2, [r3, #0]
+    p->Cnt = Cnt + 1u;
+ 8000620:	9b03      	ldr	r3, [sp, #12]
+ 8000622:	1c5a      	adds	r2, r3, #1
+ 8000624:	9b01      	ldr	r3, [sp, #4]
+ 8000626:	609a      	str	r2, [r3, #8]
+    p->ReturnValue++;
+ 8000628:	9b01      	ldr	r3, [sp, #4]
+ 800062a:	68db      	ldr	r3, [r3, #12]
+ 800062c:	1c5a      	adds	r2, r3, #1
+ 800062e:	9b01      	ldr	r3, [sp, #4]
+ 8000630:	60da      	str	r2, [r3, #12]
+  }
+  //
+  // Write part of string, when the buffer is full
+  //
+  if (p->Cnt == p->BufferSize) {
+ 8000632:	9b01      	ldr	r3, [sp, #4]
+ 8000634:	689a      	ldr	r2, [r3, #8]
+ 8000636:	9b01      	ldr	r3, [sp, #4]
+ 8000638:	685b      	ldr	r3, [r3, #4]
+ 800063a:	429a      	cmp	r2, r3
+ 800063c:	d115      	bne.n	800066a <_StoreChar+0x76>
+    if (SEGGER_RTT_Write(p->RTTBufferIndex, p->pBuffer, p->Cnt) != p->Cnt) {
+ 800063e:	9b01      	ldr	r3, [sp, #4]
+ 8000640:	6918      	ldr	r0, [r3, #16]
+ 8000642:	9b01      	ldr	r3, [sp, #4]
+ 8000644:	6819      	ldr	r1, [r3, #0]
+ 8000646:	9b01      	ldr	r3, [sp, #4]
+ 8000648:	689b      	ldr	r3, [r3, #8]
+ 800064a:	461a      	mov	r2, r3
+ 800064c:	f7ff ffb0 	bl	80005b0 <SEGGER_RTT_Write>
+ 8000650:	4602      	mov	r2, r0
+ 8000652:	9b01      	ldr	r3, [sp, #4]
+ 8000654:	689b      	ldr	r3, [r3, #8]
+ 8000656:	429a      	cmp	r2, r3
+ 8000658:	d004      	beq.n	8000664 <_StoreChar+0x70>
+      p->ReturnValue = -1;
+ 800065a:	9b01      	ldr	r3, [sp, #4]
+ 800065c:	f04f 32ff 	mov.w	r2, #4294967295	; 0xffffffff
+ 8000660:	60da      	str	r2, [r3, #12]
+    } else {
+      p->Cnt = 0u;
+    }
+  }
+}
+ 8000662:	e002      	b.n	800066a <_StoreChar+0x76>
+      p->Cnt = 0u;
+ 8000664:	9b01      	ldr	r3, [sp, #4]
+ 8000666:	2200      	movs	r2, #0
+ 8000668:	609a      	str	r2, [r3, #8]
+}
+ 800066a:	bf00      	nop
+ 800066c:	b005      	add	sp, #20
+ 800066e:	f85d fb04 	ldr.w	pc, [sp], #4
+	...
+
+08000674 <_PrintUnsigned>:
+
+/*********************************************************************
+*
+*       _PrintUnsigned
+*/
+static void _PrintUnsigned(SEGGER_RTT_PRINTF_DESC * pBufferDesc, unsigned v, unsigned Base, unsigned NumDigits, unsigned FieldWidth, unsigned FormatFlags) {
+ 8000674:	b500      	push	{lr}
+ 8000676:	b08b      	sub	sp, #44	; 0x2c
+ 8000678:	9003      	str	r0, [sp, #12]
+ 800067a:	9102      	str	r1, [sp, #8]
+ 800067c:	9201      	str	r2, [sp, #4]
+ 800067e:	9300      	str	r3, [sp, #0]
+  unsigned Digit;
+  unsigned Number;
+  unsigned Width;
+  char c;
+
+  Number = v;
+ 8000680:	9b02      	ldr	r3, [sp, #8]
+ 8000682:	9308      	str	r3, [sp, #32]
+  Digit = 1u;
+ 8000684:	2301      	movs	r3, #1
+ 8000686:	9309      	str	r3, [sp, #36]	; 0x24
+  //
+  // Get actual field width
+  //
+  Width = 1u;
+ 8000688:	2301      	movs	r3, #1
+ 800068a:	9307      	str	r3, [sp, #28]
+  while (Number >= Base) {
+ 800068c:	e007      	b.n	800069e <_PrintUnsigned+0x2a>
+    Number = (Number / Base);
+ 800068e:	9a08      	ldr	r2, [sp, #32]
+ 8000690:	9b01      	ldr	r3, [sp, #4]
+ 8000692:	fbb2 f3f3 	udiv	r3, r2, r3
+ 8000696:	9308      	str	r3, [sp, #32]
+    Width++;
+ 8000698:	9b07      	ldr	r3, [sp, #28]
+ 800069a:	3301      	adds	r3, #1
+ 800069c:	9307      	str	r3, [sp, #28]
+  while (Number >= Base) {
+ 800069e:	9a08      	ldr	r2, [sp, #32]
+ 80006a0:	9b01      	ldr	r3, [sp, #4]
+ 80006a2:	429a      	cmp	r2, r3
+ 80006a4:	d2f3      	bcs.n	800068e <_PrintUnsigned+0x1a>
+  }
+  if (NumDigits > Width) {
+ 80006a6:	9a00      	ldr	r2, [sp, #0]
+ 80006a8:	9b07      	ldr	r3, [sp, #28]
+ 80006aa:	429a      	cmp	r2, r3
+ 80006ac:	d901      	bls.n	80006b2 <_PrintUnsigned+0x3e>
+    Width = NumDigits;
+ 80006ae:	9b00      	ldr	r3, [sp, #0]
+ 80006b0:	9307      	str	r3, [sp, #28]
+  }
+  //
+  // Print leading chars if necessary
+  //
+  if ((FormatFlags & FORMAT_FLAG_LEFT_JUSTIFY) == 0u) {
+ 80006b2:	9b0d      	ldr	r3, [sp, #52]	; 0x34
+ 80006b4:	f003 0301 	and.w	r3, r3, #1
+ 80006b8:	2b00      	cmp	r3, #0
+ 80006ba:	d128      	bne.n	800070e <_PrintUnsigned+0x9a>
+    if (FieldWidth != 0u) {
+ 80006bc:	9b0c      	ldr	r3, [sp, #48]	; 0x30
+ 80006be:	2b00      	cmp	r3, #0
+ 80006c0:	d025      	beq.n	800070e <_PrintUnsigned+0x9a>
+      if (((FormatFlags & FORMAT_FLAG_PAD_ZERO) == FORMAT_FLAG_PAD_ZERO) && (NumDigits == 0u)) {
+ 80006c2:	9b0d      	ldr	r3, [sp, #52]	; 0x34
+ 80006c4:	f003 0302 	and.w	r3, r3, #2
+ 80006c8:	2b00      	cmp	r3, #0
+ 80006ca:	d006      	beq.n	80006da <_PrintUnsigned+0x66>
+ 80006cc:	9b00      	ldr	r3, [sp, #0]
+ 80006ce:	2b00      	cmp	r3, #0
+ 80006d0:	d103      	bne.n	80006da <_PrintUnsigned+0x66>
+        c = '0';
+ 80006d2:	2330      	movs	r3, #48	; 0x30
+ 80006d4:	f88d 301b 	strb.w	r3, [sp, #27]
+ 80006d8:	e002      	b.n	80006e0 <_PrintUnsigned+0x6c>
+      } else {
+        c = ' ';
+ 80006da:	2320      	movs	r3, #32
+ 80006dc:	f88d 301b 	strb.w	r3, [sp, #27]
+      }
+      while ((FieldWidth != 0u) && (Width < FieldWidth)) {
+ 80006e0:	e00c      	b.n	80006fc <_PrintUnsigned+0x88>
+        FieldWidth--;
+ 80006e2:	9b0c      	ldr	r3, [sp, #48]	; 0x30
+ 80006e4:	3b01      	subs	r3, #1
+ 80006e6:	930c      	str	r3, [sp, #48]	; 0x30
+        _StoreChar(pBufferDesc, c);
+ 80006e8:	f89d 301b 	ldrb.w	r3, [sp, #27]
+ 80006ec:	4619      	mov	r1, r3
+ 80006ee:	9803      	ldr	r0, [sp, #12]
+ 80006f0:	f7ff ff80 	bl	80005f4 <_StoreChar>
+        if (pBufferDesc->ReturnValue < 0) {
+ 80006f4:	9b03      	ldr	r3, [sp, #12]
+ 80006f6:	68db      	ldr	r3, [r3, #12]
+ 80006f8:	2b00      	cmp	r3, #0
+ 80006fa:	db07      	blt.n	800070c <_PrintUnsigned+0x98>
+      while ((FieldWidth != 0u) && (Width < FieldWidth)) {
+ 80006fc:	9b0c      	ldr	r3, [sp, #48]	; 0x30
+ 80006fe:	2b00      	cmp	r3, #0
+ 8000700:	d005      	beq.n	800070e <_PrintUnsigned+0x9a>
+ 8000702:	9a07      	ldr	r2, [sp, #28]
+ 8000704:	9b0c      	ldr	r3, [sp, #48]	; 0x30
+ 8000706:	429a      	cmp	r2, r3
+ 8000708:	d3eb      	bcc.n	80006e2 <_PrintUnsigned+0x6e>
+ 800070a:	e000      	b.n	800070e <_PrintUnsigned+0x9a>
+          break;
+ 800070c:	bf00      	nop
+        }
+      }
+    }
+  }
+  if (pBufferDesc->ReturnValue >= 0) {
+ 800070e:	9b03      	ldr	r3, [sp, #12]
+ 8000710:	68db      	ldr	r3, [r3, #12]
+ 8000712:	2b00      	cmp	r3, #0
+ 8000714:	db55      	blt.n	80007c2 <_PrintUnsigned+0x14e>
+    // Compute Digit.
+    // Loop until Digit has the value of the highest digit required.
+    // Example: If the output is 345 (Base 10), loop 2 times until Digit is 100.
+    //
+    while (1) {
+      if (NumDigits > 1u) {       // User specified a min number of digits to print? => Make sure we loop at least that often, before checking anything else (> 1 check avoids problems with NumDigits being signed / unsigned)
+ 8000716:	9b00      	ldr	r3, [sp, #0]
+ 8000718:	2b01      	cmp	r3, #1
+ 800071a:	d903      	bls.n	8000724 <_PrintUnsigned+0xb0>
+        NumDigits--;
+ 800071c:	9b00      	ldr	r3, [sp, #0]
+ 800071e:	3b01      	subs	r3, #1
+ 8000720:	9300      	str	r3, [sp, #0]
+ 8000722:	e009      	b.n	8000738 <_PrintUnsigned+0xc4>
+      } else {
+        Div = v / Digit;
+ 8000724:	9a02      	ldr	r2, [sp, #8]
+ 8000726:	9b09      	ldr	r3, [sp, #36]	; 0x24
+ 8000728:	fbb2 f3f3 	udiv	r3, r2, r3
+ 800072c:	9305      	str	r3, [sp, #20]
+        if (Div < Base) {        // Is our divider big enough to extract the highest digit from value? => Done
+ 800072e:	9a05      	ldr	r2, [sp, #20]
+ 8000730:	9b01      	ldr	r3, [sp, #4]
+ 8000732:	429a      	cmp	r2, r3
+ 8000734:	d200      	bcs.n	8000738 <_PrintUnsigned+0xc4>
+          break;
+ 8000736:	e005      	b.n	8000744 <_PrintUnsigned+0xd0>
+        }
+      }
+      Digit *= Base;
+ 8000738:	9b09      	ldr	r3, [sp, #36]	; 0x24
+ 800073a:	9a01      	ldr	r2, [sp, #4]
+ 800073c:	fb02 f303 	mul.w	r3, r2, r3
+ 8000740:	9309      	str	r3, [sp, #36]	; 0x24
+      if (NumDigits > 1u) {       // User specified a min number of digits to print? => Make sure we loop at least that often, before checking anything else (> 1 check avoids problems with NumDigits being signed / unsigned)
+ 8000742:	e7e8      	b.n	8000716 <_PrintUnsigned+0xa2>
+    }
+    //
+    // Output digits
+    //
+    do {
+      Div = v / Digit;
+ 8000744:	9a02      	ldr	r2, [sp, #8]
+ 8000746:	9b09      	ldr	r3, [sp, #36]	; 0x24
+ 8000748:	fbb2 f3f3 	udiv	r3, r2, r3
+ 800074c:	9305      	str	r3, [sp, #20]
+      v -= Div * Digit;
+ 800074e:	9b05      	ldr	r3, [sp, #20]
+ 8000750:	9a09      	ldr	r2, [sp, #36]	; 0x24
+ 8000752:	fb02 f303 	mul.w	r3, r2, r3
+ 8000756:	9a02      	ldr	r2, [sp, #8]
+ 8000758:	1ad3      	subs	r3, r2, r3
+ 800075a:	9302      	str	r3, [sp, #8]
+      _StoreChar(pBufferDesc, _aV2C[Div]);
+ 800075c:	4a1b      	ldr	r2, [pc, #108]	; (80007cc <_PrintUnsigned+0x158>)
+ 800075e:	9b05      	ldr	r3, [sp, #20]
+ 8000760:	4413      	add	r3, r2
+ 8000762:	781b      	ldrb	r3, [r3, #0]
+ 8000764:	4619      	mov	r1, r3
+ 8000766:	9803      	ldr	r0, [sp, #12]
+ 8000768:	f7ff ff44 	bl	80005f4 <_StoreChar>
+      if (pBufferDesc->ReturnValue < 0) {
+ 800076c:	9b03      	ldr	r3, [sp, #12]
+ 800076e:	68db      	ldr	r3, [r3, #12]
+ 8000770:	2b00      	cmp	r3, #0
+ 8000772:	db08      	blt.n	8000786 <_PrintUnsigned+0x112>
+        break;
+      }
+      Digit /= Base;
+ 8000774:	9a09      	ldr	r2, [sp, #36]	; 0x24
+ 8000776:	9b01      	ldr	r3, [sp, #4]
+ 8000778:	fbb2 f3f3 	udiv	r3, r2, r3
+ 800077c:	9309      	str	r3, [sp, #36]	; 0x24
+    } while (Digit);
+ 800077e:	9b09      	ldr	r3, [sp, #36]	; 0x24
+ 8000780:	2b00      	cmp	r3, #0
+ 8000782:	d1df      	bne.n	8000744 <_PrintUnsigned+0xd0>
+ 8000784:	e000      	b.n	8000788 <_PrintUnsigned+0x114>
+        break;
+ 8000786:	bf00      	nop
+    //
+    // Print trailing spaces if necessary
+    //
+    if ((FormatFlags & FORMAT_FLAG_LEFT_JUSTIFY) == FORMAT_FLAG_LEFT_JUSTIFY) {
+ 8000788:	9b0d      	ldr	r3, [sp, #52]	; 0x34
+ 800078a:	f003 0301 	and.w	r3, r3, #1
+ 800078e:	2b00      	cmp	r3, #0
+ 8000790:	d017      	beq.n	80007c2 <_PrintUnsigned+0x14e>
+      if (FieldWidth != 0u) {
+ 8000792:	9b0c      	ldr	r3, [sp, #48]	; 0x30
+ 8000794:	2b00      	cmp	r3, #0
+ 8000796:	d014      	beq.n	80007c2 <_PrintUnsigned+0x14e>
+        while ((FieldWidth != 0u) && (Width < FieldWidth)) {
+ 8000798:	e00a      	b.n	80007b0 <_PrintUnsigned+0x13c>
+          FieldWidth--;
+ 800079a:	9b0c      	ldr	r3, [sp, #48]	; 0x30
+ 800079c:	3b01      	subs	r3, #1
+ 800079e:	930c      	str	r3, [sp, #48]	; 0x30
+          _StoreChar(pBufferDesc, ' ');
+ 80007a0:	2120      	movs	r1, #32
+ 80007a2:	9803      	ldr	r0, [sp, #12]
+ 80007a4:	f7ff ff26 	bl	80005f4 <_StoreChar>
+          if (pBufferDesc->ReturnValue < 0) {
+ 80007a8:	9b03      	ldr	r3, [sp, #12]
+ 80007aa:	68db      	ldr	r3, [r3, #12]
+ 80007ac:	2b00      	cmp	r3, #0
+ 80007ae:	db07      	blt.n	80007c0 <_PrintUnsigned+0x14c>
+        while ((FieldWidth != 0u) && (Width < FieldWidth)) {
+ 80007b0:	9b0c      	ldr	r3, [sp, #48]	; 0x30
+ 80007b2:	2b00      	cmp	r3, #0
+ 80007b4:	d005      	beq.n	80007c2 <_PrintUnsigned+0x14e>
+ 80007b6:	9a07      	ldr	r2, [sp, #28]
+ 80007b8:	9b0c      	ldr	r3, [sp, #48]	; 0x30
+ 80007ba:	429a      	cmp	r2, r3
+ 80007bc:	d3ed      	bcc.n	800079a <_PrintUnsigned+0x126>
+          }
+        }
+      }
+    }
+  }
+}
+ 80007be:	e000      	b.n	80007c2 <_PrintUnsigned+0x14e>
+            break;
+ 80007c0:	bf00      	nop
+}
+ 80007c2:	bf00      	nop
+ 80007c4:	b00b      	add	sp, #44	; 0x2c
+ 80007c6:	f85d fb04 	ldr.w	pc, [sp], #4
+ 80007ca:	bf00      	nop
+ 80007cc:	08001470 	.word	0x08001470
+
+080007d0 <_PrintInt>:
+
+/*********************************************************************
+*
+*       _PrintInt
+*/
+static void _PrintInt(SEGGER_RTT_PRINTF_DESC * pBufferDesc, int v, unsigned Base, unsigned NumDigits, unsigned FieldWidth, unsigned FormatFlags) {
+ 80007d0:	b500      	push	{lr}
+ 80007d2:	b089      	sub	sp, #36	; 0x24
+ 80007d4:	9005      	str	r0, [sp, #20]
+ 80007d6:	9104      	str	r1, [sp, #16]
+ 80007d8:	9203      	str	r2, [sp, #12]
+ 80007da:	9302      	str	r3, [sp, #8]
+  unsigned Width;
+  int Number;
+
+  Number = (v < 0) ? -v : v;
+ 80007dc:	9b04      	ldr	r3, [sp, #16]
+ 80007de:	2b00      	cmp	r3, #0
+ 80007e0:	bfb8      	it	lt
+ 80007e2:	425b      	neglt	r3, r3
+ 80007e4:	9306      	str	r3, [sp, #24]
+
+  //
+  // Get actual field width
+  //
+  Width = 1u;
+ 80007e6:	2301      	movs	r3, #1
+ 80007e8:	9307      	str	r3, [sp, #28]
+  while (Number >= (int)Base) {
+ 80007ea:	e007      	b.n	80007fc <_PrintInt+0x2c>
+    Number = (Number / (int)Base);
+ 80007ec:	9b03      	ldr	r3, [sp, #12]
+ 80007ee:	9a06      	ldr	r2, [sp, #24]
+ 80007f0:	fb92 f3f3 	sdiv	r3, r2, r3
+ 80007f4:	9306      	str	r3, [sp, #24]
+    Width++;
+ 80007f6:	9b07      	ldr	r3, [sp, #28]
+ 80007f8:	3301      	adds	r3, #1
+ 80007fa:	9307      	str	r3, [sp, #28]
+  while (Number >= (int)Base) {
+ 80007fc:	9b03      	ldr	r3, [sp, #12]
+ 80007fe:	9a06      	ldr	r2, [sp, #24]
+ 8000800:	429a      	cmp	r2, r3
+ 8000802:	daf3      	bge.n	80007ec <_PrintInt+0x1c>
+  }
+  if (NumDigits > Width) {
+ 8000804:	9a02      	ldr	r2, [sp, #8]
+ 8000806:	9b07      	ldr	r3, [sp, #28]
+ 8000808:	429a      	cmp	r2, r3
+ 800080a:	d901      	bls.n	8000810 <_PrintInt+0x40>
+    Width = NumDigits;
+ 800080c:	9b02      	ldr	r3, [sp, #8]
+ 800080e:	9307      	str	r3, [sp, #28]
+  }
+  if ((FieldWidth > 0u) && ((v < 0) || ((FormatFlags & FORMAT_FLAG_PRINT_SIGN) == FORMAT_FLAG_PRINT_SIGN))) {
+ 8000810:	9b0a      	ldr	r3, [sp, #40]	; 0x28
+ 8000812:	2b00      	cmp	r3, #0
+ 8000814:	d00a      	beq.n	800082c <_PrintInt+0x5c>
+ 8000816:	9b04      	ldr	r3, [sp, #16]
+ 8000818:	2b00      	cmp	r3, #0
+ 800081a:	db04      	blt.n	8000826 <_PrintInt+0x56>
+ 800081c:	9b0b      	ldr	r3, [sp, #44]	; 0x2c
+ 800081e:	f003 0304 	and.w	r3, r3, #4
+ 8000822:	2b00      	cmp	r3, #0
+ 8000824:	d002      	beq.n	800082c <_PrintInt+0x5c>
+    FieldWidth--;
+ 8000826:	9b0a      	ldr	r3, [sp, #40]	; 0x28
+ 8000828:	3b01      	subs	r3, #1
+ 800082a:	930a      	str	r3, [sp, #40]	; 0x28
+  }
+
+  //
+  // Print leading spaces if necessary
+  //
+  if ((((FormatFlags & FORMAT_FLAG_PAD_ZERO) == 0u) || (NumDigits != 0u)) && ((FormatFlags & FORMAT_FLAG_LEFT_JUSTIFY) == 0u)) {
+ 800082c:	9b0b      	ldr	r3, [sp, #44]	; 0x2c
+ 800082e:	f003 0302 	and.w	r3, r3, #2
+ 8000832:	2b00      	cmp	r3, #0
+ 8000834:	d002      	beq.n	800083c <_PrintInt+0x6c>
+ 8000836:	9b02      	ldr	r3, [sp, #8]
+ 8000838:	2b00      	cmp	r3, #0
+ 800083a:	d01c      	beq.n	8000876 <_PrintInt+0xa6>
+ 800083c:	9b0b      	ldr	r3, [sp, #44]	; 0x2c
+ 800083e:	f003 0301 	and.w	r3, r3, #1
+ 8000842:	2b00      	cmp	r3, #0
+ 8000844:	d117      	bne.n	8000876 <_PrintInt+0xa6>
+    if (FieldWidth != 0u) {
+ 8000846:	9b0a      	ldr	r3, [sp, #40]	; 0x28
+ 8000848:	2b00      	cmp	r3, #0
+ 800084a:	d014      	beq.n	8000876 <_PrintInt+0xa6>
+      while ((FieldWidth != 0u) && (Width < FieldWidth)) {
+ 800084c:	e00a      	b.n	8000864 <_PrintInt+0x94>
+        FieldWidth--;
+ 800084e:	9b0a      	ldr	r3, [sp, #40]	; 0x28
+ 8000850:	3b01      	subs	r3, #1
+ 8000852:	930a      	str	r3, [sp, #40]	; 0x28
+        _StoreChar(pBufferDesc, ' ');
+ 8000854:	2120      	movs	r1, #32
+ 8000856:	9805      	ldr	r0, [sp, #20]
+ 8000858:	f7ff fecc 	bl	80005f4 <_StoreChar>
+        if (pBufferDesc->ReturnValue < 0) {
+ 800085c:	9b05      	ldr	r3, [sp, #20]
+ 800085e:	68db      	ldr	r3, [r3, #12]
+ 8000860:	2b00      	cmp	r3, #0
+ 8000862:	db07      	blt.n	8000874 <_PrintInt+0xa4>
+      while ((FieldWidth != 0u) && (Width < FieldWidth)) {
+ 8000864:	9b0a      	ldr	r3, [sp, #40]	; 0x28
+ 8000866:	2b00      	cmp	r3, #0
+ 8000868:	d005      	beq.n	8000876 <_PrintInt+0xa6>
+ 800086a:	9a07      	ldr	r2, [sp, #28]
+ 800086c:	9b0a      	ldr	r3, [sp, #40]	; 0x28
+ 800086e:	429a      	cmp	r2, r3
+ 8000870:	d3ed      	bcc.n	800084e <_PrintInt+0x7e>
+ 8000872:	e000      	b.n	8000876 <_PrintInt+0xa6>
+          break;
+ 8000874:	bf00      	nop
+    }
+  }
+  //
+  // Print sign if necessary
+  //
+  if (pBufferDesc->ReturnValue >= 0) {
+ 8000876:	9b05      	ldr	r3, [sp, #20]
+ 8000878:	68db      	ldr	r3, [r3, #12]
+ 800087a:	2b00      	cmp	r3, #0
+ 800087c:	db4a      	blt.n	8000914 <_PrintInt+0x144>
+    if (v < 0) {
+ 800087e:	9b04      	ldr	r3, [sp, #16]
+ 8000880:	2b00      	cmp	r3, #0
+ 8000882:	da07      	bge.n	8000894 <_PrintInt+0xc4>
+      v = -v;
+ 8000884:	9b04      	ldr	r3, [sp, #16]
+ 8000886:	425b      	negs	r3, r3
+ 8000888:	9304      	str	r3, [sp, #16]
+      _StoreChar(pBufferDesc, '-');
+ 800088a:	212d      	movs	r1, #45	; 0x2d
+ 800088c:	9805      	ldr	r0, [sp, #20]
+ 800088e:	f7ff feb1 	bl	80005f4 <_StoreChar>
+ 8000892:	e008      	b.n	80008a6 <_PrintInt+0xd6>
+    } else if ((FormatFlags & FORMAT_FLAG_PRINT_SIGN) == FORMAT_FLAG_PRINT_SIGN) {
+ 8000894:	9b0b      	ldr	r3, [sp, #44]	; 0x2c
+ 8000896:	f003 0304 	and.w	r3, r3, #4
+ 800089a:	2b00      	cmp	r3, #0
+ 800089c:	d003      	beq.n	80008a6 <_PrintInt+0xd6>
+      _StoreChar(pBufferDesc, '+');
+ 800089e:	212b      	movs	r1, #43	; 0x2b
+ 80008a0:	9805      	ldr	r0, [sp, #20]
+ 80008a2:	f7ff fea7 	bl	80005f4 <_StoreChar>
+    } else {
+
+    }
+    if (pBufferDesc->ReturnValue >= 0) {
+ 80008a6:	9b05      	ldr	r3, [sp, #20]
+ 80008a8:	68db      	ldr	r3, [r3, #12]
+ 80008aa:	2b00      	cmp	r3, #0
+ 80008ac:	db32      	blt.n	8000914 <_PrintInt+0x144>
+      //
+      // Print leading zeros if necessary
+      //
+      if (((FormatFlags & FORMAT_FLAG_PAD_ZERO) == FORMAT_FLAG_PAD_ZERO) && ((FormatFlags & FORMAT_FLAG_LEFT_JUSTIFY) == 0u) && (NumDigits == 0u)) {
+ 80008ae:	9b0b      	ldr	r3, [sp, #44]	; 0x2c
+ 80008b0:	f003 0302 	and.w	r3, r3, #2
+ 80008b4:	2b00      	cmp	r3, #0
+ 80008b6:	d01f      	beq.n	80008f8 <_PrintInt+0x128>
+ 80008b8:	9b0b      	ldr	r3, [sp, #44]	; 0x2c
+ 80008ba:	f003 0301 	and.w	r3, r3, #1
+ 80008be:	2b00      	cmp	r3, #0
+ 80008c0:	d11a      	bne.n	80008f8 <_PrintInt+0x128>
+ 80008c2:	9b02      	ldr	r3, [sp, #8]
+ 80008c4:	2b00      	cmp	r3, #0
+ 80008c6:	d117      	bne.n	80008f8 <_PrintInt+0x128>
+        if (FieldWidth != 0u) {
+ 80008c8:	9b0a      	ldr	r3, [sp, #40]	; 0x28
+ 80008ca:	2b00      	cmp	r3, #0
+ 80008cc:	d014      	beq.n	80008f8 <_PrintInt+0x128>
+          while ((FieldWidth != 0u) && (Width < FieldWidth)) {
+ 80008ce:	e00a      	b.n	80008e6 <_PrintInt+0x116>
+            FieldWidth--;
+ 80008d0:	9b0a      	ldr	r3, [sp, #40]	; 0x28
+ 80008d2:	3b01      	subs	r3, #1
+ 80008d4:	930a      	str	r3, [sp, #40]	; 0x28
+            _StoreChar(pBufferDesc, '0');
+ 80008d6:	2130      	movs	r1, #48	; 0x30
+ 80008d8:	9805      	ldr	r0, [sp, #20]
+ 80008da:	f7ff fe8b 	bl	80005f4 <_StoreChar>
+            if (pBufferDesc->ReturnValue < 0) {
+ 80008de:	9b05      	ldr	r3, [sp, #20]
+ 80008e0:	68db      	ldr	r3, [r3, #12]
+ 80008e2:	2b00      	cmp	r3, #0
+ 80008e4:	db07      	blt.n	80008f6 <_PrintInt+0x126>
+          while ((FieldWidth != 0u) && (Width < FieldWidth)) {
+ 80008e6:	9b0a      	ldr	r3, [sp, #40]	; 0x28
+ 80008e8:	2b00      	cmp	r3, #0
+ 80008ea:	d005      	beq.n	80008f8 <_PrintInt+0x128>
+ 80008ec:	9a07      	ldr	r2, [sp, #28]
+ 80008ee:	9b0a      	ldr	r3, [sp, #40]	; 0x28
+ 80008f0:	429a      	cmp	r2, r3
+ 80008f2:	d3ed      	bcc.n	80008d0 <_PrintInt+0x100>
+ 80008f4:	e000      	b.n	80008f8 <_PrintInt+0x128>
+              break;
+ 80008f6:	bf00      	nop
+            }
+          }
+        }
+      }
+      if (pBufferDesc->ReturnValue >= 0) {
+ 80008f8:	9b05      	ldr	r3, [sp, #20]
+ 80008fa:	68db      	ldr	r3, [r3, #12]
+ 80008fc:	2b00      	cmp	r3, #0
+ 80008fe:	db09      	blt.n	8000914 <_PrintInt+0x144>
+        //
+        // Print number without sign
+        //
+        _PrintUnsigned(pBufferDesc, (unsigned)v, Base, NumDigits, FieldWidth, FormatFlags);
+ 8000900:	9904      	ldr	r1, [sp, #16]
+ 8000902:	9b0b      	ldr	r3, [sp, #44]	; 0x2c
+ 8000904:	9301      	str	r3, [sp, #4]
+ 8000906:	9b0a      	ldr	r3, [sp, #40]	; 0x28
+ 8000908:	9300      	str	r3, [sp, #0]
+ 800090a:	9b02      	ldr	r3, [sp, #8]
+ 800090c:	9a03      	ldr	r2, [sp, #12]
+ 800090e:	9805      	ldr	r0, [sp, #20]
+ 8000910:	f7ff feb0 	bl	8000674 <_PrintUnsigned>
+      }
+    }
+  }
+}
+ 8000914:	bf00      	nop
+ 8000916:	b009      	add	sp, #36	; 0x24
+ 8000918:	f85d fb04 	ldr.w	pc, [sp], #4
+
+0800091c <SEGGER_RTT_vprintf>:
+*
+*  Return values
+*    >= 0:  Number of bytes which have been stored in the "Up"-buffer.
+*     < 0:  Error
+*/
+int SEGGER_RTT_vprintf(unsigned BufferIndex, const char * sFormat, va_list * pParamList) {
+ 800091c:	b500      	push	{lr}
+ 800091e:	b0a3      	sub	sp, #140	; 0x8c
+ 8000920:	9005      	str	r0, [sp, #20]
+ 8000922:	9104      	str	r1, [sp, #16]
+ 8000924:	9203      	str	r2, [sp, #12]
+  unsigned NumDigits;
+  unsigned FormatFlags;
+  unsigned FieldWidth;
+  char acBuffer[SEGGER_RTT_PRINTF_BUFFER_SIZE];
+
+  BufferDesc.pBuffer        = acBuffer;
+ 8000926:	ab06      	add	r3, sp, #24
+ 8000928:	9316      	str	r3, [sp, #88]	; 0x58
+  BufferDesc.BufferSize     = SEGGER_RTT_PRINTF_BUFFER_SIZE;
+ 800092a:	2340      	movs	r3, #64	; 0x40
+ 800092c:	9317      	str	r3, [sp, #92]	; 0x5c
+  BufferDesc.Cnt            = 0u;
+ 800092e:	2300      	movs	r3, #0
+ 8000930:	9318      	str	r3, [sp, #96]	; 0x60
+  BufferDesc.RTTBufferIndex = BufferIndex;
+ 8000932:	9b05      	ldr	r3, [sp, #20]
+ 8000934:	931a      	str	r3, [sp, #104]	; 0x68
+  BufferDesc.ReturnValue    = 0;
+ 8000936:	2300      	movs	r3, #0
+ 8000938:	9319      	str	r3, [sp, #100]	; 0x64
+
+  do {
+    c = *sFormat;
+ 800093a:	9b04      	ldr	r3, [sp, #16]
+ 800093c:	781b      	ldrb	r3, [r3, #0]
+ 800093e:	f88d 3087 	strb.w	r3, [sp, #135]	; 0x87
+    sFormat++;
+ 8000942:	9b04      	ldr	r3, [sp, #16]
+ 8000944:	3301      	adds	r3, #1
+ 8000946:	9304      	str	r3, [sp, #16]
+    if (c == 0u) {
+ 8000948:	f89d 3087 	ldrb.w	r3, [sp, #135]	; 0x87
+ 800094c:	2b00      	cmp	r3, #0
+ 800094e:	f000 8159 	beq.w	8000c04 <SEGGER_RTT_vprintf+0x2e8>
+      break;
+    }
+    if (c == '%') {
+ 8000952:	f89d 3087 	ldrb.w	r3, [sp, #135]	; 0x87
+ 8000956:	2b25      	cmp	r3, #37	; 0x25
+ 8000958:	f040 8148 	bne.w	8000bec <SEGGER_RTT_vprintf+0x2d0>
+      //
+      // Filter out flags
+      //
+      FormatFlags = 0u;
+ 800095c:	2300      	movs	r3, #0
+ 800095e:	931e      	str	r3, [sp, #120]	; 0x78
+      v = 1;
+ 8000960:	2301      	movs	r3, #1
+ 8000962:	9320      	str	r3, [sp, #128]	; 0x80
+      do {
+        c = *sFormat;
+ 8000964:	9b04      	ldr	r3, [sp, #16]
+ 8000966:	781b      	ldrb	r3, [r3, #0]
+ 8000968:	f88d 3087 	strb.w	r3, [sp, #135]	; 0x87
+        switch (c) {
+ 800096c:	f89d 3087 	ldrb.w	r3, [sp, #135]	; 0x87
+ 8000970:	3b23      	subs	r3, #35	; 0x23
+ 8000972:	2b0d      	cmp	r3, #13
+ 8000974:	d83e      	bhi.n	80009f4 <SEGGER_RTT_vprintf+0xd8>
+ 8000976:	a201      	add	r2, pc, #4	; (adr r2, 800097c <SEGGER_RTT_vprintf+0x60>)
+ 8000978:	f852 f023 	ldr.w	pc, [r2, r3, lsl #2]
+ 800097c:	080009e5 	.word	0x080009e5
+ 8000980:	080009f5 	.word	0x080009f5
+ 8000984:	080009f5 	.word	0x080009f5
+ 8000988:	080009f5 	.word	0x080009f5
+ 800098c:	080009f5 	.word	0x080009f5
+ 8000990:	080009f5 	.word	0x080009f5
+ 8000994:	080009f5 	.word	0x080009f5
+ 8000998:	080009f5 	.word	0x080009f5
+ 800099c:	080009d5 	.word	0x080009d5
+ 80009a0:	080009f5 	.word	0x080009f5
+ 80009a4:	080009b5 	.word	0x080009b5
+ 80009a8:	080009f5 	.word	0x080009f5
+ 80009ac:	080009f5 	.word	0x080009f5
+ 80009b0:	080009c5 	.word	0x080009c5
+        case '-': FormatFlags |= FORMAT_FLAG_LEFT_JUSTIFY; sFormat++; break;
+ 80009b4:	9b1e      	ldr	r3, [sp, #120]	; 0x78
+ 80009b6:	f043 0301 	orr.w	r3, r3, #1
+ 80009ba:	931e      	str	r3, [sp, #120]	; 0x78
+ 80009bc:	9b04      	ldr	r3, [sp, #16]
+ 80009be:	3301      	adds	r3, #1
+ 80009c0:	9304      	str	r3, [sp, #16]
+ 80009c2:	e01a      	b.n	80009fa <SEGGER_RTT_vprintf+0xde>
+        case '0': FormatFlags |= FORMAT_FLAG_PAD_ZERO;     sFormat++; break;
+ 80009c4:	9b1e      	ldr	r3, [sp, #120]	; 0x78
+ 80009c6:	f043 0302 	orr.w	r3, r3, #2
+ 80009ca:	931e      	str	r3, [sp, #120]	; 0x78
+ 80009cc:	9b04      	ldr	r3, [sp, #16]
+ 80009ce:	3301      	adds	r3, #1
+ 80009d0:	9304      	str	r3, [sp, #16]
+ 80009d2:	e012      	b.n	80009fa <SEGGER_RTT_vprintf+0xde>
+        case '+': FormatFlags |= FORMAT_FLAG_PRINT_SIGN;   sFormat++; break;
+ 80009d4:	9b1e      	ldr	r3, [sp, #120]	; 0x78
+ 80009d6:	f043 0304 	orr.w	r3, r3, #4
+ 80009da:	931e      	str	r3, [sp, #120]	; 0x78
+ 80009dc:	9b04      	ldr	r3, [sp, #16]
+ 80009de:	3301      	adds	r3, #1
+ 80009e0:	9304      	str	r3, [sp, #16]
+ 80009e2:	e00a      	b.n	80009fa <SEGGER_RTT_vprintf+0xde>
+        case '#': FormatFlags |= FORMAT_FLAG_ALTERNATE;    sFormat++; break;
+ 80009e4:	9b1e      	ldr	r3, [sp, #120]	; 0x78
+ 80009e6:	f043 0308 	orr.w	r3, r3, #8
+ 80009ea:	931e      	str	r3, [sp, #120]	; 0x78
+ 80009ec:	9b04      	ldr	r3, [sp, #16]
+ 80009ee:	3301      	adds	r3, #1
+ 80009f0:	9304      	str	r3, [sp, #16]
+ 80009f2:	e002      	b.n	80009fa <SEGGER_RTT_vprintf+0xde>
+        default:  v = 0; break;
+ 80009f4:	2300      	movs	r3, #0
+ 80009f6:	9320      	str	r3, [sp, #128]	; 0x80
+ 80009f8:	bf00      	nop
+        }
+      } while (v);
+ 80009fa:	9b20      	ldr	r3, [sp, #128]	; 0x80
+ 80009fc:	2b00      	cmp	r3, #0
+ 80009fe:	d1b1      	bne.n	8000964 <SEGGER_RTT_vprintf+0x48>
+      //
+      // filter out field with
+      //
+      FieldWidth = 0u;
+ 8000a00:	2300      	movs	r3, #0
+ 8000a02:	931d      	str	r3, [sp, #116]	; 0x74
+      do {
+        c = *sFormat;
+ 8000a04:	9b04      	ldr	r3, [sp, #16]
+ 8000a06:	781b      	ldrb	r3, [r3, #0]
+ 8000a08:	f88d 3087 	strb.w	r3, [sp, #135]	; 0x87
+        if ((c < '0') || (c > '9')) {
+ 8000a0c:	f89d 3087 	ldrb.w	r3, [sp, #135]	; 0x87
+ 8000a10:	2b2f      	cmp	r3, #47	; 0x2f
+ 8000a12:	d912      	bls.n	8000a3a <SEGGER_RTT_vprintf+0x11e>
+ 8000a14:	f89d 3087 	ldrb.w	r3, [sp, #135]	; 0x87
+ 8000a18:	2b39      	cmp	r3, #57	; 0x39
+ 8000a1a:	d80e      	bhi.n	8000a3a <SEGGER_RTT_vprintf+0x11e>
+          break;
+        }
+        sFormat++;
+ 8000a1c:	9b04      	ldr	r3, [sp, #16]
+ 8000a1e:	3301      	adds	r3, #1
+ 8000a20:	9304      	str	r3, [sp, #16]
+        FieldWidth = (FieldWidth * 10u) + ((unsigned)c - '0');
+ 8000a22:	9a1d      	ldr	r2, [sp, #116]	; 0x74
+ 8000a24:	4613      	mov	r3, r2
+ 8000a26:	009b      	lsls	r3, r3, #2
+ 8000a28:	4413      	add	r3, r2
+ 8000a2a:	005b      	lsls	r3, r3, #1
+ 8000a2c:	461a      	mov	r2, r3
+ 8000a2e:	f89d 3087 	ldrb.w	r3, [sp, #135]	; 0x87
+ 8000a32:	4413      	add	r3, r2
+ 8000a34:	3b30      	subs	r3, #48	; 0x30
+ 8000a36:	931d      	str	r3, [sp, #116]	; 0x74
+        c = *sFormat;
+ 8000a38:	e7e4      	b.n	8000a04 <SEGGER_RTT_vprintf+0xe8>
+      } while (1);
+
+      //
+      // Filter out precision (number of digits to display)
+      //
+      NumDigits = 0u;
+ 8000a3a:	2300      	movs	r3, #0
+ 8000a3c:	931f      	str	r3, [sp, #124]	; 0x7c
+      c = *sFormat;
+ 8000a3e:	9b04      	ldr	r3, [sp, #16]
+ 8000a40:	781b      	ldrb	r3, [r3, #0]
+ 8000a42:	f88d 3087 	strb.w	r3, [sp, #135]	; 0x87
+      if (c == '.') {
+ 8000a46:	f89d 3087 	ldrb.w	r3, [sp, #135]	; 0x87
+ 8000a4a:	2b2e      	cmp	r3, #46	; 0x2e
+ 8000a4c:	d11d      	bne.n	8000a8a <SEGGER_RTT_vprintf+0x16e>
+        sFormat++;
+ 8000a4e:	9b04      	ldr	r3, [sp, #16]
+ 8000a50:	3301      	adds	r3, #1
+ 8000a52:	9304      	str	r3, [sp, #16]
+        do {
+          c = *sFormat;
+ 8000a54:	9b04      	ldr	r3, [sp, #16]
+ 8000a56:	781b      	ldrb	r3, [r3, #0]
+ 8000a58:	f88d 3087 	strb.w	r3, [sp, #135]	; 0x87
+          if ((c < '0') || (c > '9')) {
+ 8000a5c:	f89d 3087 	ldrb.w	r3, [sp, #135]	; 0x87
+ 8000a60:	2b2f      	cmp	r3, #47	; 0x2f
+ 8000a62:	d912      	bls.n	8000a8a <SEGGER_RTT_vprintf+0x16e>
+ 8000a64:	f89d 3087 	ldrb.w	r3, [sp, #135]	; 0x87
+ 8000a68:	2b39      	cmp	r3, #57	; 0x39
+ 8000a6a:	d80e      	bhi.n	8000a8a <SEGGER_RTT_vprintf+0x16e>
+            break;
+          }
+          sFormat++;
+ 8000a6c:	9b04      	ldr	r3, [sp, #16]
+ 8000a6e:	3301      	adds	r3, #1
+ 8000a70:	9304      	str	r3, [sp, #16]
+          NumDigits = NumDigits * 10u + ((unsigned)c - '0');
+ 8000a72:	9a1f      	ldr	r2, [sp, #124]	; 0x7c
+ 8000a74:	4613      	mov	r3, r2
+ 8000a76:	009b      	lsls	r3, r3, #2
+ 8000a78:	4413      	add	r3, r2
+ 8000a7a:	005b      	lsls	r3, r3, #1
+ 8000a7c:	461a      	mov	r2, r3
+ 8000a7e:	f89d 3087 	ldrb.w	r3, [sp, #135]	; 0x87
+ 8000a82:	4413      	add	r3, r2
+ 8000a84:	3b30      	subs	r3, #48	; 0x30
+ 8000a86:	931f      	str	r3, [sp, #124]	; 0x7c
+          c = *sFormat;
+ 8000a88:	e7e4      	b.n	8000a54 <SEGGER_RTT_vprintf+0x138>
+        } while (1);
+      }
+      //
+      // Filter out length modifier
+      //
+      c = *sFormat;
+ 8000a8a:	9b04      	ldr	r3, [sp, #16]
+ 8000a8c:	781b      	ldrb	r3, [r3, #0]
+ 8000a8e:	f88d 3087 	strb.w	r3, [sp, #135]	; 0x87
+      do {
+        if ((c == 'l') || (c == 'h')) {
+ 8000a92:	f89d 3087 	ldrb.w	r3, [sp, #135]	; 0x87
+ 8000a96:	2b6c      	cmp	r3, #108	; 0x6c
+ 8000a98:	d003      	beq.n	8000aa2 <SEGGER_RTT_vprintf+0x186>
+ 8000a9a:	f89d 3087 	ldrb.w	r3, [sp, #135]	; 0x87
+ 8000a9e:	2b68      	cmp	r3, #104	; 0x68
+ 8000aa0:	d107      	bne.n	8000ab2 <SEGGER_RTT_vprintf+0x196>
+          sFormat++;
+ 8000aa2:	9b04      	ldr	r3, [sp, #16]
+ 8000aa4:	3301      	adds	r3, #1
+ 8000aa6:	9304      	str	r3, [sp, #16]
+          c = *sFormat;
+ 8000aa8:	9b04      	ldr	r3, [sp, #16]
+ 8000aaa:	781b      	ldrb	r3, [r3, #0]
+ 8000aac:	f88d 3087 	strb.w	r3, [sp, #135]	; 0x87
+        if ((c == 'l') || (c == 'h')) {
+ 8000ab0:	e7ef      	b.n	8000a92 <SEGGER_RTT_vprintf+0x176>
+        }
+      } while (1);
+      //
+      // Handle specifiers
+      //
+      switch (c) {
+ 8000ab2:	f89d 3087 	ldrb.w	r3, [sp, #135]	; 0x87
+ 8000ab6:	2b64      	cmp	r3, #100	; 0x64
+ 8000ab8:	d027      	beq.n	8000b0a <SEGGER_RTT_vprintf+0x1ee>
+ 8000aba:	2b64      	cmp	r3, #100	; 0x64
+ 8000abc:	dc07      	bgt.n	8000ace <SEGGER_RTT_vprintf+0x1b2>
+ 8000abe:	2b58      	cmp	r3, #88	; 0x58
+ 8000ac0:	d047      	beq.n	8000b52 <SEGGER_RTT_vprintf+0x236>
+ 8000ac2:	2b63      	cmp	r3, #99	; 0x63
+ 8000ac4:	d00f      	beq.n	8000ae6 <SEGGER_RTT_vprintf+0x1ca>
+ 8000ac6:	2b25      	cmp	r3, #37	; 0x25
+ 8000ac8:	f000 8086 	beq.w	8000bd8 <SEGGER_RTT_vprintf+0x2bc>
+        break;
+      case '%':
+        _StoreChar(&BufferDesc, '%');
+        break;
+      default:
+        break;
+ 8000acc:	e08a      	b.n	8000be4 <SEGGER_RTT_vprintf+0x2c8>
+      switch (c) {
+ 8000ace:	2b73      	cmp	r3, #115	; 0x73
+ 8000ad0:	d051      	beq.n	8000b76 <SEGGER_RTT_vprintf+0x25a>
+ 8000ad2:	2b73      	cmp	r3, #115	; 0x73
+ 8000ad4:	dc02      	bgt.n	8000adc <SEGGER_RTT_vprintf+0x1c0>
+ 8000ad6:	2b70      	cmp	r3, #112	; 0x70
+ 8000ad8:	d06c      	beq.n	8000bb4 <SEGGER_RTT_vprintf+0x298>
+        break;
+ 8000ada:	e083      	b.n	8000be4 <SEGGER_RTT_vprintf+0x2c8>
+      switch (c) {
+ 8000adc:	2b75      	cmp	r3, #117	; 0x75
+ 8000ade:	d026      	beq.n	8000b2e <SEGGER_RTT_vprintf+0x212>
+ 8000ae0:	2b78      	cmp	r3, #120	; 0x78
+ 8000ae2:	d036      	beq.n	8000b52 <SEGGER_RTT_vprintf+0x236>
+        break;
+ 8000ae4:	e07e      	b.n	8000be4 <SEGGER_RTT_vprintf+0x2c8>
+        v = va_arg(*pParamList, int);
+ 8000ae6:	9b03      	ldr	r3, [sp, #12]
+ 8000ae8:	681b      	ldr	r3, [r3, #0]
+ 8000aea:	1d19      	adds	r1, r3, #4
+ 8000aec:	9a03      	ldr	r2, [sp, #12]
+ 8000aee:	6011      	str	r1, [r2, #0]
+ 8000af0:	681b      	ldr	r3, [r3, #0]
+ 8000af2:	9320      	str	r3, [sp, #128]	; 0x80
+        c0 = (char)v;
+ 8000af4:	9b20      	ldr	r3, [sp, #128]	; 0x80
+ 8000af6:	f88d 306f 	strb.w	r3, [sp, #111]	; 0x6f
+        _StoreChar(&BufferDesc, c0);
+ 8000afa:	f89d 206f 	ldrb.w	r2, [sp, #111]	; 0x6f
+ 8000afe:	ab16      	add	r3, sp, #88	; 0x58
+ 8000b00:	4611      	mov	r1, r2
+ 8000b02:	4618      	mov	r0, r3
+ 8000b04:	f7ff fd76 	bl	80005f4 <_StoreChar>
+        break;
+ 8000b08:	e06c      	b.n	8000be4 <SEGGER_RTT_vprintf+0x2c8>
+        v = va_arg(*pParamList, int);
+ 8000b0a:	9b03      	ldr	r3, [sp, #12]
+ 8000b0c:	681b      	ldr	r3, [r3, #0]
+ 8000b0e:	1d19      	adds	r1, r3, #4
+ 8000b10:	9a03      	ldr	r2, [sp, #12]
+ 8000b12:	6011      	str	r1, [r2, #0]
+ 8000b14:	681b      	ldr	r3, [r3, #0]
+ 8000b16:	9320      	str	r3, [sp, #128]	; 0x80
+        _PrintInt(&BufferDesc, v, 10u, NumDigits, FieldWidth, FormatFlags);
+ 8000b18:	a816      	add	r0, sp, #88	; 0x58
+ 8000b1a:	9b1e      	ldr	r3, [sp, #120]	; 0x78
+ 8000b1c:	9301      	str	r3, [sp, #4]
+ 8000b1e:	9b1d      	ldr	r3, [sp, #116]	; 0x74
+ 8000b20:	9300      	str	r3, [sp, #0]
+ 8000b22:	9b1f      	ldr	r3, [sp, #124]	; 0x7c
+ 8000b24:	220a      	movs	r2, #10
+ 8000b26:	9920      	ldr	r1, [sp, #128]	; 0x80
+ 8000b28:	f7ff fe52 	bl	80007d0 <_PrintInt>
+        break;
+ 8000b2c:	e05a      	b.n	8000be4 <SEGGER_RTT_vprintf+0x2c8>
+        v = va_arg(*pParamList, int);
+ 8000b2e:	9b03      	ldr	r3, [sp, #12]
+ 8000b30:	681b      	ldr	r3, [r3, #0]
+ 8000b32:	1d19      	adds	r1, r3, #4
+ 8000b34:	9a03      	ldr	r2, [sp, #12]
+ 8000b36:	6011      	str	r1, [r2, #0]
+ 8000b38:	681b      	ldr	r3, [r3, #0]
+ 8000b3a:	9320      	str	r3, [sp, #128]	; 0x80
+        _PrintUnsigned(&BufferDesc, (unsigned)v, 10u, NumDigits, FieldWidth, FormatFlags);
+ 8000b3c:	9920      	ldr	r1, [sp, #128]	; 0x80
+ 8000b3e:	a816      	add	r0, sp, #88	; 0x58
+ 8000b40:	9b1e      	ldr	r3, [sp, #120]	; 0x78
+ 8000b42:	9301      	str	r3, [sp, #4]
+ 8000b44:	9b1d      	ldr	r3, [sp, #116]	; 0x74
+ 8000b46:	9300      	str	r3, [sp, #0]
+ 8000b48:	9b1f      	ldr	r3, [sp, #124]	; 0x7c
+ 8000b4a:	220a      	movs	r2, #10
+ 8000b4c:	f7ff fd92 	bl	8000674 <_PrintUnsigned>
+        break;
+ 8000b50:	e048      	b.n	8000be4 <SEGGER_RTT_vprintf+0x2c8>
+        v = va_arg(*pParamList, int);
+ 8000b52:	9b03      	ldr	r3, [sp, #12]
+ 8000b54:	681b      	ldr	r3, [r3, #0]
+ 8000b56:	1d19      	adds	r1, r3, #4
+ 8000b58:	9a03      	ldr	r2, [sp, #12]
+ 8000b5a:	6011      	str	r1, [r2, #0]
+ 8000b5c:	681b      	ldr	r3, [r3, #0]
+ 8000b5e:	9320      	str	r3, [sp, #128]	; 0x80
+        _PrintUnsigned(&BufferDesc, (unsigned)v, 16u, NumDigits, FieldWidth, FormatFlags);
+ 8000b60:	9920      	ldr	r1, [sp, #128]	; 0x80
+ 8000b62:	a816      	add	r0, sp, #88	; 0x58
+ 8000b64:	9b1e      	ldr	r3, [sp, #120]	; 0x78
+ 8000b66:	9301      	str	r3, [sp, #4]
+ 8000b68:	9b1d      	ldr	r3, [sp, #116]	; 0x74
+ 8000b6a:	9300      	str	r3, [sp, #0]
+ 8000b6c:	9b1f      	ldr	r3, [sp, #124]	; 0x7c
+ 8000b6e:	2210      	movs	r2, #16
+ 8000b70:	f7ff fd80 	bl	8000674 <_PrintUnsigned>
+        break;
+ 8000b74:	e036      	b.n	8000be4 <SEGGER_RTT_vprintf+0x2c8>
+          const char * s = va_arg(*pParamList, const char *);
+ 8000b76:	9b03      	ldr	r3, [sp, #12]
+ 8000b78:	681b      	ldr	r3, [r3, #0]
+ 8000b7a:	1d19      	adds	r1, r3, #4
+ 8000b7c:	9a03      	ldr	r2, [sp, #12]
+ 8000b7e:	6011      	str	r1, [r2, #0]
+ 8000b80:	681b      	ldr	r3, [r3, #0]
+ 8000b82:	931c      	str	r3, [sp, #112]	; 0x70
+            c = *s;
+ 8000b84:	9b1c      	ldr	r3, [sp, #112]	; 0x70
+ 8000b86:	781b      	ldrb	r3, [r3, #0]
+ 8000b88:	f88d 3087 	strb.w	r3, [sp, #135]	; 0x87
+            s++;
+ 8000b8c:	9b1c      	ldr	r3, [sp, #112]	; 0x70
+ 8000b8e:	3301      	adds	r3, #1
+ 8000b90:	931c      	str	r3, [sp, #112]	; 0x70
+            if (c == '\0') {
+ 8000b92:	f89d 3087 	ldrb.w	r3, [sp, #135]	; 0x87
+ 8000b96:	2b00      	cmp	r3, #0
+ 8000b98:	d00a      	beq.n	8000bb0 <SEGGER_RTT_vprintf+0x294>
+           _StoreChar(&BufferDesc, c);
+ 8000b9a:	f89d 2087 	ldrb.w	r2, [sp, #135]	; 0x87
+ 8000b9e:	ab16      	add	r3, sp, #88	; 0x58
+ 8000ba0:	4611      	mov	r1, r2
+ 8000ba2:	4618      	mov	r0, r3
+ 8000ba4:	f7ff fd26 	bl	80005f4 <_StoreChar>
+          } while (BufferDesc.ReturnValue >= 0);
+ 8000ba8:	9b19      	ldr	r3, [sp, #100]	; 0x64
+ 8000baa:	2b00      	cmp	r3, #0
+ 8000bac:	daea      	bge.n	8000b84 <SEGGER_RTT_vprintf+0x268>
+        break;
+ 8000bae:	e019      	b.n	8000be4 <SEGGER_RTT_vprintf+0x2c8>
+              break;
+ 8000bb0:	bf00      	nop
+        break;
+ 8000bb2:	e017      	b.n	8000be4 <SEGGER_RTT_vprintf+0x2c8>
+        v = va_arg(*pParamList, int);
+ 8000bb4:	9b03      	ldr	r3, [sp, #12]
+ 8000bb6:	681b      	ldr	r3, [r3, #0]
+ 8000bb8:	1d19      	adds	r1, r3, #4
+ 8000bba:	9a03      	ldr	r2, [sp, #12]
+ 8000bbc:	6011      	str	r1, [r2, #0]
+ 8000bbe:	681b      	ldr	r3, [r3, #0]
+ 8000bc0:	9320      	str	r3, [sp, #128]	; 0x80
+        _PrintUnsigned(&BufferDesc, (unsigned)v, 16u, 8u, 8u, 0u);
+ 8000bc2:	9920      	ldr	r1, [sp, #128]	; 0x80
+ 8000bc4:	a816      	add	r0, sp, #88	; 0x58
+ 8000bc6:	2300      	movs	r3, #0
+ 8000bc8:	9301      	str	r3, [sp, #4]
+ 8000bca:	2308      	movs	r3, #8
+ 8000bcc:	9300      	str	r3, [sp, #0]
+ 8000bce:	2308      	movs	r3, #8
+ 8000bd0:	2210      	movs	r2, #16
+ 8000bd2:	f7ff fd4f 	bl	8000674 <_PrintUnsigned>
+        break;
+ 8000bd6:	e005      	b.n	8000be4 <SEGGER_RTT_vprintf+0x2c8>
+        _StoreChar(&BufferDesc, '%');
+ 8000bd8:	ab16      	add	r3, sp, #88	; 0x58
+ 8000bda:	2125      	movs	r1, #37	; 0x25
+ 8000bdc:	4618      	mov	r0, r3
+ 8000bde:	f7ff fd09 	bl	80005f4 <_StoreChar>
+        break;
+ 8000be2:	bf00      	nop
+      }
+      sFormat++;
+ 8000be4:	9b04      	ldr	r3, [sp, #16]
+ 8000be6:	3301      	adds	r3, #1
+ 8000be8:	9304      	str	r3, [sp, #16]
+ 8000bea:	e006      	b.n	8000bfa <SEGGER_RTT_vprintf+0x2de>
+    } else {
+      _StoreChar(&BufferDesc, c);
+ 8000bec:	f89d 2087 	ldrb.w	r2, [sp, #135]	; 0x87
+ 8000bf0:	ab16      	add	r3, sp, #88	; 0x58
+ 8000bf2:	4611      	mov	r1, r2
+ 8000bf4:	4618      	mov	r0, r3
+ 8000bf6:	f7ff fcfd 	bl	80005f4 <_StoreChar>
+    }
+  } while (BufferDesc.ReturnValue >= 0);
+ 8000bfa:	9b19      	ldr	r3, [sp, #100]	; 0x64
+ 8000bfc:	2b00      	cmp	r3, #0
+ 8000bfe:	f6bf ae9c 	bge.w	800093a <SEGGER_RTT_vprintf+0x1e>
+ 8000c02:	e000      	b.n	8000c06 <SEGGER_RTT_vprintf+0x2ea>
+      break;
+ 8000c04:	bf00      	nop
+
+  if (BufferDesc.ReturnValue > 0) {
+ 8000c06:	9b19      	ldr	r3, [sp, #100]	; 0x64
+ 8000c08:	2b00      	cmp	r3, #0
+ 8000c0a:	dd0c      	ble.n	8000c26 <SEGGER_RTT_vprintf+0x30a>
+    //
+    // Write remaining data, if any
+    //
+    if (BufferDesc.Cnt != 0u) {
+ 8000c0c:	9b18      	ldr	r3, [sp, #96]	; 0x60
+ 8000c0e:	2b00      	cmp	r3, #0
+ 8000c10:	d005      	beq.n	8000c1e <SEGGER_RTT_vprintf+0x302>
+      SEGGER_RTT_Write(BufferIndex, acBuffer, BufferDesc.Cnt);
+ 8000c12:	9a18      	ldr	r2, [sp, #96]	; 0x60
+ 8000c14:	ab06      	add	r3, sp, #24
+ 8000c16:	4619      	mov	r1, r3
+ 8000c18:	9805      	ldr	r0, [sp, #20]
+ 8000c1a:	f7ff fcc9 	bl	80005b0 <SEGGER_RTT_Write>
+    }
+    BufferDesc.ReturnValue += (int)BufferDesc.Cnt;
+ 8000c1e:	9b19      	ldr	r3, [sp, #100]	; 0x64
+ 8000c20:	9a18      	ldr	r2, [sp, #96]	; 0x60
+ 8000c22:	4413      	add	r3, r2
+ 8000c24:	9319      	str	r3, [sp, #100]	; 0x64
+  }
+  return BufferDesc.ReturnValue;
+ 8000c26:	9b19      	ldr	r3, [sp, #100]	; 0x64
+}
+ 8000c28:	4618      	mov	r0, r3
+ 8000c2a:	b023      	add	sp, #140	; 0x8c
+ 8000c2c:	f85d fb04 	ldr.w	pc, [sp], #4
+
+08000c30 <SEGGER_RTT_printf>:
+*          u: Print the argument as an unsigned integer
+*          x: Print the argument as an hexadecimal integer
+*          s: Print the string pointed to by the argument
+*          p: Print the argument as an 8-digit hexadecimal integer. (Argument shall be a pointer to void.)
+*/
+int SEGGER_RTT_printf(unsigned BufferIndex, const char * sFormat, ...) {
+ 8000c30:	b40e      	push	{r1, r2, r3}
+ 8000c32:	b500      	push	{lr}
+ 8000c34:	b084      	sub	sp, #16
+ 8000c36:	9001      	str	r0, [sp, #4]
+  int r;
+  va_list ParamList;
+
+  va_start(ParamList, sFormat);
+ 8000c38:	ab06      	add	r3, sp, #24
+ 8000c3a:	9302      	str	r3, [sp, #8]
+  r = SEGGER_RTT_vprintf(BufferIndex, sFormat, &ParamList);
+ 8000c3c:	ab02      	add	r3, sp, #8
+ 8000c3e:	461a      	mov	r2, r3
+ 8000c40:	9905      	ldr	r1, [sp, #20]
+ 8000c42:	9801      	ldr	r0, [sp, #4]
+ 8000c44:	f7ff fe6a 	bl	800091c <SEGGER_RTT_vprintf>
+ 8000c48:	9003      	str	r0, [sp, #12]
+  va_end(ParamList);
+  return r;
+ 8000c4a:	9b03      	ldr	r3, [sp, #12]
+}
+ 8000c4c:	4618      	mov	r0, r3
+ 8000c4e:	b004      	add	sp, #16
+ 8000c50:	f85d eb04 	ldr.w	lr, [sp], #4
+ 8000c54:	b003      	add	sp, #12
+ 8000c56:	4770      	bx	lr
+
+08000c58 <main>:
+  // JLinkRTTPrintf(0, "RacerIO running\n", 0);
+
+  // // Start RTOS scheduler
+  // vTaskStartScheduler();
+
+  return 0;
+ 8000c58:	2300      	movs	r3, #0
+}
+ 8000c5a:	4618      	mov	r0, r3
+ 8000c5c:	4770      	bx	lr
+	...
+
+08000c60 <CAN2_RX0_IRQHandler>:
+
+    return msg.DLC;
+}
+
+void CAN2_RX0_IRQHandler()
+{
+ 8000c60:	b500      	push	{lr}
+ 8000c62:	b089      	sub	sp, #36	; 0x24
+    CanRxMsg RxMessage;
+    CAN_Receive(CANx, CAN_RX_FIFO, &RxMessage);
+ 8000c64:	ab02      	add	r3, sp, #8
+ 8000c66:	461a      	mov	r2, r3
+ 8000c68:	2100      	movs	r1, #0
+ 8000c6a:	4810      	ldr	r0, [pc, #64]	; (8000cac <CAN2_RX0_IRQHandler+0x4c>)
+ 8000c6c:	f000 fac6 	bl	80011fc <CAN_Receive>
+
+    uint32_t uavcan_id = 0;
+ 8000c70:	2300      	movs	r3, #0
+ 8000c72:	9307      	str	r3, [sp, #28]
+    if (RxMessage.IDE == CAN_Id_Standard)
+ 8000c74:	f89d 3010 	ldrb.w	r3, [sp, #16]
+ 8000c78:	2b00      	cmp	r3, #0
+ 8000c7a:	d102      	bne.n	8000c82 <CAN2_RX0_IRQHandler+0x22>
+        uavcan_id = RxMessage.StdId;
+ 8000c7c:	9b02      	ldr	r3, [sp, #8]
+ 8000c7e:	9307      	str	r3, [sp, #28]
+ 8000c80:	e001      	b.n	8000c86 <CAN2_RX0_IRQHandler+0x26>
+    else
+        uavcan_id = RxMessage.ExtId;
+ 8000c82:	9b03      	ldr	r3, [sp, #12]
+ 8000c84:	9307      	str	r3, [sp, #28]
+    (void)uavcan_id;
+
+    JLinkRTTPrintf(0, "CAN msg received id: %d, data: %d, %d, %d\n", uavcan_id, RxMessage.Data[0], RxMessage.Data[1], RxMessage.Data[2]);
+ 8000c86:	f89d 3013 	ldrb.w	r3, [sp, #19]
+ 8000c8a:	4619      	mov	r1, r3
+ 8000c8c:	f89d 3014 	ldrb.w	r3, [sp, #20]
+ 8000c90:	f89d 2015 	ldrb.w	r2, [sp, #21]
+ 8000c94:	9201      	str	r2, [sp, #4]
+ 8000c96:	9300      	str	r3, [sp, #0]
+ 8000c98:	460b      	mov	r3, r1
+ 8000c9a:	9a07      	ldr	r2, [sp, #28]
+ 8000c9c:	4904      	ldr	r1, [pc, #16]	; (8000cb0 <CAN2_RX0_IRQHandler+0x50>)
+ 8000c9e:	2000      	movs	r0, #0
+ 8000ca0:	f7ff ffc6 	bl	8000c30 <SEGGER_RTT_printf>
+
+    // portEND_SWITCHING_ISR(pdTRUE);
+ 8000ca4:	bf00      	nop
+ 8000ca6:	b009      	add	sp, #36	; 0x24
+ 8000ca8:	f85d fb04 	ldr.w	pc, [sp], #4
+ 8000cac:	40006800 	.word	0x40006800
+ 8000cb0:	08001434 	.word	0x08001434
+
+08000cb4 <TIM5_IRQHandler>:
+
+    TIM_Cmd(TIM5, ENABLE);
+}
+
+void TIM5_IRQHandler(void)
+{
+ 8000cb4:	b508      	push	{r3, lr}
+    // Encoder
+    if (TIM_GetITStatus(TIM5, TIM_IT_Trigger) == SET)
+ 8000cb6:	2140      	movs	r1, #64	; 0x40
+ 8000cb8:	480a      	ldr	r0, [pc, #40]	; (8000ce4 <TIM5_IRQHandler+0x30>)
+ 8000cba:	f000 fb6f 	bl	800139c <TIM_GetITStatus>
+ 8000cbe:	4603      	mov	r3, r0
+ 8000cc0:	2b01      	cmp	r3, #1
+ 8000cc2:	d10c      	bne.n	8000cde <TIM5_IRQHandler+0x2a>
+    {
+        /* Read the current counter */
+        TIM_ClearITPendingBit(TIM5, TIM_IT_Trigger);
+ 8000cc4:	2140      	movs	r1, #64	; 0x40
+ 8000cc6:	4807      	ldr	r0, [pc, #28]	; (8000ce4 <TIM5_IRQHandler+0x30>)
+ 8000cc8:	f000 fb9a 	bl	8001400 <TIM_ClearITPendingBit>
+        // AutoCarUpdateHallsensorData(TIM_GetCapture1(timer));
+        JLinkRTTPrintf(0, "Capture: %d\n", TIM_GetCapture1(TIM5));
+ 8000ccc:	4805      	ldr	r0, [pc, #20]	; (8000ce4 <TIM5_IRQHandler+0x30>)
+ 8000cce:	f000 fb5e 	bl	800138e <TIM_GetCapture1>
+ 8000cd2:	4603      	mov	r3, r0
+ 8000cd4:	461a      	mov	r2, r3
+ 8000cd6:	4904      	ldr	r1, [pc, #16]	; (8000ce8 <TIM5_IRQHandler+0x34>)
+ 8000cd8:	2000      	movs	r0, #0
+ 8000cda:	f7ff ffa9 	bl	8000c30 <SEGGER_RTT_printf>
+    }
+
+    // JLinkRTTPrintf(0, "TIM5 IT: %d\n", 0);
+ 8000cde:	bf00      	nop
+ 8000ce0:	bd08      	pop	{r3, pc}
+ 8000ce2:	bf00      	nop
+ 8000ce4:	40000c00 	.word	0x40000c00
+ 8000ce8:	08001460 	.word	0x08001460
+
+08000cec <vListInsertEnd>:
+	listSET_SECOND_LIST_ITEM_INTEGRITY_CHECK_VALUE( pxItem );
+}
+/*-----------------------------------------------------------*/
+
+void vListInsertEnd( List_t * const pxList, ListItem_t * const pxNewListItem )
+{
+ 8000cec:	b084      	sub	sp, #16
+ 8000cee:	9001      	str	r0, [sp, #4]
+ 8000cf0:	9100      	str	r1, [sp, #0]
+ListItem_t * const pxIndex = pxList->pxIndex;
+ 8000cf2:	9b01      	ldr	r3, [sp, #4]
+ 8000cf4:	685b      	ldr	r3, [r3, #4]
+ 8000cf6:	9303      	str	r3, [sp, #12]
+	listTEST_LIST_ITEM_INTEGRITY( pxNewListItem );
+
+	/* Insert a new list item into pxList, but rather than sort the list,
+	makes the new list item the last item to be removed by a call to
+	listGET_OWNER_OF_NEXT_ENTRY(). */
+	pxNewListItem->pxNext = pxIndex;
+ 8000cf8:	9b00      	ldr	r3, [sp, #0]
+ 8000cfa:	9a03      	ldr	r2, [sp, #12]
+ 8000cfc:	605a      	str	r2, [r3, #4]
+	pxNewListItem->pxPrevious = pxIndex->pxPrevious;
+ 8000cfe:	9b03      	ldr	r3, [sp, #12]
+ 8000d00:	689a      	ldr	r2, [r3, #8]
+ 8000d02:	9b00      	ldr	r3, [sp, #0]
+ 8000d04:	609a      	str	r2, [r3, #8]
+
+	/* Only used during decision coverage testing. */
+	mtCOVERAGE_TEST_DELAY();
+
+	pxIndex->pxPrevious->pxNext = pxNewListItem;
+ 8000d06:	9b03      	ldr	r3, [sp, #12]
+ 8000d08:	689b      	ldr	r3, [r3, #8]
+ 8000d0a:	9a00      	ldr	r2, [sp, #0]
+ 8000d0c:	605a      	str	r2, [r3, #4]
+	pxIndex->pxPrevious = pxNewListItem;
+ 8000d0e:	9b03      	ldr	r3, [sp, #12]
+ 8000d10:	9a00      	ldr	r2, [sp, #0]
+ 8000d12:	609a      	str	r2, [r3, #8]
+
+	/* Remember which list the item is in. */
+	pxNewListItem->pxContainer = pxList;
+ 8000d14:	9b00      	ldr	r3, [sp, #0]
+ 8000d16:	9a01      	ldr	r2, [sp, #4]
+ 8000d18:	611a      	str	r2, [r3, #16]
+
+	( pxList->uxNumberOfItems )++;
+ 8000d1a:	9b01      	ldr	r3, [sp, #4]
+ 8000d1c:	681b      	ldr	r3, [r3, #0]
+ 8000d1e:	1c5a      	adds	r2, r3, #1
+ 8000d20:	9b01      	ldr	r3, [sp, #4]
+ 8000d22:	601a      	str	r2, [r3, #0]
+}
+ 8000d24:	bf00      	nop
+ 8000d26:	b004      	add	sp, #16
+ 8000d28:	4770      	bx	lr
+
+08000d2a <uxListRemove>:
+	( pxList->uxNumberOfItems )++;
+}
+/*-----------------------------------------------------------*/
+
+UBaseType_t uxListRemove( ListItem_t * const pxItemToRemove )
+{
+ 8000d2a:	b084      	sub	sp, #16
+ 8000d2c:	9001      	str	r0, [sp, #4]
+/* The list item knows which list it is in.  Obtain the list from the list
+item. */
+List_t * const pxList = pxItemToRemove->pxContainer;
+ 8000d2e:	9b01      	ldr	r3, [sp, #4]
+ 8000d30:	691b      	ldr	r3, [r3, #16]
+ 8000d32:	9303      	str	r3, [sp, #12]
+
+	pxItemToRemove->pxNext->pxPrevious = pxItemToRemove->pxPrevious;
+ 8000d34:	9b01      	ldr	r3, [sp, #4]
+ 8000d36:	685b      	ldr	r3, [r3, #4]
+ 8000d38:	9a01      	ldr	r2, [sp, #4]
+ 8000d3a:	6892      	ldr	r2, [r2, #8]
+ 8000d3c:	609a      	str	r2, [r3, #8]
+	pxItemToRemove->pxPrevious->pxNext = pxItemToRemove->pxNext;
+ 8000d3e:	9b01      	ldr	r3, [sp, #4]
+ 8000d40:	689b      	ldr	r3, [r3, #8]
+ 8000d42:	9a01      	ldr	r2, [sp, #4]
+ 8000d44:	6852      	ldr	r2, [r2, #4]
+ 8000d46:	605a      	str	r2, [r3, #4]
+
+	/* Only used during decision coverage testing. */
+	mtCOVERAGE_TEST_DELAY();
+
+	/* Make sure the index is left pointing to a valid item. */
+	if( pxList->pxIndex == pxItemToRemove )
+ 8000d48:	9b03      	ldr	r3, [sp, #12]
+ 8000d4a:	685b      	ldr	r3, [r3, #4]
+ 8000d4c:	9a01      	ldr	r2, [sp, #4]
+ 8000d4e:	429a      	cmp	r2, r3
+ 8000d50:	d103      	bne.n	8000d5a <uxListRemove+0x30>
+	{
+		pxList->pxIndex = pxItemToRemove->pxPrevious;
+ 8000d52:	9b01      	ldr	r3, [sp, #4]
+ 8000d54:	689a      	ldr	r2, [r3, #8]
+ 8000d56:	9b03      	ldr	r3, [sp, #12]
+ 8000d58:	605a      	str	r2, [r3, #4]
+	else
+	{
+		mtCOVERAGE_TEST_MARKER();
+	}
+
+	pxItemToRemove->pxContainer = NULL;
+ 8000d5a:	9b01      	ldr	r3, [sp, #4]
+ 8000d5c:	2200      	movs	r2, #0
+ 8000d5e:	611a      	str	r2, [r3, #16]
+	( pxList->uxNumberOfItems )--;
+ 8000d60:	9b03      	ldr	r3, [sp, #12]
+ 8000d62:	681b      	ldr	r3, [r3, #0]
+ 8000d64:	1e5a      	subs	r2, r3, #1
+ 8000d66:	9b03      	ldr	r3, [sp, #12]
+ 8000d68:	601a      	str	r2, [r3, #0]
+
+	return pxList->uxNumberOfItems;
+ 8000d6a:	9b03      	ldr	r3, [sp, #12]
+ 8000d6c:	681b      	ldr	r3, [r3, #0]
+}
+ 8000d6e:	4618      	mov	r0, r3
+ 8000d70:	b004      	add	sp, #16
+ 8000d72:	4770      	bx	lr
+
+08000d74 <xTaskIncrementTick>:
+
+#endif /* INCLUDE_xTaskAbortDelay */
+/*----------------------------------------------------------*/
+
+BaseType_t xTaskIncrementTick( void )
+{
+ 8000d74:	b500      	push	{lr}
+ 8000d76:	b087      	sub	sp, #28
+TCB_t * pxTCB;
+TickType_t xItemValue;
+BaseType_t xSwitchRequired = pdFALSE;
+ 8000d78:	2300      	movs	r3, #0
+ 8000d7a:	9305      	str	r3, [sp, #20]
+
+	/* Called by the portable layer each time a tick interrupt occurs.
+	Increments the tick then checks to see if the new tick value will cause any
+	tasks to be unblocked. */
+	traceTASK_INCREMENT_TICK( xTickCount );
+	if( uxSchedulerSuspended == ( UBaseType_t ) pdFALSE )
+ 8000d7c:	4b4d      	ldr	r3, [pc, #308]	; (8000eb4 <xTaskIncrementTick+0x140>)
+ 8000d7e:	681b      	ldr	r3, [r3, #0]
+ 8000d80:	2b00      	cmp	r3, #0
+ 8000d82:	f040 8087 	bne.w	8000e94 <xTaskIncrementTick+0x120>
+	{
+		/* Minor optimisation.  The tick count cannot change in this
+		block. */
+		const TickType_t xConstTickCount = xTickCount + ( TickType_t ) 1;
+ 8000d86:	4b4c      	ldr	r3, [pc, #304]	; (8000eb8 <xTaskIncrementTick+0x144>)
+ 8000d88:	681b      	ldr	r3, [r3, #0]
+ 8000d8a:	3301      	adds	r3, #1
+ 8000d8c:	9304      	str	r3, [sp, #16]
+
+		/* Increment the RTOS tick, switching the delayed and overflowed
+		delayed lists if it wraps to 0. */
+		xTickCount = xConstTickCount;
+ 8000d8e:	4a4a      	ldr	r2, [pc, #296]	; (8000eb8 <xTaskIncrementTick+0x144>)
+ 8000d90:	9b04      	ldr	r3, [sp, #16]
+ 8000d92:	6013      	str	r3, [r2, #0]
+
+		if( xConstTickCount == ( TickType_t ) 0U ) /*lint !e774 'if' does not always evaluate to false as it is looking for an overflow. */
+ 8000d94:	9b04      	ldr	r3, [sp, #16]
+ 8000d96:	2b00      	cmp	r3, #0
+ 8000d98:	d11f      	bne.n	8000dda <xTaskIncrementTick+0x66>
+		{
+			taskSWITCH_DELAYED_LISTS();
+ 8000d9a:	4b48      	ldr	r3, [pc, #288]	; (8000ebc <xTaskIncrementTick+0x148>)
+ 8000d9c:	681b      	ldr	r3, [r3, #0]
+ 8000d9e:	681b      	ldr	r3, [r3, #0]
+ 8000da0:	2b00      	cmp	r3, #0
+ 8000da2:	d009      	beq.n	8000db8 <xTaskIncrementTick+0x44>
+
+portFORCE_INLINE static void vPortRaiseBASEPRI( void )
+{
+uint32_t ulNewBASEPRI;
+
+	__asm volatile
+ 8000da4:	f04f 0350 	mov.w	r3, #80	; 0x50
+ 8000da8:	f383 8811 	msr	BASEPRI, r3
+ 8000dac:	f3bf 8f6f 	isb	sy
+ 8000db0:	f3bf 8f4f 	dsb	sy
+ 8000db4:	9300      	str	r3, [sp, #0]
+ 8000db6:	e7fe      	b.n	8000db6 <xTaskIncrementTick+0x42>
+ 8000db8:	4b40      	ldr	r3, [pc, #256]	; (8000ebc <xTaskIncrementTick+0x148>)
+ 8000dba:	681b      	ldr	r3, [r3, #0]
+ 8000dbc:	9303      	str	r3, [sp, #12]
+ 8000dbe:	4b40      	ldr	r3, [pc, #256]	; (8000ec0 <xTaskIncrementTick+0x14c>)
+ 8000dc0:	681b      	ldr	r3, [r3, #0]
+ 8000dc2:	4a3e      	ldr	r2, [pc, #248]	; (8000ebc <xTaskIncrementTick+0x148>)
+ 8000dc4:	6013      	str	r3, [r2, #0]
+ 8000dc6:	4a3e      	ldr	r2, [pc, #248]	; (8000ec0 <xTaskIncrementTick+0x14c>)
+ 8000dc8:	9b03      	ldr	r3, [sp, #12]
+ 8000dca:	6013      	str	r3, [r2, #0]
+ 8000dcc:	4b3d      	ldr	r3, [pc, #244]	; (8000ec4 <xTaskIncrementTick+0x150>)
+ 8000dce:	681b      	ldr	r3, [r3, #0]
+ 8000dd0:	3301      	adds	r3, #1
+ 8000dd2:	4a3c      	ldr	r2, [pc, #240]	; (8000ec4 <xTaskIncrementTick+0x150>)
+ 8000dd4:	6013      	str	r3, [r2, #0]
+ 8000dd6:	f000 f8db 	bl	8000f90 <prvResetNextTaskUnblockTime>
+
+		/* See if this tick has made a timeout expire.  Tasks are stored in
+		the	queue in the order of their wake time - meaning once one task
+		has been found whose block time has not expired there is no need to
+		look any further down the list. */
+		if( xConstTickCount >= xNextTaskUnblockTime )
+ 8000dda:	4b3b      	ldr	r3, [pc, #236]	; (8000ec8 <xTaskIncrementTick+0x154>)
+ 8000ddc:	681b      	ldr	r3, [r3, #0]
+ 8000dde:	9a04      	ldr	r2, [sp, #16]
+ 8000de0:	429a      	cmp	r2, r3
+ 8000de2:	d348      	bcc.n	8000e76 <xTaskIncrementTick+0x102>
+		{
+			for( ;; )
+			{
+				if( listLIST_IS_EMPTY( pxDelayedTaskList ) != pdFALSE )
+ 8000de4:	4b35      	ldr	r3, [pc, #212]	; (8000ebc <xTaskIncrementTick+0x148>)
+ 8000de6:	681b      	ldr	r3, [r3, #0]
+ 8000de8:	681b      	ldr	r3, [r3, #0]
+ 8000dea:	2b00      	cmp	r3, #0
+ 8000dec:	d104      	bne.n	8000df8 <xTaskIncrementTick+0x84>
+					/* The delayed list is empty.  Set xNextTaskUnblockTime
+					to the maximum possible value so it is extremely
+					unlikely that the
+					if( xTickCount >= xNextTaskUnblockTime ) test will pass
+					next time through. */
+					xNextTaskUnblockTime = portMAX_DELAY; /*lint !e961 MISRA exception as the casts are only redundant for some ports. */
+ 8000dee:	4b36      	ldr	r3, [pc, #216]	; (8000ec8 <xTaskIncrementTick+0x154>)
+ 8000df0:	f04f 32ff 	mov.w	r2, #4294967295	; 0xffffffff
+ 8000df4:	601a      	str	r2, [r3, #0]
+					break;
+ 8000df6:	e03e      	b.n	8000e76 <xTaskIncrementTick+0x102>
+				{
+					/* The delayed list is not empty, get the value of the
+					item at the head of the delayed list.  This is the time
+					at which the task at the head of the delayed list must
+					be removed from the Blocked state. */
+					pxTCB = listGET_OWNER_OF_HEAD_ENTRY( pxDelayedTaskList ); /*lint !e9079 void * is used as this macro is used with timers and co-routines too.  Alignment is known to be fine as the type of the pointer stored and retrieved is the same. */
+ 8000df8:	4b30      	ldr	r3, [pc, #192]	; (8000ebc <xTaskIncrementTick+0x148>)
+ 8000dfa:	681b      	ldr	r3, [r3, #0]
+ 8000dfc:	68db      	ldr	r3, [r3, #12]
+ 8000dfe:	68db      	ldr	r3, [r3, #12]
+ 8000e00:	9302      	str	r3, [sp, #8]
+					xItemValue = listGET_LIST_ITEM_VALUE( &( pxTCB->xStateListItem ) );
+ 8000e02:	9b02      	ldr	r3, [sp, #8]
+ 8000e04:	685b      	ldr	r3, [r3, #4]
+ 8000e06:	9301      	str	r3, [sp, #4]
+
+					if( xConstTickCount < xItemValue )
+ 8000e08:	9a04      	ldr	r2, [sp, #16]
+ 8000e0a:	9b01      	ldr	r3, [sp, #4]
+ 8000e0c:	429a      	cmp	r2, r3
+ 8000e0e:	d203      	bcs.n	8000e18 <xTaskIncrementTick+0xa4>
+						/* It is not time to unblock this item yet, but the
+						item value is the time at which the task at the head
+						of the blocked list must be removed from the Blocked
+						state -	so record the item value in
+						xNextTaskUnblockTime. */
+						xNextTaskUnblockTime = xItemValue;
+ 8000e10:	4a2d      	ldr	r2, [pc, #180]	; (8000ec8 <xTaskIncrementTick+0x154>)
+ 8000e12:	9b01      	ldr	r3, [sp, #4]
+ 8000e14:	6013      	str	r3, [r2, #0]
+						break; /*lint !e9011 Code structure here is deedmed easier to understand with multiple breaks. */
+ 8000e16:	e02e      	b.n	8000e76 <xTaskIncrementTick+0x102>
+					{
+						mtCOVERAGE_TEST_MARKER();
+					}
+
+					/* It is time to remove the item from the Blocked state. */
+					( void ) uxListRemove( &( pxTCB->xStateListItem ) );
+ 8000e18:	9b02      	ldr	r3, [sp, #8]
+ 8000e1a:	3304      	adds	r3, #4
+ 8000e1c:	4618      	mov	r0, r3
+ 8000e1e:	f7ff ff84 	bl	8000d2a <uxListRemove>
+
+					/* Is the task waiting on an event also?  If so remove
+					it from the event list. */
+					if( listLIST_ITEM_CONTAINER( &( pxTCB->xEventListItem ) ) != NULL )
+ 8000e22:	9b02      	ldr	r3, [sp, #8]
+ 8000e24:	6a9b      	ldr	r3, [r3, #40]	; 0x28
+ 8000e26:	2b00      	cmp	r3, #0
+ 8000e28:	d004      	beq.n	8000e34 <xTaskIncrementTick+0xc0>
+					{
+						( void ) uxListRemove( &( pxTCB->xEventListItem ) );
+ 8000e2a:	9b02      	ldr	r3, [sp, #8]
+ 8000e2c:	3318      	adds	r3, #24
+ 8000e2e:	4618      	mov	r0, r3
+ 8000e30:	f7ff ff7b 	bl	8000d2a <uxListRemove>
+						mtCOVERAGE_TEST_MARKER();
+					}
+
+					/* Place the unblocked task into the appropriate ready
+					list. */
+					prvAddTaskToReadyList( pxTCB );
+ 8000e34:	9b02      	ldr	r3, [sp, #8]
+ 8000e36:	6adb      	ldr	r3, [r3, #44]	; 0x2c
+ 8000e38:	2201      	movs	r2, #1
+ 8000e3a:	409a      	lsls	r2, r3
+ 8000e3c:	4b23      	ldr	r3, [pc, #140]	; (8000ecc <xTaskIncrementTick+0x158>)
+ 8000e3e:	681b      	ldr	r3, [r3, #0]
+ 8000e40:	4313      	orrs	r3, r2
+ 8000e42:	4a22      	ldr	r2, [pc, #136]	; (8000ecc <xTaskIncrementTick+0x158>)
+ 8000e44:	6013      	str	r3, [r2, #0]
+ 8000e46:	9b02      	ldr	r3, [sp, #8]
+ 8000e48:	6ada      	ldr	r2, [r3, #44]	; 0x2c
+ 8000e4a:	4613      	mov	r3, r2
+ 8000e4c:	009b      	lsls	r3, r3, #2
+ 8000e4e:	4413      	add	r3, r2
+ 8000e50:	009b      	lsls	r3, r3, #2
+ 8000e52:	4a1f      	ldr	r2, [pc, #124]	; (8000ed0 <xTaskIncrementTick+0x15c>)
+ 8000e54:	441a      	add	r2, r3
+ 8000e56:	9b02      	ldr	r3, [sp, #8]
+ 8000e58:	3304      	adds	r3, #4
+ 8000e5a:	4619      	mov	r1, r3
+ 8000e5c:	4610      	mov	r0, r2
+ 8000e5e:	f7ff ff45 	bl	8000cec <vListInsertEnd>
+					{
+						/* Preemption is on, but a context switch should
+						only be performed if the unblocked task has a
+						priority that is equal to or higher than the
+						currently executing task. */
+						if( pxTCB->uxPriority >= pxCurrentTCB->uxPriority )
+ 8000e62:	9b02      	ldr	r3, [sp, #8]
+ 8000e64:	6ada      	ldr	r2, [r3, #44]	; 0x2c
+ 8000e66:	4b1b      	ldr	r3, [pc, #108]	; (8000ed4 <xTaskIncrementTick+0x160>)
+ 8000e68:	681b      	ldr	r3, [r3, #0]
+ 8000e6a:	6adb      	ldr	r3, [r3, #44]	; 0x2c
+ 8000e6c:	429a      	cmp	r2, r3
+ 8000e6e:	d3b9      	bcc.n	8000de4 <xTaskIncrementTick+0x70>
+						{
+							xSwitchRequired = pdTRUE;
+ 8000e70:	2301      	movs	r3, #1
+ 8000e72:	9305      	str	r3, [sp, #20]
+				if( listLIST_IS_EMPTY( pxDelayedTaskList ) != pdFALSE )
+ 8000e74:	e7b6      	b.n	8000de4 <xTaskIncrementTick+0x70>
+		/* Tasks of equal priority to the currently running task will share
+		processing time (time slice) if preemption is on, and the application
+		writer has not explicitly turned time slicing off. */
+		#if ( ( configUSE_PREEMPTION == 1 ) && ( configUSE_TIME_SLICING == 1 ) )
+		{
+			if( listCURRENT_LIST_LENGTH( &( pxReadyTasksLists[ pxCurrentTCB->uxPriority ] ) ) > ( UBaseType_t ) 1 )
+ 8000e76:	4b17      	ldr	r3, [pc, #92]	; (8000ed4 <xTaskIncrementTick+0x160>)
+ 8000e78:	681b      	ldr	r3, [r3, #0]
+ 8000e7a:	6ada      	ldr	r2, [r3, #44]	; 0x2c
+ 8000e7c:	4914      	ldr	r1, [pc, #80]	; (8000ed0 <xTaskIncrementTick+0x15c>)
+ 8000e7e:	4613      	mov	r3, r2
+ 8000e80:	009b      	lsls	r3, r3, #2
+ 8000e82:	4413      	add	r3, r2
+ 8000e84:	009b      	lsls	r3, r3, #2
+ 8000e86:	440b      	add	r3, r1
+ 8000e88:	681b      	ldr	r3, [r3, #0]
+ 8000e8a:	2b01      	cmp	r3, #1
+ 8000e8c:	d907      	bls.n	8000e9e <xTaskIncrementTick+0x12a>
+			{
+				xSwitchRequired = pdTRUE;
+ 8000e8e:	2301      	movs	r3, #1
+ 8000e90:	9305      	str	r3, [sp, #20]
+ 8000e92:	e004      	b.n	8000e9e <xTaskIncrementTick+0x12a>
+		}
+		#endif /* configUSE_TICK_HOOK */
+	}
+	else
+	{
+		++uxPendedTicks;
+ 8000e94:	4b10      	ldr	r3, [pc, #64]	; (8000ed8 <xTaskIncrementTick+0x164>)
+ 8000e96:	681b      	ldr	r3, [r3, #0]
+ 8000e98:	3301      	adds	r3, #1
+ 8000e9a:	4a0f      	ldr	r2, [pc, #60]	; (8000ed8 <xTaskIncrementTick+0x164>)
+ 8000e9c:	6013      	str	r3, [r2, #0]
+		#endif
+	}
+
+	#if ( configUSE_PREEMPTION == 1 )
+	{
+		if( xYieldPending != pdFALSE )
+ 8000e9e:	4b0f      	ldr	r3, [pc, #60]	; (8000edc <xTaskIncrementTick+0x168>)
+ 8000ea0:	681b      	ldr	r3, [r3, #0]
+ 8000ea2:	2b00      	cmp	r3, #0
+ 8000ea4:	d001      	beq.n	8000eaa <xTaskIncrementTick+0x136>
+		{
+			xSwitchRequired = pdTRUE;
+ 8000ea6:	2301      	movs	r3, #1
+ 8000ea8:	9305      	str	r3, [sp, #20]
+			mtCOVERAGE_TEST_MARKER();
+		}
+	}
+	#endif /* configUSE_PREEMPTION */
+
+	return xSwitchRequired;
+ 8000eaa:	9b05      	ldr	r3, [sp, #20]
+}
+ 8000eac:	4618      	mov	r0, r3
+ 8000eae:	b007      	add	sp, #28
+ 8000eb0:	f85d fb04 	ldr.w	pc, [sp], #4
+ 8000eb4:	20000498 	.word	0x20000498
+ 8000eb8:	20000480 	.word	0x20000480
+ 8000ebc:	20000478 	.word	0x20000478
+ 8000ec0:	2000047c 	.word	0x2000047c
+ 8000ec4:	20000490 	.word	0x20000490
+ 8000ec8:	20000494 	.word	0x20000494
+ 8000ecc:	20000484 	.word	0x20000484
+ 8000ed0:	20000414 	.word	0x20000414
+ 8000ed4:	20000410 	.word	0x20000410
+ 8000ed8:	20000488 	.word	0x20000488
+ 8000edc:	2000048c 	.word	0x2000048c
+
+08000ee0 <vTaskSwitchContext>:
+
+#endif /* configUSE_APPLICATION_TASK_TAG */
+/*-----------------------------------------------------------*/
+
+void vTaskSwitchContext( void )
+{
+ 8000ee0:	b086      	sub	sp, #24
+	if( uxSchedulerSuspended != ( UBaseType_t ) pdFALSE )
+ 8000ee2:	4b26      	ldr	r3, [pc, #152]	; (8000f7c <vTaskSwitchContext+0x9c>)
+ 8000ee4:	681b      	ldr	r3, [r3, #0]
+ 8000ee6:	2b00      	cmp	r3, #0
+ 8000ee8:	d003      	beq.n	8000ef2 <vTaskSwitchContext+0x12>
+	{
+		/* The scheduler is currently suspended - do not allow a context
+		switch. */
+		xYieldPending = pdTRUE;
+ 8000eea:	4b25      	ldr	r3, [pc, #148]	; (8000f80 <vTaskSwitchContext+0xa0>)
+ 8000eec:	2201      	movs	r2, #1
+ 8000eee:	601a      	str	r2, [r3, #0]
+			structure specific to this task. */
+			_impure_ptr = &( pxCurrentTCB->xNewLib_reent );
+		}
+		#endif /* configUSE_NEWLIB_REENTRANT */
+	}
+}
+ 8000ef0:	e040      	b.n	8000f74 <vTaskSwitchContext+0x94>
+		xYieldPending = pdFALSE;
+ 8000ef2:	4b23      	ldr	r3, [pc, #140]	; (8000f80 <vTaskSwitchContext+0xa0>)
+ 8000ef4:	2200      	movs	r2, #0
+ 8000ef6:	601a      	str	r2, [r3, #0]
+		taskSELECT_HIGHEST_PRIORITY_TASK(); /*lint !e9079 void * is used as this macro is used with timers and co-routines too.  Alignment is known to be fine as the type of the pointer stored and retrieved is the same. */
+ 8000ef8:	4b22      	ldr	r3, [pc, #136]	; (8000f84 <vTaskSwitchContext+0xa4>)
+ 8000efa:	681b      	ldr	r3, [r3, #0]
+ 8000efc:	9303      	str	r3, [sp, #12]
+		__asm volatile ( "clz %0, %1" : "=r" ( ucReturn ) : "r" ( ulBitmap ) : "memory" );
+ 8000efe:	9b03      	ldr	r3, [sp, #12]
+ 8000f00:	fab3 f383 	clz	r3, r3
+ 8000f04:	f88d 300b 	strb.w	r3, [sp, #11]
+		return ucReturn;
+ 8000f08:	f89d 300b 	ldrb.w	r3, [sp, #11]
+ 8000f0c:	f1c3 031f 	rsb	r3, r3, #31
+ 8000f10:	9305      	str	r3, [sp, #20]
+ 8000f12:	491d      	ldr	r1, [pc, #116]	; (8000f88 <vTaskSwitchContext+0xa8>)
+ 8000f14:	9a05      	ldr	r2, [sp, #20]
+ 8000f16:	4613      	mov	r3, r2
+ 8000f18:	009b      	lsls	r3, r3, #2
+ 8000f1a:	4413      	add	r3, r2
+ 8000f1c:	009b      	lsls	r3, r3, #2
+ 8000f1e:	440b      	add	r3, r1
+ 8000f20:	681b      	ldr	r3, [r3, #0]
+ 8000f22:	2b00      	cmp	r3, #0
+ 8000f24:	d109      	bne.n	8000f3a <vTaskSwitchContext+0x5a>
+	__asm volatile
+ 8000f26:	f04f 0350 	mov.w	r3, #80	; 0x50
+ 8000f2a:	f383 8811 	msr	BASEPRI, r3
+ 8000f2e:	f3bf 8f6f 	isb	sy
+ 8000f32:	f3bf 8f4f 	dsb	sy
+ 8000f36:	9301      	str	r3, [sp, #4]
+ 8000f38:	e7fe      	b.n	8000f38 <vTaskSwitchContext+0x58>
+ 8000f3a:	9a05      	ldr	r2, [sp, #20]
+ 8000f3c:	4613      	mov	r3, r2
+ 8000f3e:	009b      	lsls	r3, r3, #2
+ 8000f40:	4413      	add	r3, r2
+ 8000f42:	009b      	lsls	r3, r3, #2
+ 8000f44:	4a10      	ldr	r2, [pc, #64]	; (8000f88 <vTaskSwitchContext+0xa8>)
+ 8000f46:	4413      	add	r3, r2
+ 8000f48:	9304      	str	r3, [sp, #16]
+ 8000f4a:	9b04      	ldr	r3, [sp, #16]
+ 8000f4c:	685b      	ldr	r3, [r3, #4]
+ 8000f4e:	685a      	ldr	r2, [r3, #4]
+ 8000f50:	9b04      	ldr	r3, [sp, #16]
+ 8000f52:	605a      	str	r2, [r3, #4]
+ 8000f54:	9b04      	ldr	r3, [sp, #16]
+ 8000f56:	685a      	ldr	r2, [r3, #4]
+ 8000f58:	9b04      	ldr	r3, [sp, #16]
+ 8000f5a:	3308      	adds	r3, #8
+ 8000f5c:	429a      	cmp	r2, r3
+ 8000f5e:	d104      	bne.n	8000f6a <vTaskSwitchContext+0x8a>
+ 8000f60:	9b04      	ldr	r3, [sp, #16]
+ 8000f62:	685b      	ldr	r3, [r3, #4]
+ 8000f64:	685a      	ldr	r2, [r3, #4]
+ 8000f66:	9b04      	ldr	r3, [sp, #16]
+ 8000f68:	605a      	str	r2, [r3, #4]
+ 8000f6a:	9b04      	ldr	r3, [sp, #16]
+ 8000f6c:	685b      	ldr	r3, [r3, #4]
+ 8000f6e:	68db      	ldr	r3, [r3, #12]
+ 8000f70:	4a06      	ldr	r2, [pc, #24]	; (8000f8c <vTaskSwitchContext+0xac>)
+ 8000f72:	6013      	str	r3, [r2, #0]
+}
+ 8000f74:	bf00      	nop
+ 8000f76:	b006      	add	sp, #24
+ 8000f78:	4770      	bx	lr
+ 8000f7a:	bf00      	nop
+ 8000f7c:	20000498 	.word	0x20000498
+ 8000f80:	2000048c 	.word	0x2000048c
+ 8000f84:	20000484 	.word	0x20000484
+ 8000f88:	20000414 	.word	0x20000414
+ 8000f8c:	20000410 	.word	0x20000410
+
+08000f90 <prvResetNextTaskUnblockTime>:
+
+#endif /* INCLUDE_vTaskDelete */
+/*-----------------------------------------------------------*/
+
+static void prvResetNextTaskUnblockTime( void )
+{
+ 8000f90:	b082      	sub	sp, #8
+TCB_t *pxTCB;
+
+	if( listLIST_IS_EMPTY( pxDelayedTaskList ) != pdFALSE )
+ 8000f92:	4b0b      	ldr	r3, [pc, #44]	; (8000fc0 <prvResetNextTaskUnblockTime+0x30>)
+ 8000f94:	681b      	ldr	r3, [r3, #0]
+ 8000f96:	681b      	ldr	r3, [r3, #0]
+ 8000f98:	2b00      	cmp	r3, #0
+ 8000f9a:	d104      	bne.n	8000fa6 <prvResetNextTaskUnblockTime+0x16>
+	{
+		/* The new current delayed list is empty.  Set xNextTaskUnblockTime to
+		the maximum possible value so it is	extremely unlikely that the
+		if( xTickCount >= xNextTaskUnblockTime ) test will pass until
+		there is an item in the delayed list. */
+		xNextTaskUnblockTime = portMAX_DELAY;
+ 8000f9c:	4b09      	ldr	r3, [pc, #36]	; (8000fc4 <prvResetNextTaskUnblockTime+0x34>)
+ 8000f9e:	f04f 32ff 	mov.w	r2, #4294967295	; 0xffffffff
+ 8000fa2:	601a      	str	r2, [r3, #0]
+		which the task at the head of the delayed list should be removed
+		from the Blocked state. */
+		( pxTCB ) = listGET_OWNER_OF_HEAD_ENTRY( pxDelayedTaskList ); /*lint !e9079 void * is used as this macro is used with timers and co-routines too.  Alignment is known to be fine as the type of the pointer stored and retrieved is the same. */
+		xNextTaskUnblockTime = listGET_LIST_ITEM_VALUE( &( ( pxTCB )->xStateListItem ) );
+	}
+}
+ 8000fa4:	e008      	b.n	8000fb8 <prvResetNextTaskUnblockTime+0x28>
+		( pxTCB ) = listGET_OWNER_OF_HEAD_ENTRY( pxDelayedTaskList ); /*lint !e9079 void * is used as this macro is used with timers and co-routines too.  Alignment is known to be fine as the type of the pointer stored and retrieved is the same. */
+ 8000fa6:	4b06      	ldr	r3, [pc, #24]	; (8000fc0 <prvResetNextTaskUnblockTime+0x30>)
+ 8000fa8:	681b      	ldr	r3, [r3, #0]
+ 8000faa:	68db      	ldr	r3, [r3, #12]
+ 8000fac:	68db      	ldr	r3, [r3, #12]
+ 8000fae:	9301      	str	r3, [sp, #4]
+		xNextTaskUnblockTime = listGET_LIST_ITEM_VALUE( &( ( pxTCB )->xStateListItem ) );
+ 8000fb0:	9b01      	ldr	r3, [sp, #4]
+ 8000fb2:	685b      	ldr	r3, [r3, #4]
+ 8000fb4:	4a03      	ldr	r2, [pc, #12]	; (8000fc4 <prvResetNextTaskUnblockTime+0x34>)
+ 8000fb6:	6013      	str	r3, [r2, #0]
+}
+ 8000fb8:	bf00      	nop
+ 8000fba:	b002      	add	sp, #8
+ 8000fbc:	4770      	bx	lr
+ 8000fbe:	bf00      	nop
+ 8000fc0:	20000478 	.word	0x20000478
+ 8000fc4:	20000494 	.word	0x20000494
+	...
+
+08000fd0 <SVC_Handler>:
+}
+/*-----------------------------------------------------------*/
+
+void vPortSVCHandler( void )
+{
+	__asm volatile (
+ 8000fd0:	4b07      	ldr	r3, [pc, #28]	; (8000ff0 <pxCurrentTCBConst2>)
+ 8000fd2:	6819      	ldr	r1, [r3, #0]
+ 8000fd4:	6808      	ldr	r0, [r1, #0]
+ 8000fd6:	e8b0 4ff0 	ldmia.w	r0!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+ 8000fda:	f380 8809 	msr	PSP, r0
+ 8000fde:	f3bf 8f6f 	isb	sy
+ 8000fe2:	f04f 0000 	mov.w	r0, #0
+ 8000fe6:	f380 8811 	msr	BASEPRI, r0
+ 8000fea:	4770      	bx	lr
+ 8000fec:	f3af 8000 	nop.w
+
+08000ff0 <pxCurrentTCBConst2>:
+ 8000ff0:	20000410 	.word	0x20000410
+					"	bx r14							\n"
+					"									\n"
+					"	.align 4						\n"
+					"pxCurrentTCBConst2: .word pxCurrentTCB				\n"
+				);
+}
+ 8000ff4:	bf00      	nop
+ 8000ff6:	bf00      	nop
+	...
+
+08001000 <PendSV_Handler>:
+
+void xPortPendSVHandler( void )
+{
+	/* This is a naked function. */
+
+	__asm volatile
+ 8001000:	f3ef 8009 	mrs	r0, PSP
+ 8001004:	f3bf 8f6f 	isb	sy
+ 8001008:	4b15      	ldr	r3, [pc, #84]	; (8001060 <pxCurrentTCBConst>)
+ 800100a:	681a      	ldr	r2, [r3, #0]
+ 800100c:	f01e 0f10 	tst.w	lr, #16
+ 8001010:	bf08      	it	eq
+ 8001012:	ed20 8a10 	vstmdbeq	r0!, {s16-s31}
+ 8001016:	e920 4ff0 	stmdb	r0!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+ 800101a:	6010      	str	r0, [r2, #0]
+ 800101c:	e92d 0009 	stmdb	sp!, {r0, r3}
+ 8001020:	f04f 0050 	mov.w	r0, #80	; 0x50
+ 8001024:	f380 8811 	msr	BASEPRI, r0
+ 8001028:	f3bf 8f4f 	dsb	sy
+ 800102c:	f3bf 8f6f 	isb	sy
+ 8001030:	f7ff ff56 	bl	8000ee0 <vTaskSwitchContext>
+ 8001034:	f04f 0000 	mov.w	r0, #0
+ 8001038:	f380 8811 	msr	BASEPRI, r0
+ 800103c:	bc09      	pop	{r0, r3}
+ 800103e:	6819      	ldr	r1, [r3, #0]
+ 8001040:	6808      	ldr	r0, [r1, #0]
+ 8001042:	e8b0 4ff0 	ldmia.w	r0!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+ 8001046:	f01e 0f10 	tst.w	lr, #16
+ 800104a:	bf08      	it	eq
+ 800104c:	ecb0 8a10 	vldmiaeq	r0!, {s16-s31}
+ 8001050:	f380 8809 	msr	PSP, r0
+ 8001054:	f3bf 8f6f 	isb	sy
+ 8001058:	4770      	bx	lr
+ 800105a:	bf00      	nop
+ 800105c:	f3af 8000 	nop.w
+
+08001060 <pxCurrentTCBConst>:
+ 8001060:	20000410 	.word	0x20000410
+	"										\n"
+	"	.align 4							\n"
+	"pxCurrentTCBConst: .word pxCurrentTCB	\n"
+	::"i"(configMAX_SYSCALL_INTERRUPT_PRIORITY)
+	);
+}
+ 8001064:	bf00      	nop
+ 8001066:	bf00      	nop
+
+08001068 <SysTick_Handler>:
+/*-----------------------------------------------------------*/
+
+void xPortSysTickHandler( void )
+{
+ 8001068:	b500      	push	{lr}
+ 800106a:	b083      	sub	sp, #12
+ 800106c:	f04f 0350 	mov.w	r3, #80	; 0x50
+ 8001070:	f383 8811 	msr	BASEPRI, r3
+ 8001074:	f3bf 8f6f 	isb	sy
+ 8001078:	f3bf 8f4f 	dsb	sy
+ 800107c:	9301      	str	r3, [sp, #4]
+	save and then restore the interrupt mask value as its value is already
+	known. */
+	portDISABLE_INTERRUPTS();
+	{
+		/* Increment the RTOS tick. */
+		if( xTaskIncrementTick() != pdFALSE )
+ 800107e:	f7ff fe79 	bl	8000d74 <xTaskIncrementTick>
+ 8001082:	4603      	mov	r3, r0
+ 8001084:	2b00      	cmp	r3, #0
+ 8001086:	d003      	beq.n	8001090 <SysTick_Handler+0x28>
+		{
+			/* A context switch is required.  Context switching is performed in
+			the PendSV interrupt.  Pend the PendSV interrupt. */
+			portNVIC_INT_CTRL_REG = portNVIC_PENDSVSET_BIT;
+ 8001088:	4b06      	ldr	r3, [pc, #24]	; (80010a4 <SysTick_Handler+0x3c>)
+ 800108a:	f04f 5280 	mov.w	r2, #268435456	; 0x10000000
+ 800108e:	601a      	str	r2, [r3, #0]
+ 8001090:	2300      	movs	r3, #0
+ 8001092:	9300      	str	r3, [sp, #0]
+}
+/*-----------------------------------------------------------*/
+
+portFORCE_INLINE static void vPortSetBASEPRI( uint32_t ulNewMaskValue )
+{
+	__asm volatile
+ 8001094:	9b00      	ldr	r3, [sp, #0]
+ 8001096:	f383 8811 	msr	BASEPRI, r3
+		}
+	}
+	portENABLE_INTERRUPTS();
+}
+ 800109a:	bf00      	nop
+ 800109c:	b003      	add	sp, #12
+ 800109e:	f85d fb04 	ldr.w	pc, [sp], #4
+ 80010a2:	bf00      	nop
+ 80010a4:	e000ed04 	.word	0xe000ed04
+
+080010a8 <SystemInit>:
+  *         SystemFrequency variable.
+  * @param  None
+  * @retval None
+  */
+void SystemInit(void)
+{
+ 80010a8:	b508      	push	{r3, lr}
+  /* FPU settings ------------------------------------------------------------*/
+  #if (__FPU_PRESENT == 1) && (__FPU_USED == 1)
+    SCB->CPACR |= ((3UL << 10*2)|(3UL << 11*2));  /* set CP10 and CP11 Full Access */
+ 80010aa:	4b16      	ldr	r3, [pc, #88]	; (8001104 <SystemInit+0x5c>)
+ 80010ac:	f8d3 3088 	ldr.w	r3, [r3, #136]	; 0x88
+ 80010b0:	4a14      	ldr	r2, [pc, #80]	; (8001104 <SystemInit+0x5c>)
+ 80010b2:	f443 0370 	orr.w	r3, r3, #15728640	; 0xf00000
+ 80010b6:	f8c2 3088 	str.w	r3, [r2, #136]	; 0x88
+  #endif
+  /* Reset the RCC clock configuration to the default reset state ------------*/
+  /* Set HSION bit */
+  RCC->CR |= (uint32_t)0x00000001;
+ 80010ba:	4b13      	ldr	r3, [pc, #76]	; (8001108 <SystemInit+0x60>)
+ 80010bc:	681b      	ldr	r3, [r3, #0]
+ 80010be:	4a12      	ldr	r2, [pc, #72]	; (8001108 <SystemInit+0x60>)
+ 80010c0:	f043 0301 	orr.w	r3, r3, #1
+ 80010c4:	6013      	str	r3, [r2, #0]
+
+  /* Reset CFGR register */
+  RCC->CFGR = 0x00000000;
+ 80010c6:	4b10      	ldr	r3, [pc, #64]	; (8001108 <SystemInit+0x60>)
+ 80010c8:	2200      	movs	r2, #0
+ 80010ca:	609a      	str	r2, [r3, #8]
+
+  /* Reset HSEON, CSSON and PLLON bits */
+  RCC->CR &= (uint32_t)0xFEF6FFFF;
+ 80010cc:	4b0e      	ldr	r3, [pc, #56]	; (8001108 <SystemInit+0x60>)
+ 80010ce:	681b      	ldr	r3, [r3, #0]
+ 80010d0:	4a0d      	ldr	r2, [pc, #52]	; (8001108 <SystemInit+0x60>)
+ 80010d2:	f023 7384 	bic.w	r3, r3, #17301504	; 0x1080000
+ 80010d6:	f423 3380 	bic.w	r3, r3, #65536	; 0x10000
+ 80010da:	6013      	str	r3, [r2, #0]
+
+  /* Reset PLLCFGR register */
+  RCC->PLLCFGR = 0x24003010;
+ 80010dc:	4b0a      	ldr	r3, [pc, #40]	; (8001108 <SystemInit+0x60>)
+ 80010de:	4a0b      	ldr	r2, [pc, #44]	; (800110c <SystemInit+0x64>)
+ 80010e0:	605a      	str	r2, [r3, #4]
+
+  /* Reset HSEBYP bit */
+  RCC->CR &= (uint32_t)0xFFFBFFFF;
+ 80010e2:	4b09      	ldr	r3, [pc, #36]	; (8001108 <SystemInit+0x60>)
+ 80010e4:	681b      	ldr	r3, [r3, #0]
+ 80010e6:	4a08      	ldr	r2, [pc, #32]	; (8001108 <SystemInit+0x60>)
+ 80010e8:	f423 2380 	bic.w	r3, r3, #262144	; 0x40000
+ 80010ec:	6013      	str	r3, [r2, #0]
+
+  /* Disable all interrupts */
+  RCC->CIR = 0x00000000;
+ 80010ee:	4b06      	ldr	r3, [pc, #24]	; (8001108 <SystemInit+0x60>)
+ 80010f0:	2200      	movs	r2, #0
+ 80010f2:	60da      	str	r2, [r3, #12]
+  SystemInit_ExtMemCtl(); 
+#endif /* DATA_IN_ExtSRAM */
+         
+  /* Configure the System clock source, PLL Multiplier and Divider factors, 
+     AHB/APBx prescalers and Flash settings ----------------------------------*/
+  SetSysClock();
+ 80010f4:	f000 f80c 	bl	8001110 <SetSysClock>
+
+  /* Configure the Vector Table location add offset address ------------------*/
+#ifdef VECT_TAB_SRAM
+  SCB->VTOR = SRAM_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal SRAM */
+#else
+  SCB->VTOR = FLASH_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal FLASH */
+ 80010f8:	4b02      	ldr	r3, [pc, #8]	; (8001104 <SystemInit+0x5c>)
+ 80010fa:	f04f 6200 	mov.w	r2, #134217728	; 0x8000000
+ 80010fe:	609a      	str	r2, [r3, #8]
+#endif
+}
+ 8001100:	bf00      	nop
+ 8001102:	bd08      	pop	{r3, pc}
+ 8001104:	e000ed00 	.word	0xe000ed00
+ 8001108:	40023800 	.word	0x40023800
+ 800110c:	24003010 	.word	0x24003010
+
+08001110 <SetSysClock>:
+  *         is reset to the default reset state (done in SystemInit() function).   
+  * @param  None
+  * @retval None
+  */
+static void SetSysClock(void)
+{
+ 8001110:	b082      	sub	sp, #8
+/******************************************************************************/
+/*            PLL (clocked by HSE) used as System clock source                */
+/******************************************************************************/
+  __IO uint32_t StartUpCounter = 0, HSEStatus = 0;
+ 8001112:	2300      	movs	r3, #0
+ 8001114:	9301      	str	r3, [sp, #4]
+ 8001116:	2300      	movs	r3, #0
+ 8001118:	9300      	str	r3, [sp, #0]
+  
+  /* Enable HSE */
+  RCC->CR |= ((uint32_t)RCC_CR_HSEON);
+ 800111a:	4b34      	ldr	r3, [pc, #208]	; (80011ec <SetSysClock+0xdc>)
+ 800111c:	681b      	ldr	r3, [r3, #0]
+ 800111e:	4a33      	ldr	r2, [pc, #204]	; (80011ec <SetSysClock+0xdc>)
+ 8001120:	f443 3380 	orr.w	r3, r3, #65536	; 0x10000
+ 8001124:	6013      	str	r3, [r2, #0]
+ 
+  /* Wait till HSE is ready and if Time out is reached exit */
+  do
+  {
+    HSEStatus = RCC->CR & RCC_CR_HSERDY;
+ 8001126:	4b31      	ldr	r3, [pc, #196]	; (80011ec <SetSysClock+0xdc>)
+ 8001128:	681b      	ldr	r3, [r3, #0]
+ 800112a:	f403 3300 	and.w	r3, r3, #131072	; 0x20000
+ 800112e:	9300      	str	r3, [sp, #0]
+    StartUpCounter++;
+ 8001130:	9b01      	ldr	r3, [sp, #4]
+ 8001132:	3301      	adds	r3, #1
+ 8001134:	9301      	str	r3, [sp, #4]
+  } while((HSEStatus == 0) && (StartUpCounter != HSE_STARTUP_TIMEOUT));
+ 8001136:	9b00      	ldr	r3, [sp, #0]
+ 8001138:	2b00      	cmp	r3, #0
+ 800113a:	d103      	bne.n	8001144 <SetSysClock+0x34>
+ 800113c:	9b01      	ldr	r3, [sp, #4]
+ 800113e:	f5b3 4fa0 	cmp.w	r3, #20480	; 0x5000
+ 8001142:	d1f0      	bne.n	8001126 <SetSysClock+0x16>
+
+  if ((RCC->CR & RCC_CR_HSERDY) != RESET)
+ 8001144:	4b29      	ldr	r3, [pc, #164]	; (80011ec <SetSysClock+0xdc>)
+ 8001146:	681b      	ldr	r3, [r3, #0]
+ 8001148:	f403 3300 	and.w	r3, r3, #131072	; 0x20000
+ 800114c:	2b00      	cmp	r3, #0
+ 800114e:	d002      	beq.n	8001156 <SetSysClock+0x46>
+  {
+    HSEStatus = (uint32_t)0x01;
+ 8001150:	2301      	movs	r3, #1
+ 8001152:	9300      	str	r3, [sp, #0]
+ 8001154:	e001      	b.n	800115a <SetSysClock+0x4a>
+  }
+  else
+  {
+    HSEStatus = (uint32_t)0x00;
+ 8001156:	2300      	movs	r3, #0
+ 8001158:	9300      	str	r3, [sp, #0]
+  }
+
+  if (HSEStatus == (uint32_t)0x01)
+ 800115a:	9b00      	ldr	r3, [sp, #0]
+ 800115c:	2b01      	cmp	r3, #1
+ 800115e:	d142      	bne.n	80011e6 <SetSysClock+0xd6>
+  {
+    /* Select regulator voltage output Scale 1 mode, System frequency up to 168 MHz */
+    RCC->APB1ENR |= RCC_APB1ENR_PWREN;
+ 8001160:	4b22      	ldr	r3, [pc, #136]	; (80011ec <SetSysClock+0xdc>)
+ 8001162:	6c1b      	ldr	r3, [r3, #64]	; 0x40
+ 8001164:	4a21      	ldr	r2, [pc, #132]	; (80011ec <SetSysClock+0xdc>)
+ 8001166:	f043 5380 	orr.w	r3, r3, #268435456	; 0x10000000
+ 800116a:	6413      	str	r3, [r2, #64]	; 0x40
+    PWR->CR |= PWR_CR_VOS;
+ 800116c:	4b20      	ldr	r3, [pc, #128]	; (80011f0 <SetSysClock+0xe0>)
+ 800116e:	681b      	ldr	r3, [r3, #0]
+ 8001170:	4a1f      	ldr	r2, [pc, #124]	; (80011f0 <SetSysClock+0xe0>)
+ 8001172:	f443 4340 	orr.w	r3, r3, #49152	; 0xc000
+ 8001176:	6013      	str	r3, [r2, #0]
+
+    /* HCLK = SYSCLK / 1*/
+    RCC->CFGR |= RCC_CFGR_HPRE_DIV1;
+ 8001178:	4b1c      	ldr	r3, [pc, #112]	; (80011ec <SetSysClock+0xdc>)
+ 800117a:	4a1c      	ldr	r2, [pc, #112]	; (80011ec <SetSysClock+0xdc>)
+ 800117c:	689b      	ldr	r3, [r3, #8]
+ 800117e:	6093      	str	r3, [r2, #8]
+      
+    /* PCLK2 = HCLK / 2*/
+    RCC->CFGR |= RCC_CFGR_PPRE2_DIV2;
+ 8001180:	4b1a      	ldr	r3, [pc, #104]	; (80011ec <SetSysClock+0xdc>)
+ 8001182:	689b      	ldr	r3, [r3, #8]
+ 8001184:	4a19      	ldr	r2, [pc, #100]	; (80011ec <SetSysClock+0xdc>)
+ 8001186:	f443 4300 	orr.w	r3, r3, #32768	; 0x8000
+ 800118a:	6093      	str	r3, [r2, #8]
+    
+    /* PCLK1 = HCLK / 4*/
+    RCC->CFGR |= RCC_CFGR_PPRE1_DIV4;
+ 800118c:	4b17      	ldr	r3, [pc, #92]	; (80011ec <SetSysClock+0xdc>)
+ 800118e:	689b      	ldr	r3, [r3, #8]
+ 8001190:	4a16      	ldr	r2, [pc, #88]	; (80011ec <SetSysClock+0xdc>)
+ 8001192:	f443 53a0 	orr.w	r3, r3, #5120	; 0x1400
+ 8001196:	6093      	str	r3, [r2, #8]
+
+    /* Configure the main PLL */
+    RCC->PLLCFGR = PLL_M | (PLL_N << 6) | (((PLL_P >> 1) -1) << 16) |
+ 8001198:	4b14      	ldr	r3, [pc, #80]	; (80011ec <SetSysClock+0xdc>)
+ 800119a:	4a16      	ldr	r2, [pc, #88]	; (80011f4 <SetSysClock+0xe4>)
+ 800119c:	605a      	str	r2, [r3, #4]
+                   (RCC_PLLCFGR_PLLSRC_HSE) | (PLL_Q << 24);
+
+    /* Enable the main PLL */
+    RCC->CR |= RCC_CR_PLLON;
+ 800119e:	4b13      	ldr	r3, [pc, #76]	; (80011ec <SetSysClock+0xdc>)
+ 80011a0:	681b      	ldr	r3, [r3, #0]
+ 80011a2:	4a12      	ldr	r2, [pc, #72]	; (80011ec <SetSysClock+0xdc>)
+ 80011a4:	f043 7380 	orr.w	r3, r3, #16777216	; 0x1000000
+ 80011a8:	6013      	str	r3, [r2, #0]
+
+    /* Wait till the main PLL is ready */
+    while((RCC->CR & RCC_CR_PLLRDY) == 0)
+ 80011aa:	bf00      	nop
+ 80011ac:	4b0f      	ldr	r3, [pc, #60]	; (80011ec <SetSysClock+0xdc>)
+ 80011ae:	681b      	ldr	r3, [r3, #0]
+ 80011b0:	f003 7300 	and.w	r3, r3, #33554432	; 0x2000000
+ 80011b4:	2b00      	cmp	r3, #0
+ 80011b6:	d0f9      	beq.n	80011ac <SetSysClock+0x9c>
+    {
+    }
+   
+    /* Configure Flash prefetch, Instruction cache, Data cache and wait state */
+    FLASH->ACR = FLASH_ACR_PRFTEN | FLASH_ACR_ICEN | FLASH_ACR_DCEN | FLASH_ACR_LATENCY_5WS;
+ 80011b8:	4b0f      	ldr	r3, [pc, #60]	; (80011f8 <SetSysClock+0xe8>)
+ 80011ba:	f240 7205 	movw	r2, #1797	; 0x705
+ 80011be:	601a      	str	r2, [r3, #0]
+
+    /* Select the main PLL as system clock source */
+    RCC->CFGR &= (uint32_t)((uint32_t)~(RCC_CFGR_SW));
+ 80011c0:	4b0a      	ldr	r3, [pc, #40]	; (80011ec <SetSysClock+0xdc>)
+ 80011c2:	689b      	ldr	r3, [r3, #8]
+ 80011c4:	4a09      	ldr	r2, [pc, #36]	; (80011ec <SetSysClock+0xdc>)
+ 80011c6:	f023 0303 	bic.w	r3, r3, #3
+ 80011ca:	6093      	str	r3, [r2, #8]
+    RCC->CFGR |= RCC_CFGR_SW_PLL;
+ 80011cc:	4b07      	ldr	r3, [pc, #28]	; (80011ec <SetSysClock+0xdc>)
+ 80011ce:	689b      	ldr	r3, [r3, #8]
+ 80011d0:	4a06      	ldr	r2, [pc, #24]	; (80011ec <SetSysClock+0xdc>)
+ 80011d2:	f043 0302 	orr.w	r3, r3, #2
+ 80011d6:	6093      	str	r3, [r2, #8]
+
+    /* Wait till the main PLL is used as system clock source */
+    while ((RCC->CFGR & (uint32_t)RCC_CFGR_SWS ) != RCC_CFGR_SWS_PLL)
+ 80011d8:	bf00      	nop
+ 80011da:	4b04      	ldr	r3, [pc, #16]	; (80011ec <SetSysClock+0xdc>)
+ 80011dc:	689b      	ldr	r3, [r3, #8]
+ 80011de:	f003 030c 	and.w	r3, r3, #12
+ 80011e2:	2b08      	cmp	r3, #8
+ 80011e4:	d1f9      	bne.n	80011da <SetSysClock+0xca>
+  else
+  { /* If HSE fails to start-up, the application will have wrong clock
+         configuration. User can add here some code to deal with this error */
+  }
+
+}
+ 80011e6:	bf00      	nop
+ 80011e8:	b002      	add	sp, #8
+ 80011ea:	4770      	bx	lr
+ 80011ec:	40023800 	.word	0x40023800
+ 80011f0:	40007000 	.word	0x40007000
+ 80011f4:	0740690a 	.word	0x0740690a
+ 80011f8:	40023c00 	.word	0x40023c00
+
+080011fc <CAN_Receive>:
+  *         CAN DLC, CAN data and FMI number.
+  * @note   CAN3 peripheral is available only for STM32F413_423xx devices
+  * @retval None
+  */
+void CAN_Receive(CAN_TypeDef* CANx, uint8_t FIFONumber, CanRxMsg* RxMessage)
+{
+ 80011fc:	b084      	sub	sp, #16
+ 80011fe:	9003      	str	r0, [sp, #12]
+ 8001200:	460b      	mov	r3, r1
+ 8001202:	9201      	str	r2, [sp, #4]
+ 8001204:	f88d 300b 	strb.w	r3, [sp, #11]
+  /* Check the parameters */
+  assert_param(IS_CAN_ALL_PERIPH(CANx));
+  assert_param(IS_CAN_FIFO(FIFONumber));
+  /* Get the Id */
+  RxMessage->IDE = (uint8_t)0x04 & CANx->sFIFOMailBox[FIFONumber].RIR;
+ 8001208:	f89d 300b 	ldrb.w	r3, [sp, #11]
+ 800120c:	9a03      	ldr	r2, [sp, #12]
+ 800120e:	331b      	adds	r3, #27
+ 8001210:	011b      	lsls	r3, r3, #4
+ 8001212:	4413      	add	r3, r2
+ 8001214:	681b      	ldr	r3, [r3, #0]
+ 8001216:	b2db      	uxtb	r3, r3
+ 8001218:	f003 0304 	and.w	r3, r3, #4
+ 800121c:	b2da      	uxtb	r2, r3
+ 800121e:	9b01      	ldr	r3, [sp, #4]
+ 8001220:	721a      	strb	r2, [r3, #8]
+  if (RxMessage->IDE == CAN_Id_Standard)
+ 8001222:	9b01      	ldr	r3, [sp, #4]
+ 8001224:	7a1b      	ldrb	r3, [r3, #8]
+ 8001226:	2b00      	cmp	r3, #0
+ 8001228:	d10c      	bne.n	8001244 <CAN_Receive+0x48>
+  {
+    RxMessage->StdId = (uint32_t)0x000007FF & (CANx->sFIFOMailBox[FIFONumber].RIR >> 21);
+ 800122a:	f89d 300b 	ldrb.w	r3, [sp, #11]
+ 800122e:	9a03      	ldr	r2, [sp, #12]
+ 8001230:	331b      	adds	r3, #27
+ 8001232:	011b      	lsls	r3, r3, #4
+ 8001234:	4413      	add	r3, r2
+ 8001236:	681b      	ldr	r3, [r3, #0]
+ 8001238:	0d5b      	lsrs	r3, r3, #21
+ 800123a:	f3c3 020a 	ubfx	r2, r3, #0, #11
+ 800123e:	9b01      	ldr	r3, [sp, #4]
+ 8001240:	601a      	str	r2, [r3, #0]
+ 8001242:	e00b      	b.n	800125c <CAN_Receive+0x60>
+  }
+  else
+  {
+    RxMessage->ExtId = (uint32_t)0x1FFFFFFF & (CANx->sFIFOMailBox[FIFONumber].RIR >> 3);
+ 8001244:	f89d 300b 	ldrb.w	r3, [sp, #11]
+ 8001248:	9a03      	ldr	r2, [sp, #12]
+ 800124a:	331b      	adds	r3, #27
+ 800124c:	011b      	lsls	r3, r3, #4
+ 800124e:	4413      	add	r3, r2
+ 8001250:	681b      	ldr	r3, [r3, #0]
+ 8001252:	08db      	lsrs	r3, r3, #3
+ 8001254:	f023 4260 	bic.w	r2, r3, #3758096384	; 0xe0000000
+ 8001258:	9b01      	ldr	r3, [sp, #4]
+ 800125a:	605a      	str	r2, [r3, #4]
+  }
+  
+  RxMessage->RTR = (uint8_t)0x02 & CANx->sFIFOMailBox[FIFONumber].RIR;
+ 800125c:	f89d 300b 	ldrb.w	r3, [sp, #11]
+ 8001260:	9a03      	ldr	r2, [sp, #12]
+ 8001262:	331b      	adds	r3, #27
+ 8001264:	011b      	lsls	r3, r3, #4
+ 8001266:	4413      	add	r3, r2
+ 8001268:	681b      	ldr	r3, [r3, #0]
+ 800126a:	b2db      	uxtb	r3, r3
+ 800126c:	f003 0302 	and.w	r3, r3, #2
+ 8001270:	b2da      	uxtb	r2, r3
+ 8001272:	9b01      	ldr	r3, [sp, #4]
+ 8001274:	725a      	strb	r2, [r3, #9]
+  /* Get the DLC */
+  RxMessage->DLC = (uint8_t)0x0F & CANx->sFIFOMailBox[FIFONumber].RDTR;
+ 8001276:	f89d 300b 	ldrb.w	r3, [sp, #11]
+ 800127a:	9a03      	ldr	r2, [sp, #12]
+ 800127c:	331b      	adds	r3, #27
+ 800127e:	011b      	lsls	r3, r3, #4
+ 8001280:	4413      	add	r3, r2
+ 8001282:	3304      	adds	r3, #4
+ 8001284:	681b      	ldr	r3, [r3, #0]
+ 8001286:	b2db      	uxtb	r3, r3
+ 8001288:	f003 030f 	and.w	r3, r3, #15
+ 800128c:	b2da      	uxtb	r2, r3
+ 800128e:	9b01      	ldr	r3, [sp, #4]
+ 8001290:	729a      	strb	r2, [r3, #10]
+  /* Get the FMI */
+  RxMessage->FMI = (uint8_t)0xFF & (CANx->sFIFOMailBox[FIFONumber].RDTR >> 8);
+ 8001292:	f89d 300b 	ldrb.w	r3, [sp, #11]
+ 8001296:	9a03      	ldr	r2, [sp, #12]
+ 8001298:	331b      	adds	r3, #27
+ 800129a:	011b      	lsls	r3, r3, #4
+ 800129c:	4413      	add	r3, r2
+ 800129e:	3304      	adds	r3, #4
+ 80012a0:	681b      	ldr	r3, [r3, #0]
+ 80012a2:	0a1b      	lsrs	r3, r3, #8
+ 80012a4:	b2da      	uxtb	r2, r3
+ 80012a6:	9b01      	ldr	r3, [sp, #4]
+ 80012a8:	74da      	strb	r2, [r3, #19]
+  /* Get the data field */
+  RxMessage->Data[0] = (uint8_t)0xFF & CANx->sFIFOMailBox[FIFONumber].RDLR;
+ 80012aa:	f89d 300b 	ldrb.w	r3, [sp, #11]
+ 80012ae:	9a03      	ldr	r2, [sp, #12]
+ 80012b0:	011b      	lsls	r3, r3, #4
+ 80012b2:	4413      	add	r3, r2
+ 80012b4:	f503 73dc 	add.w	r3, r3, #440	; 0x1b8
+ 80012b8:	681b      	ldr	r3, [r3, #0]
+ 80012ba:	b2da      	uxtb	r2, r3
+ 80012bc:	9b01      	ldr	r3, [sp, #4]
+ 80012be:	72da      	strb	r2, [r3, #11]
+  RxMessage->Data[1] = (uint8_t)0xFF & (CANx->sFIFOMailBox[FIFONumber].RDLR >> 8);
+ 80012c0:	f89d 300b 	ldrb.w	r3, [sp, #11]
+ 80012c4:	9a03      	ldr	r2, [sp, #12]
+ 80012c6:	011b      	lsls	r3, r3, #4
+ 80012c8:	4413      	add	r3, r2
+ 80012ca:	f503 73dc 	add.w	r3, r3, #440	; 0x1b8
+ 80012ce:	681b      	ldr	r3, [r3, #0]
+ 80012d0:	0a1b      	lsrs	r3, r3, #8
+ 80012d2:	b2da      	uxtb	r2, r3
+ 80012d4:	9b01      	ldr	r3, [sp, #4]
+ 80012d6:	731a      	strb	r2, [r3, #12]
+  RxMessage->Data[2] = (uint8_t)0xFF & (CANx->sFIFOMailBox[FIFONumber].RDLR >> 16);
+ 80012d8:	f89d 300b 	ldrb.w	r3, [sp, #11]
+ 80012dc:	9a03      	ldr	r2, [sp, #12]
+ 80012de:	011b      	lsls	r3, r3, #4
+ 80012e0:	4413      	add	r3, r2
+ 80012e2:	f503 73dc 	add.w	r3, r3, #440	; 0x1b8
+ 80012e6:	681b      	ldr	r3, [r3, #0]
+ 80012e8:	0c1b      	lsrs	r3, r3, #16
+ 80012ea:	b2da      	uxtb	r2, r3
+ 80012ec:	9b01      	ldr	r3, [sp, #4]
+ 80012ee:	735a      	strb	r2, [r3, #13]
+  RxMessage->Data[3] = (uint8_t)0xFF & (CANx->sFIFOMailBox[FIFONumber].RDLR >> 24);
+ 80012f0:	f89d 300b 	ldrb.w	r3, [sp, #11]
+ 80012f4:	9a03      	ldr	r2, [sp, #12]
+ 80012f6:	011b      	lsls	r3, r3, #4
+ 80012f8:	4413      	add	r3, r2
+ 80012fa:	f503 73dc 	add.w	r3, r3, #440	; 0x1b8
+ 80012fe:	681b      	ldr	r3, [r3, #0]
+ 8001300:	0e1b      	lsrs	r3, r3, #24
+ 8001302:	b2da      	uxtb	r2, r3
+ 8001304:	9b01      	ldr	r3, [sp, #4]
+ 8001306:	739a      	strb	r2, [r3, #14]
+  RxMessage->Data[4] = (uint8_t)0xFF & CANx->sFIFOMailBox[FIFONumber].RDHR;
+ 8001308:	f89d 300b 	ldrb.w	r3, [sp, #11]
+ 800130c:	9a03      	ldr	r2, [sp, #12]
+ 800130e:	011b      	lsls	r3, r3, #4
+ 8001310:	4413      	add	r3, r2
+ 8001312:	f503 73de 	add.w	r3, r3, #444	; 0x1bc
+ 8001316:	681b      	ldr	r3, [r3, #0]
+ 8001318:	b2da      	uxtb	r2, r3
+ 800131a:	9b01      	ldr	r3, [sp, #4]
+ 800131c:	73da      	strb	r2, [r3, #15]
+  RxMessage->Data[5] = (uint8_t)0xFF & (CANx->sFIFOMailBox[FIFONumber].RDHR >> 8);
+ 800131e:	f89d 300b 	ldrb.w	r3, [sp, #11]
+ 8001322:	9a03      	ldr	r2, [sp, #12]
+ 8001324:	011b      	lsls	r3, r3, #4
+ 8001326:	4413      	add	r3, r2
+ 8001328:	f503 73de 	add.w	r3, r3, #444	; 0x1bc
+ 800132c:	681b      	ldr	r3, [r3, #0]
+ 800132e:	0a1b      	lsrs	r3, r3, #8
+ 8001330:	b2da      	uxtb	r2, r3
+ 8001332:	9b01      	ldr	r3, [sp, #4]
+ 8001334:	741a      	strb	r2, [r3, #16]
+  RxMessage->Data[6] = (uint8_t)0xFF & (CANx->sFIFOMailBox[FIFONumber].RDHR >> 16);
+ 8001336:	f89d 300b 	ldrb.w	r3, [sp, #11]
+ 800133a:	9a03      	ldr	r2, [sp, #12]
+ 800133c:	011b      	lsls	r3, r3, #4
+ 800133e:	4413      	add	r3, r2
+ 8001340:	f503 73de 	add.w	r3, r3, #444	; 0x1bc
+ 8001344:	681b      	ldr	r3, [r3, #0]
+ 8001346:	0c1b      	lsrs	r3, r3, #16
+ 8001348:	b2da      	uxtb	r2, r3
+ 800134a:	9b01      	ldr	r3, [sp, #4]
+ 800134c:	745a      	strb	r2, [r3, #17]
+  RxMessage->Data[7] = (uint8_t)0xFF & (CANx->sFIFOMailBox[FIFONumber].RDHR >> 24);
+ 800134e:	f89d 300b 	ldrb.w	r3, [sp, #11]
+ 8001352:	9a03      	ldr	r2, [sp, #12]
+ 8001354:	011b      	lsls	r3, r3, #4
+ 8001356:	4413      	add	r3, r2
+ 8001358:	f503 73de 	add.w	r3, r3, #444	; 0x1bc
+ 800135c:	681b      	ldr	r3, [r3, #0]
+ 800135e:	0e1b      	lsrs	r3, r3, #24
+ 8001360:	b2da      	uxtb	r2, r3
+ 8001362:	9b01      	ldr	r3, [sp, #4]
+ 8001364:	749a      	strb	r2, [r3, #18]
+  /* Release the FIFO */
+  /* Release FIFO0 */
+  if (FIFONumber == CAN_FIFO0)
+ 8001366:	f89d 300b 	ldrb.w	r3, [sp, #11]
+ 800136a:	2b00      	cmp	r3, #0
+ 800136c:	d106      	bne.n	800137c <CAN_Receive+0x180>
+  {
+    CANx->RF0R |= CAN_RF0R_RFOM0;
+ 800136e:	9b03      	ldr	r3, [sp, #12]
+ 8001370:	68db      	ldr	r3, [r3, #12]
+ 8001372:	f043 0220 	orr.w	r2, r3, #32
+ 8001376:	9b03      	ldr	r3, [sp, #12]
+ 8001378:	60da      	str	r2, [r3, #12]
+  /* Release FIFO1 */
+  else /* FIFONumber == CAN_FIFO1 */
+  {
+    CANx->RF1R |= CAN_RF1R_RFOM1;
+  }
+}
+ 800137a:	e005      	b.n	8001388 <CAN_Receive+0x18c>
+    CANx->RF1R |= CAN_RF1R_RFOM1;
+ 800137c:	9b03      	ldr	r3, [sp, #12]
+ 800137e:	691b      	ldr	r3, [r3, #16]
+ 8001380:	f043 0220 	orr.w	r2, r3, #32
+ 8001384:	9b03      	ldr	r3, [sp, #12]
+ 8001386:	611a      	str	r2, [r3, #16]
+}
+ 8001388:	bf00      	nop
+ 800138a:	b004      	add	sp, #16
+ 800138c:	4770      	bx	lr
+
+0800138e <TIM_GetCapture1>:
+  * @brief  Gets the TIMx Input Capture 1 value.
+  * @param  TIMx: where x can be 1 to 14 except 6 and 7, to select the TIM peripheral.
+  * @retval Capture Compare 1 Register value.
+  */
+uint32_t TIM_GetCapture1(TIM_TypeDef* TIMx)
+{
+ 800138e:	b082      	sub	sp, #8
+ 8001390:	9001      	str	r0, [sp, #4]
+  /* Check the parameters */
+  assert_param(IS_TIM_LIST1_PERIPH(TIMx));
+
+  /* Get the Capture 1 Register value */
+  return TIMx->CCR1;
+ 8001392:	9b01      	ldr	r3, [sp, #4]
+ 8001394:	6b5b      	ldr	r3, [r3, #52]	; 0x34
+}
+ 8001396:	4618      	mov	r0, r3
+ 8001398:	b002      	add	sp, #8
+ 800139a:	4770      	bx	lr
+
+0800139c <TIM_GetITStatus>:
+  * @note   TIM_IT_COM and TIM_IT_Break are used only with TIM1 and TIM8.
+  *     
+  * @retval The new state of the TIM_IT(SET or RESET).
+  */
+ITStatus TIM_GetITStatus(TIM_TypeDef* TIMx, uint16_t TIM_IT)
+{
+ 800139c:	b084      	sub	sp, #16
+ 800139e:	9001      	str	r0, [sp, #4]
+ 80013a0:	460b      	mov	r3, r1
+ 80013a2:	f8ad 3002 	strh.w	r3, [sp, #2]
+  ITStatus bitstatus = RESET;  
+ 80013a6:	2300      	movs	r3, #0
+ 80013a8:	f88d 300f 	strb.w	r3, [sp, #15]
+  uint16_t itstatus = 0x0, itenable = 0x0;
+ 80013ac:	2300      	movs	r3, #0
+ 80013ae:	f8ad 300c 	strh.w	r3, [sp, #12]
+ 80013b2:	2300      	movs	r3, #0
+ 80013b4:	f8ad 300a 	strh.w	r3, [sp, #10]
+  /* Check the parameters */
+  assert_param(IS_TIM_ALL_PERIPH(TIMx));
+  assert_param(IS_TIM_GET_IT(TIM_IT));
+   
+  itstatus = TIMx->SR & TIM_IT;
+ 80013b8:	9b01      	ldr	r3, [sp, #4]
+ 80013ba:	8a1b      	ldrh	r3, [r3, #16]
+ 80013bc:	b29a      	uxth	r2, r3
+ 80013be:	f8bd 3002 	ldrh.w	r3, [sp, #2]
+ 80013c2:	4013      	ands	r3, r2
+ 80013c4:	f8ad 300c 	strh.w	r3, [sp, #12]
+  
+  itenable = TIMx->DIER & TIM_IT;
+ 80013c8:	9b01      	ldr	r3, [sp, #4]
+ 80013ca:	899b      	ldrh	r3, [r3, #12]
+ 80013cc:	b29a      	uxth	r2, r3
+ 80013ce:	f8bd 3002 	ldrh.w	r3, [sp, #2]
+ 80013d2:	4013      	ands	r3, r2
+ 80013d4:	f8ad 300a 	strh.w	r3, [sp, #10]
+  if ((itstatus != (uint16_t)RESET) && (itenable != (uint16_t)RESET))
+ 80013d8:	f8bd 300c 	ldrh.w	r3, [sp, #12]
+ 80013dc:	2b00      	cmp	r3, #0
+ 80013de:	d007      	beq.n	80013f0 <TIM_GetITStatus+0x54>
+ 80013e0:	f8bd 300a 	ldrh.w	r3, [sp, #10]
+ 80013e4:	2b00      	cmp	r3, #0
+ 80013e6:	d003      	beq.n	80013f0 <TIM_GetITStatus+0x54>
+  {
+    bitstatus = SET;
+ 80013e8:	2301      	movs	r3, #1
+ 80013ea:	f88d 300f 	strb.w	r3, [sp, #15]
+ 80013ee:	e002      	b.n	80013f6 <TIM_GetITStatus+0x5a>
+  }
+  else
+  {
+    bitstatus = RESET;
+ 80013f0:	2300      	movs	r3, #0
+ 80013f2:	f88d 300f 	strb.w	r3, [sp, #15]
+  }
+  return bitstatus;
+ 80013f6:	f89d 300f 	ldrb.w	r3, [sp, #15]
+}
+ 80013fa:	4618      	mov	r0, r3
+ 80013fc:	b004      	add	sp, #16
+ 80013fe:	4770      	bx	lr
+
+08001400 <TIM_ClearITPendingBit>:
+  * @note   TIM_IT_COM and TIM_IT_Break are used only with TIM1 and TIM8.
+  *      
+  * @retval None
+  */
+void TIM_ClearITPendingBit(TIM_TypeDef* TIMx, uint16_t TIM_IT)
+{
+ 8001400:	b082      	sub	sp, #8
+ 8001402:	9001      	str	r0, [sp, #4]
+ 8001404:	460b      	mov	r3, r1
+ 8001406:	f8ad 3002 	strh.w	r3, [sp, #2]
+  /* Check the parameters */
+  assert_param(IS_TIM_ALL_PERIPH(TIMx));
+
+  /* Clear the IT pending Bit */
+  TIMx->SR = (uint16_t)~TIM_IT;
+ 800140a:	f8bd 3002 	ldrh.w	r3, [sp, #2]
+ 800140e:	43db      	mvns	r3, r3
+ 8001410:	b29a      	uxth	r2, r3
+ 8001412:	9b01      	ldr	r3, [sp, #4]
+ 8001414:	821a      	strh	r2, [r3, #16]
+}
+ 8001416:	bf00      	nop
+ 8001418:	b002      	add	sp, #8
+ 800141a:	4770      	bx	lr

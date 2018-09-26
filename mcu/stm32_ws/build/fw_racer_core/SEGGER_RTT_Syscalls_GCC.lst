@@ -1,0 +1,239 @@
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 23, 1
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 6
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"SEGGER_RTT_Syscalls_GCC.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text._write,"ax",%progbits
+  16              		.align	1
+  17              		.global	_write
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  21              		.fpu fpv4-sp-d16
+  23              	_write:
+  24              	.LFB0:
+  25              		.file 1 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GC
+   1:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** /*********************************************************************
+   2:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *               SEGGER MICROCONTROLLER GmbH & Co. KG                 *
+   3:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *       Solutions for real time microcontroller applications         *
+   4:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** **********************************************************************
+   5:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *                                                                    *
+   6:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *       (c) 2014 - 2016  SEGGER Microcontroller GmbH & Co. KG        *
+   7:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *                                                                    *
+   8:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *       www.segger.com     Support: support@segger.com               *
+   9:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *                                                                    *
+  10:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** **********************************************************************
+  11:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *                                                                    *
+  12:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *       SEGGER RTT * Real Time Transfer for embedded targets         *
+  13:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *                                                                    *
+  14:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** **********************************************************************
+  15:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *                                                                    *
+  16:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** * All rights reserved.                                               *
+  17:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *                                                                    *
+  18:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** * SEGGER strongly recommends to not make any changes                 *
+  19:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** * to or modify the source code of this software in order to stay     *
+  20:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** * compatible with the RTT protocol and J-Link.                       *
+  21:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *                                                                    *
+  22:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** * Redistribution and use in source and binary forms, with or         *
+  23:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** * without modification, are permitted provided that the following    *
+  24:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** * conditions are met:                                                *
+  25:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *                                                                    *
+  26:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** * o Redistributions of source code must retain the above copyright   *
+  27:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *   notice, this list of conditions and the following disclaimer.    *
+  28:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *                                                                    *
+  29:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** * o Redistributions in binary form must reproduce the above          *
+  30:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *   copyright notice, this list of conditions and the following      *
+  31:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *   disclaimer in the documentation and/or other materials provided  *
+  32:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *   with the distribution.                                           *
+  33:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *                                                                    *
+  34:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** * o Neither the name of SEGGER Microcontroller GmbH & Co. KG         *
+  35:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *   nor the names of its contributors may be used to endorse or      *
+  36:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *   promote products derived from this software without specific     *
+  37:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *   prior written permission.                                        *
+  38:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *                                                                    *
+  39:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND             *
+  40:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** * CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,        *
+  41:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF           *
+  42:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE           *
+  43:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** * DISCLAIMED. IN NO EVENT SHALL SEGGER Microcontroller BE LIABLE FOR *
+  44:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR           *
+  45:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT  *
+  46:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** * OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;    *
+  47:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF      *
+  48:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT          *
+  49:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE  *
+  50:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH   *
+  51:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** * DAMAGE.                                                            *
+  52:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *                                                                    *
+  53:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** **********************************************************************
+  54:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** ---------------------------END-OF-HEADER------------------------------
+  55:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** File    : SEGGER_RTT_Syscalls_GCC.c
+  56:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** Purpose : Low-level functions for using printf() via RTT in GCC.
+  57:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c ****           To use RTT for printf output, include this file in your 
+  58:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c ****           application.
+  59:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** Revision: $Rev: 4351 $
+  60:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** ----------------------------------------------------------------------
+  61:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** */
+  62:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** #if (defined __GNUC__) && !(defined __SES_ARM) && !(defined __CROSSWORKS_ARM)
+  63:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** 
+  64:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** #include <reent.h>  // required for _write_r
+  65:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** #include "SEGGER_RTT.h"
+  66:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** 
+  67:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** 
+  68:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** /*********************************************************************
+  69:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *
+  70:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *       Types
+  71:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *
+  72:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** **********************************************************************
+  73:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** */
+  74:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** //
+  75:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** // If necessary define the _reent struct 
+  76:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** // to match the one passed by the used standard library.
+  77:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** //
+  78:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** struct _reent;
+  79:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** 
+  80:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** /*********************************************************************
+  81:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *
+  82:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *       Function prototypes
+  83:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *
+  84:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** **********************************************************************
+  85:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** */
+  86:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** int _write(int file, char *ptr, int len);
+  87:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** int _write_r(struct _reent *r, int file, const void *ptr, size_t len);
+  88:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** 
+  89:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** /*********************************************************************
+  90:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *
+  91:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *       Global functions
+  92:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *
+  93:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** **********************************************************************
+  94:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** */
+  95:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** 
+  96:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** /*********************************************************************
+  97:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *
+  98:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *       _write()
+  99:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *
+ 100:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** * Function description
+ 101:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *   Low-level write function.
+ 102:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *   libc subroutines will use this system routine for output to all files,
+ 103:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *   including stdout.
+ 104:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *   Write data via RTT.
+ 105:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** */
+ 106:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** int _write(int file, char *ptr, int len) {
+  26              		.loc 1 106 0
+  27              		.cfi_startproc
+  28              		@ args = 0, pretend = 0, frame = 16
+  29              		@ frame_needed = 0, uses_anonymous_args = 0
+  30 0000 00B5     		push	{lr}
+  31              	.LCFI0:
+  32              		.cfi_def_cfa_offset 4
+  33              		.cfi_offset 14, -4
+  34 0002 85B0     		sub	sp, sp, #20
+  35              	.LCFI1:
+  36              		.cfi_def_cfa_offset 24
+  37 0004 0390     		str	r0, [sp, #12]
+  38 0006 0291     		str	r1, [sp, #8]
+  39 0008 0192     		str	r2, [sp, #4]
+ 107:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c ****   (void) file;  /* Not used, avoid warning */
+ 108:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c ****   SEGGER_RTT_Write(0, ptr, len);
+  40              		.loc 1 108 0
+  41 000a 019B     		ldr	r3, [sp, #4]
+  42 000c 1A46     		mov	r2, r3
+  43 000e 0299     		ldr	r1, [sp, #8]
+  44 0010 0020     		movs	r0, #0
+  45 0012 FFF7FEFF 		bl	SEGGER_RTT_Write
+ 109:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c ****   return len;
+  46              		.loc 1 109 0
+  47 0016 019B     		ldr	r3, [sp, #4]
+ 110:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** }
+  48              		.loc 1 110 0
+  49 0018 1846     		mov	r0, r3
+  50 001a 05B0     		add	sp, sp, #20
+  51              	.LCFI2:
+  52              		.cfi_def_cfa_offset 4
+  53              		@ sp needed
+  54 001c 5DF804FB 		ldr	pc, [sp], #4
+  55              		.cfi_endproc
+  56              	.LFE0:
+  58              		.section	.text._write_r,"ax",%progbits
+  59              		.align	1
+  60              		.global	_write_r
+  61              		.syntax unified
+  62              		.thumb
+  63              		.thumb_func
+  64              		.fpu fpv4-sp-d16
+  66              	_write_r:
+  67              	.LFB1:
+ 111:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** 
+ 112:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** /*********************************************************************
+ 113:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *
+ 114:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *       _write_r()
+ 115:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *
+ 116:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** * Function description
+ 117:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *   Low-level reentrant write function.
+ 118:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *   libc subroutines will use this system routine for output to all files,
+ 119:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *   including stdout.
+ 120:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** *   Write data via RTT.
+ 121:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** */
+ 122:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** int _write_r(struct _reent *r, int file, const void *ptr, size_t len) {
+  68              		.loc 1 122 0
+  69              		.cfi_startproc
+  70              		@ args = 0, pretend = 0, frame = 16
+  71              		@ frame_needed = 0, uses_anonymous_args = 0
+  72 0000 00B5     		push	{lr}
+  73              	.LCFI3:
+  74              		.cfi_def_cfa_offset 4
+  75              		.cfi_offset 14, -4
+  76 0002 85B0     		sub	sp, sp, #20
+  77              	.LCFI4:
+  78              		.cfi_def_cfa_offset 24
+  79 0004 0390     		str	r0, [sp, #12]
+  80 0006 0291     		str	r1, [sp, #8]
+  81 0008 0192     		str	r2, [sp, #4]
+  82 000a 0093     		str	r3, [sp]
+ 123:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c ****   (void) file;  /* Not used, avoid warning */
+ 124:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c ****   (void) r;     /* Not used, avoid warning */
+ 125:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c ****   SEGGER_RTT_Write(0, ptr, len);
+  83              		.loc 1 125 0
+  84 000c 009A     		ldr	r2, [sp]
+  85 000e 0199     		ldr	r1, [sp, #4]
+  86 0010 0020     		movs	r0, #0
+  87 0012 FFF7FEFF 		bl	SEGGER_RTT_Write
+ 126:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c ****   return len;
+  88              		.loc 1 126 0
+  89 0016 009B     		ldr	r3, [sp]
+ 127:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_Syscalls_GCC.c **** }
+  90              		.loc 1 127 0
+  91 0018 1846     		mov	r0, r3
+  92 001a 05B0     		add	sp, sp, #20
+  93              	.LCFI5:
+  94              		.cfi_def_cfa_offset 4
+  95              		@ sp needed
+  96 001c 5DF804FB 		ldr	pc, [sp], #4
+  97              		.cfi_endproc
+  98              	.LFE1:
+ 100              		.text
+ 101              	.Letext0:
+ 102              		.file 2 "/home/rdu/Software/gcc-arm-none-eabi-7-2017-q4-major/lib/gcc/arm-none-eabi/7.2.1/include/
+ 103              		.file 3 "/home/rdu/Software/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/lock.h"
+ 104              		.file 4 "/home/rdu/Software/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_types.h"
+ 105              		.file 5 "/home/rdu/Software/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/reent.h"
+ 106              		.file 6 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT.h"
+ 107              		.file 7 "/home/rdu/Software/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/reent.h"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 SEGGER_RTT_Syscalls_GCC.c
+     /tmp/cc3O31CY.s:16     .text._write:0000000000000000 $t
+     /tmp/cc3O31CY.s:23     .text._write:0000000000000000 _write
+     /tmp/cc3O31CY.s:59     .text._write_r:0000000000000000 $t
+     /tmp/cc3O31CY.s:66     .text._write_r:0000000000000000 _write_r
+
+UNDEFINED SYMBOLS
+SEGGER_RTT_Write

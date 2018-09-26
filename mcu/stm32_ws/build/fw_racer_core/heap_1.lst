@@ -1,0 +1,612 @@
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 23, 1
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 6
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"heap_1.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.bss.ucHeap,"aw",%nobits
+  16              		.align	2
+  19              	ucHeap:
+  20 0000 00000000 		.space	76800
+  20      00000000 
+  20      00000000 
+  20      00000000 
+  20      00000000 
+  21              		.section	.bss.xNextFreeByte,"aw",%nobits
+  22              		.align	2
+  25              	xNextFreeByte:
+  26 0000 00000000 		.space	4
+  27              		.section	.text.pvPortMalloc,"ax",%progbits
+  28              		.align	1
+  29              		.global	pvPortMalloc
+  30              		.syntax unified
+  31              		.thumb
+  32              		.thumb_func
+  33              		.fpu fpv4-sp-d16
+  35              	pvPortMalloc:
+  36              	.LFB5:
+  37              		.file 1 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable
+   1:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** /*
+   2:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c ****  * FreeRTOS Kernel V10.1.1
+   3:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c ****  * Copyright (C) 2018 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
+   4:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c ****  *
+   5:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c ****  * Permission is hereby granted, free of charge, to any person obtaining a copy of
+   6:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c ****  * this software and associated documentation files (the "Software"), to deal in
+   7:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c ****  * the Software without restriction, including without limitation the rights to
+   8:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c ****  * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+   9:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c ****  * the Software, and to permit persons to whom the Software is furnished to do so,
+  10:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c ****  * subject to the following conditions:
+  11:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c ****  *
+  12:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c ****  * The above copyright notice and this permission notice shall be included in all
+  13:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c ****  * copies or substantial portions of the Software.
+  14:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c ****  *
+  15:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c ****  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  16:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c ****  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+  17:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c ****  * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+  18:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c ****  * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+  19:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c ****  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+  20:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c ****  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  21:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c ****  *
+  22:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c ****  * http://www.FreeRTOS.org
+  23:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c ****  * http://aws.amazon.com/freertos
+  24:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c ****  *
+  25:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c ****  * 1 tab == 4 spaces!
+  26:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c ****  */
+  27:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 
+  28:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 
+  29:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** /*
+  30:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c ****  * The simplest possible implementation of pvPortMalloc().  Note that this
+  31:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c ****  * implementation does NOT allow allocated memory to be freed again.
+  32:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c ****  *
+  33:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c ****  * See heap_2.c, heap_3.c and heap_4.c for alternative implementations, and the
+  34:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c ****  * memory management pages of http://www.FreeRTOS.org for more information.
+  35:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c ****  */
+  36:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** #include <stdlib.h>
+  37:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 
+  38:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** /* Defining MPU_WRAPPERS_INCLUDED_FROM_API_FILE prevents task.h from redefining
+  39:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** all the API functions to use the MPU wrappers.  That should only be done when
+  40:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** task.h is included from an application file. */
+  41:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** #define MPU_WRAPPERS_INCLUDED_FROM_API_FILE
+  42:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 
+  43:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** #include "FreeRTOS.h"
+  44:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** #include "task.h"
+  45:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 
+  46:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** #undef MPU_WRAPPERS_INCLUDED_FROM_API_FILE
+  47:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 
+  48:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** #if( configSUPPORT_DYNAMIC_ALLOCATION == 0 )
+  49:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 	#error This file must not be used if configSUPPORT_DYNAMIC_ALLOCATION is 0
+  50:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** #endif
+  51:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 
+  52:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** /* A few bytes might be lost to byte aligning the heap start address. */
+  53:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** #define configADJUSTED_HEAP_SIZE	( configTOTAL_HEAP_SIZE - portBYTE_ALIGNMENT )
+  54:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 
+  55:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** /* Allocate the memory for the heap. */
+  56:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** #if( configAPPLICATION_ALLOCATED_HEAP == 1 )
+  57:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 	/* The application writer has already defined the array used for the RTOS
+  58:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 	heap - probably so it can be placed in a special segment or address. */
+  59:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 	extern uint8_t ucHeap[ configTOTAL_HEAP_SIZE ];
+  60:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** #else
+  61:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 	static uint8_t ucHeap[ configTOTAL_HEAP_SIZE ];
+  62:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** #endif /* configAPPLICATION_ALLOCATED_HEAP */
+  63:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 
+  64:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** /* Index into the ucHeap array. */
+  65:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** static size_t xNextFreeByte = ( size_t ) 0;
+  66:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 
+  67:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** /*-----------------------------------------------------------*/
+  68:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 
+  69:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** void *pvPortMalloc( size_t xWantedSize )
+  70:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** {
+  38              		.loc 1 70 0
+  39              		.cfi_startproc
+  40              		@ args = 0, pretend = 0, frame = 16
+  41              		@ frame_needed = 0, uses_anonymous_args = 0
+  42 0000 00B5     		push	{lr}
+  43              	.LCFI0:
+  44              		.cfi_def_cfa_offset 4
+  45              		.cfi_offset 14, -4
+  46 0002 85B0     		sub	sp, sp, #20
+  47              	.LCFI1:
+  48              		.cfi_def_cfa_offset 24
+  49 0004 0190     		str	r0, [sp, #4]
+  71:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** void *pvReturn = NULL;
+  50              		.loc 1 71 0
+  51 0006 0023     		movs	r3, #0
+  52 0008 0393     		str	r3, [sp, #12]
+  72:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** static uint8_t *pucAlignedHeap = NULL;
+  73:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 
+  74:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 	/* Ensure that blocks are always aligned to the required number of bytes. */
+  75:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 	#if( portBYTE_ALIGNMENT != 1 )
+  76:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 	{
+  77:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 		if( xWantedSize & portBYTE_ALIGNMENT_MASK )
+  53              		.loc 1 77 0
+  54 000a 019B     		ldr	r3, [sp, #4]
+  55 000c 03F00703 		and	r3, r3, #7
+  56 0010 002B     		cmp	r3, #0
+  57 0012 04D0     		beq	.L2
+  78:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 		{
+  79:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 			/* Byte alignment required. */
+  80:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 			xWantedSize += ( portBYTE_ALIGNMENT - ( xWantedSize & portBYTE_ALIGNMENT_MASK ) );
+  58              		.loc 1 80 0
+  59 0014 019B     		ldr	r3, [sp, #4]
+  60 0016 23F00703 		bic	r3, r3, #7
+  61 001a 0833     		adds	r3, r3, #8
+  62 001c 0193     		str	r3, [sp, #4]
+  63              	.L2:
+  81:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 		}
+  82:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 	}
+  83:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 	#endif
+  84:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 
+  85:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 	vTaskSuspendAll();
+  64              		.loc 1 85 0
+  65 001e FFF7FEFF 		bl	vTaskSuspendAll
+  86:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 	{
+  87:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 		if( pucAlignedHeap == NULL )
+  66              		.loc 1 87 0
+  67 0022 164B     		ldr	r3, .L6
+  68 0024 1B68     		ldr	r3, [r3]
+  69 0026 002B     		cmp	r3, #0
+  70 0028 05D1     		bne	.L3
+  88:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 		{
+  89:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 			/* Ensure the heap starts on a correctly aligned boundary. */
+  90:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 			pucAlignedHeap = ( uint8_t * ) ( ( ( portPOINTER_SIZE_TYPE ) &ucHeap[ portBYTE_ALIGNMENT ] ) & (
+  71              		.loc 1 90 0
+  72 002a 154B     		ldr	r3, .L6+4
+  73 002c 23F00703 		bic	r3, r3, #7
+  74 0030 1A46     		mov	r2, r3
+  75 0032 124B     		ldr	r3, .L6
+  76 0034 1A60     		str	r2, [r3]
+  77              	.L3:
+  91:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 		}
+  92:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 
+  93:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 		/* Check there is enough room left for the allocation. */
+  94:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 		if( ( ( xNextFreeByte + xWantedSize ) < configADJUSTED_HEAP_SIZE ) &&
+  78              		.loc 1 94 0
+  79 0036 134B     		ldr	r3, .L6+8
+  80 0038 1A68     		ldr	r2, [r3]
+  81 003a 019B     		ldr	r3, [sp, #4]
+  82 003c 1344     		add	r3, r3, r2
+  83 003e 124A     		ldr	r2, .L6+12
+  84 0040 9342     		cmp	r3, r2
+  85 0042 13D8     		bhi	.L4
+  95:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 			( ( xNextFreeByte + xWantedSize ) > xNextFreeByte )	)/* Check for overflow. */
+  86              		.loc 1 95 0 discriminator 1
+  87 0044 0F4B     		ldr	r3, .L6+8
+  88 0046 1A68     		ldr	r2, [r3]
+  89 0048 019B     		ldr	r3, [sp, #4]
+  90 004a 1A44     		add	r2, r2, r3
+  91 004c 0D4B     		ldr	r3, .L6+8
+  92 004e 1B68     		ldr	r3, [r3]
+  94:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 			( ( xNextFreeByte + xWantedSize ) > xNextFreeByte )	)/* Check for overflow. */
+  93              		.loc 1 94 0 discriminator 1
+  94 0050 9A42     		cmp	r2, r3
+  95 0052 0BD9     		bls	.L4
+  96:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 		{
+  97:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 			/* Return the next free byte then increment the index past this
+  98:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 			block. */
+  99:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 			pvReturn = pucAlignedHeap + xNextFreeByte;
+  96              		.loc 1 99 0
+  97 0054 094B     		ldr	r3, .L6
+  98 0056 1A68     		ldr	r2, [r3]
+  99 0058 0A4B     		ldr	r3, .L6+8
+ 100 005a 1B68     		ldr	r3, [r3]
+ 101 005c 1344     		add	r3, r3, r2
+ 102 005e 0393     		str	r3, [sp, #12]
+ 100:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 			xNextFreeByte += xWantedSize;
+ 103              		.loc 1 100 0
+ 104 0060 084B     		ldr	r3, .L6+8
+ 105 0062 1A68     		ldr	r2, [r3]
+ 106 0064 019B     		ldr	r3, [sp, #4]
+ 107 0066 1344     		add	r3, r3, r2
+ 108 0068 064A     		ldr	r2, .L6+8
+ 109 006a 1360     		str	r3, [r2]
+ 110              	.L4:
+ 101:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 		}
+ 102:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 
+ 103:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 		traceMALLOC( pvReturn, xWantedSize );
+ 104:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 	}
+ 105:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 	( void ) xTaskResumeAll();
+ 111              		.loc 1 105 0
+ 112 006c FFF7FEFF 		bl	xTaskResumeAll
+ 106:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 
+ 107:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 	#if( configUSE_MALLOC_FAILED_HOOK == 1 )
+ 108:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 	{
+ 109:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 		if( pvReturn == NULL )
+ 110:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 		{
+ 111:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 			extern void vApplicationMallocFailedHook( void );
+ 112:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 			vApplicationMallocFailedHook();
+ 113:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 		}
+ 114:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 	}
+ 115:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 	#endif
+ 116:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 
+ 117:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 	return pvReturn;
+ 113              		.loc 1 117 0
+ 114 0070 039B     		ldr	r3, [sp, #12]
+ 118:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** }
+ 115              		.loc 1 118 0
+ 116 0072 1846     		mov	r0, r3
+ 117 0074 05B0     		add	sp, sp, #20
+ 118              	.LCFI2:
+ 119              		.cfi_def_cfa_offset 4
+ 120              		@ sp needed
+ 121 0076 5DF804FB 		ldr	pc, [sp], #4
+ 122              	.L7:
+ 123 007a 00BF     		.align	2
+ 124              	.L6:
+ 125 007c 00000000 		.word	pucAlignedHeap.6383
+ 126 0080 08000000 		.word	ucHeap+8
+ 127 0084 00000000 		.word	xNextFreeByte
+ 128 0088 F72B0100 		.word	76791
+ 129              		.cfi_endproc
+ 130              	.LFE5:
+ 132              		.section	.text.vPortFree,"ax",%progbits
+ 133              		.align	1
+ 134              		.global	vPortFree
+ 135              		.syntax unified
+ 136              		.thumb
+ 137              		.thumb_func
+ 138              		.fpu fpv4-sp-d16
+ 140              	vPortFree:
+ 141              	.LFB6:
+ 119:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** /*-----------------------------------------------------------*/
+ 120:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 
+ 121:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** void vPortFree( void *pv )
+ 122:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** {
+ 142              		.loc 1 122 0
+ 143              		.cfi_startproc
+ 144              		@ args = 0, pretend = 0, frame = 16
+ 145              		@ frame_needed = 0, uses_anonymous_args = 0
+ 146              		@ link register save eliminated.
+ 147 0000 84B0     		sub	sp, sp, #16
+ 148              	.LCFI3:
+ 149              		.cfi_def_cfa_offset 16
+ 150 0002 0190     		str	r0, [sp, #4]
+ 123:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 	/* Memory cannot be freed using this scheme.  See heap_2.c, heap_3.c and
+ 124:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 	heap_4.c for alternative implementations, and the memory management pages of
+ 125:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 	http://www.FreeRTOS.org for more information. */
+ 126:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 	( void ) pv;
+ 127:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 
+ 128:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 	/* Force an assert as it is invalid to call this function. */
+ 129:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 	configASSERT( pv == NULL );
+ 151              		.loc 1 129 0
+ 152 0004 019B     		ldr	r3, [sp, #4]
+ 153 0006 002B     		cmp	r3, #0
+ 154 0008 09D0     		beq	.L11
+ 155              	.LBB4:
+ 156              	.LBB5:
+ 157              		.file 2 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable
+   1:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** /*
+   2:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h ****  * FreeRTOS Kernel V10.1.1
+   3:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h ****  * Copyright (C) 2018 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
+   4:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h ****  *
+   5:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h ****  * Permission is hereby granted, free of charge, to any person obtaining a copy of
+   6:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h ****  * this software and associated documentation files (the "Software"), to deal in
+   7:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h ****  * the Software without restriction, including without limitation the rights to
+   8:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h ****  * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+   9:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h ****  * the Software, and to permit persons to whom the Software is furnished to do so,
+  10:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h ****  * subject to the following conditions:
+  11:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h ****  *
+  12:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h ****  * The above copyright notice and this permission notice shall be included in all
+  13:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h ****  * copies or substantial portions of the Software.
+  14:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h ****  *
+  15:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h ****  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  16:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h ****  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+  17:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h ****  * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+  18:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h ****  * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+  19:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h ****  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+  20:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h ****  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  21:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h ****  *
+  22:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h ****  * http://www.FreeRTOS.org
+  23:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h ****  * http://aws.amazon.com/freertos
+  24:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h ****  *
+  25:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h ****  * 1 tab == 4 spaces!
+  26:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h ****  */
+  27:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+  28:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+  29:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #ifndef PORTMACRO_H
+  30:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #define PORTMACRO_H
+  31:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+  32:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #ifdef __cplusplus
+  33:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** extern "C" {
+  34:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #endif
+  35:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+  36:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** /*-----------------------------------------------------------
+  37:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h ****  * Port specific definitions.
+  38:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h ****  *
+  39:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h ****  * The settings in this file configure FreeRTOS correctly for the
+  40:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h ****  * given hardware and compiler.
+  41:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h ****  *
+  42:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h ****  * These settings should not be altered.
+  43:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h ****  *-----------------------------------------------------------
+  44:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h ****  */
+  45:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+  46:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** /* Type definitions. */
+  47:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #define portCHAR		char
+  48:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #define portFLOAT		float
+  49:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #define portDOUBLE		double
+  50:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #define portLONG		long
+  51:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #define portSHORT		short
+  52:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #define portSTACK_TYPE	uint32_t
+  53:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #define portBASE_TYPE	long
+  54:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+  55:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** typedef portSTACK_TYPE StackType_t;
+  56:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** typedef long BaseType_t;
+  57:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** typedef unsigned long UBaseType_t;
+  58:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+  59:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #if( configUSE_16_BIT_TICKS == 1 )
+  60:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	typedef uint16_t TickType_t;
+  61:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	#define portMAX_DELAY ( TickType_t ) 0xffff
+  62:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #else
+  63:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	typedef uint32_t TickType_t;
+  64:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	#define portMAX_DELAY ( TickType_t ) 0xffffffffUL
+  65:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+  66:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	/* 32-bit tick type on a 32-bit architecture, so reads of the tick count do
+  67:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	not need to be guarded with a critical section. */
+  68:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	#define portTICK_TYPE_IS_ATOMIC 1
+  69:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #endif
+  70:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** /*-----------------------------------------------------------*/
+  71:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+  72:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** /* Architecture specifics. */
+  73:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #define portSTACK_GROWTH			( -1 )
+  74:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #define portTICK_PERIOD_MS			( ( TickType_t ) 1000 / configTICK_RATE_HZ )
+  75:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #define portBYTE_ALIGNMENT			8
+  76:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** /*-----------------------------------------------------------*/
+  77:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+  78:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** /* Scheduler utilities. */
+  79:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #define portYIELD() 															\
+  80:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** {																				\
+  81:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	/* Set a PendSV to request a context switch. */								\
+  82:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	portNVIC_INT_CTRL_REG = portNVIC_PENDSVSET_BIT;								\
+  83:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 																				\
+  84:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	/* Barriers are normally not required but do ensure the code is completely	\
+  85:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	within the specified behaviour for the architecture. */						\
+  86:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	__asm volatile( "dsb" ::: "memory" );										\
+  87:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	__asm volatile( "isb" );													\
+  88:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** }
+  89:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+  90:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #define portNVIC_INT_CTRL_REG		( * ( ( volatile uint32_t * ) 0xe000ed04 ) )
+  91:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #define portNVIC_PENDSVSET_BIT		( 1UL << 28UL )
+  92:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #define portEND_SWITCHING_ISR( xSwitchRequired ) if( xSwitchRequired != pdFALSE ) portYIELD()
+  93:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #define portYIELD_FROM_ISR( x ) portEND_SWITCHING_ISR( x )
+  94:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** /*-----------------------------------------------------------*/
+  95:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+  96:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** /* Critical section management. */
+  97:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** extern void vPortEnterCritical( void );
+  98:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** extern void vPortExitCritical( void );
+  99:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #define portSET_INTERRUPT_MASK_FROM_ISR()		ulPortRaiseBASEPRI()
+ 100:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #define portCLEAR_INTERRUPT_MASK_FROM_ISR(x)	vPortSetBASEPRI(x)
+ 101:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #define portDISABLE_INTERRUPTS()				vPortRaiseBASEPRI()
+ 102:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #define portENABLE_INTERRUPTS()					vPortSetBASEPRI(0)
+ 103:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #define portENTER_CRITICAL()					vPortEnterCritical()
+ 104:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #define portEXIT_CRITICAL()						vPortExitCritical()
+ 105:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+ 106:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** /*-----------------------------------------------------------*/
+ 107:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+ 108:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** /* Task function macros as described on the FreeRTOS.org WEB site.  These are
+ 109:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** not necessary for to use this port.  They are defined so the common demo files
+ 110:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** (which build with all the ports) will build. */
+ 111:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #define portTASK_FUNCTION_PROTO( vFunction, pvParameters ) void vFunction( void *pvParameters )
+ 112:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #define portTASK_FUNCTION( vFunction, pvParameters ) void vFunction( void *pvParameters )
+ 113:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** /*-----------------------------------------------------------*/
+ 114:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+ 115:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** /* Tickless idle/low power functionality. */
+ 116:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #ifndef portSUPPRESS_TICKS_AND_SLEEP
+ 117:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	extern void vPortSuppressTicksAndSleep( TickType_t xExpectedIdleTime );
+ 118:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	#define portSUPPRESS_TICKS_AND_SLEEP( xExpectedIdleTime ) vPortSuppressTicksAndSleep( xExpectedIdl
+ 119:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #endif
+ 120:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** /*-----------------------------------------------------------*/
+ 121:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+ 122:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** /* Architecture specific optimisations. */
+ 123:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #ifndef configUSE_PORT_OPTIMISED_TASK_SELECTION
+ 124:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	#define configUSE_PORT_OPTIMISED_TASK_SELECTION 1
+ 125:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #endif
+ 126:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+ 127:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #if configUSE_PORT_OPTIMISED_TASK_SELECTION == 1
+ 128:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+ 129:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	/* Generic helper function. */
+ 130:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	__attribute__( ( always_inline ) ) static inline uint8_t ucPortCountLeadingZeros( uint32_t ulBitma
+ 131:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	{
+ 132:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	uint8_t ucReturn;
+ 133:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+ 134:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 		__asm volatile ( "clz %0, %1" : "=r" ( ucReturn ) : "r" ( ulBitmap ) : "memory" );
+ 135:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 		return ucReturn;
+ 136:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	}
+ 137:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+ 138:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	/* Check the configuration. */
+ 139:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	#if( configMAX_PRIORITIES > 32 )
+ 140:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 		#error configUSE_PORT_OPTIMISED_TASK_SELECTION can only be set to 1 when configMAX_PRIORITIES is 
+ 141:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	#endif
+ 142:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+ 143:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	/* Store/clear the ready priorities in a bit map. */
+ 144:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	#define portRECORD_READY_PRIORITY( uxPriority, uxReadyPriorities ) ( uxReadyPriorities ) |= ( 1UL 
+ 145:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	#define portRESET_READY_PRIORITY( uxPriority, uxReadyPriorities ) ( uxReadyPriorities ) &= ~( 1UL 
+ 146:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+ 147:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	/*-----------------------------------------------------------*/
+ 148:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+ 149:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	#define portGET_HIGHEST_PRIORITY( uxTopPriority, uxReadyPriorities ) uxTopPriority = ( 31UL - ( ui
+ 150:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+ 151:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #endif /* configUSE_PORT_OPTIMISED_TASK_SELECTION */
+ 152:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+ 153:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** /*-----------------------------------------------------------*/
+ 154:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+ 155:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #ifdef configASSERT
+ 156:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	void vPortValidateInterruptPriority( void );
+ 157:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	#define portASSERT_IF_INTERRUPT_PRIORITY_INVALID() 	vPortValidateInterruptPriority()
+ 158:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #endif
+ 159:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+ 160:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** /* portNOP() is not required by this port. */
+ 161:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #define portNOP()
+ 162:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+ 163:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #define portINLINE	__inline
+ 164:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+ 165:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #ifndef portFORCE_INLINE
+ 166:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	#define portFORCE_INLINE inline __attribute__(( always_inline))
+ 167:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** #endif
+ 168:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+ 169:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** portFORCE_INLINE static BaseType_t xPortIsInsideInterrupt( void )
+ 170:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** {
+ 171:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** uint32_t ulCurrentInterrupt;
+ 172:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** BaseType_t xReturn;
+ 173:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+ 174:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	/* Obtain the number of the currently executing interrupt. */
+ 175:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	__asm volatile( "mrs %0, ipsr" : "=r"( ulCurrentInterrupt ) :: "memory" );
+ 176:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+ 177:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	if( ulCurrentInterrupt == 0 )
+ 178:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	{
+ 179:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 		xReturn = pdFALSE;
+ 180:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	}
+ 181:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	else
+ 182:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	{
+ 183:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 		xReturn = pdTRUE;
+ 184:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	}
+ 185:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+ 186:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	return xReturn;
+ 187:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** }
+ 188:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+ 189:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** /*-----------------------------------------------------------*/
+ 190:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+ 191:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** portFORCE_INLINE static void vPortRaiseBASEPRI( void )
+ 192:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** {
+ 193:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** uint32_t ulNewBASEPRI;
+ 194:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 
+ 195:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h **** 	__asm volatile
+ 158              		.loc 2 195 0 discriminator 1
+ 159              		.syntax unified
+ 160              	@ 195 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/GC
+ 161 000a 4FF05003 			mov r3, #80												
+ 162 000e 83F31188 		msr basepri, r3											
+ 163 0012 BFF36F8F 		isb														
+ 164 0016 BFF34F8F 		dsb														
+ 165              	
+ 166              	@ 0 "" 2
+ 167              		.thumb
+ 168              		.syntax unified
+ 169 001a 0393     		str	r3, [sp, #12]
+ 170              	.L10:
+ 171              	.LBE5:
+ 172              	.LBE4:
+ 173              		.loc 1 129 0 discriminator 1
+ 174 001c FEE7     		b	.L10
+ 175              	.L11:
+ 130:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** }
+ 176              		.loc 1 130 0
+ 177 001e 00BF     		nop
+ 178 0020 04B0     		add	sp, sp, #16
+ 179              	.LCFI4:
+ 180              		.cfi_def_cfa_offset 0
+ 181              		@ sp needed
+ 182 0022 7047     		bx	lr
+ 183              		.cfi_endproc
+ 184              	.LFE6:
+ 186              		.section	.text.vPortInitialiseBlocks,"ax",%progbits
+ 187              		.align	1
+ 188              		.global	vPortInitialiseBlocks
+ 189              		.syntax unified
+ 190              		.thumb
+ 191              		.thumb_func
+ 192              		.fpu fpv4-sp-d16
+ 194              	vPortInitialiseBlocks:
+ 195              	.LFB7:
+ 131:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** /*-----------------------------------------------------------*/
+ 132:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 
+ 133:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** void vPortInitialiseBlocks( void )
+ 134:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** {
+ 196              		.loc 1 134 0
+ 197              		.cfi_startproc
+ 198              		@ args = 0, pretend = 0, frame = 0
+ 199              		@ frame_needed = 0, uses_anonymous_args = 0
+ 200              		@ link register save eliminated.
+ 135:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 	/* Only required when static memory is not cleared. */
+ 136:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 	xNextFreeByte = ( size_t ) 0;
+ 201              		.loc 1 136 0
+ 202 0000 024B     		ldr	r3, .L13
+ 203 0002 0022     		movs	r2, #0
+ 204 0004 1A60     		str	r2, [r3]
+ 137:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** }
+ 205              		.loc 1 137 0
+ 206 0006 00BF     		nop
+ 207 0008 7047     		bx	lr
+ 208              	.L14:
+ 209 000a 00BF     		.align	2
+ 210              	.L13:
+ 211 000c 00000000 		.word	xNextFreeByte
+ 212              		.cfi_endproc
+ 213              	.LFE7:
+ 215              		.section	.text.xPortGetFreeHeapSize,"ax",%progbits
+ 216              		.align	1
+ 217              		.global	xPortGetFreeHeapSize
+ 218              		.syntax unified
+ 219              		.thumb
+ 220              		.thumb_func
+ 221              		.fpu fpv4-sp-d16
+ 223              	xPortGetFreeHeapSize:
+ 224              	.LFB8:
+ 138:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** /*-----------------------------------------------------------*/
+ 139:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 
+ 140:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** size_t xPortGetFreeHeapSize( void )
+ 141:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** {
+ 225              		.loc 1 141 0
+ 226              		.cfi_startproc
+ 227              		@ args = 0, pretend = 0, frame = 0
+ 228              		@ frame_needed = 0, uses_anonymous_args = 0
+ 229              		@ link register save eliminated.
+ 142:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** 	return ( configADJUSTED_HEAP_SIZE - xNextFreeByte );
+ 230              		.loc 1 142 0
+ 231 0000 034B     		ldr	r3, .L17
+ 232 0002 1B68     		ldr	r3, [r3]
+ 233 0004 C3F59533 		rsb	r3, r3, #76288
+ 234 0008 03F5FC73 		add	r3, r3, #504
+ 143:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/FreeRTOS/Source/portable/MemMang/heap_1.c **** }
+ 235              		.loc 1 143 0
+ 236 000c 1846     		mov	r0, r3
+ 237 000e 7047     		bx	lr
+ 238              	.L18:
+ 239              		.align	2
+ 240              	.L17:
+ 241 0010 00000000 		.word	xNextFreeByte
+ 242              		.cfi_endproc
+ 243              	.LFE8:
+ 245              		.section	.bss.pucAlignedHeap.6383,"aw",%nobits
+ 246              		.align	2
+ 249              	pucAlignedHeap.6383:
+ 250 0000 00000000 		.space	4
+ 251              		.text
+ 252              	.Letext0:
+ 253              		.file 3 "/home/rdu/Software/gcc-arm-none-eabi-7-2017-q4-major/lib/gcc/arm-none-eabi/7.2.1/include/
+ 254              		.file 4 "/home/rdu/Software/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/_defau
+ 255              		.file 5 "/home/rdu/Software/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/lock.h"
+ 256              		.file 6 "/home/rdu/Software/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_types.h"
+ 257              		.file 7 "/home/rdu/Software/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/reent.h"
+ 258              		.file 8 "/home/rdu/Software/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/stdlib.h"
+ 259              		.file 9 "/home/rdu/Software/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_stdint.h"
+ 260              		.file 10 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/confi
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 heap_1.c
+     /tmp/cc45yl84.s:16     .bss.ucHeap:0000000000000000 $d
+     /tmp/cc45yl84.s:19     .bss.ucHeap:0000000000000000 ucHeap
+     /tmp/cc45yl84.s:22     .bss.xNextFreeByte:0000000000000000 $d
+     /tmp/cc45yl84.s:25     .bss.xNextFreeByte:0000000000000000 xNextFreeByte
+     /tmp/cc45yl84.s:28     .text.pvPortMalloc:0000000000000000 $t
+     /tmp/cc45yl84.s:35     .text.pvPortMalloc:0000000000000000 pvPortMalloc
+     /tmp/cc45yl84.s:125    .text.pvPortMalloc:000000000000007c $d
+     /tmp/cc45yl84.s:249    .bss.pucAlignedHeap.6383:0000000000000000 pucAlignedHeap.6383
+     /tmp/cc45yl84.s:133    .text.vPortFree:0000000000000000 $t
+     /tmp/cc45yl84.s:140    .text.vPortFree:0000000000000000 vPortFree
+     /tmp/cc45yl84.s:187    .text.vPortInitialiseBlocks:0000000000000000 $t
+     /tmp/cc45yl84.s:194    .text.vPortInitialiseBlocks:0000000000000000 vPortInitialiseBlocks
+     /tmp/cc45yl84.s:211    .text.vPortInitialiseBlocks:000000000000000c $d
+     /tmp/cc45yl84.s:216    .text.xPortGetFreeHeapSize:0000000000000000 $t
+     /tmp/cc45yl84.s:223    .text.xPortGetFreeHeapSize:0000000000000000 xPortGetFreeHeapSize
+     /tmp/cc45yl84.s:241    .text.xPortGetFreeHeapSize:0000000000000010 $d
+     /tmp/cc45yl84.s:246    .bss.pucAlignedHeap.6383:0000000000000000 $d
+
+UNDEFINED SYMBOLS
+vTaskSuspendAll
+xTaskResumeAll

@@ -1,0 +1,1742 @@
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 23, 1
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 6
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"SEGGER_RTT_printf.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text._StoreChar,"ax",%progbits
+  16              		.align	1
+  17              		.syntax unified
+  18              		.thumb
+  19              		.thumb_func
+  20              		.fpu fpv4-sp-d16
+  22              	_StoreChar:
+  23              	.LFB0:
+  24              		.file 1 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c"
+   1:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** /*********************************************************************
+   2:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *               SEGGER MICROCONTROLLER GmbH & Co. KG                 *
+   3:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *       Solutions for real time microcontroller applications         *
+   4:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** **********************************************************************
+   5:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *                                                                    *
+   6:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *       (c) 2014 - 2016  SEGGER Microcontroller GmbH & Co. KG        *
+   7:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *                                                                    *
+   8:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *       www.segger.com     Support: support@segger.com               *
+   9:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *                                                                    *
+  10:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** **********************************************************************
+  11:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *                                                                    *
+  12:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *       SEGGER RTT * Real Time Transfer for embedded targets         *
+  13:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *                                                                    *
+  14:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** **********************************************************************
+  15:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *                                                                    *
+  16:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** * All rights reserved.                                               *
+  17:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *                                                                    *
+  18:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** * SEGGER strongly recommends to not make any changes                 *
+  19:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** * to or modify the source code of this software in order to stay     *
+  20:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** * compatible with the RTT protocol and J-Link.                       *
+  21:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *                                                                    *
+  22:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** * Redistribution and use in source and binary forms, with or         *
+  23:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** * without modification, are permitted provided that the following    *
+  24:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** * conditions are met:                                                *
+  25:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *                                                                    *
+  26:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** * o Redistributions of source code must retain the above copyright   *
+  27:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *   notice, this list of conditions and the following disclaimer.    *
+  28:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *                                                                    *
+  29:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** * o Redistributions in binary form must reproduce the above          *
+  30:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *   copyright notice, this list of conditions and the following      *
+  31:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *   disclaimer in the documentation and/or other materials provided  *
+  32:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *   with the distribution.                                           *
+  33:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *                                                                    *
+  34:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** * o Neither the name of SEGGER Microcontroller GmbH & Co. KG         *
+  35:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *   nor the names of its contributors may be used to endorse or      *
+  36:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *   promote products derived from this software without specific     *
+  37:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *   prior written permission.                                        *
+  38:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *                                                                    *
+  39:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND             *
+  40:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** * CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,        *
+  41:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF           *
+  42:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE           *
+  43:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** * DISCLAIMED. IN NO EVENT SHALL SEGGER Microcontroller BE LIABLE FOR *
+  44:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR           *
+  45:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT  *
+  46:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** * OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;    *
+  47:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF      *
+  48:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT          *
+  49:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE  *
+  50:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH   *
+  51:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** * DAMAGE.                                                            *
+  52:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *                                                                    *
+  53:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** **********************************************************************
+  54:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** ---------------------------END-OF-HEADER------------------------------
+  55:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** File    : SEGGER_RTT_printf.c
+  56:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** Purpose : Replacement for printf to write formatted data via RTT
+  57:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** Revision: $Rev: 4351 $
+  58:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** ----------------------------------------------------------------------
+  59:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** */
+  60:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** #include "SEGGER_RTT.h"
+  61:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** #include "SEGGER_RTT_Conf.h"
+  62:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** 
+  63:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** /*********************************************************************
+  64:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *
+  65:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *       Defines, configurable
+  66:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *
+  67:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** **********************************************************************
+  68:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** */
+  69:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** 
+  70:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** #ifndef SEGGER_RTT_PRINTF_BUFFER_SIZE
+  71:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   #define SEGGER_RTT_PRINTF_BUFFER_SIZE (64)
+  72:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** #endif
+  73:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** 
+  74:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** #include <stdlib.h>
+  75:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** #include <stdarg.h>
+  76:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** 
+  77:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** 
+  78:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** #define FORMAT_FLAG_LEFT_JUSTIFY   (1u << 0)
+  79:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** #define FORMAT_FLAG_PAD_ZERO       (1u << 1)
+  80:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** #define FORMAT_FLAG_PRINT_SIGN     (1u << 2)
+  81:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** #define FORMAT_FLAG_ALTERNATE      (1u << 3)
+  82:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** 
+  83:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** /*********************************************************************
+  84:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *
+  85:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *       Types
+  86:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *
+  87:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** **********************************************************************
+  88:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** */
+  89:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** 
+  90:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** typedef struct {
+  91:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   char*     pBuffer;
+  92:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   unsigned  BufferSize;
+  93:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   unsigned  Cnt;
+  94:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** 
+  95:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   int   ReturnValue;
+  96:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** 
+  97:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   unsigned RTTBufferIndex;
+  98:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** } SEGGER_RTT_PRINTF_DESC;
+  99:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** 
+ 100:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** /*********************************************************************
+ 101:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *
+ 102:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *       Function prototypes
+ 103:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *
+ 104:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** **********************************************************************
+ 105:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** */
+ 106:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** int SEGGER_RTT_vprintf(unsigned BufferIndex, const char * sFormat, va_list * pParamList);
+ 107:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** 
+ 108:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** /*********************************************************************
+ 109:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *
+ 110:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *       Static code
+ 111:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *
+ 112:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** **********************************************************************
+ 113:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** */
+ 114:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** /*********************************************************************
+ 115:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *
+ 116:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *       _StoreChar
+ 117:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** */
+ 118:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** static void _StoreChar(SEGGER_RTT_PRINTF_DESC * p, char c) {
+  25              		.loc 1 118 0
+  26              		.cfi_startproc
+  27              		@ args = 0, pretend = 0, frame = 16
+  28              		@ frame_needed = 0, uses_anonymous_args = 0
+  29 0000 00B5     		push	{lr}
+  30              	.LCFI0:
+  31              		.cfi_def_cfa_offset 4
+  32              		.cfi_offset 14, -4
+  33 0002 85B0     		sub	sp, sp, #20
+  34              	.LCFI1:
+  35              		.cfi_def_cfa_offset 24
+  36 0004 0190     		str	r0, [sp, #4]
+  37 0006 0B46     		mov	r3, r1
+  38 0008 8DF80330 		strb	r3, [sp, #3]
+ 119:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   unsigned Cnt;
+ 120:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** 
+ 121:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   Cnt = p->Cnt;
+  39              		.loc 1 121 0
+  40 000c 019B     		ldr	r3, [sp, #4]
+  41 000e 9B68     		ldr	r3, [r3, #8]
+  42 0010 0393     		str	r3, [sp, #12]
+ 122:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   if ((Cnt + 1u) <= p->BufferSize) {
+  43              		.loc 1 122 0
+  44 0012 039B     		ldr	r3, [sp, #12]
+  45 0014 5A1C     		adds	r2, r3, #1
+  46 0016 019B     		ldr	r3, [sp, #4]
+  47 0018 5B68     		ldr	r3, [r3, #4]
+  48 001a 9A42     		cmp	r2, r3
+  49 001c 0FD8     		bhi	.L2
+ 123:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     *(p->pBuffer + Cnt) = c;
+  50              		.loc 1 123 0
+  51 001e 019B     		ldr	r3, [sp, #4]
+  52 0020 1A68     		ldr	r2, [r3]
+  53 0022 039B     		ldr	r3, [sp, #12]
+  54 0024 1344     		add	r3, r3, r2
+  55 0026 9DF80320 		ldrb	r2, [sp, #3]
+  56 002a 1A70     		strb	r2, [r3]
+ 124:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     p->Cnt = Cnt + 1u;
+  57              		.loc 1 124 0
+  58 002c 039B     		ldr	r3, [sp, #12]
+  59 002e 5A1C     		adds	r2, r3, #1
+  60 0030 019B     		ldr	r3, [sp, #4]
+  61 0032 9A60     		str	r2, [r3, #8]
+ 125:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     p->ReturnValue++;
+  62              		.loc 1 125 0
+  63 0034 019B     		ldr	r3, [sp, #4]
+  64 0036 DB68     		ldr	r3, [r3, #12]
+  65 0038 5A1C     		adds	r2, r3, #1
+  66 003a 019B     		ldr	r3, [sp, #4]
+  67 003c DA60     		str	r2, [r3, #12]
+  68              	.L2:
+ 126:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   }
+ 127:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   //
+ 128:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   // Write part of string, when the buffer is full
+ 129:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   //
+ 130:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   if (p->Cnt == p->BufferSize) {
+  69              		.loc 1 130 0
+  70 003e 019B     		ldr	r3, [sp, #4]
+  71 0040 9A68     		ldr	r2, [r3, #8]
+  72 0042 019B     		ldr	r3, [sp, #4]
+  73 0044 5B68     		ldr	r3, [r3, #4]
+  74 0046 9A42     		cmp	r2, r3
+  75 0048 15D1     		bne	.L5
+ 131:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     if (SEGGER_RTT_Write(p->RTTBufferIndex, p->pBuffer, p->Cnt) != p->Cnt) {
+  76              		.loc 1 131 0
+  77 004a 019B     		ldr	r3, [sp, #4]
+  78 004c 1869     		ldr	r0, [r3, #16]
+  79 004e 019B     		ldr	r3, [sp, #4]
+  80 0050 1968     		ldr	r1, [r3]
+  81 0052 019B     		ldr	r3, [sp, #4]
+  82 0054 9B68     		ldr	r3, [r3, #8]
+  83 0056 1A46     		mov	r2, r3
+  84 0058 FFF7FEFF 		bl	SEGGER_RTT_Write
+  85 005c 0246     		mov	r2, r0
+  86 005e 019B     		ldr	r3, [sp, #4]
+  87 0060 9B68     		ldr	r3, [r3, #8]
+  88 0062 9A42     		cmp	r2, r3
+  89 0064 04D0     		beq	.L4
+ 132:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       p->ReturnValue = -1;
+  90              		.loc 1 132 0
+  91 0066 019B     		ldr	r3, [sp, #4]
+  92 0068 4FF0FF32 		mov	r2, #-1
+  93 006c DA60     		str	r2, [r3, #12]
+ 133:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     } else {
+ 134:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       p->Cnt = 0u;
+ 135:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     }
+ 136:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   }
+ 137:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** }
+  94              		.loc 1 137 0
+  95 006e 02E0     		b	.L5
+  96              	.L4:
+ 134:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     }
+  97              		.loc 1 134 0
+  98 0070 019B     		ldr	r3, [sp, #4]
+  99 0072 0022     		movs	r2, #0
+ 100 0074 9A60     		str	r2, [r3, #8]
+ 101              	.L5:
+ 102              		.loc 1 137 0
+ 103 0076 00BF     		nop
+ 104 0078 05B0     		add	sp, sp, #20
+ 105              	.LCFI2:
+ 106              		.cfi_def_cfa_offset 4
+ 107              		@ sp needed
+ 108 007a 5DF804FB 		ldr	pc, [sp], #4
+ 109              		.cfi_endproc
+ 110              	.LFE0:
+ 112              		.section	.text._PrintUnsigned,"ax",%progbits
+ 113              		.align	1
+ 114              		.syntax unified
+ 115              		.thumb
+ 116              		.thumb_func
+ 117              		.fpu fpv4-sp-d16
+ 119              	_PrintUnsigned:
+ 120              	.LFB1:
+ 138:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** 
+ 139:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** /*********************************************************************
+ 140:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *
+ 141:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *       _PrintUnsigned
+ 142:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** */
+ 143:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** static void _PrintUnsigned(SEGGER_RTT_PRINTF_DESC * pBufferDesc, unsigned v, unsigned Base, unsigne
+ 121              		.loc 1 143 0
+ 122              		.cfi_startproc
+ 123              		@ args = 8, pretend = 0, frame = 40
+ 124              		@ frame_needed = 0, uses_anonymous_args = 0
+ 125 0000 00B5     		push	{lr}
+ 126              	.LCFI3:
+ 127              		.cfi_def_cfa_offset 4
+ 128              		.cfi_offset 14, -4
+ 129 0002 8BB0     		sub	sp, sp, #44
+ 130              	.LCFI4:
+ 131              		.cfi_def_cfa_offset 48
+ 132 0004 0390     		str	r0, [sp, #12]
+ 133 0006 0291     		str	r1, [sp, #8]
+ 134 0008 0192     		str	r2, [sp, #4]
+ 135 000a 0093     		str	r3, [sp]
+ 144:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   static const char _aV2C[16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', '
+ 145:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   unsigned Div;
+ 146:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   unsigned Digit;
+ 147:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   unsigned Number;
+ 148:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   unsigned Width;
+ 149:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   char c;
+ 150:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** 
+ 151:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   Number = v;
+ 136              		.loc 1 151 0
+ 137 000c 029B     		ldr	r3, [sp, #8]
+ 138 000e 0893     		str	r3, [sp, #32]
+ 152:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   Digit = 1u;
+ 139              		.loc 1 152 0
+ 140 0010 0123     		movs	r3, #1
+ 141 0012 0993     		str	r3, [sp, #36]
+ 153:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   //
+ 154:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   // Get actual field width
+ 155:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   //
+ 156:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   Width = 1u;
+ 142              		.loc 1 156 0
+ 143 0014 0123     		movs	r3, #1
+ 144 0016 0793     		str	r3, [sp, #28]
+ 157:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   while (Number >= Base) {
+ 145              		.loc 1 157 0
+ 146 0018 07E0     		b	.L7
+ 147              	.L8:
+ 158:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     Number = (Number / Base);
+ 148              		.loc 1 158 0
+ 149 001a 089A     		ldr	r2, [sp, #32]
+ 150 001c 019B     		ldr	r3, [sp, #4]
+ 151 001e B2FBF3F3 		udiv	r3, r2, r3
+ 152 0022 0893     		str	r3, [sp, #32]
+ 159:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     Width++;
+ 153              		.loc 1 159 0
+ 154 0024 079B     		ldr	r3, [sp, #28]
+ 155 0026 0133     		adds	r3, r3, #1
+ 156 0028 0793     		str	r3, [sp, #28]
+ 157              	.L7:
+ 157:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   while (Number >= Base) {
+ 158              		.loc 1 157 0
+ 159 002a 089A     		ldr	r2, [sp, #32]
+ 160 002c 019B     		ldr	r3, [sp, #4]
+ 161 002e 9A42     		cmp	r2, r3
+ 162 0030 F3D2     		bcs	.L8
+ 160:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   }
+ 161:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   if (NumDigits > Width) {
+ 163              		.loc 1 161 0
+ 164 0032 009A     		ldr	r2, [sp]
+ 165 0034 079B     		ldr	r3, [sp, #28]
+ 166 0036 9A42     		cmp	r2, r3
+ 167 0038 01D9     		bls	.L9
+ 162:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     Width = NumDigits;
+ 168              		.loc 1 162 0
+ 169 003a 009B     		ldr	r3, [sp]
+ 170 003c 0793     		str	r3, [sp, #28]
+ 171              	.L9:
+ 163:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   }
+ 164:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   //
+ 165:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   // Print leading chars if necessary
+ 166:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   //
+ 167:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   if ((FormatFlags & FORMAT_FLAG_LEFT_JUSTIFY) == 0u) {
+ 172              		.loc 1 167 0
+ 173 003e 0D9B     		ldr	r3, [sp, #52]
+ 174 0040 03F00103 		and	r3, r3, #1
+ 175 0044 002B     		cmp	r3, #0
+ 176 0046 28D1     		bne	.L10
+ 168:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     if (FieldWidth != 0u) {
+ 177              		.loc 1 168 0
+ 178 0048 0C9B     		ldr	r3, [sp, #48]
+ 179 004a 002B     		cmp	r3, #0
+ 180 004c 25D0     		beq	.L10
+ 169:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       if (((FormatFlags & FORMAT_FLAG_PAD_ZERO) == FORMAT_FLAG_PAD_ZERO) && (NumDigits == 0u)) {
+ 181              		.loc 1 169 0
+ 182 004e 0D9B     		ldr	r3, [sp, #52]
+ 183 0050 03F00203 		and	r3, r3, #2
+ 184 0054 002B     		cmp	r3, #0
+ 185 0056 06D0     		beq	.L11
+ 186              		.loc 1 169 0 is_stmt 0 discriminator 1
+ 187 0058 009B     		ldr	r3, [sp]
+ 188 005a 002B     		cmp	r3, #0
+ 189 005c 03D1     		bne	.L11
+ 170:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         c = '0';
+ 190              		.loc 1 170 0 is_stmt 1
+ 191 005e 3023     		movs	r3, #48
+ 192 0060 8DF81B30 		strb	r3, [sp, #27]
+ 193 0064 02E0     		b	.L12
+ 194              	.L11:
+ 171:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       } else {
+ 172:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         c = ' ';
+ 195              		.loc 1 172 0
+ 196 0066 2023     		movs	r3, #32
+ 197 0068 8DF81B30 		strb	r3, [sp, #27]
+ 198              	.L12:
+ 173:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       }
+ 174:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       while ((FieldWidth != 0u) && (Width < FieldWidth)) {
+ 199              		.loc 1 174 0
+ 200 006c 0CE0     		b	.L13
+ 201              	.L14:
+ 175:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         FieldWidth--;
+ 202              		.loc 1 175 0
+ 203 006e 0C9B     		ldr	r3, [sp, #48]
+ 204 0070 013B     		subs	r3, r3, #1
+ 205 0072 0C93     		str	r3, [sp, #48]
+ 176:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         _StoreChar(pBufferDesc, c);
+ 206              		.loc 1 176 0
+ 207 0074 9DF81B30 		ldrb	r3, [sp, #27]	@ zero_extendqisi2
+ 208 0078 1946     		mov	r1, r3
+ 209 007a 0398     		ldr	r0, [sp, #12]
+ 210 007c FFF7FEFF 		bl	_StoreChar
+ 177:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         if (pBufferDesc->ReturnValue < 0) {
+ 211              		.loc 1 177 0
+ 212 0080 039B     		ldr	r3, [sp, #12]
+ 213 0082 DB68     		ldr	r3, [r3, #12]
+ 214 0084 002B     		cmp	r3, #0
+ 215 0086 07DB     		blt	.L25
+ 216              	.L13:
+ 174:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         FieldWidth--;
+ 217              		.loc 1 174 0
+ 218 0088 0C9B     		ldr	r3, [sp, #48]
+ 219 008a 002B     		cmp	r3, #0
+ 220 008c 05D0     		beq	.L10
+ 174:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         FieldWidth--;
+ 221              		.loc 1 174 0 is_stmt 0 discriminator 1
+ 222 008e 079A     		ldr	r2, [sp, #28]
+ 223 0090 0C9B     		ldr	r3, [sp, #48]
+ 224 0092 9A42     		cmp	r2, r3
+ 225 0094 EBD3     		bcc	.L14
+ 226 0096 00E0     		b	.L10
+ 227              	.L25:
+ 178:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****           break;
+ 228              		.loc 1 178 0 is_stmt 1
+ 229 0098 00BF     		nop
+ 230              	.L10:
+ 179:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         }
+ 180:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       }
+ 181:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     }
+ 182:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   }
+ 183:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   if (pBufferDesc->ReturnValue >= 0) {
+ 231              		.loc 1 183 0
+ 232 009a 039B     		ldr	r3, [sp, #12]
+ 233 009c DB68     		ldr	r3, [r3, #12]
+ 234 009e 002B     		cmp	r3, #0
+ 235 00a0 55DB     		blt	.L26
+ 236              	.L19:
+ 184:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     //
+ 185:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     // Compute Digit.
+ 186:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     // Loop until Digit has the value of the highest digit required.
+ 187:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     // Example: If the output is 345 (Base 10), loop 2 times until Digit is 100.
+ 188:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     //
+ 189:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     while (1) {
+ 190:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       if (NumDigits > 1u) {       // User specified a min number of digits to print? => Make sure w
+ 237              		.loc 1 190 0
+ 238 00a2 009B     		ldr	r3, [sp]
+ 239 00a4 012B     		cmp	r3, #1
+ 240 00a6 03D9     		bls	.L16
+ 191:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         NumDigits--;
+ 241              		.loc 1 191 0
+ 242 00a8 009B     		ldr	r3, [sp]
+ 243 00aa 013B     		subs	r3, r3, #1
+ 244 00ac 0093     		str	r3, [sp]
+ 245 00ae 09E0     		b	.L17
+ 246              	.L16:
+ 192:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       } else {
+ 193:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         Div = v / Digit;
+ 247              		.loc 1 193 0
+ 248 00b0 029A     		ldr	r2, [sp, #8]
+ 249 00b2 099B     		ldr	r3, [sp, #36]
+ 250 00b4 B2FBF3F3 		udiv	r3, r2, r3
+ 251 00b8 0593     		str	r3, [sp, #20]
+ 194:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         if (Div < Base) {        // Is our divider big enough to extract the highest digit from val
+ 252              		.loc 1 194 0
+ 253 00ba 059A     		ldr	r2, [sp, #20]
+ 254 00bc 019B     		ldr	r3, [sp, #4]
+ 255 00be 9A42     		cmp	r2, r3
+ 256 00c0 00D2     		bcs	.L17
+ 195:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****           break;
+ 257              		.loc 1 195 0
+ 258 00c2 05E0     		b	.L18
+ 259              	.L17:
+ 196:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         }
+ 197:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       }
+ 198:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       Digit *= Base;
+ 260              		.loc 1 198 0
+ 261 00c4 099B     		ldr	r3, [sp, #36]
+ 262 00c6 019A     		ldr	r2, [sp, #4]
+ 263 00c8 02FB03F3 		mul	r3, r2, r3
+ 264 00cc 0993     		str	r3, [sp, #36]
+ 190:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         NumDigits--;
+ 265              		.loc 1 190 0
+ 266 00ce E8E7     		b	.L19
+ 267              	.L18:
+ 199:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     }
+ 200:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     //
+ 201:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     // Output digits
+ 202:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     //
+ 203:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     do {
+ 204:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       Div = v / Digit;
+ 268              		.loc 1 204 0
+ 269 00d0 029A     		ldr	r2, [sp, #8]
+ 270 00d2 099B     		ldr	r3, [sp, #36]
+ 271 00d4 B2FBF3F3 		udiv	r3, r2, r3
+ 272 00d8 0593     		str	r3, [sp, #20]
+ 205:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       v -= Div * Digit;
+ 273              		.loc 1 205 0
+ 274 00da 059B     		ldr	r3, [sp, #20]
+ 275 00dc 099A     		ldr	r2, [sp, #36]
+ 276 00de 02FB03F3 		mul	r3, r2, r3
+ 277 00e2 029A     		ldr	r2, [sp, #8]
+ 278 00e4 D31A     		subs	r3, r2, r3
+ 279 00e6 0293     		str	r3, [sp, #8]
+ 206:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       _StoreChar(pBufferDesc, _aV2C[Div]);
+ 280              		.loc 1 206 0
+ 281 00e8 1B4A     		ldr	r2, .L29
+ 282 00ea 059B     		ldr	r3, [sp, #20]
+ 283 00ec 1344     		add	r3, r3, r2
+ 284 00ee 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 285 00f0 1946     		mov	r1, r3
+ 286 00f2 0398     		ldr	r0, [sp, #12]
+ 287 00f4 FFF7FEFF 		bl	_StoreChar
+ 207:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       if (pBufferDesc->ReturnValue < 0) {
+ 288              		.loc 1 207 0
+ 289 00f8 039B     		ldr	r3, [sp, #12]
+ 290 00fa DB68     		ldr	r3, [r3, #12]
+ 291 00fc 002B     		cmp	r3, #0
+ 292 00fe 08DB     		blt	.L27
+ 208:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         break;
+ 209:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       }
+ 210:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       Digit /= Base;
+ 293              		.loc 1 210 0
+ 294 0100 099A     		ldr	r2, [sp, #36]
+ 295 0102 019B     		ldr	r3, [sp, #4]
+ 296 0104 B2FBF3F3 		udiv	r3, r2, r3
+ 297 0108 0993     		str	r3, [sp, #36]
+ 211:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     } while (Digit);
+ 298              		.loc 1 211 0
+ 299 010a 099B     		ldr	r3, [sp, #36]
+ 300 010c 002B     		cmp	r3, #0
+ 301 010e DFD1     		bne	.L18
+ 302 0110 00E0     		b	.L21
+ 303              	.L27:
+ 208:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         break;
+ 304              		.loc 1 208 0
+ 305 0112 00BF     		nop
+ 306              	.L21:
+ 212:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     //
+ 213:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     // Print trailing spaces if necessary
+ 214:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     //
+ 215:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     if ((FormatFlags & FORMAT_FLAG_LEFT_JUSTIFY) == FORMAT_FLAG_LEFT_JUSTIFY) {
+ 307              		.loc 1 215 0
+ 308 0114 0D9B     		ldr	r3, [sp, #52]
+ 309 0116 03F00103 		and	r3, r3, #1
+ 310 011a 002B     		cmp	r3, #0
+ 311 011c 17D0     		beq	.L26
+ 216:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       if (FieldWidth != 0u) {
+ 312              		.loc 1 216 0
+ 313 011e 0C9B     		ldr	r3, [sp, #48]
+ 314 0120 002B     		cmp	r3, #0
+ 315 0122 14D0     		beq	.L26
+ 217:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         while ((FieldWidth != 0u) && (Width < FieldWidth)) {
+ 316              		.loc 1 217 0
+ 317 0124 0AE0     		b	.L22
+ 318              	.L23:
+ 218:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****           FieldWidth--;
+ 319              		.loc 1 218 0
+ 320 0126 0C9B     		ldr	r3, [sp, #48]
+ 321 0128 013B     		subs	r3, r3, #1
+ 322 012a 0C93     		str	r3, [sp, #48]
+ 219:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****           _StoreChar(pBufferDesc, ' ');
+ 323              		.loc 1 219 0
+ 324 012c 2021     		movs	r1, #32
+ 325 012e 0398     		ldr	r0, [sp, #12]
+ 326 0130 FFF7FEFF 		bl	_StoreChar
+ 220:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****           if (pBufferDesc->ReturnValue < 0) {
+ 327              		.loc 1 220 0
+ 328 0134 039B     		ldr	r3, [sp, #12]
+ 329 0136 DB68     		ldr	r3, [r3, #12]
+ 330 0138 002B     		cmp	r3, #0
+ 331 013a 07DB     		blt	.L28
+ 332              	.L22:
+ 217:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****           FieldWidth--;
+ 333              		.loc 1 217 0
+ 334 013c 0C9B     		ldr	r3, [sp, #48]
+ 335 013e 002B     		cmp	r3, #0
+ 336 0140 05D0     		beq	.L26
+ 217:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****           FieldWidth--;
+ 337              		.loc 1 217 0 is_stmt 0 discriminator 1
+ 338 0142 079A     		ldr	r2, [sp, #28]
+ 339 0144 0C9B     		ldr	r3, [sp, #48]
+ 340 0146 9A42     		cmp	r2, r3
+ 341 0148 EDD3     		bcc	.L23
+ 221:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****             break;
+ 222:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****           }
+ 223:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         }
+ 224:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       }
+ 225:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     }
+ 226:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   }
+ 227:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** }
+ 342              		.loc 1 227 0 is_stmt 1
+ 343 014a 00E0     		b	.L26
+ 344              	.L28:
+ 221:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****             break;
+ 345              		.loc 1 221 0
+ 346 014c 00BF     		nop
+ 347              	.L26:
+ 348              		.loc 1 227 0
+ 349 014e 00BF     		nop
+ 350 0150 0BB0     		add	sp, sp, #44
+ 351              	.LCFI5:
+ 352              		.cfi_def_cfa_offset 4
+ 353              		@ sp needed
+ 354 0152 5DF804FB 		ldr	pc, [sp], #4
+ 355              	.L30:
+ 356 0156 00BF     		.align	2
+ 357              	.L29:
+ 358 0158 00000000 		.word	_aV2C.6129
+ 359              		.cfi_endproc
+ 360              	.LFE1:
+ 362              		.section	.text._PrintInt,"ax",%progbits
+ 363              		.align	1
+ 364              		.syntax unified
+ 365              		.thumb
+ 366              		.thumb_func
+ 367              		.fpu fpv4-sp-d16
+ 369              	_PrintInt:
+ 370              	.LFB2:
+ 228:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** 
+ 229:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** /*********************************************************************
+ 230:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *
+ 231:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *       _PrintInt
+ 232:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** */
+ 233:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** static void _PrintInt(SEGGER_RTT_PRINTF_DESC * pBufferDesc, int v, unsigned Base, unsigned NumDigit
+ 371              		.loc 1 233 0
+ 372              		.cfi_startproc
+ 373              		@ args = 8, pretend = 0, frame = 24
+ 374              		@ frame_needed = 0, uses_anonymous_args = 0
+ 375 0000 00B5     		push	{lr}
+ 376              	.LCFI6:
+ 377              		.cfi_def_cfa_offset 4
+ 378              		.cfi_offset 14, -4
+ 379 0002 89B0     		sub	sp, sp, #36
+ 380              	.LCFI7:
+ 381              		.cfi_def_cfa_offset 40
+ 382 0004 0590     		str	r0, [sp, #20]
+ 383 0006 0491     		str	r1, [sp, #16]
+ 384 0008 0392     		str	r2, [sp, #12]
+ 385 000a 0293     		str	r3, [sp, #8]
+ 234:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   unsigned Width;
+ 235:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   int Number;
+ 236:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** 
+ 237:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   Number = (v < 0) ? -v : v;
+ 386              		.loc 1 237 0
+ 387 000c 049B     		ldr	r3, [sp, #16]
+ 388 000e 002B     		cmp	r3, #0
+ 389 0010 B8BF     		it	lt
+ 390 0012 5B42     		rsblt	r3, r3, #0
+ 391 0014 0693     		str	r3, [sp, #24]
+ 238:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** 
+ 239:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   //
+ 240:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   // Get actual field width
+ 241:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   //
+ 242:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   Width = 1u;
+ 392              		.loc 1 242 0
+ 393 0016 0123     		movs	r3, #1
+ 394 0018 0793     		str	r3, [sp, #28]
+ 243:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   while (Number >= (int)Base) {
+ 395              		.loc 1 243 0
+ 396 001a 07E0     		b	.L32
+ 397              	.L33:
+ 244:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     Number = (Number / (int)Base);
+ 398              		.loc 1 244 0
+ 399 001c 039B     		ldr	r3, [sp, #12]
+ 400 001e 069A     		ldr	r2, [sp, #24]
+ 401 0020 92FBF3F3 		sdiv	r3, r2, r3
+ 402 0024 0693     		str	r3, [sp, #24]
+ 245:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     Width++;
+ 403              		.loc 1 245 0
+ 404 0026 079B     		ldr	r3, [sp, #28]
+ 405 0028 0133     		adds	r3, r3, #1
+ 406 002a 0793     		str	r3, [sp, #28]
+ 407              	.L32:
+ 243:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   while (Number >= (int)Base) {
+ 408              		.loc 1 243 0
+ 409 002c 039B     		ldr	r3, [sp, #12]
+ 410 002e 069A     		ldr	r2, [sp, #24]
+ 411 0030 9A42     		cmp	r2, r3
+ 412 0032 F3DA     		bge	.L33
+ 246:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   }
+ 247:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   if (NumDigits > Width) {
+ 413              		.loc 1 247 0
+ 414 0034 029A     		ldr	r2, [sp, #8]
+ 415 0036 079B     		ldr	r3, [sp, #28]
+ 416 0038 9A42     		cmp	r2, r3
+ 417 003a 01D9     		bls	.L34
+ 248:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     Width = NumDigits;
+ 418              		.loc 1 248 0
+ 419 003c 029B     		ldr	r3, [sp, #8]
+ 420 003e 0793     		str	r3, [sp, #28]
+ 421              	.L34:
+ 249:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   }
+ 250:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   if ((FieldWidth > 0u) && ((v < 0) || ((FormatFlags & FORMAT_FLAG_PRINT_SIGN) == FORMAT_FLAG_PRINT
+ 422              		.loc 1 250 0
+ 423 0040 0A9B     		ldr	r3, [sp, #40]
+ 424 0042 002B     		cmp	r3, #0
+ 425 0044 0AD0     		beq	.L35
+ 426              		.loc 1 250 0 is_stmt 0 discriminator 1
+ 427 0046 049B     		ldr	r3, [sp, #16]
+ 428 0048 002B     		cmp	r3, #0
+ 429 004a 04DB     		blt	.L36
+ 430              		.loc 1 250 0 discriminator 2
+ 431 004c 0B9B     		ldr	r3, [sp, #44]
+ 432 004e 03F00403 		and	r3, r3, #4
+ 433 0052 002B     		cmp	r3, #0
+ 434 0054 02D0     		beq	.L35
+ 435              	.L36:
+ 251:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     FieldWidth--;
+ 436              		.loc 1 251 0 is_stmt 1
+ 437 0056 0A9B     		ldr	r3, [sp, #40]
+ 438 0058 013B     		subs	r3, r3, #1
+ 439 005a 0A93     		str	r3, [sp, #40]
+ 440              	.L35:
+ 252:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   }
+ 253:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** 
+ 254:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   //
+ 255:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   // Print leading spaces if necessary
+ 256:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   //
+ 257:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   if ((((FormatFlags & FORMAT_FLAG_PAD_ZERO) == 0u) || (NumDigits != 0u)) && ((FormatFlags & FORMAT
+ 441              		.loc 1 257 0
+ 442 005c 0B9B     		ldr	r3, [sp, #44]
+ 443 005e 03F00203 		and	r3, r3, #2
+ 444 0062 002B     		cmp	r3, #0
+ 445 0064 02D0     		beq	.L37
+ 446              		.loc 1 257 0 is_stmt 0 discriminator 2
+ 447 0066 029B     		ldr	r3, [sp, #8]
+ 448 0068 002B     		cmp	r3, #0
+ 449 006a 1CD0     		beq	.L38
+ 450              	.L37:
+ 451              		.loc 1 257 0 discriminator 3
+ 452 006c 0B9B     		ldr	r3, [sp, #44]
+ 453 006e 03F00103 		and	r3, r3, #1
+ 454 0072 002B     		cmp	r3, #0
+ 455 0074 17D1     		bne	.L38
+ 258:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     if (FieldWidth != 0u) {
+ 456              		.loc 1 258 0 is_stmt 1
+ 457 0076 0A9B     		ldr	r3, [sp, #40]
+ 458 0078 002B     		cmp	r3, #0
+ 459 007a 14D0     		beq	.L38
+ 259:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       while ((FieldWidth != 0u) && (Width < FieldWidth)) {
+ 460              		.loc 1 259 0
+ 461 007c 0AE0     		b	.L39
+ 462              	.L40:
+ 260:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         FieldWidth--;
+ 463              		.loc 1 260 0
+ 464 007e 0A9B     		ldr	r3, [sp, #40]
+ 465 0080 013B     		subs	r3, r3, #1
+ 466 0082 0A93     		str	r3, [sp, #40]
+ 261:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         _StoreChar(pBufferDesc, ' ');
+ 467              		.loc 1 261 0
+ 468 0084 2021     		movs	r1, #32
+ 469 0086 0598     		ldr	r0, [sp, #20]
+ 470 0088 FFF7FEFF 		bl	_StoreChar
+ 262:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         if (pBufferDesc->ReturnValue < 0) {
+ 471              		.loc 1 262 0
+ 472 008c 059B     		ldr	r3, [sp, #20]
+ 473 008e DB68     		ldr	r3, [r3, #12]
+ 474 0090 002B     		cmp	r3, #0
+ 475 0092 07DB     		blt	.L47
+ 476              	.L39:
+ 259:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         FieldWidth--;
+ 477              		.loc 1 259 0
+ 478 0094 0A9B     		ldr	r3, [sp, #40]
+ 479 0096 002B     		cmp	r3, #0
+ 480 0098 05D0     		beq	.L38
+ 259:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         FieldWidth--;
+ 481              		.loc 1 259 0 is_stmt 0 discriminator 1
+ 482 009a 079A     		ldr	r2, [sp, #28]
+ 483 009c 0A9B     		ldr	r3, [sp, #40]
+ 484 009e 9A42     		cmp	r2, r3
+ 485 00a0 EDD3     		bcc	.L40
+ 486 00a2 00E0     		b	.L38
+ 487              	.L47:
+ 263:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****           break;
+ 488              		.loc 1 263 0 is_stmt 1
+ 489 00a4 00BF     		nop
+ 490              	.L38:
+ 264:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         }
+ 265:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       }
+ 266:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     }
+ 267:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   }
+ 268:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   //
+ 269:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   // Print sign if necessary
+ 270:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   //
+ 271:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   if (pBufferDesc->ReturnValue >= 0) {
+ 491              		.loc 1 271 0
+ 492 00a6 059B     		ldr	r3, [sp, #20]
+ 493 00a8 DB68     		ldr	r3, [r3, #12]
+ 494 00aa 002B     		cmp	r3, #0
+ 495 00ac 4ADB     		blt	.L48
+ 272:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     if (v < 0) {
+ 496              		.loc 1 272 0
+ 497 00ae 049B     		ldr	r3, [sp, #16]
+ 498 00b0 002B     		cmp	r3, #0
+ 499 00b2 07DA     		bge	.L42
+ 273:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       v = -v;
+ 500              		.loc 1 273 0
+ 501 00b4 049B     		ldr	r3, [sp, #16]
+ 502 00b6 5B42     		negs	r3, r3
+ 503 00b8 0493     		str	r3, [sp, #16]
+ 274:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       _StoreChar(pBufferDesc, '-');
+ 504              		.loc 1 274 0
+ 505 00ba 2D21     		movs	r1, #45
+ 506 00bc 0598     		ldr	r0, [sp, #20]
+ 507 00be FFF7FEFF 		bl	_StoreChar
+ 508 00c2 08E0     		b	.L43
+ 509              	.L42:
+ 275:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     } else if ((FormatFlags & FORMAT_FLAG_PRINT_SIGN) == FORMAT_FLAG_PRINT_SIGN) {
+ 510              		.loc 1 275 0
+ 511 00c4 0B9B     		ldr	r3, [sp, #44]
+ 512 00c6 03F00403 		and	r3, r3, #4
+ 513 00ca 002B     		cmp	r3, #0
+ 514 00cc 03D0     		beq	.L43
+ 276:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       _StoreChar(pBufferDesc, '+');
+ 515              		.loc 1 276 0
+ 516 00ce 2B21     		movs	r1, #43
+ 517 00d0 0598     		ldr	r0, [sp, #20]
+ 518 00d2 FFF7FEFF 		bl	_StoreChar
+ 519              	.L43:
+ 277:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     } else {
+ 278:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** 
+ 279:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     }
+ 280:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     if (pBufferDesc->ReturnValue >= 0) {
+ 520              		.loc 1 280 0
+ 521 00d6 059B     		ldr	r3, [sp, #20]
+ 522 00d8 DB68     		ldr	r3, [r3, #12]
+ 523 00da 002B     		cmp	r3, #0
+ 524 00dc 32DB     		blt	.L48
+ 281:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       //
+ 282:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       // Print leading zeros if necessary
+ 283:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       //
+ 284:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       if (((FormatFlags & FORMAT_FLAG_PAD_ZERO) == FORMAT_FLAG_PAD_ZERO) && ((FormatFlags & FORMAT_
+ 525              		.loc 1 284 0
+ 526 00de 0B9B     		ldr	r3, [sp, #44]
+ 527 00e0 03F00203 		and	r3, r3, #2
+ 528 00e4 002B     		cmp	r3, #0
+ 529 00e6 1FD0     		beq	.L44
+ 530              		.loc 1 284 0 is_stmt 0 discriminator 1
+ 531 00e8 0B9B     		ldr	r3, [sp, #44]
+ 532 00ea 03F00103 		and	r3, r3, #1
+ 533 00ee 002B     		cmp	r3, #0
+ 534 00f0 1AD1     		bne	.L44
+ 535              		.loc 1 284 0 discriminator 2
+ 536 00f2 029B     		ldr	r3, [sp, #8]
+ 537 00f4 002B     		cmp	r3, #0
+ 538 00f6 17D1     		bne	.L44
+ 285:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         if (FieldWidth != 0u) {
+ 539              		.loc 1 285 0 is_stmt 1
+ 540 00f8 0A9B     		ldr	r3, [sp, #40]
+ 541 00fa 002B     		cmp	r3, #0
+ 542 00fc 14D0     		beq	.L44
+ 286:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****           while ((FieldWidth != 0u) && (Width < FieldWidth)) {
+ 543              		.loc 1 286 0
+ 544 00fe 0AE0     		b	.L45
+ 545              	.L46:
+ 287:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****             FieldWidth--;
+ 546              		.loc 1 287 0
+ 547 0100 0A9B     		ldr	r3, [sp, #40]
+ 548 0102 013B     		subs	r3, r3, #1
+ 549 0104 0A93     		str	r3, [sp, #40]
+ 288:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****             _StoreChar(pBufferDesc, '0');
+ 550              		.loc 1 288 0
+ 551 0106 3021     		movs	r1, #48
+ 552 0108 0598     		ldr	r0, [sp, #20]
+ 553 010a FFF7FEFF 		bl	_StoreChar
+ 289:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****             if (pBufferDesc->ReturnValue < 0) {
+ 554              		.loc 1 289 0
+ 555 010e 059B     		ldr	r3, [sp, #20]
+ 556 0110 DB68     		ldr	r3, [r3, #12]
+ 557 0112 002B     		cmp	r3, #0
+ 558 0114 07DB     		blt	.L49
+ 559              	.L45:
+ 286:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****             FieldWidth--;
+ 560              		.loc 1 286 0
+ 561 0116 0A9B     		ldr	r3, [sp, #40]
+ 562 0118 002B     		cmp	r3, #0
+ 563 011a 05D0     		beq	.L44
+ 286:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****             FieldWidth--;
+ 564              		.loc 1 286 0 is_stmt 0 discriminator 1
+ 565 011c 079A     		ldr	r2, [sp, #28]
+ 566 011e 0A9B     		ldr	r3, [sp, #40]
+ 567 0120 9A42     		cmp	r2, r3
+ 568 0122 EDD3     		bcc	.L46
+ 569 0124 00E0     		b	.L44
+ 570              	.L49:
+ 290:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****               break;
+ 571              		.loc 1 290 0 is_stmt 1
+ 572 0126 00BF     		nop
+ 573              	.L44:
+ 291:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****             }
+ 292:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****           }
+ 293:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         }
+ 294:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       }
+ 295:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       if (pBufferDesc->ReturnValue >= 0) {
+ 574              		.loc 1 295 0
+ 575 0128 059B     		ldr	r3, [sp, #20]
+ 576 012a DB68     		ldr	r3, [r3, #12]
+ 577 012c 002B     		cmp	r3, #0
+ 578 012e 09DB     		blt	.L48
+ 296:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         //
+ 297:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         // Print number without sign
+ 298:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         //
+ 299:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         _PrintUnsigned(pBufferDesc, (unsigned)v, Base, NumDigits, FieldWidth, FormatFlags);
+ 579              		.loc 1 299 0
+ 580 0130 0499     		ldr	r1, [sp, #16]
+ 581 0132 0B9B     		ldr	r3, [sp, #44]
+ 582 0134 0193     		str	r3, [sp, #4]
+ 583 0136 0A9B     		ldr	r3, [sp, #40]
+ 584 0138 0093     		str	r3, [sp]
+ 585 013a 029B     		ldr	r3, [sp, #8]
+ 586 013c 039A     		ldr	r2, [sp, #12]
+ 587 013e 0598     		ldr	r0, [sp, #20]
+ 588 0140 FFF7FEFF 		bl	_PrintUnsigned
+ 589              	.L48:
+ 300:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       }
+ 301:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     }
+ 302:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   }
+ 303:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** }
+ 590              		.loc 1 303 0
+ 591 0144 00BF     		nop
+ 592 0146 09B0     		add	sp, sp, #36
+ 593              	.LCFI8:
+ 594              		.cfi_def_cfa_offset 4
+ 595              		@ sp needed
+ 596 0148 5DF804FB 		ldr	pc, [sp], #4
+ 597              		.cfi_endproc
+ 598              	.LFE2:
+ 600              		.section	.text.SEGGER_RTT_vprintf,"ax",%progbits
+ 601              		.align	1
+ 602              		.global	SEGGER_RTT_vprintf
+ 603              		.syntax unified
+ 604              		.thumb
+ 605              		.thumb_func
+ 606              		.fpu fpv4-sp-d16
+ 608              	SEGGER_RTT_vprintf:
+ 609              	.LFB3:
+ 304:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** 
+ 305:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** /*********************************************************************
+ 306:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *
+ 307:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *       Public code
+ 308:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *
+ 309:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** **********************************************************************
+ 310:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** */
+ 311:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** /*********************************************************************
+ 312:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *
+ 313:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *       SEGGER_RTT_vprintf
+ 314:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *
+ 315:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *  Function description
+ 316:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *    Stores a formatted string in SEGGER RTT control block.
+ 317:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *    This data is read by the host.
+ 318:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *
+ 319:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *  Parameters
+ 320:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *    BufferIndex  Index of "Up"-buffer to be used. (e.g. 0 for "Terminal")
+ 321:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *    sFormat      Pointer to format string
+ 322:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *    pParamList   Pointer to the list of arguments for the format string
+ 323:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *
+ 324:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *  Return values
+ 325:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *    >= 0:  Number of bytes which have been stored in the "Up"-buffer.
+ 326:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *     < 0:  Error
+ 327:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** */
+ 328:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** int SEGGER_RTT_vprintf(unsigned BufferIndex, const char * sFormat, va_list * pParamList) {
+ 610              		.loc 1 328 0
+ 611              		.cfi_startproc
+ 612              		@ args = 0, pretend = 0, frame = 128
+ 613              		@ frame_needed = 0, uses_anonymous_args = 0
+ 614 0000 00B5     		push	{lr}
+ 615              	.LCFI9:
+ 616              		.cfi_def_cfa_offset 4
+ 617              		.cfi_offset 14, -4
+ 618 0002 A3B0     		sub	sp, sp, #140
+ 619              	.LCFI10:
+ 620              		.cfi_def_cfa_offset 144
+ 621 0004 0590     		str	r0, [sp, #20]
+ 622 0006 0491     		str	r1, [sp, #16]
+ 623 0008 0392     		str	r2, [sp, #12]
+ 329:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   char c;
+ 330:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   SEGGER_RTT_PRINTF_DESC BufferDesc;
+ 331:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   int v;
+ 332:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   unsigned NumDigits;
+ 333:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   unsigned FormatFlags;
+ 334:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   unsigned FieldWidth;
+ 335:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   char acBuffer[SEGGER_RTT_PRINTF_BUFFER_SIZE];
+ 336:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** 
+ 337:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   BufferDesc.pBuffer        = acBuffer;
+ 624              		.loc 1 337 0
+ 625 000a 06AB     		add	r3, sp, #24
+ 626 000c 1693     		str	r3, [sp, #88]
+ 338:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   BufferDesc.BufferSize     = SEGGER_RTT_PRINTF_BUFFER_SIZE;
+ 627              		.loc 1 338 0
+ 628 000e 4023     		movs	r3, #64
+ 629 0010 1793     		str	r3, [sp, #92]
+ 339:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   BufferDesc.Cnt            = 0u;
+ 630              		.loc 1 339 0
+ 631 0012 0023     		movs	r3, #0
+ 632 0014 1893     		str	r3, [sp, #96]
+ 340:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   BufferDesc.RTTBufferIndex = BufferIndex;
+ 633              		.loc 1 340 0
+ 634 0016 059B     		ldr	r3, [sp, #20]
+ 635 0018 1A93     		str	r3, [sp, #104]
+ 341:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   BufferDesc.ReturnValue    = 0;
+ 636              		.loc 1 341 0
+ 637 001a 0023     		movs	r3, #0
+ 638 001c 1993     		str	r3, [sp, #100]
+ 639              	.L84:
+ 342:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** 
+ 343:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   do {
+ 344:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     c = *sFormat;
+ 640              		.loc 1 344 0
+ 641 001e 049B     		ldr	r3, [sp, #16]
+ 642 0020 1B78     		ldrb	r3, [r3]
+ 643 0022 8DF88730 		strb	r3, [sp, #135]
+ 345:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     sFormat++;
+ 644              		.loc 1 345 0
+ 645 0026 049B     		ldr	r3, [sp, #16]
+ 646 0028 0133     		adds	r3, r3, #1
+ 647 002a 0493     		str	r3, [sp, #16]
+ 346:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     if (c == 0u) {
+ 648              		.loc 1 346 0
+ 649 002c 9DF88730 		ldrb	r3, [sp, #135]	@ zero_extendqisi2
+ 650 0030 002B     		cmp	r3, #0
+ 651 0032 00F05981 		beq	.L89
+ 347:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       break;
+ 348:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     }
+ 349:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     if (c == '%') {
+ 652              		.loc 1 349 0
+ 653 0036 9DF88730 		ldrb	r3, [sp, #135]	@ zero_extendqisi2
+ 654 003a 252B     		cmp	r3, #37
+ 655 003c 40F04881 		bne	.L53
+ 350:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       //
+ 351:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       // Filter out flags
+ 352:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       //
+ 353:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       FormatFlags = 0u;
+ 656              		.loc 1 353 0
+ 657 0040 0023     		movs	r3, #0
+ 658 0042 1E93     		str	r3, [sp, #120]
+ 354:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       v = 1;
+ 659              		.loc 1 354 0
+ 660 0044 0123     		movs	r3, #1
+ 661 0046 2093     		str	r3, [sp, #128]
+ 662              	.L61:
+ 355:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       do {
+ 356:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         c = *sFormat;
+ 663              		.loc 1 356 0
+ 664 0048 049B     		ldr	r3, [sp, #16]
+ 665 004a 1B78     		ldrb	r3, [r3]
+ 666 004c 8DF88730 		strb	r3, [sp, #135]
+ 357:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         switch (c) {
+ 667              		.loc 1 357 0
+ 668 0050 9DF88730 		ldrb	r3, [sp, #135]	@ zero_extendqisi2
+ 669 0054 233B     		subs	r3, r3, #35
+ 670 0056 0D2B     		cmp	r3, #13
+ 671 0058 3ED8     		bhi	.L54
+ 672 005a 01A2     		adr	r2, .L56
+ 673 005c 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 674              		.p2align 2
+ 675              	.L56:
+ 676 0060 C9000000 		.word	.L55+1
+ 677 0064 D9000000 		.word	.L54+1
+ 678 0068 D9000000 		.word	.L54+1
+ 679 006c D9000000 		.word	.L54+1
+ 680 0070 D9000000 		.word	.L54+1
+ 681 0074 D9000000 		.word	.L54+1
+ 682 0078 D9000000 		.word	.L54+1
+ 683 007c D9000000 		.word	.L54+1
+ 684 0080 B9000000 		.word	.L57+1
+ 685 0084 D9000000 		.word	.L54+1
+ 686 0088 99000000 		.word	.L58+1
+ 687 008c D9000000 		.word	.L54+1
+ 688 0090 D9000000 		.word	.L54+1
+ 689 0094 A9000000 		.word	.L59+1
+ 690              		.p2align 1
+ 691              	.L58:
+ 358:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         case '-': FormatFlags |= FORMAT_FLAG_LEFT_JUSTIFY; sFormat++; break;
+ 692              		.loc 1 358 0
+ 693 0098 1E9B     		ldr	r3, [sp, #120]
+ 694 009a 43F00103 		orr	r3, r3, #1
+ 695 009e 1E93     		str	r3, [sp, #120]
+ 696 00a0 049B     		ldr	r3, [sp, #16]
+ 697 00a2 0133     		adds	r3, r3, #1
+ 698 00a4 0493     		str	r3, [sp, #16]
+ 699 00a6 1AE0     		b	.L60
+ 700              	.L59:
+ 359:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         case '0': FormatFlags |= FORMAT_FLAG_PAD_ZERO;     sFormat++; break;
+ 701              		.loc 1 359 0
+ 702 00a8 1E9B     		ldr	r3, [sp, #120]
+ 703 00aa 43F00203 		orr	r3, r3, #2
+ 704 00ae 1E93     		str	r3, [sp, #120]
+ 705 00b0 049B     		ldr	r3, [sp, #16]
+ 706 00b2 0133     		adds	r3, r3, #1
+ 707 00b4 0493     		str	r3, [sp, #16]
+ 708 00b6 12E0     		b	.L60
+ 709              	.L57:
+ 360:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         case '+': FormatFlags |= FORMAT_FLAG_PRINT_SIGN;   sFormat++; break;
+ 710              		.loc 1 360 0
+ 711 00b8 1E9B     		ldr	r3, [sp, #120]
+ 712 00ba 43F00403 		orr	r3, r3, #4
+ 713 00be 1E93     		str	r3, [sp, #120]
+ 714 00c0 049B     		ldr	r3, [sp, #16]
+ 715 00c2 0133     		adds	r3, r3, #1
+ 716 00c4 0493     		str	r3, [sp, #16]
+ 717 00c6 0AE0     		b	.L60
+ 718              	.L55:
+ 361:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         case '#': FormatFlags |= FORMAT_FLAG_ALTERNATE;    sFormat++; break;
+ 719              		.loc 1 361 0
+ 720 00c8 1E9B     		ldr	r3, [sp, #120]
+ 721 00ca 43F00803 		orr	r3, r3, #8
+ 722 00ce 1E93     		str	r3, [sp, #120]
+ 723 00d0 049B     		ldr	r3, [sp, #16]
+ 724 00d2 0133     		adds	r3, r3, #1
+ 725 00d4 0493     		str	r3, [sp, #16]
+ 726 00d6 02E0     		b	.L60
+ 727              	.L54:
+ 362:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         default:  v = 0; break;
+ 728              		.loc 1 362 0
+ 729 00d8 0023     		movs	r3, #0
+ 730 00da 2093     		str	r3, [sp, #128]
+ 731 00dc 00BF     		nop
+ 732              	.L60:
+ 363:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         }
+ 364:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       } while (v);
+ 733              		.loc 1 364 0
+ 734 00de 209B     		ldr	r3, [sp, #128]
+ 735 00e0 002B     		cmp	r3, #0
+ 736 00e2 B1D1     		bne	.L61
+ 365:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       //
+ 366:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       // filter out field with
+ 367:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       //
+ 368:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       FieldWidth = 0u;
+ 737              		.loc 1 368 0
+ 738 00e4 0023     		movs	r3, #0
+ 739 00e6 1D93     		str	r3, [sp, #116]
+ 740              	.L63:
+ 369:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       do {
+ 370:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         c = *sFormat;
+ 741              		.loc 1 370 0
+ 742 00e8 049B     		ldr	r3, [sp, #16]
+ 743 00ea 1B78     		ldrb	r3, [r3]
+ 744 00ec 8DF88730 		strb	r3, [sp, #135]
+ 371:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         if ((c < '0') || (c > '9')) {
+ 745              		.loc 1 371 0
+ 746 00f0 9DF88730 		ldrb	r3, [sp, #135]	@ zero_extendqisi2
+ 747 00f4 2F2B     		cmp	r3, #47
+ 748 00f6 12D9     		bls	.L62
+ 749              		.loc 1 371 0 is_stmt 0 discriminator 1
+ 750 00f8 9DF88730 		ldrb	r3, [sp, #135]	@ zero_extendqisi2
+ 751 00fc 392B     		cmp	r3, #57
+ 752 00fe 0ED8     		bhi	.L62
+ 372:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****           break;
+ 373:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         }
+ 374:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         sFormat++;
+ 753              		.loc 1 374 0 is_stmt 1
+ 754 0100 049B     		ldr	r3, [sp, #16]
+ 755 0102 0133     		adds	r3, r3, #1
+ 756 0104 0493     		str	r3, [sp, #16]
+ 375:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         FieldWidth = (FieldWidth * 10u) + ((unsigned)c - '0');
+ 757              		.loc 1 375 0
+ 758 0106 1D9A     		ldr	r2, [sp, #116]
+ 759 0108 1346     		mov	r3, r2
+ 760 010a 9B00     		lsls	r3, r3, #2
+ 761 010c 1344     		add	r3, r3, r2
+ 762 010e 5B00     		lsls	r3, r3, #1
+ 763 0110 1A46     		mov	r2, r3
+ 764 0112 9DF88730 		ldrb	r3, [sp, #135]	@ zero_extendqisi2
+ 765 0116 1344     		add	r3, r3, r2
+ 766 0118 303B     		subs	r3, r3, #48
+ 767 011a 1D93     		str	r3, [sp, #116]
+ 370:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         if ((c < '0') || (c > '9')) {
+ 768              		.loc 1 370 0
+ 769 011c E4E7     		b	.L63
+ 770              	.L62:
+ 376:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       } while (1);
+ 377:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** 
+ 378:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       //
+ 379:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       // Filter out precision (number of digits to display)
+ 380:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       //
+ 381:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       NumDigits = 0u;
+ 771              		.loc 1 381 0
+ 772 011e 0023     		movs	r3, #0
+ 773 0120 1F93     		str	r3, [sp, #124]
+ 382:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       c = *sFormat;
+ 774              		.loc 1 382 0
+ 775 0122 049B     		ldr	r3, [sp, #16]
+ 776 0124 1B78     		ldrb	r3, [r3]
+ 777 0126 8DF88730 		strb	r3, [sp, #135]
+ 383:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       if (c == '.') {
+ 778              		.loc 1 383 0
+ 779 012a 9DF88730 		ldrb	r3, [sp, #135]	@ zero_extendqisi2
+ 780 012e 2E2B     		cmp	r3, #46
+ 781 0130 1DD1     		bne	.L64
+ 384:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         sFormat++;
+ 782              		.loc 1 384 0
+ 783 0132 049B     		ldr	r3, [sp, #16]
+ 784 0134 0133     		adds	r3, r3, #1
+ 785 0136 0493     		str	r3, [sp, #16]
+ 786              	.L65:
+ 385:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         do {
+ 386:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****           c = *sFormat;
+ 787              		.loc 1 386 0
+ 788 0138 049B     		ldr	r3, [sp, #16]
+ 789 013a 1B78     		ldrb	r3, [r3]
+ 790 013c 8DF88730 		strb	r3, [sp, #135]
+ 387:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****           if ((c < '0') || (c > '9')) {
+ 791              		.loc 1 387 0
+ 792 0140 9DF88730 		ldrb	r3, [sp, #135]	@ zero_extendqisi2
+ 793 0144 2F2B     		cmp	r3, #47
+ 794 0146 12D9     		bls	.L64
+ 795              		.loc 1 387 0 is_stmt 0 discriminator 1
+ 796 0148 9DF88730 		ldrb	r3, [sp, #135]	@ zero_extendqisi2
+ 797 014c 392B     		cmp	r3, #57
+ 798 014e 0ED8     		bhi	.L64
+ 388:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****             break;
+ 389:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****           }
+ 390:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****           sFormat++;
+ 799              		.loc 1 390 0 is_stmt 1
+ 800 0150 049B     		ldr	r3, [sp, #16]
+ 801 0152 0133     		adds	r3, r3, #1
+ 802 0154 0493     		str	r3, [sp, #16]
+ 391:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****           NumDigits = NumDigits * 10u + ((unsigned)c - '0');
+ 803              		.loc 1 391 0
+ 804 0156 1F9A     		ldr	r2, [sp, #124]
+ 805 0158 1346     		mov	r3, r2
+ 806 015a 9B00     		lsls	r3, r3, #2
+ 807 015c 1344     		add	r3, r3, r2
+ 808 015e 5B00     		lsls	r3, r3, #1
+ 809 0160 1A46     		mov	r2, r3
+ 810 0162 9DF88730 		ldrb	r3, [sp, #135]	@ zero_extendqisi2
+ 811 0166 1344     		add	r3, r3, r2
+ 812 0168 303B     		subs	r3, r3, #48
+ 813 016a 1F93     		str	r3, [sp, #124]
+ 386:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****           if ((c < '0') || (c > '9')) {
+ 814              		.loc 1 386 0
+ 815 016c E4E7     		b	.L65
+ 816              	.L64:
+ 392:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         } while (1);
+ 393:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       }
+ 394:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       //
+ 395:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       // Filter out length modifier
+ 396:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       //
+ 397:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       c = *sFormat;
+ 817              		.loc 1 397 0
+ 818 016e 049B     		ldr	r3, [sp, #16]
+ 819 0170 1B78     		ldrb	r3, [r3]
+ 820 0172 8DF88730 		strb	r3, [sp, #135]
+ 821              	.L68:
+ 398:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       do {
+ 399:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         if ((c == 'l') || (c == 'h')) {
+ 822              		.loc 1 399 0
+ 823 0176 9DF88730 		ldrb	r3, [sp, #135]	@ zero_extendqisi2
+ 824 017a 6C2B     		cmp	r3, #108
+ 825 017c 03D0     		beq	.L66
+ 826              		.loc 1 399 0 is_stmt 0 discriminator 1
+ 827 017e 9DF88730 		ldrb	r3, [sp, #135]	@ zero_extendqisi2
+ 828 0182 682B     		cmp	r3, #104
+ 829 0184 07D1     		bne	.L67
+ 830              	.L66:
+ 400:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****           sFormat++;
+ 831              		.loc 1 400 0 is_stmt 1
+ 832 0186 049B     		ldr	r3, [sp, #16]
+ 833 0188 0133     		adds	r3, r3, #1
+ 834 018a 0493     		str	r3, [sp, #16]
+ 401:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****           c = *sFormat;
+ 835              		.loc 1 401 0
+ 836 018c 049B     		ldr	r3, [sp, #16]
+ 837 018e 1B78     		ldrb	r3, [r3]
+ 838 0190 8DF88730 		strb	r3, [sp, #135]
+ 399:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****           sFormat++;
+ 839              		.loc 1 399 0
+ 840 0194 EFE7     		b	.L68
+ 841              	.L67:
+ 402:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         } else {
+ 403:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****           break;
+ 404:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         }
+ 405:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       } while (1);
+ 406:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       //
+ 407:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       // Handle specifiers
+ 408:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       //
+ 409:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       switch (c) {
+ 842              		.loc 1 409 0
+ 843 0196 9DF88730 		ldrb	r3, [sp, #135]	@ zero_extendqisi2
+ 844 019a 642B     		cmp	r3, #100
+ 845 019c 27D0     		beq	.L70
+ 846 019e 642B     		cmp	r3, #100
+ 847 01a0 07DC     		bgt	.L71
+ 848 01a2 582B     		cmp	r3, #88
+ 849 01a4 47D0     		beq	.L72
+ 850 01a6 632B     		cmp	r3, #99
+ 851 01a8 0FD0     		beq	.L73
+ 852 01aa 252B     		cmp	r3, #37
+ 853 01ac 00F08680 		beq	.L74
+ 410:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       case 'c': {
+ 411:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         char c0;
+ 412:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         v = va_arg(*pParamList, int);
+ 413:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         c0 = (char)v;
+ 414:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         _StoreChar(&BufferDesc, c0);
+ 415:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         break;
+ 416:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       }
+ 417:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       case 'd':
+ 418:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         v = va_arg(*pParamList, int);
+ 419:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         _PrintInt(&BufferDesc, v, 10u, NumDigits, FieldWidth, FormatFlags);
+ 420:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         break;
+ 421:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       case 'u':
+ 422:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         v = va_arg(*pParamList, int);
+ 423:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         _PrintUnsigned(&BufferDesc, (unsigned)v, 10u, NumDigits, FieldWidth, FormatFlags);
+ 424:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         break;
+ 425:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       case 'x':
+ 426:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       case 'X':
+ 427:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         v = va_arg(*pParamList, int);
+ 428:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         _PrintUnsigned(&BufferDesc, (unsigned)v, 16u, NumDigits, FieldWidth, FormatFlags);
+ 429:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         break;
+ 430:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       case 's':
+ 431:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         {
+ 432:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****           const char * s = va_arg(*pParamList, const char *);
+ 433:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****           do {
+ 434:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****             c = *s;
+ 435:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****             s++;
+ 436:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****             if (c == '\0') {
+ 437:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****               break;
+ 438:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****             }
+ 439:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****            _StoreChar(&BufferDesc, c);
+ 440:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****           } while (BufferDesc.ReturnValue >= 0);
+ 441:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         }
+ 442:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         break;
+ 443:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       case 'p':
+ 444:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         v = va_arg(*pParamList, int);
+ 445:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         _PrintUnsigned(&BufferDesc, (unsigned)v, 16u, 8u, 8u, 0u);
+ 446:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         break;
+ 447:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       case '%':
+ 448:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         _StoreChar(&BufferDesc, '%');
+ 449:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         break;
+ 450:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       default:
+ 451:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         break;
+ 854              		.loc 1 451 0
+ 855 01b0 8AE0     		b	.L79
+ 856              	.L71:
+ 409:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       case 'c': {
+ 857              		.loc 1 409 0
+ 858 01b2 732B     		cmp	r3, #115
+ 859 01b4 51D0     		beq	.L75
+ 860 01b6 732B     		cmp	r3, #115
+ 861 01b8 02DC     		bgt	.L76
+ 862 01ba 702B     		cmp	r3, #112
+ 863 01bc 6CD0     		beq	.L77
+ 864              		.loc 1 451 0
+ 865 01be 83E0     		b	.L79
+ 866              	.L76:
+ 409:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       case 'c': {
+ 867              		.loc 1 409 0
+ 868 01c0 752B     		cmp	r3, #117
+ 869 01c2 26D0     		beq	.L78
+ 870 01c4 782B     		cmp	r3, #120
+ 871 01c6 36D0     		beq	.L72
+ 872              		.loc 1 451 0
+ 873 01c8 7EE0     		b	.L79
+ 874              	.L73:
+ 875              	.LBB2:
+ 412:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         c0 = (char)v;
+ 876              		.loc 1 412 0
+ 877 01ca 039B     		ldr	r3, [sp, #12]
+ 878 01cc 1B68     		ldr	r3, [r3]
+ 879 01ce 191D     		adds	r1, r3, #4
+ 880 01d0 039A     		ldr	r2, [sp, #12]
+ 881 01d2 1160     		str	r1, [r2]
+ 882 01d4 1B68     		ldr	r3, [r3]
+ 883 01d6 2093     		str	r3, [sp, #128]
+ 413:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         _StoreChar(&BufferDesc, c0);
+ 884              		.loc 1 413 0
+ 885 01d8 209B     		ldr	r3, [sp, #128]
+ 886 01da 8DF86F30 		strb	r3, [sp, #111]
+ 414:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         break;
+ 887              		.loc 1 414 0
+ 888 01de 9DF86F20 		ldrb	r2, [sp, #111]	@ zero_extendqisi2
+ 889 01e2 16AB     		add	r3, sp, #88
+ 890 01e4 1146     		mov	r1, r2
+ 891 01e6 1846     		mov	r0, r3
+ 892 01e8 FFF7FEFF 		bl	_StoreChar
+ 415:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       }
+ 893              		.loc 1 415 0
+ 894 01ec 6CE0     		b	.L79
+ 895              	.L70:
+ 896              	.LBE2:
+ 418:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         _PrintInt(&BufferDesc, v, 10u, NumDigits, FieldWidth, FormatFlags);
+ 897              		.loc 1 418 0
+ 898 01ee 039B     		ldr	r3, [sp, #12]
+ 899 01f0 1B68     		ldr	r3, [r3]
+ 900 01f2 191D     		adds	r1, r3, #4
+ 901 01f4 039A     		ldr	r2, [sp, #12]
+ 902 01f6 1160     		str	r1, [r2]
+ 903 01f8 1B68     		ldr	r3, [r3]
+ 904 01fa 2093     		str	r3, [sp, #128]
+ 419:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         break;
+ 905              		.loc 1 419 0
+ 906 01fc 16A8     		add	r0, sp, #88
+ 907 01fe 1E9B     		ldr	r3, [sp, #120]
+ 908 0200 0193     		str	r3, [sp, #4]
+ 909 0202 1D9B     		ldr	r3, [sp, #116]
+ 910 0204 0093     		str	r3, [sp]
+ 911 0206 1F9B     		ldr	r3, [sp, #124]
+ 912 0208 0A22     		movs	r2, #10
+ 913 020a 2099     		ldr	r1, [sp, #128]
+ 914 020c FFF7FEFF 		bl	_PrintInt
+ 420:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       case 'u':
+ 915              		.loc 1 420 0
+ 916 0210 5AE0     		b	.L79
+ 917              	.L78:
+ 422:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         _PrintUnsigned(&BufferDesc, (unsigned)v, 10u, NumDigits, FieldWidth, FormatFlags);
+ 918              		.loc 1 422 0
+ 919 0212 039B     		ldr	r3, [sp, #12]
+ 920 0214 1B68     		ldr	r3, [r3]
+ 921 0216 191D     		adds	r1, r3, #4
+ 922 0218 039A     		ldr	r2, [sp, #12]
+ 923 021a 1160     		str	r1, [r2]
+ 924 021c 1B68     		ldr	r3, [r3]
+ 925 021e 2093     		str	r3, [sp, #128]
+ 423:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         break;
+ 926              		.loc 1 423 0
+ 927 0220 2099     		ldr	r1, [sp, #128]
+ 928 0222 16A8     		add	r0, sp, #88
+ 929 0224 1E9B     		ldr	r3, [sp, #120]
+ 930 0226 0193     		str	r3, [sp, #4]
+ 931 0228 1D9B     		ldr	r3, [sp, #116]
+ 932 022a 0093     		str	r3, [sp]
+ 933 022c 1F9B     		ldr	r3, [sp, #124]
+ 934 022e 0A22     		movs	r2, #10
+ 935 0230 FFF7FEFF 		bl	_PrintUnsigned
+ 424:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       case 'x':
+ 936              		.loc 1 424 0
+ 937 0234 48E0     		b	.L79
+ 938              	.L72:
+ 427:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         _PrintUnsigned(&BufferDesc, (unsigned)v, 16u, NumDigits, FieldWidth, FormatFlags);
+ 939              		.loc 1 427 0
+ 940 0236 039B     		ldr	r3, [sp, #12]
+ 941 0238 1B68     		ldr	r3, [r3]
+ 942 023a 191D     		adds	r1, r3, #4
+ 943 023c 039A     		ldr	r2, [sp, #12]
+ 944 023e 1160     		str	r1, [r2]
+ 945 0240 1B68     		ldr	r3, [r3]
+ 946 0242 2093     		str	r3, [sp, #128]
+ 428:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         break;
+ 947              		.loc 1 428 0
+ 948 0244 2099     		ldr	r1, [sp, #128]
+ 949 0246 16A8     		add	r0, sp, #88
+ 950 0248 1E9B     		ldr	r3, [sp, #120]
+ 951 024a 0193     		str	r3, [sp, #4]
+ 952 024c 1D9B     		ldr	r3, [sp, #116]
+ 953 024e 0093     		str	r3, [sp]
+ 954 0250 1F9B     		ldr	r3, [sp, #124]
+ 955 0252 1022     		movs	r2, #16
+ 956 0254 FFF7FEFF 		bl	_PrintUnsigned
+ 429:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       case 's':
+ 957              		.loc 1 429 0
+ 958 0258 36E0     		b	.L79
+ 959              	.L75:
+ 960              	.LBB3:
+ 432:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****           do {
+ 961              		.loc 1 432 0
+ 962 025a 039B     		ldr	r3, [sp, #12]
+ 963 025c 1B68     		ldr	r3, [r3]
+ 964 025e 191D     		adds	r1, r3, #4
+ 965 0260 039A     		ldr	r2, [sp, #12]
+ 966 0262 1160     		str	r1, [r2]
+ 967 0264 1B68     		ldr	r3, [r3]
+ 968 0266 1C93     		str	r3, [sp, #112]
+ 969              	.L82:
+ 434:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****             s++;
+ 970              		.loc 1 434 0
+ 971 0268 1C9B     		ldr	r3, [sp, #112]
+ 972 026a 1B78     		ldrb	r3, [r3]
+ 973 026c 8DF88730 		strb	r3, [sp, #135]
+ 435:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****             if (c == '\0') {
+ 974              		.loc 1 435 0
+ 975 0270 1C9B     		ldr	r3, [sp, #112]
+ 976 0272 0133     		adds	r3, r3, #1
+ 977 0274 1C93     		str	r3, [sp, #112]
+ 436:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****               break;
+ 978              		.loc 1 436 0
+ 979 0276 9DF88730 		ldrb	r3, [sp, #135]	@ zero_extendqisi2
+ 980 027a 002B     		cmp	r3, #0
+ 981 027c 0AD0     		beq	.L90
+ 439:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****           } while (BufferDesc.ReturnValue >= 0);
+ 982              		.loc 1 439 0
+ 983 027e 9DF88720 		ldrb	r2, [sp, #135]	@ zero_extendqisi2
+ 984 0282 16AB     		add	r3, sp, #88
+ 985 0284 1146     		mov	r1, r2
+ 986 0286 1846     		mov	r0, r3
+ 987 0288 FFF7FEFF 		bl	_StoreChar
+ 440:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         }
+ 988              		.loc 1 440 0
+ 989 028c 199B     		ldr	r3, [sp, #100]
+ 990 028e 002B     		cmp	r3, #0
+ 991 0290 EADA     		bge	.L82
+ 992              	.LBE3:
+ 442:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       case 'p':
+ 993              		.loc 1 442 0
+ 994 0292 19E0     		b	.L79
+ 995              	.L90:
+ 996              	.LBB4:
+ 437:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****             }
+ 997              		.loc 1 437 0
+ 998 0294 00BF     		nop
+ 999              	.LBE4:
+ 442:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       case 'p':
+ 1000              		.loc 1 442 0
+ 1001 0296 17E0     		b	.L79
+ 1002              	.L77:
+ 444:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         _PrintUnsigned(&BufferDesc, (unsigned)v, 16u, 8u, 8u, 0u);
+ 1003              		.loc 1 444 0
+ 1004 0298 039B     		ldr	r3, [sp, #12]
+ 1005 029a 1B68     		ldr	r3, [r3]
+ 1006 029c 191D     		adds	r1, r3, #4
+ 1007 029e 039A     		ldr	r2, [sp, #12]
+ 1008 02a0 1160     		str	r1, [r2]
+ 1009 02a2 1B68     		ldr	r3, [r3]
+ 1010 02a4 2093     		str	r3, [sp, #128]
+ 445:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         break;
+ 1011              		.loc 1 445 0
+ 1012 02a6 2099     		ldr	r1, [sp, #128]
+ 1013 02a8 16A8     		add	r0, sp, #88
+ 1014 02aa 0023     		movs	r3, #0
+ 1015 02ac 0193     		str	r3, [sp, #4]
+ 1016 02ae 0823     		movs	r3, #8
+ 1017 02b0 0093     		str	r3, [sp]
+ 1018 02b2 0823     		movs	r3, #8
+ 1019 02b4 1022     		movs	r2, #16
+ 1020 02b6 FFF7FEFF 		bl	_PrintUnsigned
+ 446:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       case '%':
+ 1021              		.loc 1 446 0
+ 1022 02ba 05E0     		b	.L79
+ 1023              	.L74:
+ 448:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****         break;
+ 1024              		.loc 1 448 0
+ 1025 02bc 16AB     		add	r3, sp, #88
+ 1026 02be 2521     		movs	r1, #37
+ 1027 02c0 1846     		mov	r0, r3
+ 1028 02c2 FFF7FEFF 		bl	_StoreChar
+ 449:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       default:
+ 1029              		.loc 1 449 0
+ 1030 02c6 00BF     		nop
+ 1031              	.L79:
+ 452:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       }
+ 453:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       sFormat++;
+ 1032              		.loc 1 453 0
+ 1033 02c8 049B     		ldr	r3, [sp, #16]
+ 1034 02ca 0133     		adds	r3, r3, #1
+ 1035 02cc 0493     		str	r3, [sp, #16]
+ 1036 02ce 06E0     		b	.L83
+ 1037              	.L53:
+ 454:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     } else {
+ 455:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       _StoreChar(&BufferDesc, c);
+ 1038              		.loc 1 455 0
+ 1039 02d0 9DF88720 		ldrb	r2, [sp, #135]	@ zero_extendqisi2
+ 1040 02d4 16AB     		add	r3, sp, #88
+ 1041 02d6 1146     		mov	r1, r2
+ 1042 02d8 1846     		mov	r0, r3
+ 1043 02da FFF7FEFF 		bl	_StoreChar
+ 1044              	.L83:
+ 456:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     }
+ 457:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   } while (BufferDesc.ReturnValue >= 0);
+ 1045              		.loc 1 457 0
+ 1046 02de 199B     		ldr	r3, [sp, #100]
+ 1047 02e0 002B     		cmp	r3, #0
+ 1048 02e2 BFF69CAE 		bge	.L84
+ 1049 02e6 00E0     		b	.L52
+ 1050              	.L89:
+ 347:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     }
+ 1051              		.loc 1 347 0
+ 1052 02e8 00BF     		nop
+ 1053              	.L52:
+ 458:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** 
+ 459:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   if (BufferDesc.ReturnValue > 0) {
+ 1054              		.loc 1 459 0
+ 1055 02ea 199B     		ldr	r3, [sp, #100]
+ 1056 02ec 002B     		cmp	r3, #0
+ 1057 02ee 0CDD     		ble	.L85
+ 460:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     //
+ 461:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     // Write remaining data, if any
+ 462:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     //
+ 463:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     if (BufferDesc.Cnt != 0u) {
+ 1058              		.loc 1 463 0
+ 1059 02f0 189B     		ldr	r3, [sp, #96]
+ 1060 02f2 002B     		cmp	r3, #0
+ 1061 02f4 05D0     		beq	.L86
+ 464:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****       SEGGER_RTT_Write(BufferIndex, acBuffer, BufferDesc.Cnt);
+ 1062              		.loc 1 464 0
+ 1063 02f6 189A     		ldr	r2, [sp, #96]
+ 1064 02f8 06AB     		add	r3, sp, #24
+ 1065 02fa 1946     		mov	r1, r3
+ 1066 02fc 0598     		ldr	r0, [sp, #20]
+ 1067 02fe FFF7FEFF 		bl	SEGGER_RTT_Write
+ 1068              	.L86:
+ 465:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     }
+ 466:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****     BufferDesc.ReturnValue += (int)BufferDesc.Cnt;
+ 1069              		.loc 1 466 0
+ 1070 0302 199B     		ldr	r3, [sp, #100]
+ 1071 0304 189A     		ldr	r2, [sp, #96]
+ 1072 0306 1344     		add	r3, r3, r2
+ 1073 0308 1993     		str	r3, [sp, #100]
+ 1074              	.L85:
+ 467:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   }
+ 468:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   return BufferDesc.ReturnValue;
+ 1075              		.loc 1 468 0
+ 1076 030a 199B     		ldr	r3, [sp, #100]
+ 469:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** }
+ 1077              		.loc 1 469 0
+ 1078 030c 1846     		mov	r0, r3
+ 1079 030e 23B0     		add	sp, sp, #140
+ 1080              	.LCFI11:
+ 1081              		.cfi_def_cfa_offset 4
+ 1082              		@ sp needed
+ 1083 0310 5DF804FB 		ldr	pc, [sp], #4
+ 1084              		.cfi_endproc
+ 1085              	.LFE3:
+ 1087              		.section	.text.SEGGER_RTT_printf,"ax",%progbits
+ 1088              		.align	1
+ 1089              		.global	SEGGER_RTT_printf
+ 1090              		.syntax unified
+ 1091              		.thumb
+ 1092              		.thumb_func
+ 1093              		.fpu fpv4-sp-d16
+ 1095              	SEGGER_RTT_printf:
+ 1096              	.LFB4:
+ 470:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** 
+ 471:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** /*********************************************************************
+ 472:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *
+ 473:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *       SEGGER_RTT_printf
+ 474:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *
+ 475:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *  Function description
+ 476:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *    Stores a formatted string in SEGGER RTT control block.
+ 477:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *    This data is read by the host.
+ 478:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *
+ 479:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *  Parameters
+ 480:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *    BufferIndex  Index of "Up"-buffer to be used. (e.g. 0 for "Terminal")
+ 481:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *    sFormat      Pointer to format string, followed by the arguments for conversion
+ 482:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *
+ 483:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *  Return values
+ 484:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *    >= 0:  Number of bytes which have been stored in the "Up"-buffer.
+ 485:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *     < 0:  Error
+ 486:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *
+ 487:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *  Notes
+ 488:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *    (1) Conversion specifications have following syntax:
+ 489:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *          %[flags][FieldWidth][.Precision]ConversionSpecifier
+ 490:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *    (2) Supported flags:
+ 491:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *          -: Left justify within the field width
+ 492:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *          +: Always print sign extension for signed conversions
+ 493:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *          0: Pad with 0 instead of spaces. Ignored when using '-'-flag or precision
+ 494:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *        Supported conversion specifiers:
+ 495:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *          c: Print the argument as one char
+ 496:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *          d: Print the argument as a signed integer
+ 497:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *          u: Print the argument as an unsigned integer
+ 498:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *          x: Print the argument as an hexadecimal integer
+ 499:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *          s: Print the string pointed to by the argument
+ 500:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** *          p: Print the argument as an 8-digit hexadecimal integer. (Argument shall be a pointer to
+ 501:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** */
+ 502:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** int SEGGER_RTT_printf(unsigned BufferIndex, const char * sFormat, ...) {
+ 1097              		.loc 1 502 0
+ 1098              		.cfi_startproc
+ 1099              		@ args = 4, pretend = 12, frame = 16
+ 1100              		@ frame_needed = 0, uses_anonymous_args = 1
+ 1101 0000 0EB4     		push	{r1, r2, r3}
+ 1102              	.LCFI12:
+ 1103              		.cfi_def_cfa_offset 12
+ 1104              		.cfi_offset 1, -12
+ 1105              		.cfi_offset 2, -8
+ 1106              		.cfi_offset 3, -4
+ 1107 0002 00B5     		push	{lr}
+ 1108              	.LCFI13:
+ 1109              		.cfi_def_cfa_offset 16
+ 1110              		.cfi_offset 14, -16
+ 1111 0004 84B0     		sub	sp, sp, #16
+ 1112              	.LCFI14:
+ 1113              		.cfi_def_cfa_offset 32
+ 1114 0006 0190     		str	r0, [sp, #4]
+ 503:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   int r;
+ 504:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   va_list ParamList;
+ 505:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** 
+ 506:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   va_start(ParamList, sFormat);
+ 1115              		.loc 1 506 0
+ 1116 0008 06AB     		add	r3, sp, #24
+ 1117 000a 0293     		str	r3, [sp, #8]
+ 507:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   r = SEGGER_RTT_vprintf(BufferIndex, sFormat, &ParamList);
+ 1118              		.loc 1 507 0
+ 1119 000c 02AB     		add	r3, sp, #8
+ 1120 000e 1A46     		mov	r2, r3
+ 1121 0010 0599     		ldr	r1, [sp, #20]
+ 1122 0012 0198     		ldr	r0, [sp, #4]
+ 1123 0014 FFF7FEFF 		bl	SEGGER_RTT_vprintf
+ 1124 0018 0390     		str	r0, [sp, #12]
+ 508:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   va_end(ParamList);
+ 509:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c ****   return r;
+ 1125              		.loc 1 509 0
+ 1126 001a 039B     		ldr	r3, [sp, #12]
+ 510:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT_printf.c **** }
+ 1127              		.loc 1 510 0
+ 1128 001c 1846     		mov	r0, r3
+ 1129 001e 04B0     		add	sp, sp, #16
+ 1130              	.LCFI15:
+ 1131              		.cfi_def_cfa_offset 16
+ 1132              		@ sp needed
+ 1133 0020 5DF804EB 		ldr	lr, [sp], #4
+ 1134              	.LCFI16:
+ 1135              		.cfi_restore 14
+ 1136              		.cfi_def_cfa_offset 12
+ 1137 0024 03B0     		add	sp, sp, #12
+ 1138              	.LCFI17:
+ 1139              		.cfi_restore 3
+ 1140              		.cfi_restore 2
+ 1141              		.cfi_restore 1
+ 1142              		.cfi_def_cfa_offset 0
+ 1143 0026 7047     		bx	lr
+ 1144              		.cfi_endproc
+ 1145              	.LFE4:
+ 1147              		.section	.rodata._aV2C.6129,"a",%progbits
+ 1148              		.align	2
+ 1151              	_aV2C.6129:
+ 1152 0000 30       		.byte	48
+ 1153 0001 31       		.byte	49
+ 1154 0002 32       		.byte	50
+ 1155 0003 33       		.byte	51
+ 1156 0004 34       		.byte	52
+ 1157 0005 35       		.byte	53
+ 1158 0006 36       		.byte	54
+ 1159 0007 37       		.byte	55
+ 1160 0008 38       		.byte	56
+ 1161 0009 39       		.byte	57
+ 1162 000a 41       		.byte	65
+ 1163 000b 42       		.byte	66
+ 1164 000c 43       		.byte	67
+ 1165 000d 44       		.byte	68
+ 1166 000e 45       		.byte	69
+ 1167 000f 46       		.byte	70
+ 1168              		.text
+ 1169              	.Letext0:
+ 1170              		.file 2 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/modules/rtt/SEGGER_RTT.h"
+ 1171              		.file 3 "/home/rdu/Software/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/lock.h"
+ 1172              		.file 4 "/home/rdu/Software/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_types.h"
+ 1173              		.file 5 "/home/rdu/Software/gcc-arm-none-eabi-7-2017-q4-major/lib/gcc/arm-none-eabi/7.2.1/include/
+ 1174              		.file 6 "/home/rdu/Software/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/reent.h"
+ 1175              		.file 7 "/home/rdu/Software/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/stdlib.h"
+ 1176              		.file 8 "/home/rdu/Software/gcc-arm-none-eabi-7-2017-q4-major/lib/gcc/arm-none-eabi/7.2.1/include/
+ 1177              		.file 9 "<built-in>"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 SEGGER_RTT_printf.c
+     /tmp/ccYhHKG6.s:16     .text._StoreChar:0000000000000000 $t
+     /tmp/ccYhHKG6.s:22     .text._StoreChar:0000000000000000 _StoreChar
+     /tmp/ccYhHKG6.s:113    .text._PrintUnsigned:0000000000000000 $t
+     /tmp/ccYhHKG6.s:119    .text._PrintUnsigned:0000000000000000 _PrintUnsigned
+     /tmp/ccYhHKG6.s:358    .text._PrintUnsigned:0000000000000158 $d
+     /tmp/ccYhHKG6.s:1151   .rodata._aV2C.6129:0000000000000000 _aV2C.6129
+     /tmp/ccYhHKG6.s:363    .text._PrintInt:0000000000000000 $t
+     /tmp/ccYhHKG6.s:369    .text._PrintInt:0000000000000000 _PrintInt
+     /tmp/ccYhHKG6.s:601    .text.SEGGER_RTT_vprintf:0000000000000000 $t
+     /tmp/ccYhHKG6.s:608    .text.SEGGER_RTT_vprintf:0000000000000000 SEGGER_RTT_vprintf
+     /tmp/ccYhHKG6.s:676    .text.SEGGER_RTT_vprintf:0000000000000060 $d
+     /tmp/ccYhHKG6.s:690    .text.SEGGER_RTT_vprintf:0000000000000098 $t
+     /tmp/ccYhHKG6.s:1088   .text.SEGGER_RTT_printf:0000000000000000 $t
+     /tmp/ccYhHKG6.s:1095   .text.SEGGER_RTT_printf:0000000000000000 SEGGER_RTT_printf
+     /tmp/ccYhHKG6.s:1148   .rodata._aV2C.6129:0000000000000000 $d
+
+UNDEFINED SYMBOLS
+SEGGER_RTT_Write

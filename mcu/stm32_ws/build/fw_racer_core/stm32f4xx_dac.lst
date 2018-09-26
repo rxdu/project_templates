@@ -1,0 +1,1709 @@
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 23, 1
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 6
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"stm32f4xx_dac.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.DAC_DeInit,"ax",%progbits
+  16              		.align	1
+  17              		.global	DAC_DeInit
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  21              		.fpu fpv4-sp-d16
+  23              	DAC_DeInit:
+  24              	.LFB123:
+  25              		.file 1 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driv
+   1:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /**
+   2:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   ******************************************************************************
+   3:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @file    stm32f4xx_dac.c
+   4:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @author  MCD Application Team
+   5:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @version V1.8.0
+   6:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @date    04-November-2016
+   7:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****    * @brief   This file provides firmware functions to manage the following 
+   8:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *          functionalities of the Digital-to-Analog Converter (DAC) peripheral: 
+   9:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *           + DAC channels configuration: trigger, output buffer, data format
+  10:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *           + DMA management      
+  11:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *           + Interrupts and flags management
+  12:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *
+  13:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****  @verbatim      
+  14:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****  ===============================================================================
+  15:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****                       ##### DAC Peripheral features #####
+  16:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****  ===============================================================================
+  17:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     [..]        
+  18:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****       *** DAC Channels ***
+  19:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****       ====================  
+  20:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     [..]  
+  21:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     The device integrates two 12-bit Digital Analog Converters that can 
+  22:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     be used independently or simultaneously (dual mode):
+  23:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****       (#) DAC channel1 with DAC_OUT1 (PA4) as output
+  24:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****       (#) DAC channel2 with DAC_OUT2 (PA5) as output
+  25:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   
+  26:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****       *** DAC Triggers ***
+  27:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****       ====================
+  28:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     [..]
+  29:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     Digital to Analog conversion can be non-triggered using DAC_Trigger_None
+  30:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     and DAC_OUT1/DAC_OUT2 is available once writing to DHRx register 
+  31:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     using DAC_SetChannel1Data() / DAC_SetChannel2Data() functions.
+  32:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     [..] 
+  33:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     Digital to Analog conversion can be triggered by:
+  34:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****       (#) External event: EXTI Line 9 (any GPIOx_Pin9) using DAC_Trigger_Ext_IT9.
+  35:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****           The used pin (GPIOx_Pin9) must be configured in input mode.
+  36:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   
+  37:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****       (#) Timers TRGO: TIM2, TIM4, TIM5, TIM6, TIM7 and TIM8 
+  38:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****           (DAC_Trigger_T2_TRGO, DAC_Trigger_T4_TRGO...)
+  39:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****           The timer TRGO event should be selected using TIM_SelectOutputTrigger()
+  40:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   
+  41:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****       (#) Software using DAC_Trigger_Software
+  42:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   
+  43:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****       *** DAC Buffer mode feature ***
+  44:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****       =============================== 
+  45:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****       [..] 
+  46:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****       Each DAC channel integrates an output buffer that can be used to 
+  47:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****       reduce the output impedance, and to drive external loads directly
+  48:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****       without having to add an external operational amplifier.
+  49:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****       To enable, the output buffer use  
+  50:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****       DAC_InitStructure.DAC_OutputBuffer = DAC_OutputBuffer_Enable;
+  51:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****       [..]           
+  52:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****       (@) Refer to the device datasheet for more details about output 
+  53:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****           impedance value with and without output buffer.
+  54:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****             
+  55:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****        *** DAC wave generation feature ***
+  56:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****        =================================== 
+  57:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****        [..]     
+  58:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****        Both DAC channels can be used to generate
+  59:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****          (#) Noise wave using DAC_WaveGeneration_Noise
+  60:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****          (#) Triangle wave using DAC_WaveGeneration_Triangle
+  61:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****           
+  62:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****           -@-  Wave generation can be disabled using DAC_WaveGeneration_None
+  63:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   
+  64:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****        *** DAC data format ***
+  65:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****        =======================
+  66:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****        [..]   
+  67:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****        The DAC data format can be:
+  68:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****          (#) 8-bit right alignment using DAC_Align_8b_R
+  69:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****          (#) 12-bit left alignment using DAC_Align_12b_L
+  70:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****          (#) 12-bit right alignment using DAC_Align_12b_R
+  71:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   
+  72:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****        *** DAC data value to voltage correspondence ***  
+  73:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****        ================================================ 
+  74:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****        [..] 
+  75:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****        The analog output voltage on each DAC channel pin is determined
+  76:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****        by the following equation: 
+  77:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****        DAC_OUTx = VREF+ * DOR / 4095
+  78:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****        with  DOR is the Data Output Register
+  79:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****           VEF+ is the input voltage reference (refer to the device datasheet)
+  80:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****         e.g. To set DAC_OUT1 to 0.7V, use
+  81:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****           DAC_SetChannel1Data(DAC_Align_12b_R, 868);
+  82:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****           Assuming that VREF+ = 3.3V, DAC_OUT1 = (3.3 * 868) / 4095 = 0.7V
+  83:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   
+  84:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****        *** DMA requests  ***
+  85:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****        =====================
+  86:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****        [..]    
+  87:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****        A DMA1 request can be generated when an external trigger (but not
+  88:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****        a software trigger) occurs if DMA1 requests are enabled using
+  89:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****        DAC_DMACmd()
+  90:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****        [..]
+  91:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****        DMA1 requests are mapped as following:
+  92:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****          (#) DAC channel1 : mapped on DMA1 Stream5 channel7 which must be 
+  93:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****              already configured
+  94:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****          (#) DAC channel2 : mapped on DMA1 Stream6 channel7 which must be 
+  95:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****              already configured
+  96:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   
+  97:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****       
+  98:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****                       ##### How to use this driver #####
+  99:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****  ===============================================================================
+ 100:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     [..]          
+ 101:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****       (+) DAC APB clock must be enabled to get write access to DAC
+ 102:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****           registers using
+ 103:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****           RCC_APB1PeriphClockCmd(RCC_APB1Periph_DAC, ENABLE)
+ 104:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****       (+) Configure DAC_OUTx (DAC_OUT1: PA4, DAC_OUT2: PA5) in analog mode.
+ 105:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****       (+) Configure the DAC channel using DAC_Init() function
+ 106:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****       (+) Enable the DAC channel using DAC_Cmd() function
+ 107:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****    
+ 108:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****  @endverbatim    
+ 109:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   ******************************************************************************
+ 110:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @attention
+ 111:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *
+ 112:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * <h2><center>&copy; COPYRIGHT 2016 STMicroelectronics</center></h2>
+ 113:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *
+ 114:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
+ 115:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * You may not use this file except in compliance with the License.
+ 116:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * You may obtain a copy of the License at:
+ 117:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *
+ 118:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *        http://www.st.com/software_license_agreement_liberty_v2
+ 119:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *
+ 120:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * Unless required by applicable law or agreed to in writing, software 
+ 121:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * distributed under the License is distributed on an "AS IS" BASIS, 
+ 122:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ 123:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * See the License for the specific language governing permissions and
+ 124:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * limitations under the License.
+ 125:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *
+ 126:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   ******************************************************************************  
+ 127:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   */ 
+ 128:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 129:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 130:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /* Includes ------------------------------------------------------------------*/
+ 131:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** #include "stm32f4xx_dac.h"
+ 132:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** #include "stm32f4xx_rcc.h"
+ 133:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 134:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /** @addtogroup STM32F4xx_StdPeriph_Driver
+ 135:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @{
+ 136:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   */
+ 137:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 138:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /** @defgroup DAC 
+ 139:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @brief DAC driver modules
+ 140:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @{
+ 141:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   */ 
+ 142:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 143:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /* Private typedef -----------------------------------------------------------*/
+ 144:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /* Private define ------------------------------------------------------------*/
+ 145:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 146:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /* CR register Mask */
+ 147:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** #define CR_CLEAR_MASK              ((uint32_t)0x00000FFE)
+ 148:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 149:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /* DAC Dual Channels SWTRIG masks */
+ 150:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** #define DUAL_SWTRIG_SET            ((uint32_t)0x00000003)
+ 151:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** #define DUAL_SWTRIG_RESET          ((uint32_t)0xFFFFFFFC)
+ 152:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 153:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /* DHR registers offsets */
+ 154:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** #define DHR12R1_OFFSET             ((uint32_t)0x00000008)
+ 155:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** #define DHR12R2_OFFSET             ((uint32_t)0x00000014)
+ 156:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** #define DHR12RD_OFFSET             ((uint32_t)0x00000020)
+ 157:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 158:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /* DOR register offset */
+ 159:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** #define DOR_OFFSET                 ((uint32_t)0x0000002C)
+ 160:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 161:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /* Private macro -------------------------------------------------------------*/
+ 162:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /* Private variables ---------------------------------------------------------*/
+ 163:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /* Private function prototypes -----------------------------------------------*/
+ 164:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /* Private functions ---------------------------------------------------------*/
+ 165:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 166:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /** @defgroup DAC_Private_Functions
+ 167:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @{
+ 168:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   */
+ 169:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 170:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /** @defgroup DAC_Group1 DAC channels configuration
+ 171:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****  *  @brief   DAC channels configuration: trigger, output buffer, data format 
+ 172:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****  *
+ 173:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** @verbatim   
+ 174:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****  ===============================================================================
+ 175:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****    ##### DAC channels configuration: trigger, output buffer, data format #####
+ 176:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****  ===============================================================================  
+ 177:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 178:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** @endverbatim
+ 179:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @{
+ 180:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   */
+ 181:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 182:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /**
+ 183:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @brief  Deinitializes the DAC peripheral registers to their default reset values.
+ 184:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @param  None
+ 185:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @retval None
+ 186:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   */
+ 187:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** void DAC_DeInit(void)
+ 188:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** {
+  26              		.loc 1 188 0
+  27              		.cfi_startproc
+  28              		@ args = 0, pretend = 0, frame = 0
+  29              		@ frame_needed = 0, uses_anonymous_args = 0
+  30 0000 08B5     		push	{r3, lr}
+  31              	.LCFI0:
+  32              		.cfi_def_cfa_offset 8
+  33              		.cfi_offset 3, -8
+  34              		.cfi_offset 14, -4
+ 189:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Enable DAC reset state */
+ 190:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   RCC_APB1PeriphResetCmd(RCC_APB1Periph_DAC, ENABLE);
+  35              		.loc 1 190 0
+  36 0002 0121     		movs	r1, #1
+  37 0004 4FF00050 		mov	r0, #536870912
+  38 0008 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+ 191:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Release DAC from reset state */
+ 192:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   RCC_APB1PeriphResetCmd(RCC_APB1Periph_DAC, DISABLE);
+  39              		.loc 1 192 0
+  40 000c 0021     		movs	r1, #0
+  41 000e 4FF00050 		mov	r0, #536870912
+  42 0012 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+ 193:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** }
+  43              		.loc 1 193 0
+  44 0016 00BF     		nop
+  45 0018 08BD     		pop	{r3, pc}
+  46              		.cfi_endproc
+  47              	.LFE123:
+  49              		.section	.text.DAC_Init,"ax",%progbits
+  50              		.align	1
+  51              		.global	DAC_Init
+  52              		.syntax unified
+  53              		.thumb
+  54              		.thumb_func
+  55              		.fpu fpv4-sp-d16
+  57              	DAC_Init:
+  58              	.LFB124:
+ 194:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 195:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /**
+ 196:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @brief  Initializes the DAC peripheral according to the specified parameters
+ 197:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *         in the DAC_InitStruct.
+ 198:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @param  DAC_Channel: the selected DAC channel. 
+ 199:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *          This parameter can be one of the following values:
+ 200:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_Channel_1: DAC Channel1 selected
+ 201:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_Channel_2: DAC Channel2 selected
+ 202:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @param  DAC_InitStruct: pointer to a DAC_InitTypeDef structure that contains
+ 203:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *         the configuration information for the  specified DAC channel.
+ 204:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @retval None
+ 205:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   */
+ 206:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** void DAC_Init(uint32_t DAC_Channel, DAC_InitTypeDef* DAC_InitStruct)
+ 207:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** {
+  59              		.loc 1 207 0
+  60              		.cfi_startproc
+  61              		@ args = 0, pretend = 0, frame = 16
+  62              		@ frame_needed = 0, uses_anonymous_args = 0
+  63              		@ link register save eliminated.
+  64 0000 84B0     		sub	sp, sp, #16
+  65              	.LCFI1:
+  66              		.cfi_def_cfa_offset 16
+  67 0002 0190     		str	r0, [sp, #4]
+  68 0004 0091     		str	r1, [sp]
+ 208:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   uint32_t tmpreg1 = 0, tmpreg2 = 0;
+  69              		.loc 1 208 0
+  70 0006 0023     		movs	r3, #0
+  71 0008 0393     		str	r3, [sp, #12]
+  72 000a 0023     		movs	r3, #0
+  73 000c 0293     		str	r3, [sp, #8]
+ 209:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 210:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Check the DAC parameters */
+ 211:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   assert_param(IS_DAC_TRIGGER(DAC_InitStruct->DAC_Trigger));
+ 212:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   assert_param(IS_DAC_GENERATE_WAVE(DAC_InitStruct->DAC_WaveGeneration));
+ 213:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   assert_param(IS_DAC_LFSR_UNMASK_TRIANGLE_AMPLITUDE(DAC_InitStruct->DAC_LFSRUnmask_TriangleAmplitu
+ 214:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   assert_param(IS_DAC_OUTPUT_BUFFER_STATE(DAC_InitStruct->DAC_OutputBuffer));
+ 215:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 216:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /*---------------------------- DAC CR Configuration --------------------------*/
+ 217:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Get the DAC CR value */
+ 218:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   tmpreg1 = DAC->CR;
+  74              		.loc 1 218 0
+  75 000e 124B     		ldr	r3, .L3
+  76 0010 1B68     		ldr	r3, [r3]
+  77 0012 0393     		str	r3, [sp, #12]
+ 219:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Clear BOFFx, TENx, TSELx, WAVEx and MAMPx bits */
+ 220:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   tmpreg1 &= ~(CR_CLEAR_MASK << DAC_Channel);
+  78              		.loc 1 220 0
+  79 0014 40F6FE72 		movw	r2, #4094
+  80 0018 019B     		ldr	r3, [sp, #4]
+  81 001a 02FA03F3 		lsl	r3, r2, r3
+  82 001e DB43     		mvns	r3, r3
+  83 0020 039A     		ldr	r2, [sp, #12]
+  84 0022 1340     		ands	r3, r3, r2
+  85 0024 0393     		str	r3, [sp, #12]
+ 221:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Configure for the selected DAC channel: buffer output, trigger, 
+ 222:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****      wave generation, mask/amplitude for wave generation */
+ 223:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Set TSELx and TENx bits according to DAC_Trigger value */
+ 224:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Set WAVEx bits according to DAC_WaveGeneration value */
+ 225:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Set MAMPx bits according to DAC_LFSRUnmask_TriangleAmplitude value */ 
+ 226:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Set BOFFx bit according to DAC_OutputBuffer value */   
+ 227:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   tmpreg2 = (DAC_InitStruct->DAC_Trigger | DAC_InitStruct->DAC_WaveGeneration |
+  86              		.loc 1 227 0
+  87 0026 009B     		ldr	r3, [sp]
+  88 0028 1A68     		ldr	r2, [r3]
+  89 002a 009B     		ldr	r3, [sp]
+  90 002c 5B68     		ldr	r3, [r3, #4]
+  91 002e 1A43     		orrs	r2, r2, r3
+ 228:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****              DAC_InitStruct->DAC_LFSRUnmask_TriangleAmplitude | \
+  92              		.loc 1 228 0
+  93 0030 009B     		ldr	r3, [sp]
+  94 0032 9B68     		ldr	r3, [r3, #8]
+ 227:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****              DAC_InitStruct->DAC_LFSRUnmask_TriangleAmplitude | \
+  95              		.loc 1 227 0
+  96 0034 1A43     		orrs	r2, r2, r3
+ 229:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****              DAC_InitStruct->DAC_OutputBuffer);
+  97              		.loc 1 229 0
+  98 0036 009B     		ldr	r3, [sp]
+  99 0038 DB68     		ldr	r3, [r3, #12]
+ 227:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****              DAC_InitStruct->DAC_LFSRUnmask_TriangleAmplitude | \
+ 100              		.loc 1 227 0
+ 101 003a 1343     		orrs	r3, r3, r2
+ 102 003c 0293     		str	r3, [sp, #8]
+ 230:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Calculate CR register value depending on DAC_Channel */
+ 231:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   tmpreg1 |= tmpreg2 << DAC_Channel;
+ 103              		.loc 1 231 0
+ 104 003e 029A     		ldr	r2, [sp, #8]
+ 105 0040 019B     		ldr	r3, [sp, #4]
+ 106 0042 02FA03F3 		lsl	r3, r2, r3
+ 107 0046 039A     		ldr	r2, [sp, #12]
+ 108 0048 1343     		orrs	r3, r3, r2
+ 109 004a 0393     		str	r3, [sp, #12]
+ 232:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Write to DAC CR */
+ 233:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   DAC->CR = tmpreg1;
+ 110              		.loc 1 233 0
+ 111 004c 024A     		ldr	r2, .L3
+ 112 004e 039B     		ldr	r3, [sp, #12]
+ 113 0050 1360     		str	r3, [r2]
+ 234:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** }
+ 114              		.loc 1 234 0
+ 115 0052 00BF     		nop
+ 116 0054 04B0     		add	sp, sp, #16
+ 117              	.LCFI2:
+ 118              		.cfi_def_cfa_offset 0
+ 119              		@ sp needed
+ 120 0056 7047     		bx	lr
+ 121              	.L4:
+ 122              		.align	2
+ 123              	.L3:
+ 124 0058 00740040 		.word	1073771520
+ 125              		.cfi_endproc
+ 126              	.LFE124:
+ 128              		.section	.text.DAC_StructInit,"ax",%progbits
+ 129              		.align	1
+ 130              		.global	DAC_StructInit
+ 131              		.syntax unified
+ 132              		.thumb
+ 133              		.thumb_func
+ 134              		.fpu fpv4-sp-d16
+ 136              	DAC_StructInit:
+ 137              	.LFB125:
+ 235:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 236:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /**
+ 237:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @brief  Fills each DAC_InitStruct member with its default value.
+ 238:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @param  DAC_InitStruct: pointer to a DAC_InitTypeDef structure which will 
+ 239:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *         be initialized.
+ 240:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @retval None
+ 241:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   */
+ 242:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** void DAC_StructInit(DAC_InitTypeDef* DAC_InitStruct)
+ 243:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** {
+ 138              		.loc 1 243 0
+ 139              		.cfi_startproc
+ 140              		@ args = 0, pretend = 0, frame = 8
+ 141              		@ frame_needed = 0, uses_anonymous_args = 0
+ 142              		@ link register save eliminated.
+ 143 0000 82B0     		sub	sp, sp, #8
+ 144              	.LCFI3:
+ 145              		.cfi_def_cfa_offset 8
+ 146 0002 0190     		str	r0, [sp, #4]
+ 244:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /*--------------- Reset DAC init structure parameters values -----------------*/
+ 245:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Initialize the DAC_Trigger member */
+ 246:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   DAC_InitStruct->DAC_Trigger = DAC_Trigger_None;
+ 147              		.loc 1 246 0
+ 148 0004 019B     		ldr	r3, [sp, #4]
+ 149 0006 0022     		movs	r2, #0
+ 150 0008 1A60     		str	r2, [r3]
+ 247:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Initialize the DAC_WaveGeneration member */
+ 248:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   DAC_InitStruct->DAC_WaveGeneration = DAC_WaveGeneration_None;
+ 151              		.loc 1 248 0
+ 152 000a 019B     		ldr	r3, [sp, #4]
+ 153 000c 0022     		movs	r2, #0
+ 154 000e 5A60     		str	r2, [r3, #4]
+ 249:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Initialize the DAC_LFSRUnmask_TriangleAmplitude member */
+ 250:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   DAC_InitStruct->DAC_LFSRUnmask_TriangleAmplitude = DAC_LFSRUnmask_Bit0;
+ 155              		.loc 1 250 0
+ 156 0010 019B     		ldr	r3, [sp, #4]
+ 157 0012 0022     		movs	r2, #0
+ 158 0014 9A60     		str	r2, [r3, #8]
+ 251:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Initialize the DAC_OutputBuffer member */
+ 252:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   DAC_InitStruct->DAC_OutputBuffer = DAC_OutputBuffer_Enable;
+ 159              		.loc 1 252 0
+ 160 0016 019B     		ldr	r3, [sp, #4]
+ 161 0018 0022     		movs	r2, #0
+ 162 001a DA60     		str	r2, [r3, #12]
+ 253:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** }
+ 163              		.loc 1 253 0
+ 164 001c 00BF     		nop
+ 165 001e 02B0     		add	sp, sp, #8
+ 166              	.LCFI4:
+ 167              		.cfi_def_cfa_offset 0
+ 168              		@ sp needed
+ 169 0020 7047     		bx	lr
+ 170              		.cfi_endproc
+ 171              	.LFE125:
+ 173              		.section	.text.DAC_Cmd,"ax",%progbits
+ 174              		.align	1
+ 175              		.global	DAC_Cmd
+ 176              		.syntax unified
+ 177              		.thumb
+ 178              		.thumb_func
+ 179              		.fpu fpv4-sp-d16
+ 181              	DAC_Cmd:
+ 182              	.LFB126:
+ 254:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 255:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /**
+ 256:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @brief  Enables or disables the specified DAC channel.
+ 257:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @param  DAC_Channel: The selected DAC channel. 
+ 258:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *          This parameter can be one of the following values:
+ 259:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_Channel_1: DAC Channel1 selected
+ 260:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_Channel_2: DAC Channel2 selected
+ 261:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @param  NewState: new state of the DAC channel. 
+ 262:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *          This parameter can be: ENABLE or DISABLE.
+ 263:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @note   When the DAC channel is enabled the trigger source can no more be modified.
+ 264:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @retval None
+ 265:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   */
+ 266:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** void DAC_Cmd(uint32_t DAC_Channel, FunctionalState NewState)
+ 267:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** {
+ 183              		.loc 1 267 0
+ 184              		.cfi_startproc
+ 185              		@ args = 0, pretend = 0, frame = 8
+ 186              		@ frame_needed = 0, uses_anonymous_args = 0
+ 187              		@ link register save eliminated.
+ 188 0000 82B0     		sub	sp, sp, #8
+ 189              	.LCFI5:
+ 190              		.cfi_def_cfa_offset 8
+ 191 0002 0190     		str	r0, [sp, #4]
+ 192 0004 0B46     		mov	r3, r1
+ 193 0006 8DF80330 		strb	r3, [sp, #3]
+ 268:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Check the parameters */
+ 269:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   assert_param(IS_DAC_CHANNEL(DAC_Channel));
+ 270:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
+ 271:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 272:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   if (NewState != DISABLE)
+ 194              		.loc 1 272 0
+ 195 000a 9DF80330 		ldrb	r3, [sp, #3]	@ zero_extendqisi2
+ 196 000e 002B     		cmp	r3, #0
+ 197 0010 09D0     		beq	.L7
+ 273:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   {
+ 274:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     /* Enable the selected DAC channel */
+ 275:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     DAC->CR |= (DAC_CR_EN1 << DAC_Channel);
+ 198              		.loc 1 275 0
+ 199 0012 0B4B     		ldr	r3, .L10
+ 200 0014 1A68     		ldr	r2, [r3]
+ 201 0016 0121     		movs	r1, #1
+ 202 0018 019B     		ldr	r3, [sp, #4]
+ 203 001a 01FA03F3 		lsl	r3, r1, r3
+ 204 001e 0849     		ldr	r1, .L10
+ 205 0020 1343     		orrs	r3, r3, r2
+ 206 0022 0B60     		str	r3, [r1]
+ 276:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   }
+ 277:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   else
+ 278:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   {
+ 279:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     /* Disable the selected DAC channel */
+ 280:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     DAC->CR &= (~(DAC_CR_EN1 << DAC_Channel));
+ 281:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   }
+ 282:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** }
+ 207              		.loc 1 282 0
+ 208 0024 09E0     		b	.L9
+ 209              	.L7:
+ 280:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   }
+ 210              		.loc 1 280 0
+ 211 0026 064B     		ldr	r3, .L10
+ 212 0028 1A68     		ldr	r2, [r3]
+ 213 002a 0121     		movs	r1, #1
+ 214 002c 019B     		ldr	r3, [sp, #4]
+ 215 002e 01FA03F3 		lsl	r3, r1, r3
+ 216 0032 DB43     		mvns	r3, r3
+ 217 0034 0249     		ldr	r1, .L10
+ 218 0036 1340     		ands	r3, r3, r2
+ 219 0038 0B60     		str	r3, [r1]
+ 220              	.L9:
+ 221              		.loc 1 282 0
+ 222 003a 00BF     		nop
+ 223 003c 02B0     		add	sp, sp, #8
+ 224              	.LCFI6:
+ 225              		.cfi_def_cfa_offset 0
+ 226              		@ sp needed
+ 227 003e 7047     		bx	lr
+ 228              	.L11:
+ 229              		.align	2
+ 230              	.L10:
+ 231 0040 00740040 		.word	1073771520
+ 232              		.cfi_endproc
+ 233              	.LFE126:
+ 235              		.section	.text.DAC_SoftwareTriggerCmd,"ax",%progbits
+ 236              		.align	1
+ 237              		.global	DAC_SoftwareTriggerCmd
+ 238              		.syntax unified
+ 239              		.thumb
+ 240              		.thumb_func
+ 241              		.fpu fpv4-sp-d16
+ 243              	DAC_SoftwareTriggerCmd:
+ 244              	.LFB127:
+ 283:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 284:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /**
+ 285:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @brief  Enables or disables the selected DAC channel software trigger.
+ 286:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @param  DAC_Channel: The selected DAC channel. 
+ 287:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *          This parameter can be one of the following values:
+ 288:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_Channel_1: DAC Channel1 selected
+ 289:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_Channel_2: DAC Channel2 selected
+ 290:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @param  NewState: new state of the selected DAC channel software trigger.
+ 291:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *          This parameter can be: ENABLE or DISABLE.
+ 292:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @retval None
+ 293:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   */
+ 294:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** void DAC_SoftwareTriggerCmd(uint32_t DAC_Channel, FunctionalState NewState)
+ 295:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** {
+ 245              		.loc 1 295 0
+ 246              		.cfi_startproc
+ 247              		@ args = 0, pretend = 0, frame = 8
+ 248              		@ frame_needed = 0, uses_anonymous_args = 0
+ 249              		@ link register save eliminated.
+ 250 0000 82B0     		sub	sp, sp, #8
+ 251              	.LCFI7:
+ 252              		.cfi_def_cfa_offset 8
+ 253 0002 0190     		str	r0, [sp, #4]
+ 254 0004 0B46     		mov	r3, r1
+ 255 0006 8DF80330 		strb	r3, [sp, #3]
+ 296:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Check the parameters */
+ 297:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   assert_param(IS_DAC_CHANNEL(DAC_Channel));
+ 298:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
+ 299:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 300:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   if (NewState != DISABLE)
+ 256              		.loc 1 300 0
+ 257 000a 9DF80330 		ldrb	r3, [sp, #3]	@ zero_extendqisi2
+ 258 000e 002B     		cmp	r3, #0
+ 259 0010 0AD0     		beq	.L13
+ 301:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   {
+ 302:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     /* Enable software trigger for the selected DAC channel */
+ 303:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     DAC->SWTRIGR |= (uint32_t)DAC_SWTRIGR_SWTRIG1 << (DAC_Channel >> 4);
+ 260              		.loc 1 303 0
+ 261 0012 0C4B     		ldr	r3, .L16
+ 262 0014 5A68     		ldr	r2, [r3, #4]
+ 263 0016 019B     		ldr	r3, [sp, #4]
+ 264 0018 1B09     		lsrs	r3, r3, #4
+ 265 001a 0121     		movs	r1, #1
+ 266 001c 01FA03F3 		lsl	r3, r1, r3
+ 267 0020 0849     		ldr	r1, .L16
+ 268 0022 1343     		orrs	r3, r3, r2
+ 269 0024 4B60     		str	r3, [r1, #4]
+ 304:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   }
+ 305:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   else
+ 306:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   {
+ 307:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     /* Disable software trigger for the selected DAC channel */
+ 308:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     DAC->SWTRIGR &= ~((uint32_t)DAC_SWTRIGR_SWTRIG1 << (DAC_Channel >> 4));
+ 309:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   }
+ 310:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** }
+ 270              		.loc 1 310 0
+ 271 0026 0AE0     		b	.L15
+ 272              	.L13:
+ 308:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   }
+ 273              		.loc 1 308 0
+ 274 0028 064B     		ldr	r3, .L16
+ 275 002a 5A68     		ldr	r2, [r3, #4]
+ 276 002c 019B     		ldr	r3, [sp, #4]
+ 277 002e 1B09     		lsrs	r3, r3, #4
+ 278 0030 0121     		movs	r1, #1
+ 279 0032 01FA03F3 		lsl	r3, r1, r3
+ 280 0036 DB43     		mvns	r3, r3
+ 281 0038 0249     		ldr	r1, .L16
+ 282 003a 1340     		ands	r3, r3, r2
+ 283 003c 4B60     		str	r3, [r1, #4]
+ 284              	.L15:
+ 285              		.loc 1 310 0
+ 286 003e 00BF     		nop
+ 287 0040 02B0     		add	sp, sp, #8
+ 288              	.LCFI8:
+ 289              		.cfi_def_cfa_offset 0
+ 290              		@ sp needed
+ 291 0042 7047     		bx	lr
+ 292              	.L17:
+ 293              		.align	2
+ 294              	.L16:
+ 295 0044 00740040 		.word	1073771520
+ 296              		.cfi_endproc
+ 297              	.LFE127:
+ 299              		.section	.text.DAC_DualSoftwareTriggerCmd,"ax",%progbits
+ 300              		.align	1
+ 301              		.global	DAC_DualSoftwareTriggerCmd
+ 302              		.syntax unified
+ 303              		.thumb
+ 304              		.thumb_func
+ 305              		.fpu fpv4-sp-d16
+ 307              	DAC_DualSoftwareTriggerCmd:
+ 308              	.LFB128:
+ 311:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 312:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /**
+ 313:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @brief  Enables or disables simultaneously the two DAC channels software triggers.
+ 314:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @param  NewState: new state of the DAC channels software triggers.
+ 315:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *          This parameter can be: ENABLE or DISABLE.
+ 316:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @retval None
+ 317:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   */
+ 318:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** void DAC_DualSoftwareTriggerCmd(FunctionalState NewState)
+ 319:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** {
+ 309              		.loc 1 319 0
+ 310              		.cfi_startproc
+ 311              		@ args = 0, pretend = 0, frame = 8
+ 312              		@ frame_needed = 0, uses_anonymous_args = 0
+ 313              		@ link register save eliminated.
+ 314 0000 82B0     		sub	sp, sp, #8
+ 315              	.LCFI9:
+ 316              		.cfi_def_cfa_offset 8
+ 317 0002 0346     		mov	r3, r0
+ 318 0004 8DF80730 		strb	r3, [sp, #7]
+ 320:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Check the parameters */
+ 321:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
+ 322:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 323:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   if (NewState != DISABLE)
+ 319              		.loc 1 323 0
+ 320 0008 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 321 000c 002B     		cmp	r3, #0
+ 322 000e 06D0     		beq	.L19
+ 324:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   {
+ 325:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     /* Enable software trigger for both DAC channels */
+ 326:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     DAC->SWTRIGR |= DUAL_SWTRIG_SET;
+ 323              		.loc 1 326 0
+ 324 0010 074B     		ldr	r3, .L22
+ 325 0012 5B68     		ldr	r3, [r3, #4]
+ 326 0014 064A     		ldr	r2, .L22
+ 327 0016 43F00303 		orr	r3, r3, #3
+ 328 001a 5360     		str	r3, [r2, #4]
+ 327:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   }
+ 328:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   else
+ 329:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   {
+ 330:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     /* Disable software trigger for both DAC channels */
+ 331:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     DAC->SWTRIGR &= DUAL_SWTRIG_RESET;
+ 332:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   }
+ 333:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** }
+ 329              		.loc 1 333 0
+ 330 001c 05E0     		b	.L21
+ 331              	.L19:
+ 331:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   }
+ 332              		.loc 1 331 0
+ 333 001e 044B     		ldr	r3, .L22
+ 334 0020 5B68     		ldr	r3, [r3, #4]
+ 335 0022 034A     		ldr	r2, .L22
+ 336 0024 23F00303 		bic	r3, r3, #3
+ 337 0028 5360     		str	r3, [r2, #4]
+ 338              	.L21:
+ 339              		.loc 1 333 0
+ 340 002a 00BF     		nop
+ 341 002c 02B0     		add	sp, sp, #8
+ 342              	.LCFI10:
+ 343              		.cfi_def_cfa_offset 0
+ 344              		@ sp needed
+ 345 002e 7047     		bx	lr
+ 346              	.L23:
+ 347              		.align	2
+ 348              	.L22:
+ 349 0030 00740040 		.word	1073771520
+ 350              		.cfi_endproc
+ 351              	.LFE128:
+ 353              		.section	.text.DAC_WaveGenerationCmd,"ax",%progbits
+ 354              		.align	1
+ 355              		.global	DAC_WaveGenerationCmd
+ 356              		.syntax unified
+ 357              		.thumb
+ 358              		.thumb_func
+ 359              		.fpu fpv4-sp-d16
+ 361              	DAC_WaveGenerationCmd:
+ 362              	.LFB129:
+ 334:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 335:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /**
+ 336:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @brief  Enables or disables the selected DAC channel wave generation.
+ 337:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @param  DAC_Channel: The selected DAC channel. 
+ 338:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *          This parameter can be one of the following values:
+ 339:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_Channel_1: DAC Channel1 selected
+ 340:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_Channel_2: DAC Channel2 selected
+ 341:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @param  DAC_Wave: specifies the wave type to enable or disable.
+ 342:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *          This parameter can be one of the following values:
+ 343:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_Wave_Noise: noise wave generation
+ 344:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_Wave_Triangle: triangle wave generation
+ 345:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @param  NewState: new state of the selected DAC channel wave generation.
+ 346:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *          This parameter can be: ENABLE or DISABLE.  
+ 347:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @retval None
+ 348:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   */
+ 349:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** void DAC_WaveGenerationCmd(uint32_t DAC_Channel, uint32_t DAC_Wave, FunctionalState NewState)
+ 350:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** {
+ 363              		.loc 1 350 0
+ 364              		.cfi_startproc
+ 365              		@ args = 0, pretend = 0, frame = 16
+ 366              		@ frame_needed = 0, uses_anonymous_args = 0
+ 367              		@ link register save eliminated.
+ 368 0000 84B0     		sub	sp, sp, #16
+ 369              	.LCFI11:
+ 370              		.cfi_def_cfa_offset 16
+ 371 0002 0390     		str	r0, [sp, #12]
+ 372 0004 0291     		str	r1, [sp, #8]
+ 373 0006 1346     		mov	r3, r2
+ 374 0008 8DF80730 		strb	r3, [sp, #7]
+ 351:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Check the parameters */
+ 352:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   assert_param(IS_DAC_CHANNEL(DAC_Channel));
+ 353:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   assert_param(IS_DAC_WAVE(DAC_Wave)); 
+ 354:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
+ 355:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 356:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   if (NewState != DISABLE)
+ 375              		.loc 1 356 0
+ 376 000c 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 377 0010 002B     		cmp	r3, #0
+ 378 0012 09D0     		beq	.L25
+ 357:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   {
+ 358:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     /* Enable the selected wave generation for the selected DAC channel */
+ 359:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     DAC->CR |= DAC_Wave << DAC_Channel;
+ 379              		.loc 1 359 0
+ 380 0014 0B4B     		ldr	r3, .L28
+ 381 0016 1A68     		ldr	r2, [r3]
+ 382 0018 0299     		ldr	r1, [sp, #8]
+ 383 001a 039B     		ldr	r3, [sp, #12]
+ 384 001c 01FA03F3 		lsl	r3, r1, r3
+ 385 0020 0849     		ldr	r1, .L28
+ 386 0022 1343     		orrs	r3, r3, r2
+ 387 0024 0B60     		str	r3, [r1]
+ 360:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   }
+ 361:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   else
+ 362:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   {
+ 363:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     /* Disable the selected wave generation for the selected DAC channel */
+ 364:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     DAC->CR &= ~(DAC_Wave << DAC_Channel);
+ 365:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   }
+ 366:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** }
+ 388              		.loc 1 366 0
+ 389 0026 09E0     		b	.L27
+ 390              	.L25:
+ 364:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   }
+ 391              		.loc 1 364 0
+ 392 0028 064B     		ldr	r3, .L28
+ 393 002a 1A68     		ldr	r2, [r3]
+ 394 002c 0299     		ldr	r1, [sp, #8]
+ 395 002e 039B     		ldr	r3, [sp, #12]
+ 396 0030 01FA03F3 		lsl	r3, r1, r3
+ 397 0034 DB43     		mvns	r3, r3
+ 398 0036 0349     		ldr	r1, .L28
+ 399 0038 1340     		ands	r3, r3, r2
+ 400 003a 0B60     		str	r3, [r1]
+ 401              	.L27:
+ 402              		.loc 1 366 0
+ 403 003c 00BF     		nop
+ 404 003e 04B0     		add	sp, sp, #16
+ 405              	.LCFI12:
+ 406              		.cfi_def_cfa_offset 0
+ 407              		@ sp needed
+ 408 0040 7047     		bx	lr
+ 409              	.L29:
+ 410 0042 00BF     		.align	2
+ 411              	.L28:
+ 412 0044 00740040 		.word	1073771520
+ 413              		.cfi_endproc
+ 414              	.LFE129:
+ 416              		.section	.text.DAC_SetChannel1Data,"ax",%progbits
+ 417              		.align	1
+ 418              		.global	DAC_SetChannel1Data
+ 419              		.syntax unified
+ 420              		.thumb
+ 421              		.thumb_func
+ 422              		.fpu fpv4-sp-d16
+ 424              	DAC_SetChannel1Data:
+ 425              	.LFB130:
+ 367:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 368:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /**
+ 369:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @brief  Set the specified data holding register value for DAC channel1.
+ 370:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @param  DAC_Align: Specifies the data alignment for DAC channel1.
+ 371:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *          This parameter can be one of the following values:
+ 372:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_Align_8b_R: 8bit right data alignment selected
+ 373:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_Align_12b_L: 12bit left data alignment selected
+ 374:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_Align_12b_R: 12bit right data alignment selected
+ 375:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @param  Data: Data to be loaded in the selected data holding register.
+ 376:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @retval None
+ 377:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   */
+ 378:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** void DAC_SetChannel1Data(uint32_t DAC_Align, uint16_t Data)
+ 379:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** {  
+ 426              		.loc 1 379 0
+ 427              		.cfi_startproc
+ 428              		@ args = 0, pretend = 0, frame = 16
+ 429              		@ frame_needed = 0, uses_anonymous_args = 0
+ 430              		@ link register save eliminated.
+ 431 0000 84B0     		sub	sp, sp, #16
+ 432              	.LCFI13:
+ 433              		.cfi_def_cfa_offset 16
+ 434 0002 0190     		str	r0, [sp, #4]
+ 435 0004 0B46     		mov	r3, r1
+ 436 0006 ADF80230 		strh	r3, [sp, #2]	@ movhi
+ 380:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   __IO uint32_t tmp = 0;
+ 437              		.loc 1 380 0
+ 438 000a 0023     		movs	r3, #0
+ 439 000c 0393     		str	r3, [sp, #12]
+ 381:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   
+ 382:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Check the parameters */
+ 383:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   assert_param(IS_DAC_ALIGN(DAC_Align));
+ 384:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   assert_param(IS_DAC_DATA(Data));
+ 385:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   
+ 386:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   tmp = (uint32_t)DAC_BASE; 
+ 440              		.loc 1 386 0
+ 441 000e 074B     		ldr	r3, .L31
+ 442 0010 0393     		str	r3, [sp, #12]
+ 387:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   tmp += DHR12R1_OFFSET + DAC_Align;
+ 443              		.loc 1 387 0
+ 444 0012 039A     		ldr	r2, [sp, #12]
+ 445 0014 019B     		ldr	r3, [sp, #4]
+ 446 0016 1344     		add	r3, r3, r2
+ 447 0018 0833     		adds	r3, r3, #8
+ 448 001a 0393     		str	r3, [sp, #12]
+ 388:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 389:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Set the DAC channel1 selected data holding register */
+ 390:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *(__IO uint32_t *) tmp = Data;
+ 449              		.loc 1 390 0
+ 450 001c 039B     		ldr	r3, [sp, #12]
+ 451 001e 1A46     		mov	r2, r3
+ 452 0020 BDF80230 		ldrh	r3, [sp, #2]
+ 453 0024 1360     		str	r3, [r2]
+ 391:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** }
+ 454              		.loc 1 391 0
+ 455 0026 00BF     		nop
+ 456 0028 04B0     		add	sp, sp, #16
+ 457              	.LCFI14:
+ 458              		.cfi_def_cfa_offset 0
+ 459              		@ sp needed
+ 460 002a 7047     		bx	lr
+ 461              	.L32:
+ 462              		.align	2
+ 463              	.L31:
+ 464 002c 00740040 		.word	1073771520
+ 465              		.cfi_endproc
+ 466              	.LFE130:
+ 468              		.section	.text.DAC_SetChannel2Data,"ax",%progbits
+ 469              		.align	1
+ 470              		.global	DAC_SetChannel2Data
+ 471              		.syntax unified
+ 472              		.thumb
+ 473              		.thumb_func
+ 474              		.fpu fpv4-sp-d16
+ 476              	DAC_SetChannel2Data:
+ 477              	.LFB131:
+ 392:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 393:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /**
+ 394:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @brief  Set the specified data holding register value for DAC channel2.
+ 395:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @param  DAC_Align: Specifies the data alignment for DAC channel2.
+ 396:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *          This parameter can be one of the following values:
+ 397:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_Align_8b_R: 8bit right data alignment selected
+ 398:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_Align_12b_L: 12bit left data alignment selected
+ 399:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_Align_12b_R: 12bit right data alignment selected
+ 400:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @param  Data: Data to be loaded in the selected data holding register.
+ 401:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @retval None
+ 402:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   */
+ 403:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** void DAC_SetChannel2Data(uint32_t DAC_Align, uint16_t Data)
+ 404:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** {
+ 478              		.loc 1 404 0
+ 479              		.cfi_startproc
+ 480              		@ args = 0, pretend = 0, frame = 16
+ 481              		@ frame_needed = 0, uses_anonymous_args = 0
+ 482              		@ link register save eliminated.
+ 483 0000 84B0     		sub	sp, sp, #16
+ 484              	.LCFI15:
+ 485              		.cfi_def_cfa_offset 16
+ 486 0002 0190     		str	r0, [sp, #4]
+ 487 0004 0B46     		mov	r3, r1
+ 488 0006 ADF80230 		strh	r3, [sp, #2]	@ movhi
+ 405:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   __IO uint32_t tmp = 0;
+ 489              		.loc 1 405 0
+ 490 000a 0023     		movs	r3, #0
+ 491 000c 0393     		str	r3, [sp, #12]
+ 406:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 407:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Check the parameters */
+ 408:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   assert_param(IS_DAC_ALIGN(DAC_Align));
+ 409:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   assert_param(IS_DAC_DATA(Data));
+ 410:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   
+ 411:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   tmp = (uint32_t)DAC_BASE;
+ 492              		.loc 1 411 0
+ 493 000e 074B     		ldr	r3, .L34
+ 494 0010 0393     		str	r3, [sp, #12]
+ 412:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   tmp += DHR12R2_OFFSET + DAC_Align;
+ 495              		.loc 1 412 0
+ 496 0012 039A     		ldr	r2, [sp, #12]
+ 497 0014 019B     		ldr	r3, [sp, #4]
+ 498 0016 1344     		add	r3, r3, r2
+ 499 0018 1433     		adds	r3, r3, #20
+ 500 001a 0393     		str	r3, [sp, #12]
+ 413:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 414:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Set the DAC channel2 selected data holding register */
+ 415:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *(__IO uint32_t *)tmp = Data;
+ 501              		.loc 1 415 0
+ 502 001c 039B     		ldr	r3, [sp, #12]
+ 503 001e 1A46     		mov	r2, r3
+ 504 0020 BDF80230 		ldrh	r3, [sp, #2]
+ 505 0024 1360     		str	r3, [r2]
+ 416:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** }
+ 506              		.loc 1 416 0
+ 507 0026 00BF     		nop
+ 508 0028 04B0     		add	sp, sp, #16
+ 509              	.LCFI16:
+ 510              		.cfi_def_cfa_offset 0
+ 511              		@ sp needed
+ 512 002a 7047     		bx	lr
+ 513              	.L35:
+ 514              		.align	2
+ 515              	.L34:
+ 516 002c 00740040 		.word	1073771520
+ 517              		.cfi_endproc
+ 518              	.LFE131:
+ 520              		.section	.text.DAC_SetDualChannelData,"ax",%progbits
+ 521              		.align	1
+ 522              		.global	DAC_SetDualChannelData
+ 523              		.syntax unified
+ 524              		.thumb
+ 525              		.thumb_func
+ 526              		.fpu fpv4-sp-d16
+ 528              	DAC_SetDualChannelData:
+ 529              	.LFB132:
+ 417:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 418:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /**
+ 419:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @brief  Set the specified data holding register value for dual channel DAC.
+ 420:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @param  DAC_Align: Specifies the data alignment for dual channel DAC.
+ 421:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *          This parameter can be one of the following values:
+ 422:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_Align_8b_R: 8bit right data alignment selected
+ 423:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_Align_12b_L: 12bit left data alignment selected
+ 424:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_Align_12b_R: 12bit right data alignment selected
+ 425:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @param  Data2: Data for DAC Channel2 to be loaded in the selected data holding register.
+ 426:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @param  Data1: Data for DAC Channel1 to be loaded in the selected data  holding register.
+ 427:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @note   In dual mode, a unique register access is required to write in both
+ 428:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *          DAC channels at the same time.
+ 429:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @retval None
+ 430:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   */
+ 431:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** void DAC_SetDualChannelData(uint32_t DAC_Align, uint16_t Data2, uint16_t Data1)
+ 432:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** {
+ 530              		.loc 1 432 0
+ 531              		.cfi_startproc
+ 532              		@ args = 0, pretend = 0, frame = 16
+ 533              		@ frame_needed = 0, uses_anonymous_args = 0
+ 534              		@ link register save eliminated.
+ 535 0000 84B0     		sub	sp, sp, #16
+ 536              	.LCFI17:
+ 537              		.cfi_def_cfa_offset 16
+ 538 0002 0190     		str	r0, [sp, #4]
+ 539 0004 0B46     		mov	r3, r1
+ 540 0006 ADF80230 		strh	r3, [sp, #2]	@ movhi
+ 541 000a 1346     		mov	r3, r2	@ movhi
+ 542 000c ADF80030 		strh	r3, [sp]	@ movhi
+ 433:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   uint32_t data = 0, tmp = 0;
+ 543              		.loc 1 433 0
+ 544 0010 0023     		movs	r3, #0
+ 545 0012 0393     		str	r3, [sp, #12]
+ 546 0014 0023     		movs	r3, #0
+ 547 0016 0293     		str	r3, [sp, #8]
+ 434:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   
+ 435:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Check the parameters */
+ 436:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   assert_param(IS_DAC_ALIGN(DAC_Align));
+ 437:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   assert_param(IS_DAC_DATA(Data1));
+ 438:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   assert_param(IS_DAC_DATA(Data2));
+ 439:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   
+ 440:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Calculate and set dual DAC data holding register value */
+ 441:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   if (DAC_Align == DAC_Align_8b_R)
+ 548              		.loc 1 441 0
+ 549 0018 019B     		ldr	r3, [sp, #4]
+ 550 001a 082B     		cmp	r3, #8
+ 551 001c 07D1     		bne	.L37
+ 442:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   {
+ 443:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     data = ((uint32_t)Data2 << 8) | Data1; 
+ 552              		.loc 1 443 0
+ 553 001e BDF80230 		ldrh	r3, [sp, #2]
+ 554 0022 1A02     		lsls	r2, r3, #8
+ 555 0024 BDF80030 		ldrh	r3, [sp]
+ 556 0028 1343     		orrs	r3, r3, r2
+ 557 002a 0393     		str	r3, [sp, #12]
+ 558 002c 06E0     		b	.L38
+ 559              	.L37:
+ 444:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   }
+ 445:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   else
+ 446:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   {
+ 447:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     data = ((uint32_t)Data2 << 16) | Data1;
+ 560              		.loc 1 447 0
+ 561 002e BDF80230 		ldrh	r3, [sp, #2]
+ 562 0032 1A04     		lsls	r2, r3, #16
+ 563 0034 BDF80030 		ldrh	r3, [sp]
+ 564 0038 1343     		orrs	r3, r3, r2
+ 565 003a 0393     		str	r3, [sp, #12]
+ 566              	.L38:
+ 448:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   }
+ 449:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   
+ 450:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   tmp = (uint32_t)DAC_BASE;
+ 567              		.loc 1 450 0
+ 568 003c 064B     		ldr	r3, .L39
+ 569 003e 0293     		str	r3, [sp, #8]
+ 451:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   tmp += DHR12RD_OFFSET + DAC_Align;
+ 570              		.loc 1 451 0
+ 571 0040 019A     		ldr	r2, [sp, #4]
+ 572 0042 029B     		ldr	r3, [sp, #8]
+ 573 0044 1344     		add	r3, r3, r2
+ 574 0046 2033     		adds	r3, r3, #32
+ 575 0048 0293     		str	r3, [sp, #8]
+ 452:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 453:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Set the dual DAC selected data holding register */
+ 454:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *(__IO uint32_t *)tmp = data;
+ 576              		.loc 1 454 0
+ 577 004a 029B     		ldr	r3, [sp, #8]
+ 578 004c 039A     		ldr	r2, [sp, #12]
+ 579 004e 1A60     		str	r2, [r3]
+ 455:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** }
+ 580              		.loc 1 455 0
+ 581 0050 00BF     		nop
+ 582 0052 04B0     		add	sp, sp, #16
+ 583              	.LCFI18:
+ 584              		.cfi_def_cfa_offset 0
+ 585              		@ sp needed
+ 586 0054 7047     		bx	lr
+ 587              	.L40:
+ 588 0056 00BF     		.align	2
+ 589              	.L39:
+ 590 0058 00740040 		.word	1073771520
+ 591              		.cfi_endproc
+ 592              	.LFE132:
+ 594              		.section	.text.DAC_GetDataOutputValue,"ax",%progbits
+ 595              		.align	1
+ 596              		.global	DAC_GetDataOutputValue
+ 597              		.syntax unified
+ 598              		.thumb
+ 599              		.thumb_func
+ 600              		.fpu fpv4-sp-d16
+ 602              	DAC_GetDataOutputValue:
+ 603              	.LFB133:
+ 456:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 457:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /**
+ 458:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @brief  Returns the last data output value of the selected DAC channel.
+ 459:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @param  DAC_Channel: The selected DAC channel. 
+ 460:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *          This parameter can be one of the following values:
+ 461:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_Channel_1: DAC Channel1 selected
+ 462:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_Channel_2: DAC Channel2 selected
+ 463:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @retval The selected DAC channel data output value.
+ 464:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   */
+ 465:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** uint16_t DAC_GetDataOutputValue(uint32_t DAC_Channel)
+ 466:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** {
+ 604              		.loc 1 466 0
+ 605              		.cfi_startproc
+ 606              		@ args = 0, pretend = 0, frame = 16
+ 607              		@ frame_needed = 0, uses_anonymous_args = 0
+ 608              		@ link register save eliminated.
+ 609 0000 84B0     		sub	sp, sp, #16
+ 610              	.LCFI19:
+ 611              		.cfi_def_cfa_offset 16
+ 612 0002 0190     		str	r0, [sp, #4]
+ 467:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   __IO uint32_t tmp = 0;
+ 613              		.loc 1 467 0
+ 614 0004 0023     		movs	r3, #0
+ 615 0006 0393     		str	r3, [sp, #12]
+ 468:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   
+ 469:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Check the parameters */
+ 470:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   assert_param(IS_DAC_CHANNEL(DAC_Channel));
+ 471:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   
+ 472:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   tmp = (uint32_t) DAC_BASE ;
+ 616              		.loc 1 472 0
+ 617 0008 064B     		ldr	r3, .L43
+ 618 000a 0393     		str	r3, [sp, #12]
+ 473:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   tmp += DOR_OFFSET + ((uint32_t)DAC_Channel >> 2);
+ 619              		.loc 1 473 0
+ 620 000c 019B     		ldr	r3, [sp, #4]
+ 621 000e 9A08     		lsrs	r2, r3, #2
+ 622 0010 039B     		ldr	r3, [sp, #12]
+ 623 0012 1344     		add	r3, r3, r2
+ 624 0014 2C33     		adds	r3, r3, #44
+ 625 0016 0393     		str	r3, [sp, #12]
+ 474:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   
+ 475:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Returns the DAC channel data output register value */
+ 476:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   return (uint16_t) (*(__IO uint32_t*) tmp);
+ 626              		.loc 1 476 0
+ 627 0018 039B     		ldr	r3, [sp, #12]
+ 628 001a 1B68     		ldr	r3, [r3]
+ 629 001c 9BB2     		uxth	r3, r3
+ 477:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** }
+ 630              		.loc 1 477 0
+ 631 001e 1846     		mov	r0, r3
+ 632 0020 04B0     		add	sp, sp, #16
+ 633              	.LCFI20:
+ 634              		.cfi_def_cfa_offset 0
+ 635              		@ sp needed
+ 636 0022 7047     		bx	lr
+ 637              	.L44:
+ 638              		.align	2
+ 639              	.L43:
+ 640 0024 00740040 		.word	1073771520
+ 641              		.cfi_endproc
+ 642              	.LFE133:
+ 644              		.section	.text.DAC_DMACmd,"ax",%progbits
+ 645              		.align	1
+ 646              		.global	DAC_DMACmd
+ 647              		.syntax unified
+ 648              		.thumb
+ 649              		.thumb_func
+ 650              		.fpu fpv4-sp-d16
+ 652              	DAC_DMACmd:
+ 653              	.LFB134:
+ 478:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /**
+ 479:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @}
+ 480:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   */
+ 481:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 482:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /** @defgroup DAC_Group2 DMA management functions
+ 483:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****  *  @brief   DMA management functions
+ 484:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****  *
+ 485:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** @verbatim   
+ 486:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****  ===============================================================================
+ 487:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****                        ##### DMA management functions #####
+ 488:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****  ===============================================================================  
+ 489:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 490:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** @endverbatim
+ 491:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @{
+ 492:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   */
+ 493:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 494:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /**
+ 495:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @brief  Enables or disables the specified DAC channel DMA request.
+ 496:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @note   When enabled DMA1 is generated when an external trigger (EXTI Line9,
+ 497:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *         TIM2, TIM4, TIM5, TIM6, TIM7 or TIM8  but not a software trigger) occurs.
+ 498:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @param  DAC_Channel: The selected DAC channel. 
+ 499:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *          This parameter can be one of the following values:
+ 500:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_Channel_1: DAC Channel1 selected
+ 501:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_Channel_2: DAC Channel2 selected
+ 502:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @param  NewState: new state of the selected DAC channel DMA request.
+ 503:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *          This parameter can be: ENABLE or DISABLE.
+ 504:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @note   The DAC channel1 is mapped on DMA1 Stream 5 channel7 which must be
+ 505:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *          already configured.
+ 506:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @note   The DAC channel2 is mapped on DMA1 Stream 6 channel7 which must be
+ 507:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *          already configured.    
+ 508:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @retval None
+ 509:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   */
+ 510:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** void DAC_DMACmd(uint32_t DAC_Channel, FunctionalState NewState)
+ 511:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** {
+ 654              		.loc 1 511 0
+ 655              		.cfi_startproc
+ 656              		@ args = 0, pretend = 0, frame = 8
+ 657              		@ frame_needed = 0, uses_anonymous_args = 0
+ 658              		@ link register save eliminated.
+ 659 0000 82B0     		sub	sp, sp, #8
+ 660              	.LCFI21:
+ 661              		.cfi_def_cfa_offset 8
+ 662 0002 0190     		str	r0, [sp, #4]
+ 663 0004 0B46     		mov	r3, r1
+ 664 0006 8DF80330 		strb	r3, [sp, #3]
+ 512:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Check the parameters */
+ 513:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   assert_param(IS_DAC_CHANNEL(DAC_Channel));
+ 514:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
+ 515:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 516:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   if (NewState != DISABLE)
+ 665              		.loc 1 516 0
+ 666 000a 9DF80330 		ldrb	r3, [sp, #3]	@ zero_extendqisi2
+ 667 000e 002B     		cmp	r3, #0
+ 668 0010 0AD0     		beq	.L46
+ 517:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   {
+ 518:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     /* Enable the selected DAC channel DMA request */
+ 519:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     DAC->CR |= (DAC_CR_DMAEN1 << DAC_Channel);
+ 669              		.loc 1 519 0
+ 670 0012 0C4B     		ldr	r3, .L49
+ 671 0014 1A68     		ldr	r2, [r3]
+ 672 0016 4FF48051 		mov	r1, #4096
+ 673 001a 019B     		ldr	r3, [sp, #4]
+ 674 001c 01FA03F3 		lsl	r3, r1, r3
+ 675 0020 0849     		ldr	r1, .L49
+ 676 0022 1343     		orrs	r3, r3, r2
+ 677 0024 0B60     		str	r3, [r1]
+ 520:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   }
+ 521:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   else
+ 522:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   {
+ 523:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     /* Disable the selected DAC channel DMA request */
+ 524:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     DAC->CR &= (~(DAC_CR_DMAEN1 << DAC_Channel));
+ 525:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   }
+ 526:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** }
+ 678              		.loc 1 526 0
+ 679 0026 0AE0     		b	.L48
+ 680              	.L46:
+ 524:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   }
+ 681              		.loc 1 524 0
+ 682 0028 064B     		ldr	r3, .L49
+ 683 002a 1A68     		ldr	r2, [r3]
+ 684 002c 4FF48051 		mov	r1, #4096
+ 685 0030 019B     		ldr	r3, [sp, #4]
+ 686 0032 01FA03F3 		lsl	r3, r1, r3
+ 687 0036 DB43     		mvns	r3, r3
+ 688 0038 0249     		ldr	r1, .L49
+ 689 003a 1340     		ands	r3, r3, r2
+ 690 003c 0B60     		str	r3, [r1]
+ 691              	.L48:
+ 692              		.loc 1 526 0
+ 693 003e 00BF     		nop
+ 694 0040 02B0     		add	sp, sp, #8
+ 695              	.LCFI22:
+ 696              		.cfi_def_cfa_offset 0
+ 697              		@ sp needed
+ 698 0042 7047     		bx	lr
+ 699              	.L50:
+ 700              		.align	2
+ 701              	.L49:
+ 702 0044 00740040 		.word	1073771520
+ 703              		.cfi_endproc
+ 704              	.LFE134:
+ 706              		.section	.text.DAC_ITConfig,"ax",%progbits
+ 707              		.align	1
+ 708              		.global	DAC_ITConfig
+ 709              		.syntax unified
+ 710              		.thumb
+ 711              		.thumb_func
+ 712              		.fpu fpv4-sp-d16
+ 714              	DAC_ITConfig:
+ 715              	.LFB135:
+ 527:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /**
+ 528:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @}
+ 529:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   */
+ 530:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 531:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /** @defgroup DAC_Group3 Interrupts and flags management functions
+ 532:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****  *  @brief   Interrupts and flags management functions
+ 533:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****  *
+ 534:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** @verbatim   
+ 535:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****  ===============================================================================
+ 536:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****              ##### Interrupts and flags management functions #####
+ 537:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****  ===============================================================================  
+ 538:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 539:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** @endverbatim
+ 540:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @{
+ 541:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   */
+ 542:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 543:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /**
+ 544:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @brief  Enables or disables the specified DAC interrupts.
+ 545:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @param  DAC_Channel: The selected DAC channel. 
+ 546:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *          This parameter can be one of the following values:
+ 547:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_Channel_1: DAC Channel1 selected
+ 548:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_Channel_2: DAC Channel2 selected
+ 549:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @param  DAC_IT: specifies the DAC interrupt sources to be enabled or disabled. 
+ 550:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *          This parameter can be the following values:
+ 551:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_IT_DMAUDR: DMA underrun interrupt mask
+ 552:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @note   The DMA underrun occurs when a second external trigger arrives before the 
+ 553:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *         acknowledgement for the first external trigger is received (first request).
+ 554:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @param  NewState: new state of the specified DAC interrupts.
+ 555:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *          This parameter can be: ENABLE or DISABLE.
+ 556:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @retval None
+ 557:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   */ 
+ 558:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** void DAC_ITConfig(uint32_t DAC_Channel, uint32_t DAC_IT, FunctionalState NewState)  
+ 559:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** {
+ 716              		.loc 1 559 0
+ 717              		.cfi_startproc
+ 718              		@ args = 0, pretend = 0, frame = 16
+ 719              		@ frame_needed = 0, uses_anonymous_args = 0
+ 720              		@ link register save eliminated.
+ 721 0000 84B0     		sub	sp, sp, #16
+ 722              	.LCFI23:
+ 723              		.cfi_def_cfa_offset 16
+ 724 0002 0390     		str	r0, [sp, #12]
+ 725 0004 0291     		str	r1, [sp, #8]
+ 726 0006 1346     		mov	r3, r2
+ 727 0008 8DF80730 		strb	r3, [sp, #7]
+ 560:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Check the parameters */
+ 561:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   assert_param(IS_DAC_CHANNEL(DAC_Channel));
+ 562:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
+ 563:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   assert_param(IS_DAC_IT(DAC_IT)); 
+ 564:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 565:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   if (NewState != DISABLE)
+ 728              		.loc 1 565 0
+ 729 000c 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 730 0010 002B     		cmp	r3, #0
+ 731 0012 09D0     		beq	.L52
+ 566:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   {
+ 567:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     /* Enable the selected DAC interrupts */
+ 568:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     DAC->CR |=  (DAC_IT << DAC_Channel);
+ 732              		.loc 1 568 0
+ 733 0014 0B4B     		ldr	r3, .L55
+ 734 0016 1A68     		ldr	r2, [r3]
+ 735 0018 0299     		ldr	r1, [sp, #8]
+ 736 001a 039B     		ldr	r3, [sp, #12]
+ 737 001c 01FA03F3 		lsl	r3, r1, r3
+ 738 0020 0849     		ldr	r1, .L55
+ 739 0022 1343     		orrs	r3, r3, r2
+ 740 0024 0B60     		str	r3, [r1]
+ 569:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   }
+ 570:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   else
+ 571:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   {
+ 572:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     /* Disable the selected DAC interrupts */
+ 573:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     DAC->CR &= (~(uint32_t)(DAC_IT << DAC_Channel));
+ 574:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   }
+ 575:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** }
+ 741              		.loc 1 575 0
+ 742 0026 09E0     		b	.L54
+ 743              	.L52:
+ 573:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   }
+ 744              		.loc 1 573 0
+ 745 0028 064B     		ldr	r3, .L55
+ 746 002a 1A68     		ldr	r2, [r3]
+ 747 002c 0299     		ldr	r1, [sp, #8]
+ 748 002e 039B     		ldr	r3, [sp, #12]
+ 749 0030 01FA03F3 		lsl	r3, r1, r3
+ 750 0034 DB43     		mvns	r3, r3
+ 751 0036 0349     		ldr	r1, .L55
+ 752 0038 1340     		ands	r3, r3, r2
+ 753 003a 0B60     		str	r3, [r1]
+ 754              	.L54:
+ 755              		.loc 1 575 0
+ 756 003c 00BF     		nop
+ 757 003e 04B0     		add	sp, sp, #16
+ 758              	.LCFI24:
+ 759              		.cfi_def_cfa_offset 0
+ 760              		@ sp needed
+ 761 0040 7047     		bx	lr
+ 762              	.L56:
+ 763 0042 00BF     		.align	2
+ 764              	.L55:
+ 765 0044 00740040 		.word	1073771520
+ 766              		.cfi_endproc
+ 767              	.LFE135:
+ 769              		.section	.text.DAC_GetFlagStatus,"ax",%progbits
+ 770              		.align	1
+ 771              		.global	DAC_GetFlagStatus
+ 772              		.syntax unified
+ 773              		.thumb
+ 774              		.thumb_func
+ 775              		.fpu fpv4-sp-d16
+ 777              	DAC_GetFlagStatus:
+ 778              	.LFB136:
+ 576:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 577:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /**
+ 578:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @brief  Checks whether the specified DAC flag is set or not.
+ 579:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @param  DAC_Channel: The selected DAC channel. 
+ 580:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *          This parameter can be one of the following values:
+ 581:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_Channel_1: DAC Channel1 selected
+ 582:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_Channel_2: DAC Channel2 selected
+ 583:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @param  DAC_FLAG: specifies the flag to check. 
+ 584:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *          This parameter can be only of the following value:
+ 585:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_FLAG_DMAUDR: DMA underrun flag
+ 586:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @note   The DMA underrun occurs when a second external trigger arrives before the 
+ 587:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *         acknowledgement for the first external trigger is received (first request).
+ 588:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @retval The new state of DAC_FLAG (SET or RESET).
+ 589:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   */
+ 590:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** FlagStatus DAC_GetFlagStatus(uint32_t DAC_Channel, uint32_t DAC_FLAG)
+ 591:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** {
+ 779              		.loc 1 591 0
+ 780              		.cfi_startproc
+ 781              		@ args = 0, pretend = 0, frame = 16
+ 782              		@ frame_needed = 0, uses_anonymous_args = 0
+ 783              		@ link register save eliminated.
+ 784 0000 84B0     		sub	sp, sp, #16
+ 785              	.LCFI25:
+ 786              		.cfi_def_cfa_offset 16
+ 787 0002 0190     		str	r0, [sp, #4]
+ 788 0004 0091     		str	r1, [sp]
+ 592:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   FlagStatus bitstatus = RESET;
+ 789              		.loc 1 592 0
+ 790 0006 0023     		movs	r3, #0
+ 791 0008 8DF80F30 		strb	r3, [sp, #15]
+ 593:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Check the parameters */
+ 594:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   assert_param(IS_DAC_CHANNEL(DAC_Channel));
+ 595:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   assert_param(IS_DAC_FLAG(DAC_FLAG));
+ 596:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 597:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Check the status of the specified DAC flag */
+ 598:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   if ((DAC->SR & (DAC_FLAG << DAC_Channel)) != (uint8_t)RESET)
+ 792              		.loc 1 598 0
+ 793 000c 0A4B     		ldr	r3, .L61
+ 794 000e 5A6B     		ldr	r2, [r3, #52]
+ 795 0010 0099     		ldr	r1, [sp]
+ 796 0012 019B     		ldr	r3, [sp, #4]
+ 797 0014 01FA03F3 		lsl	r3, r1, r3
+ 798 0018 1340     		ands	r3, r3, r2
+ 799 001a 002B     		cmp	r3, #0
+ 800 001c 03D0     		beq	.L58
+ 599:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   {
+ 600:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     /* DAC_FLAG is set */
+ 601:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     bitstatus = SET;
+ 801              		.loc 1 601 0
+ 802 001e 0123     		movs	r3, #1
+ 803 0020 8DF80F30 		strb	r3, [sp, #15]
+ 804 0024 02E0     		b	.L59
+ 805              	.L58:
+ 602:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   }
+ 603:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   else
+ 604:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   {
+ 605:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     /* DAC_FLAG is reset */
+ 606:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     bitstatus = RESET;
+ 806              		.loc 1 606 0
+ 807 0026 0023     		movs	r3, #0
+ 808 0028 8DF80F30 		strb	r3, [sp, #15]
+ 809              	.L59:
+ 607:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   }
+ 608:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Return the DAC_FLAG status */
+ 609:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   return  bitstatus;
+ 810              		.loc 1 609 0
+ 811 002c 9DF80F30 		ldrb	r3, [sp, #15]	@ zero_extendqisi2
+ 610:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** }
+ 812              		.loc 1 610 0
+ 813 0030 1846     		mov	r0, r3
+ 814 0032 04B0     		add	sp, sp, #16
+ 815              	.LCFI26:
+ 816              		.cfi_def_cfa_offset 0
+ 817              		@ sp needed
+ 818 0034 7047     		bx	lr
+ 819              	.L62:
+ 820 0036 00BF     		.align	2
+ 821              	.L61:
+ 822 0038 00740040 		.word	1073771520
+ 823              		.cfi_endproc
+ 824              	.LFE136:
+ 826              		.section	.text.DAC_ClearFlag,"ax",%progbits
+ 827              		.align	1
+ 828              		.global	DAC_ClearFlag
+ 829              		.syntax unified
+ 830              		.thumb
+ 831              		.thumb_func
+ 832              		.fpu fpv4-sp-d16
+ 834              	DAC_ClearFlag:
+ 835              	.LFB137:
+ 611:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 612:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /**
+ 613:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @brief  Clears the DAC channel's pending flags.
+ 614:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @param  DAC_Channel: The selected DAC channel. 
+ 615:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *          This parameter can be one of the following values:
+ 616:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_Channel_1: DAC Channel1 selected
+ 617:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_Channel_2: DAC Channel2 selected
+ 618:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @param  DAC_FLAG: specifies the flag to clear. 
+ 619:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *          This parameter can be of the following value:
+ 620:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_FLAG_DMAUDR: DMA underrun flag 
+ 621:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @note   The DMA underrun occurs when a second external trigger arrives before the 
+ 622:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *         acknowledgement for the first external trigger is received (first request).            
+ 623:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @retval None
+ 624:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   */
+ 625:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** void DAC_ClearFlag(uint32_t DAC_Channel, uint32_t DAC_FLAG)
+ 626:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** {
+ 836              		.loc 1 626 0
+ 837              		.cfi_startproc
+ 838              		@ args = 0, pretend = 0, frame = 8
+ 839              		@ frame_needed = 0, uses_anonymous_args = 0
+ 840              		@ link register save eliminated.
+ 841 0000 82B0     		sub	sp, sp, #8
+ 842              	.LCFI27:
+ 843              		.cfi_def_cfa_offset 8
+ 844 0002 0190     		str	r0, [sp, #4]
+ 845 0004 0091     		str	r1, [sp]
+ 627:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Check the parameters */
+ 628:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   assert_param(IS_DAC_CHANNEL(DAC_Channel));
+ 629:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   assert_param(IS_DAC_FLAG(DAC_FLAG));
+ 630:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 631:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Clear the selected DAC flags */
+ 632:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   DAC->SR = (DAC_FLAG << DAC_Channel);
+ 846              		.loc 1 632 0
+ 847 0006 0449     		ldr	r1, .L64
+ 848 0008 009A     		ldr	r2, [sp]
+ 849 000a 019B     		ldr	r3, [sp, #4]
+ 850 000c 02FA03F3 		lsl	r3, r2, r3
+ 851 0010 4B63     		str	r3, [r1, #52]
+ 633:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** }
+ 852              		.loc 1 633 0
+ 853 0012 00BF     		nop
+ 854 0014 02B0     		add	sp, sp, #8
+ 855              	.LCFI28:
+ 856              		.cfi_def_cfa_offset 0
+ 857              		@ sp needed
+ 858 0016 7047     		bx	lr
+ 859              	.L65:
+ 860              		.align	2
+ 861              	.L64:
+ 862 0018 00740040 		.word	1073771520
+ 863              		.cfi_endproc
+ 864              	.LFE137:
+ 866              		.section	.text.DAC_GetITStatus,"ax",%progbits
+ 867              		.align	1
+ 868              		.global	DAC_GetITStatus
+ 869              		.syntax unified
+ 870              		.thumb
+ 871              		.thumb_func
+ 872              		.fpu fpv4-sp-d16
+ 874              	DAC_GetITStatus:
+ 875              	.LFB138:
+ 634:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 635:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /**
+ 636:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @brief  Checks whether the specified DAC interrupt has occurred or not.
+ 637:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @param  DAC_Channel: The selected DAC channel. 
+ 638:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *          This parameter can be one of the following values:
+ 639:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_Channel_1: DAC Channel1 selected
+ 640:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_Channel_2: DAC Channel2 selected
+ 641:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @param  DAC_IT: specifies the DAC interrupt source to check. 
+ 642:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *          This parameter can be the following values:
+ 643:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_IT_DMAUDR: DMA underrun interrupt mask
+ 644:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @note   The DMA underrun occurs when a second external trigger arrives before the 
+ 645:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *         acknowledgement for the first external trigger is received (first request).
+ 646:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @retval The new state of DAC_IT (SET or RESET).
+ 647:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   */
+ 648:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** ITStatus DAC_GetITStatus(uint32_t DAC_Channel, uint32_t DAC_IT)
+ 649:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** {
+ 876              		.loc 1 649 0
+ 877              		.cfi_startproc
+ 878              		@ args = 0, pretend = 0, frame = 16
+ 879              		@ frame_needed = 0, uses_anonymous_args = 0
+ 880              		@ link register save eliminated.
+ 881 0000 84B0     		sub	sp, sp, #16
+ 882              	.LCFI29:
+ 883              		.cfi_def_cfa_offset 16
+ 884 0002 0190     		str	r0, [sp, #4]
+ 885 0004 0091     		str	r1, [sp]
+ 650:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   ITStatus bitstatus = RESET;
+ 886              		.loc 1 650 0
+ 887 0006 0023     		movs	r3, #0
+ 888 0008 8DF80F30 		strb	r3, [sp, #15]
+ 651:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   uint32_t enablestatus = 0;
+ 889              		.loc 1 651 0
+ 890 000c 0023     		movs	r3, #0
+ 891 000e 0293     		str	r3, [sp, #8]
+ 652:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   
+ 653:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Check the parameters */
+ 654:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   assert_param(IS_DAC_CHANNEL(DAC_Channel));
+ 655:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   assert_param(IS_DAC_IT(DAC_IT));
+ 656:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 657:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Get the DAC_IT enable bit status */
+ 658:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   enablestatus = (DAC->CR & (DAC_IT << DAC_Channel)) ;
+ 892              		.loc 1 658 0
+ 893 0010 0F4B     		ldr	r3, .L70
+ 894 0012 1A68     		ldr	r2, [r3]
+ 895 0014 0099     		ldr	r1, [sp]
+ 896 0016 019B     		ldr	r3, [sp, #4]
+ 897 0018 01FA03F3 		lsl	r3, r1, r3
+ 898 001c 1340     		ands	r3, r3, r2
+ 899 001e 0293     		str	r3, [sp, #8]
+ 659:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   
+ 660:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Check the status of the specified DAC interrupt */
+ 661:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   if (((DAC->SR & (DAC_IT << DAC_Channel)) != (uint32_t)RESET) && enablestatus)
+ 900              		.loc 1 661 0
+ 901 0020 0B4B     		ldr	r3, .L70
+ 902 0022 5A6B     		ldr	r2, [r3, #52]
+ 903 0024 0099     		ldr	r1, [sp]
+ 904 0026 019B     		ldr	r3, [sp, #4]
+ 905 0028 01FA03F3 		lsl	r3, r1, r3
+ 906 002c 1340     		ands	r3, r3, r2
+ 907 002e 002B     		cmp	r3, #0
+ 908 0030 06D0     		beq	.L67
+ 909              		.loc 1 661 0 is_stmt 0 discriminator 1
+ 910 0032 029B     		ldr	r3, [sp, #8]
+ 911 0034 002B     		cmp	r3, #0
+ 912 0036 03D0     		beq	.L67
+ 662:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   {
+ 663:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     /* DAC_IT is set */
+ 664:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     bitstatus = SET;
+ 913              		.loc 1 664 0 is_stmt 1
+ 914 0038 0123     		movs	r3, #1
+ 915 003a 8DF80F30 		strb	r3, [sp, #15]
+ 916 003e 02E0     		b	.L68
+ 917              	.L67:
+ 665:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   }
+ 666:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   else
+ 667:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   {
+ 668:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     /* DAC_IT is reset */
+ 669:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****     bitstatus = RESET;
+ 918              		.loc 1 669 0
+ 919 0040 0023     		movs	r3, #0
+ 920 0042 8DF80F30 		strb	r3, [sp, #15]
+ 921              	.L68:
+ 670:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   }
+ 671:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Return the DAC_IT status */
+ 672:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   return  bitstatus;
+ 922              		.loc 1 672 0
+ 923 0046 9DF80F30 		ldrb	r3, [sp, #15]	@ zero_extendqisi2
+ 673:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** }
+ 924              		.loc 1 673 0
+ 925 004a 1846     		mov	r0, r3
+ 926 004c 04B0     		add	sp, sp, #16
+ 927              	.LCFI30:
+ 928              		.cfi_def_cfa_offset 0
+ 929              		@ sp needed
+ 930 004e 7047     		bx	lr
+ 931              	.L71:
+ 932              		.align	2
+ 933              	.L70:
+ 934 0050 00740040 		.word	1073771520
+ 935              		.cfi_endproc
+ 936              	.LFE138:
+ 938              		.section	.text.DAC_ClearITPendingBit,"ax",%progbits
+ 939              		.align	1
+ 940              		.global	DAC_ClearITPendingBit
+ 941              		.syntax unified
+ 942              		.thumb
+ 943              		.thumb_func
+ 944              		.fpu fpv4-sp-d16
+ 946              	DAC_ClearITPendingBit:
+ 947              	.LFB139:
+ 674:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 675:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** /**
+ 676:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @brief  Clears the DAC channel's interrupt pending bits.
+ 677:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @param  DAC_Channel: The selected DAC channel. 
+ 678:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *          This parameter can be one of the following values:
+ 679:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_Channel_1: DAC Channel1 selected
+ 680:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_Channel_2: DAC Channel2 selected
+ 681:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @param  DAC_IT: specifies the DAC interrupt pending bit to clear.
+ 682:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *          This parameter can be the following values:
+ 683:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *            @arg DAC_IT_DMAUDR: DMA underrun interrupt mask                         
+ 684:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @note   The DMA underrun occurs when a second external trigger arrives before the 
+ 685:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   *         acknowledgement for the first external trigger is received (first request).            
+ 686:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   * @retval None
+ 687:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   */
+ 688:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** void DAC_ClearITPendingBit(uint32_t DAC_Channel, uint32_t DAC_IT)
+ 689:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** {
+ 948              		.loc 1 689 0
+ 949              		.cfi_startproc
+ 950              		@ args = 0, pretend = 0, frame = 8
+ 951              		@ frame_needed = 0, uses_anonymous_args = 0
+ 952              		@ link register save eliminated.
+ 953 0000 82B0     		sub	sp, sp, #8
+ 954              	.LCFI31:
+ 955              		.cfi_def_cfa_offset 8
+ 956 0002 0190     		str	r0, [sp, #4]
+ 957 0004 0091     		str	r1, [sp]
+ 690:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Check the parameters */
+ 691:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   assert_param(IS_DAC_CHANNEL(DAC_Channel));
+ 692:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   assert_param(IS_DAC_IT(DAC_IT)); 
+ 693:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** 
+ 694:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   /* Clear the selected DAC interrupt pending bits */
+ 695:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c ****   DAC->SR = (DAC_IT << DAC_Channel);
+ 958              		.loc 1 695 0
+ 959 0006 0449     		ldr	r1, .L73
+ 960 0008 009A     		ldr	r2, [sp]
+ 961 000a 019B     		ldr	r3, [sp, #4]
+ 962 000c 02FA03F3 		lsl	r3, r2, r3
+ 963 0010 4B63     		str	r3, [r1, #52]
+ 696:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c **** }
+ 964              		.loc 1 696 0
+ 965 0012 00BF     		nop
+ 966 0014 02B0     		add	sp, sp, #8
+ 967              	.LCFI32:
+ 968              		.cfi_def_cfa_offset 0
+ 969              		@ sp needed
+ 970 0016 7047     		bx	lr
+ 971              	.L74:
+ 972              		.align	2
+ 973              	.L73:
+ 974 0018 00740040 		.word	1073771520
+ 975              		.cfi_endproc
+ 976              	.LFE139:
+ 978              		.text
+ 979              	.Letext0:
+ 980              		.file 2 "/home/rdu/Software/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/_defau
+ 981              		.file 3 "/home/rdu/Software/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_stdint.h"
+ 982              		.file 4 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/CMSIS/CMSIS_STM32F4/Incl
+ 983              		.file 5 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/CMSIS/CMSIS_STM32F4/Devi
+ 984              		.file 6 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/CMSIS/CMSIS_STM32F4/Devi
+ 985              		.file 7 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driv
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 stm32f4xx_dac.c
+     /tmp/ccMjzQhS.s:16     .text.DAC_DeInit:0000000000000000 $t
+     /tmp/ccMjzQhS.s:23     .text.DAC_DeInit:0000000000000000 DAC_DeInit
+     /tmp/ccMjzQhS.s:50     .text.DAC_Init:0000000000000000 $t
+     /tmp/ccMjzQhS.s:57     .text.DAC_Init:0000000000000000 DAC_Init
+     /tmp/ccMjzQhS.s:124    .text.DAC_Init:0000000000000058 $d
+     /tmp/ccMjzQhS.s:129    .text.DAC_StructInit:0000000000000000 $t
+     /tmp/ccMjzQhS.s:136    .text.DAC_StructInit:0000000000000000 DAC_StructInit
+     /tmp/ccMjzQhS.s:174    .text.DAC_Cmd:0000000000000000 $t
+     /tmp/ccMjzQhS.s:181    .text.DAC_Cmd:0000000000000000 DAC_Cmd
+     /tmp/ccMjzQhS.s:231    .text.DAC_Cmd:0000000000000040 $d
+     /tmp/ccMjzQhS.s:236    .text.DAC_SoftwareTriggerCmd:0000000000000000 $t
+     /tmp/ccMjzQhS.s:243    .text.DAC_SoftwareTriggerCmd:0000000000000000 DAC_SoftwareTriggerCmd
+     /tmp/ccMjzQhS.s:295    .text.DAC_SoftwareTriggerCmd:0000000000000044 $d
+     /tmp/ccMjzQhS.s:300    .text.DAC_DualSoftwareTriggerCmd:0000000000000000 $t
+     /tmp/ccMjzQhS.s:307    .text.DAC_DualSoftwareTriggerCmd:0000000000000000 DAC_DualSoftwareTriggerCmd
+     /tmp/ccMjzQhS.s:349    .text.DAC_DualSoftwareTriggerCmd:0000000000000030 $d
+     /tmp/ccMjzQhS.s:354    .text.DAC_WaveGenerationCmd:0000000000000000 $t
+     /tmp/ccMjzQhS.s:361    .text.DAC_WaveGenerationCmd:0000000000000000 DAC_WaveGenerationCmd
+     /tmp/ccMjzQhS.s:412    .text.DAC_WaveGenerationCmd:0000000000000044 $d
+     /tmp/ccMjzQhS.s:417    .text.DAC_SetChannel1Data:0000000000000000 $t
+     /tmp/ccMjzQhS.s:424    .text.DAC_SetChannel1Data:0000000000000000 DAC_SetChannel1Data
+     /tmp/ccMjzQhS.s:464    .text.DAC_SetChannel1Data:000000000000002c $d
+     /tmp/ccMjzQhS.s:469    .text.DAC_SetChannel2Data:0000000000000000 $t
+     /tmp/ccMjzQhS.s:476    .text.DAC_SetChannel2Data:0000000000000000 DAC_SetChannel2Data
+     /tmp/ccMjzQhS.s:516    .text.DAC_SetChannel2Data:000000000000002c $d
+     /tmp/ccMjzQhS.s:521    .text.DAC_SetDualChannelData:0000000000000000 $t
+     /tmp/ccMjzQhS.s:528    .text.DAC_SetDualChannelData:0000000000000000 DAC_SetDualChannelData
+     /tmp/ccMjzQhS.s:590    .text.DAC_SetDualChannelData:0000000000000058 $d
+     /tmp/ccMjzQhS.s:595    .text.DAC_GetDataOutputValue:0000000000000000 $t
+     /tmp/ccMjzQhS.s:602    .text.DAC_GetDataOutputValue:0000000000000000 DAC_GetDataOutputValue
+     /tmp/ccMjzQhS.s:640    .text.DAC_GetDataOutputValue:0000000000000024 $d
+     /tmp/ccMjzQhS.s:645    .text.DAC_DMACmd:0000000000000000 $t
+     /tmp/ccMjzQhS.s:652    .text.DAC_DMACmd:0000000000000000 DAC_DMACmd
+     /tmp/ccMjzQhS.s:702    .text.DAC_DMACmd:0000000000000044 $d
+     /tmp/ccMjzQhS.s:707    .text.DAC_ITConfig:0000000000000000 $t
+     /tmp/ccMjzQhS.s:714    .text.DAC_ITConfig:0000000000000000 DAC_ITConfig
+     /tmp/ccMjzQhS.s:765    .text.DAC_ITConfig:0000000000000044 $d
+     /tmp/ccMjzQhS.s:770    .text.DAC_GetFlagStatus:0000000000000000 $t
+     /tmp/ccMjzQhS.s:777    .text.DAC_GetFlagStatus:0000000000000000 DAC_GetFlagStatus
+     /tmp/ccMjzQhS.s:822    .text.DAC_GetFlagStatus:0000000000000038 $d
+     /tmp/ccMjzQhS.s:827    .text.DAC_ClearFlag:0000000000000000 $t
+     /tmp/ccMjzQhS.s:834    .text.DAC_ClearFlag:0000000000000000 DAC_ClearFlag
+     /tmp/ccMjzQhS.s:862    .text.DAC_ClearFlag:0000000000000018 $d
+     /tmp/ccMjzQhS.s:867    .text.DAC_GetITStatus:0000000000000000 $t
+     /tmp/ccMjzQhS.s:874    .text.DAC_GetITStatus:0000000000000000 DAC_GetITStatus
+     /tmp/ccMjzQhS.s:934    .text.DAC_GetITStatus:0000000000000050 $d
+     /tmp/ccMjzQhS.s:939    .text.DAC_ClearITPendingBit:0000000000000000 $t
+     /tmp/ccMjzQhS.s:946    .text.DAC_ClearITPendingBit:0000000000000000 DAC_ClearITPendingBit
+     /tmp/ccMjzQhS.s:974    .text.DAC_ClearITPendingBit:0000000000000018 $d
+
+UNDEFINED SYMBOLS
+RCC_APB1PeriphResetCmd

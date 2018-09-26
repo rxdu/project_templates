@@ -1,0 +1,85 @@
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 23, 1
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 6
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"racerio_driver.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.RACERIO_SetupDriver,"ax",%progbits
+  16              		.align	1
+  17              		.global	RACERIO_SetupDriver
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  21              		.fpu fpv4-sp-d16
+  23              	RACERIO_SetupDriver:
+  24              	.LFB123:
+  25              		.file 1 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver
+   1:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_driver.c **** /* 
+   2:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_driver.c ****  * racerio_driver.c
+   3:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_driver.c ****  * 
+   4:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_driver.c ****  * Created on: Feb 18, 2018 13:27
+   5:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_driver.c ****  * Description: 
+   6:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_driver.c ****  * 
+   7:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_driver.c ****  * Copyright (c) 2018 Ruixiang Du (rdu)
+   8:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_driver.c ****  */
+   9:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_driver.c **** 
+  10:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_driver.c **** #include "racerio_driver.h"
+  11:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_driver.c **** 
+  12:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_driver.c **** #include "misc.h"
+  13:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_driver.c **** 
+  14:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_driver.c **** void RACERIO_SetupDriver()
+  15:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_driver.c **** {
+  26              		.loc 1 15 0
+  27              		.cfi_startproc
+  28              		@ args = 0, pretend = 0, frame = 0
+  29              		@ frame_needed = 0, uses_anonymous_args = 0
+  30 0000 08B5     		push	{r3, lr}
+  31              	.LCFI0:
+  32              		.cfi_def_cfa_offset 8
+  33              		.cfi_offset 3, -8
+  34              		.cfi_offset 14, -4
+  16:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_driver.c ****     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);
+  35              		.loc 1 16 0
+  36 0002 4FF44070 		mov	r0, #768
+  37 0006 FFF7FEFF 		bl	NVIC_PriorityGroupConfig
+  17:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_driver.c **** 
+  18:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_driver.c ****     RACERIO_InitLED();
+  38              		.loc 1 18 0
+  39 000a FFF7FEFF 		bl	RACERIO_InitLED
+  19:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_driver.c ****     RACERIO_InitCAN();
+  40              		.loc 1 19 0
+  41 000e FFF7FEFF 		bl	RACERIO_InitCAN
+  20:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_driver.c **** 
+  21:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_driver.c ****     RACERIO_InitHallSensorInterface();
+  42              		.loc 1 21 0
+  43 0012 FFF7FEFF 		bl	RACERIO_InitHallSensorInterface
+  22:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/targets/racer_core/firmware/driver/racerio_driver.c **** }...
+  44              		.loc 1 22 0
+  45 0016 00BF     		nop
+  46 0018 08BD     		pop	{r3, pc}
+  47              		.cfi_endproc
+  48              	.LFE123:
+  50              		.text
+  51              	.Letext0:
+  52              		.file 2 "/home/rdu/Software/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/_defau
+  53              		.file 3 "/home/rdu/Software/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_stdint.h"
+  54              		.file 4 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/CMSIS/CMSIS_STM32F4/Incl
+  55              		.file 5 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/CMSIS/CMSIS_STM32F4/Devi
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 racerio_driver.c
+     /tmp/cccOWK9i.s:16     .text.RACERIO_SetupDriver:0000000000000000 $t
+     /tmp/cccOWK9i.s:23     .text.RACERIO_SetupDriver:0000000000000000 RACERIO_SetupDriver
+
+UNDEFINED SYMBOLS
+NVIC_PriorityGroupConfig
+RACERIO_InitLED
+RACERIO_InitCAN
+RACERIO_InitHallSensorInterface

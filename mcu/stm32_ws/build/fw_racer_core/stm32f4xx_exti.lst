@@ -1,0 +1,803 @@
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 23, 1
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 6
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"stm32f4xx_exti.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.EXTI_DeInit,"ax",%progbits
+  16              		.align	1
+  17              		.global	EXTI_DeInit
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  21              		.fpu fpv4-sp-d16
+  23              	EXTI_DeInit:
+  24              	.LFB123:
+  25              		.file 1 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driv
+   1:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** /**
+   2:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   ******************************************************************************
+   3:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @file    stm32f4xx_exti.c
+   4:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @author  MCD Application Team
+   5:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @version V1.8.0
+   6:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @date    04-November-2016
+   7:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @brief   This file provides firmware functions to manage the following 
+   8:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   *          functionalities of the EXTI peripheral:
+   9:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   *           + Initialization and Configuration
+  10:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   *           + Interrupts and flags management
+  11:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   *
+  12:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** @verbatim  
+  13:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** 
+  14:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****  ===============================================================================
+  15:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****                               ##### EXTI features #####
+  16:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****  ===============================================================================
+  17:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** 
+  18:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****  [..] External interrupt/event lines are mapped as following:
+  19:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****    (#) All available GPIO pins are connected to the 16 external 
+  20:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****        interrupt/event lines from EXTI0 to EXTI15.
+  21:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****    (#) EXTI line 16 is connected to the PVD Output
+  22:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****    (#) EXTI line 17 is connected to the RTC Alarm event
+  23:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****    (#) EXTI line 18 is connected to the USB OTG FS Wakeup from suspend event
+  24:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****    (#) EXTI line 19 is connected to the Ethernet Wakeup event
+  25:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****    (#) EXTI line 20 is connected to the USB OTG HS (configured in FS) Wakeup event 
+  26:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****    (#) EXTI line 21 is connected to the RTC Tamper and Time Stamp events
+  27:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****    (#) EXTI line 22 is connected to the RTC Wakeup event
+  28:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****    (#) EXTI line 23 is connected to the LPTIM Wakeup event 
+  29:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** 
+  30:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****                        ##### How to use this driver #####
+  31:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****  ===============================================================================
+  32:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****  
+  33:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****  [..] In order to use an I/O pin as an external interrupt source, follow steps 
+  34:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****       below:
+  35:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****    (#) Configure the I/O in input mode using GPIO_Init()
+  36:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****    (#) Select the input source pin for the EXTI line using SYSCFG_EXTILineConfig()
+  37:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****    (#) Select the mode(interrupt, event) and configure the trigger 
+  38:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****        selection (Rising, falling or both) using EXTI_Init()
+  39:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****    (#) Configure NVIC IRQ channel mapped to the EXTI line using NVIC_Init()
+  40:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** 
+  41:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****  [..]     
+  42:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****    (@) SYSCFG APB clock must be enabled to get write access to SYSCFG_EXTICRx
+  43:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****        registers using RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
+  44:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** 
+  45:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** @endverbatim
+  46:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   *
+  47:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   ******************************************************************************
+  48:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @attention
+  49:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   *
+  50:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * <h2><center>&copy; COPYRIGHT 2016 STMicroelectronics</center></h2>
+  51:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   *
+  52:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
+  53:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * You may not use this file except in compliance with the License.
+  54:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * You may obtain a copy of the License at:
+  55:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   *
+  56:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   *        http://www.st.com/software_license_agreement_liberty_v2
+  57:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   *
+  58:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * Unless required by applicable law or agreed to in writing, software 
+  59:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * distributed under the License is distributed on an "AS IS" BASIS, 
+  60:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  61:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * See the License for the specific language governing permissions and
+  62:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * limitations under the License.
+  63:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   *
+  64:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   ******************************************************************************
+  65:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   */
+  66:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** 
+  67:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** /* Includes ------------------------------------------------------------------*/
+  68:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** #include "stm32f4xx_exti.h"
+  69:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** 
+  70:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** /** @addtogroup STM32F4xx_StdPeriph_Driver
+  71:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @{
+  72:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   */
+  73:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** 
+  74:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** /** @defgroup EXTI 
+  75:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @brief EXTI driver modules
+  76:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @{
+  77:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   */
+  78:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** 
+  79:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** /* Private typedef -----------------------------------------------------------*/
+  80:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** /* Private define ------------------------------------------------------------*/
+  81:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** 
+  82:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** #define EXTI_LINENONE    ((uint32_t)0x00000)  /* No interrupt selected */
+  83:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** 
+  84:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** /* Private macro -------------------------------------------------------------*/
+  85:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** /* Private variables ---------------------------------------------------------*/
+  86:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** /* Private function prototypes -----------------------------------------------*/
+  87:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** /* Private functions ---------------------------------------------------------*/
+  88:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** 
+  89:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** /** @defgroup EXTI_Private_Functions
+  90:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @{
+  91:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   */
+  92:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** 
+  93:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** /** @defgroup EXTI_Group1 Initialization and Configuration functions
+  94:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****  *  @brief   Initialization and Configuration functions 
+  95:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****  *
+  96:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** @verbatim   
+  97:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****  ===============================================================================
+  98:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****              ##### Initialization and Configuration functions #####
+  99:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****  ===============================================================================
+ 100:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** 
+ 101:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** @endverbatim
+ 102:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @{
+ 103:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   */
+ 104:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** 
+ 105:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** /**
+ 106:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @brief  Deinitializes the EXTI peripheral registers to their default reset values.
+ 107:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @param  None
+ 108:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @retval None
+ 109:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   */
+ 110:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** void EXTI_DeInit(void)
+ 111:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** {
+  26              		.loc 1 111 0
+  27              		.cfi_startproc
+  28              		@ args = 0, pretend = 0, frame = 0
+  29              		@ frame_needed = 0, uses_anonymous_args = 0
+  30              		@ link register save eliminated.
+ 112:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   EXTI->IMR = 0x00000000;
+  31              		.loc 1 112 0
+  32 0000 084B     		ldr	r3, .L2
+  33 0002 0022     		movs	r2, #0
+  34 0004 1A60     		str	r2, [r3]
+ 113:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   EXTI->EMR = 0x00000000;
+  35              		.loc 1 113 0
+  36 0006 074B     		ldr	r3, .L2
+  37 0008 0022     		movs	r2, #0
+  38 000a 5A60     		str	r2, [r3, #4]
+ 114:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   EXTI->RTSR = 0x00000000;
+  39              		.loc 1 114 0
+  40 000c 054B     		ldr	r3, .L2
+  41 000e 0022     		movs	r2, #0
+  42 0010 9A60     		str	r2, [r3, #8]
+ 115:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   EXTI->FTSR = 0x00000000;
+  43              		.loc 1 115 0
+  44 0012 044B     		ldr	r3, .L2
+  45 0014 0022     		movs	r2, #0
+  46 0016 DA60     		str	r2, [r3, #12]
+ 116:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   EXTI->PR = 0x007FFFFF;
+  47              		.loc 1 116 0
+  48 0018 024B     		ldr	r3, .L2
+  49 001a 034A     		ldr	r2, .L2+4
+  50 001c 5A61     		str	r2, [r3, #20]
+ 117:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** }
+  51              		.loc 1 117 0
+  52 001e 00BF     		nop
+  53 0020 7047     		bx	lr
+  54              	.L3:
+  55 0022 00BF     		.align	2
+  56              	.L2:
+  57 0024 003C0140 		.word	1073822720
+  58 0028 FFFF7F00 		.word	8388607
+  59              		.cfi_endproc
+  60              	.LFE123:
+  62              		.section	.text.EXTI_Init,"ax",%progbits
+  63              		.align	1
+  64              		.global	EXTI_Init
+  65              		.syntax unified
+  66              		.thumb
+  67              		.thumb_func
+  68              		.fpu fpv4-sp-d16
+  70              	EXTI_Init:
+  71              	.LFB124:
+ 118:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** 
+ 119:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** /**
+ 120:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @brief  Initializes the EXTI peripheral according to the specified
+ 121:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   *         parameters in the EXTI_InitStruct.
+ 122:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @param  EXTI_InitStruct: pointer to a EXTI_InitTypeDef structure
+ 123:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   *         that contains the configuration information for the EXTI peripheral.
+ 124:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @retval None
+ 125:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   */
+ 126:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** void EXTI_Init(EXTI_InitTypeDef* EXTI_InitStruct)
+ 127:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** {
+  72              		.loc 1 127 0
+  73              		.cfi_startproc
+  74              		@ args = 0, pretend = 0, frame = 16
+  75              		@ frame_needed = 0, uses_anonymous_args = 0
+  76              		@ link register save eliminated.
+  77 0000 84B0     		sub	sp, sp, #16
+  78              	.LCFI0:
+  79              		.cfi_def_cfa_offset 16
+  80 0002 0190     		str	r0, [sp, #4]
+ 128:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   uint32_t tmp = 0;
+  81              		.loc 1 128 0
+  82 0004 0023     		movs	r3, #0
+  83 0006 0393     		str	r3, [sp, #12]
+ 129:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** 
+ 130:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   /* Check the parameters */
+ 131:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   assert_param(IS_EXTI_MODE(EXTI_InitStruct->EXTI_Mode));
+ 132:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   assert_param(IS_EXTI_TRIGGER(EXTI_InitStruct->EXTI_Trigger));
+ 133:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   assert_param(IS_EXTI_LINE(EXTI_InitStruct->EXTI_Line));  
+ 134:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   assert_param(IS_FUNCTIONAL_STATE(EXTI_InitStruct->EXTI_LineCmd));
+ 135:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** 
+ 136:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   tmp = (uint32_t)EXTI_BASE;
+  84              		.loc 1 136 0
+  85 0008 334B     		ldr	r3, .L10
+  86 000a 0393     		str	r3, [sp, #12]
+ 137:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****      
+ 138:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   if (EXTI_InitStruct->EXTI_LineCmd != DISABLE)
+  87              		.loc 1 138 0
+  88 000c 019B     		ldr	r3, [sp, #4]
+  89 000e 9B79     		ldrb	r3, [r3, #6]	@ zero_extendqisi2
+  90 0010 002B     		cmp	r3, #0
+  91 0012 4FD0     		beq	.L5
+ 139:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   {
+ 140:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****     /* Clear EXTI line configuration */
+ 141:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****     EXTI->IMR &= ~EXTI_InitStruct->EXTI_Line;
+  92              		.loc 1 141 0
+  93 0014 304B     		ldr	r3, .L10
+  94 0016 1A68     		ldr	r2, [r3]
+  95 0018 019B     		ldr	r3, [sp, #4]
+  96 001a 1B68     		ldr	r3, [r3]
+  97 001c DB43     		mvns	r3, r3
+  98 001e 2E49     		ldr	r1, .L10
+  99 0020 1340     		ands	r3, r3, r2
+ 100 0022 0B60     		str	r3, [r1]
+ 142:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****     EXTI->EMR &= ~EXTI_InitStruct->EXTI_Line;
+ 101              		.loc 1 142 0
+ 102 0024 2C4B     		ldr	r3, .L10
+ 103 0026 5A68     		ldr	r2, [r3, #4]
+ 104 0028 019B     		ldr	r3, [sp, #4]
+ 105 002a 1B68     		ldr	r3, [r3]
+ 106 002c DB43     		mvns	r3, r3
+ 107 002e 2A49     		ldr	r1, .L10
+ 108 0030 1340     		ands	r3, r3, r2
+ 109 0032 4B60     		str	r3, [r1, #4]
+ 143:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****     
+ 144:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****     tmp += EXTI_InitStruct->EXTI_Mode;
+ 110              		.loc 1 144 0
+ 111 0034 019B     		ldr	r3, [sp, #4]
+ 112 0036 1B79     		ldrb	r3, [r3, #4]	@ zero_extendqisi2
+ 113 0038 1A46     		mov	r2, r3
+ 114 003a 039B     		ldr	r3, [sp, #12]
+ 115 003c 1344     		add	r3, r3, r2
+ 116 003e 0393     		str	r3, [sp, #12]
+ 145:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** 
+ 146:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****     *(__IO uint32_t *) tmp |= EXTI_InitStruct->EXTI_Line;
+ 117              		.loc 1 146 0
+ 118 0040 039B     		ldr	r3, [sp, #12]
+ 119 0042 1968     		ldr	r1, [r3]
+ 120 0044 019B     		ldr	r3, [sp, #4]
+ 121 0046 1A68     		ldr	r2, [r3]
+ 122 0048 039B     		ldr	r3, [sp, #12]
+ 123 004a 0A43     		orrs	r2, r2, r1
+ 124 004c 1A60     		str	r2, [r3]
+ 147:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** 
+ 148:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****     /* Clear Rising Falling edge configuration */
+ 149:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****     EXTI->RTSR &= ~EXTI_InitStruct->EXTI_Line;
+ 125              		.loc 1 149 0
+ 126 004e 224B     		ldr	r3, .L10
+ 127 0050 9A68     		ldr	r2, [r3, #8]
+ 128 0052 019B     		ldr	r3, [sp, #4]
+ 129 0054 1B68     		ldr	r3, [r3]
+ 130 0056 DB43     		mvns	r3, r3
+ 131 0058 1F49     		ldr	r1, .L10
+ 132 005a 1340     		ands	r3, r3, r2
+ 133 005c 8B60     		str	r3, [r1, #8]
+ 150:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****     EXTI->FTSR &= ~EXTI_InitStruct->EXTI_Line;
+ 134              		.loc 1 150 0
+ 135 005e 1E4B     		ldr	r3, .L10
+ 136 0060 DA68     		ldr	r2, [r3, #12]
+ 137 0062 019B     		ldr	r3, [sp, #4]
+ 138 0064 1B68     		ldr	r3, [r3]
+ 139 0066 DB43     		mvns	r3, r3
+ 140 0068 1B49     		ldr	r1, .L10
+ 141 006a 1340     		ands	r3, r3, r2
+ 142 006c CB60     		str	r3, [r1, #12]
+ 151:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****     
+ 152:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****     /* Select the trigger for the selected external interrupts */
+ 153:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****     if (EXTI_InitStruct->EXTI_Trigger == EXTI_Trigger_Rising_Falling)
+ 143              		.loc 1 153 0
+ 144 006e 019B     		ldr	r3, [sp, #4]
+ 145 0070 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
+ 146 0072 102B     		cmp	r3, #16
+ 147 0074 0ED1     		bne	.L6
+ 154:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****     {
+ 155:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****       /* Rising Falling edge */
+ 156:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****       EXTI->RTSR |= EXTI_InitStruct->EXTI_Line;
+ 148              		.loc 1 156 0
+ 149 0076 184B     		ldr	r3, .L10
+ 150 0078 9A68     		ldr	r2, [r3, #8]
+ 151 007a 019B     		ldr	r3, [sp, #4]
+ 152 007c 1B68     		ldr	r3, [r3]
+ 153 007e 1649     		ldr	r1, .L10
+ 154 0080 1343     		orrs	r3, r3, r2
+ 155 0082 8B60     		str	r3, [r1, #8]
+ 157:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****       EXTI->FTSR |= EXTI_InitStruct->EXTI_Line;
+ 156              		.loc 1 157 0
+ 157 0084 144B     		ldr	r3, .L10
+ 158 0086 DA68     		ldr	r2, [r3, #12]
+ 159 0088 019B     		ldr	r3, [sp, #4]
+ 160 008a 1B68     		ldr	r3, [r3]
+ 161 008c 1249     		ldr	r1, .L10
+ 162 008e 1343     		orrs	r3, r3, r2
+ 163 0090 CB60     		str	r3, [r1, #12]
+ 158:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****     }
+ 159:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****     else
+ 160:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****     {
+ 161:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****       tmp = (uint32_t)EXTI_BASE;
+ 162:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****       tmp += EXTI_InitStruct->EXTI_Trigger;
+ 163:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** 
+ 164:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****       *(__IO uint32_t *) tmp |= EXTI_InitStruct->EXTI_Line;
+ 165:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****     }
+ 166:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   }
+ 167:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   else
+ 168:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   {
+ 169:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****     tmp += EXTI_InitStruct->EXTI_Mode;
+ 170:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** 
+ 171:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****     /* Disable the selected external lines */
+ 172:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****     *(__IO uint32_t *) tmp &= ~EXTI_InitStruct->EXTI_Line;
+ 173:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   }
+ 174:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** }
+ 164              		.loc 1 174 0
+ 165 0092 1DE0     		b	.L9
+ 166              	.L6:
+ 161:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****       tmp += EXTI_InitStruct->EXTI_Trigger;
+ 167              		.loc 1 161 0
+ 168 0094 104B     		ldr	r3, .L10
+ 169 0096 0393     		str	r3, [sp, #12]
+ 162:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** 
+ 170              		.loc 1 162 0
+ 171 0098 019B     		ldr	r3, [sp, #4]
+ 172 009a 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
+ 173 009c 1A46     		mov	r2, r3
+ 174 009e 039B     		ldr	r3, [sp, #12]
+ 175 00a0 1344     		add	r3, r3, r2
+ 176 00a2 0393     		str	r3, [sp, #12]
+ 164:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****     }
+ 177              		.loc 1 164 0
+ 178 00a4 039B     		ldr	r3, [sp, #12]
+ 179 00a6 1968     		ldr	r1, [r3]
+ 180 00a8 019B     		ldr	r3, [sp, #4]
+ 181 00aa 1A68     		ldr	r2, [r3]
+ 182 00ac 039B     		ldr	r3, [sp, #12]
+ 183 00ae 0A43     		orrs	r2, r2, r1
+ 184 00b0 1A60     		str	r2, [r3]
+ 185              		.loc 1 174 0
+ 186 00b2 0DE0     		b	.L9
+ 187              	.L5:
+ 169:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** 
+ 188              		.loc 1 169 0
+ 189 00b4 019B     		ldr	r3, [sp, #4]
+ 190 00b6 1B79     		ldrb	r3, [r3, #4]	@ zero_extendqisi2
+ 191 00b8 1A46     		mov	r2, r3
+ 192 00ba 039B     		ldr	r3, [sp, #12]
+ 193 00bc 1344     		add	r3, r3, r2
+ 194 00be 0393     		str	r3, [sp, #12]
+ 172:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   }
+ 195              		.loc 1 172 0
+ 196 00c0 039B     		ldr	r3, [sp, #12]
+ 197 00c2 1968     		ldr	r1, [r3]
+ 198 00c4 019B     		ldr	r3, [sp, #4]
+ 199 00c6 1B68     		ldr	r3, [r3]
+ 200 00c8 DA43     		mvns	r2, r3
+ 201 00ca 039B     		ldr	r3, [sp, #12]
+ 202 00cc 0A40     		ands	r2, r2, r1
+ 203 00ce 1A60     		str	r2, [r3]
+ 204              	.L9:
+ 205              		.loc 1 174 0
+ 206 00d0 00BF     		nop
+ 207 00d2 04B0     		add	sp, sp, #16
+ 208              	.LCFI1:
+ 209              		.cfi_def_cfa_offset 0
+ 210              		@ sp needed
+ 211 00d4 7047     		bx	lr
+ 212              	.L11:
+ 213 00d6 00BF     		.align	2
+ 214              	.L10:
+ 215 00d8 003C0140 		.word	1073822720
+ 216              		.cfi_endproc
+ 217              	.LFE124:
+ 219              		.section	.text.EXTI_StructInit,"ax",%progbits
+ 220              		.align	1
+ 221              		.global	EXTI_StructInit
+ 222              		.syntax unified
+ 223              		.thumb
+ 224              		.thumb_func
+ 225              		.fpu fpv4-sp-d16
+ 227              	EXTI_StructInit:
+ 228              	.LFB125:
+ 175:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** 
+ 176:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** /**
+ 177:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @brief  Fills each EXTI_InitStruct member with its reset value.
+ 178:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @param  EXTI_InitStruct: pointer to a EXTI_InitTypeDef structure which will
+ 179:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   *         be initialized.
+ 180:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @retval None
+ 181:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   */
+ 182:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** void EXTI_StructInit(EXTI_InitTypeDef* EXTI_InitStruct)
+ 183:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** {
+ 229              		.loc 1 183 0
+ 230              		.cfi_startproc
+ 231              		@ args = 0, pretend = 0, frame = 8
+ 232              		@ frame_needed = 0, uses_anonymous_args = 0
+ 233              		@ link register save eliminated.
+ 234 0000 82B0     		sub	sp, sp, #8
+ 235              	.LCFI2:
+ 236              		.cfi_def_cfa_offset 8
+ 237 0002 0190     		str	r0, [sp, #4]
+ 184:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   EXTI_InitStruct->EXTI_Line = EXTI_LINENONE;
+ 238              		.loc 1 184 0
+ 239 0004 019B     		ldr	r3, [sp, #4]
+ 240 0006 0022     		movs	r2, #0
+ 241 0008 1A60     		str	r2, [r3]
+ 185:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   EXTI_InitStruct->EXTI_Mode = EXTI_Mode_Interrupt;
+ 242              		.loc 1 185 0
+ 243 000a 019B     		ldr	r3, [sp, #4]
+ 244 000c 0022     		movs	r2, #0
+ 245 000e 1A71     		strb	r2, [r3, #4]
+ 186:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   EXTI_InitStruct->EXTI_Trigger = EXTI_Trigger_Falling;
+ 246              		.loc 1 186 0
+ 247 0010 019B     		ldr	r3, [sp, #4]
+ 248 0012 0C22     		movs	r2, #12
+ 249 0014 5A71     		strb	r2, [r3, #5]
+ 187:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   EXTI_InitStruct->EXTI_LineCmd = DISABLE;
+ 250              		.loc 1 187 0
+ 251 0016 019B     		ldr	r3, [sp, #4]
+ 252 0018 0022     		movs	r2, #0
+ 253 001a 9A71     		strb	r2, [r3, #6]
+ 188:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** }
+ 254              		.loc 1 188 0
+ 255 001c 00BF     		nop
+ 256 001e 02B0     		add	sp, sp, #8
+ 257              	.LCFI3:
+ 258              		.cfi_def_cfa_offset 0
+ 259              		@ sp needed
+ 260 0020 7047     		bx	lr
+ 261              		.cfi_endproc
+ 262              	.LFE125:
+ 264              		.section	.text.EXTI_GenerateSWInterrupt,"ax",%progbits
+ 265              		.align	1
+ 266              		.global	EXTI_GenerateSWInterrupt
+ 267              		.syntax unified
+ 268              		.thumb
+ 269              		.thumb_func
+ 270              		.fpu fpv4-sp-d16
+ 272              	EXTI_GenerateSWInterrupt:
+ 273              	.LFB126:
+ 189:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** 
+ 190:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** /**
+ 191:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @brief  Generates a Software interrupt on selected EXTI line.
+ 192:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @param  EXTI_Line: specifies the EXTI line on which the software interrupt
+ 193:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   *         will be generated.
+ 194:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   *         This parameter can be any combination of EXTI_Linex where x can be (0..22)
+ 195:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @retval None
+ 196:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   */
+ 197:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** void EXTI_GenerateSWInterrupt(uint32_t EXTI_Line)
+ 198:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** {
+ 274              		.loc 1 198 0
+ 275              		.cfi_startproc
+ 276              		@ args = 0, pretend = 0, frame = 8
+ 277              		@ frame_needed = 0, uses_anonymous_args = 0
+ 278              		@ link register save eliminated.
+ 279 0000 82B0     		sub	sp, sp, #8
+ 280              	.LCFI4:
+ 281              		.cfi_def_cfa_offset 8
+ 282 0002 0190     		str	r0, [sp, #4]
+ 199:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   /* Check the parameters */
+ 200:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   assert_param(IS_EXTI_LINE(EXTI_Line));
+ 201:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   
+ 202:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   EXTI->SWIER |= EXTI_Line;
+ 283              		.loc 1 202 0
+ 284 0004 044B     		ldr	r3, .L14
+ 285 0006 1A69     		ldr	r2, [r3, #16]
+ 286 0008 0349     		ldr	r1, .L14
+ 287 000a 019B     		ldr	r3, [sp, #4]
+ 288 000c 1343     		orrs	r3, r3, r2
+ 289 000e 0B61     		str	r3, [r1, #16]
+ 203:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** }
+ 290              		.loc 1 203 0
+ 291 0010 00BF     		nop
+ 292 0012 02B0     		add	sp, sp, #8
+ 293              	.LCFI5:
+ 294              		.cfi_def_cfa_offset 0
+ 295              		@ sp needed
+ 296 0014 7047     		bx	lr
+ 297              	.L15:
+ 298 0016 00BF     		.align	2
+ 299              	.L14:
+ 300 0018 003C0140 		.word	1073822720
+ 301              		.cfi_endproc
+ 302              	.LFE126:
+ 304              		.section	.text.EXTI_GetFlagStatus,"ax",%progbits
+ 305              		.align	1
+ 306              		.global	EXTI_GetFlagStatus
+ 307              		.syntax unified
+ 308              		.thumb
+ 309              		.thumb_func
+ 310              		.fpu fpv4-sp-d16
+ 312              	EXTI_GetFlagStatus:
+ 313              	.LFB127:
+ 204:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** 
+ 205:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** /**
+ 206:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @}
+ 207:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   */
+ 208:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** 
+ 209:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** /** @defgroup EXTI_Group2 Interrupts and flags management functions
+ 210:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****  *  @brief   Interrupts and flags management functions 
+ 211:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****  *
+ 212:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** @verbatim   
+ 213:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****  ===============================================================================
+ 214:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****              ##### Interrupts and flags management functions #####
+ 215:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****  ===============================================================================
+ 216:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** 
+ 217:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** @endverbatim
+ 218:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @{
+ 219:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   */
+ 220:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** 
+ 221:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** /**
+ 222:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @brief  Checks whether the specified EXTI line flag is set or not.
+ 223:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @param  EXTI_Line: specifies the EXTI line flag to check.
+ 224:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   *          This parameter can be EXTI_Linex where x can be(0..22)
+ 225:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @retval The new state of EXTI_Line (SET or RESET).
+ 226:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   */
+ 227:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** FlagStatus EXTI_GetFlagStatus(uint32_t EXTI_Line)
+ 228:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** {
+ 314              		.loc 1 228 0
+ 315              		.cfi_startproc
+ 316              		@ args = 0, pretend = 0, frame = 16
+ 317              		@ frame_needed = 0, uses_anonymous_args = 0
+ 318              		@ link register save eliminated.
+ 319 0000 84B0     		sub	sp, sp, #16
+ 320              	.LCFI6:
+ 321              		.cfi_def_cfa_offset 16
+ 322 0002 0190     		str	r0, [sp, #4]
+ 229:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   FlagStatus bitstatus = RESET;
+ 323              		.loc 1 229 0
+ 324 0004 0023     		movs	r3, #0
+ 325 0006 8DF80F30 		strb	r3, [sp, #15]
+ 230:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   /* Check the parameters */
+ 231:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   assert_param(IS_GET_EXTI_LINE(EXTI_Line));
+ 232:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   
+ 233:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   if ((EXTI->PR & EXTI_Line) != (uint32_t)RESET)
+ 326              		.loc 1 233 0
+ 327 000a 094B     		ldr	r3, .L20
+ 328 000c 5A69     		ldr	r2, [r3, #20]
+ 329 000e 019B     		ldr	r3, [sp, #4]
+ 330 0010 1340     		ands	r3, r3, r2
+ 331 0012 002B     		cmp	r3, #0
+ 332 0014 03D0     		beq	.L17
+ 234:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   {
+ 235:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****     bitstatus = SET;
+ 333              		.loc 1 235 0
+ 334 0016 0123     		movs	r3, #1
+ 335 0018 8DF80F30 		strb	r3, [sp, #15]
+ 336 001c 02E0     		b	.L18
+ 337              	.L17:
+ 236:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   }
+ 237:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   else
+ 238:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   {
+ 239:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****     bitstatus = RESET;
+ 338              		.loc 1 239 0
+ 339 001e 0023     		movs	r3, #0
+ 340 0020 8DF80F30 		strb	r3, [sp, #15]
+ 341              	.L18:
+ 240:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   }
+ 241:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   return bitstatus;
+ 342              		.loc 1 241 0
+ 343 0024 9DF80F30 		ldrb	r3, [sp, #15]	@ zero_extendqisi2
+ 242:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** }
+ 344              		.loc 1 242 0
+ 345 0028 1846     		mov	r0, r3
+ 346 002a 04B0     		add	sp, sp, #16
+ 347              	.LCFI7:
+ 348              		.cfi_def_cfa_offset 0
+ 349              		@ sp needed
+ 350 002c 7047     		bx	lr
+ 351              	.L21:
+ 352 002e 00BF     		.align	2
+ 353              	.L20:
+ 354 0030 003C0140 		.word	1073822720
+ 355              		.cfi_endproc
+ 356              	.LFE127:
+ 358              		.section	.text.EXTI_ClearFlag,"ax",%progbits
+ 359              		.align	1
+ 360              		.global	EXTI_ClearFlag
+ 361              		.syntax unified
+ 362              		.thumb
+ 363              		.thumb_func
+ 364              		.fpu fpv4-sp-d16
+ 366              	EXTI_ClearFlag:
+ 367              	.LFB128:
+ 243:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** 
+ 244:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** /**
+ 245:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @brief  Clears the EXTI's line pending flags.
+ 246:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @param  EXTI_Line: specifies the EXTI lines flags to clear.
+ 247:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   *          This parameter can be any combination of EXTI_Linex where x can be (0..22)
+ 248:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @retval None
+ 249:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   */
+ 250:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** void EXTI_ClearFlag(uint32_t EXTI_Line)
+ 251:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** {
+ 368              		.loc 1 251 0
+ 369              		.cfi_startproc
+ 370              		@ args = 0, pretend = 0, frame = 8
+ 371              		@ frame_needed = 0, uses_anonymous_args = 0
+ 372              		@ link register save eliminated.
+ 373 0000 82B0     		sub	sp, sp, #8
+ 374              	.LCFI8:
+ 375              		.cfi_def_cfa_offset 8
+ 376 0002 0190     		str	r0, [sp, #4]
+ 252:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   /* Check the parameters */
+ 253:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   assert_param(IS_EXTI_LINE(EXTI_Line));
+ 254:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   
+ 255:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   EXTI->PR = EXTI_Line;
+ 377              		.loc 1 255 0
+ 378 0004 024A     		ldr	r2, .L23
+ 379 0006 019B     		ldr	r3, [sp, #4]
+ 380 0008 5361     		str	r3, [r2, #20]
+ 256:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** }
+ 381              		.loc 1 256 0
+ 382 000a 00BF     		nop
+ 383 000c 02B0     		add	sp, sp, #8
+ 384              	.LCFI9:
+ 385              		.cfi_def_cfa_offset 0
+ 386              		@ sp needed
+ 387 000e 7047     		bx	lr
+ 388              	.L24:
+ 389              		.align	2
+ 390              	.L23:
+ 391 0010 003C0140 		.word	1073822720
+ 392              		.cfi_endproc
+ 393              	.LFE128:
+ 395              		.section	.text.EXTI_GetITStatus,"ax",%progbits
+ 396              		.align	1
+ 397              		.global	EXTI_GetITStatus
+ 398              		.syntax unified
+ 399              		.thumb
+ 400              		.thumb_func
+ 401              		.fpu fpv4-sp-d16
+ 403              	EXTI_GetITStatus:
+ 404              	.LFB129:
+ 257:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** 
+ 258:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** /**
+ 259:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @brief  Checks whether the specified EXTI line is asserted or not.
+ 260:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @param  EXTI_Line: specifies the EXTI line to check.
+ 261:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   *          This parameter can be EXTI_Linex where x can be(0..22)
+ 262:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @retval The new state of EXTI_Line (SET or RESET).
+ 263:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   */
+ 264:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** ITStatus EXTI_GetITStatus(uint32_t EXTI_Line)
+ 265:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** {
+ 405              		.loc 1 265 0
+ 406              		.cfi_startproc
+ 407              		@ args = 0, pretend = 0, frame = 16
+ 408              		@ frame_needed = 0, uses_anonymous_args = 0
+ 409              		@ link register save eliminated.
+ 410 0000 84B0     		sub	sp, sp, #16
+ 411              	.LCFI10:
+ 412              		.cfi_def_cfa_offset 16
+ 413 0002 0190     		str	r0, [sp, #4]
+ 266:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   FlagStatus bitstatus = RESET;
+ 414              		.loc 1 266 0
+ 415 0004 0023     		movs	r3, #0
+ 416 0006 8DF80F30 		strb	r3, [sp, #15]
+ 267:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   /* Check the parameters */
+ 268:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   assert_param(IS_GET_EXTI_LINE(EXTI_Line));
+ 269:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   
+ 270:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   if ((EXTI->PR & EXTI_Line) != (uint32_t)RESET)
+ 417              		.loc 1 270 0
+ 418 000a 094B     		ldr	r3, .L29
+ 419 000c 5A69     		ldr	r2, [r3, #20]
+ 420 000e 019B     		ldr	r3, [sp, #4]
+ 421 0010 1340     		ands	r3, r3, r2
+ 422 0012 002B     		cmp	r3, #0
+ 423 0014 03D0     		beq	.L26
+ 271:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   {
+ 272:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****     bitstatus = SET;
+ 424              		.loc 1 272 0
+ 425 0016 0123     		movs	r3, #1
+ 426 0018 8DF80F30 		strb	r3, [sp, #15]
+ 427 001c 02E0     		b	.L27
+ 428              	.L26:
+ 273:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   }
+ 274:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   else
+ 275:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   {
+ 276:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****     bitstatus = RESET;
+ 429              		.loc 1 276 0
+ 430 001e 0023     		movs	r3, #0
+ 431 0020 8DF80F30 		strb	r3, [sp, #15]
+ 432              	.L27:
+ 277:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   }
+ 278:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   return bitstatus;
+ 433              		.loc 1 278 0
+ 434 0024 9DF80F30 		ldrb	r3, [sp, #15]	@ zero_extendqisi2
+ 279:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   
+ 280:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** }
+ 435              		.loc 1 280 0
+ 436 0028 1846     		mov	r0, r3
+ 437 002a 04B0     		add	sp, sp, #16
+ 438              	.LCFI11:
+ 439              		.cfi_def_cfa_offset 0
+ 440              		@ sp needed
+ 441 002c 7047     		bx	lr
+ 442              	.L30:
+ 443 002e 00BF     		.align	2
+ 444              	.L29:
+ 445 0030 003C0140 		.word	1073822720
+ 446              		.cfi_endproc
+ 447              	.LFE129:
+ 449              		.section	.text.EXTI_ClearITPendingBit,"ax",%progbits
+ 450              		.align	1
+ 451              		.global	EXTI_ClearITPendingBit
+ 452              		.syntax unified
+ 453              		.thumb
+ 454              		.thumb_func
+ 455              		.fpu fpv4-sp-d16
+ 457              	EXTI_ClearITPendingBit:
+ 458              	.LFB130:
+ 281:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** 
+ 282:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** /**
+ 283:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @brief  Clears the EXTI's line pending bits.
+ 284:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @param  EXTI_Line: specifies the EXTI lines to clear.
+ 285:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   *          This parameter can be any combination of EXTI_Linex where x can be (0..22)
+ 286:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   * @retval None
+ 287:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   */
+ 288:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** void EXTI_ClearITPendingBit(uint32_t EXTI_Line)
+ 289:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** {
+ 459              		.loc 1 289 0
+ 460              		.cfi_startproc
+ 461              		@ args = 0, pretend = 0, frame = 8
+ 462              		@ frame_needed = 0, uses_anonymous_args = 0
+ 463              		@ link register save eliminated.
+ 464 0000 82B0     		sub	sp, sp, #8
+ 465              	.LCFI12:
+ 466              		.cfi_def_cfa_offset 8
+ 467 0002 0190     		str	r0, [sp, #4]
+ 290:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   /* Check the parameters */
+ 291:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   assert_param(IS_EXTI_LINE(EXTI_Line));
+ 292:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   
+ 293:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c ****   EXTI->PR = EXTI_Line;
+ 468              		.loc 1 293 0
+ 469 0004 024A     		ldr	r2, .L32
+ 470 0006 019B     		ldr	r3, [sp, #4]
+ 471 0008 5361     		str	r3, [r2, #20]
+ 294:/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c **** }
+ 472              		.loc 1 294 0
+ 473 000a 00BF     		nop
+ 474 000c 02B0     		add	sp, sp, #8
+ 475              	.LCFI13:
+ 476              		.cfi_def_cfa_offset 0
+ 477              		@ sp needed
+ 478 000e 7047     		bx	lr
+ 479              	.L33:
+ 480              		.align	2
+ 481              	.L32:
+ 482 0010 003C0140 		.word	1073822720
+ 483              		.cfi_endproc
+ 484              	.LFE130:
+ 486              		.text
+ 487              	.Letext0:
+ 488              		.file 2 "/home/rdu/Software/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/_defau
+ 489              		.file 3 "/home/rdu/Software/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_stdint.h"
+ 490              		.file 4 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/CMSIS/CMSIS_STM32F4/Incl
+ 491              		.file 5 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/CMSIS/CMSIS_STM32F4/Devi
+ 492              		.file 6 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/CMSIS/CMSIS_STM32F4/Devi
+ 493              		.file 7 "/home/rdu/Workspace/project_templates/mcu/stm32_ws/src/libraries/STM32F4xx_StdPeriph_Driv
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 stm32f4xx_exti.c
+     /tmp/cctvyOSp.s:16     .text.EXTI_DeInit:0000000000000000 $t
+     /tmp/cctvyOSp.s:23     .text.EXTI_DeInit:0000000000000000 EXTI_DeInit
+     /tmp/cctvyOSp.s:57     .text.EXTI_DeInit:0000000000000024 $d
+     /tmp/cctvyOSp.s:63     .text.EXTI_Init:0000000000000000 $t
+     /tmp/cctvyOSp.s:70     .text.EXTI_Init:0000000000000000 EXTI_Init
+     /tmp/cctvyOSp.s:215    .text.EXTI_Init:00000000000000d8 $d
+     /tmp/cctvyOSp.s:220    .text.EXTI_StructInit:0000000000000000 $t
+     /tmp/cctvyOSp.s:227    .text.EXTI_StructInit:0000000000000000 EXTI_StructInit
+     /tmp/cctvyOSp.s:265    .text.EXTI_GenerateSWInterrupt:0000000000000000 $t
+     /tmp/cctvyOSp.s:272    .text.EXTI_GenerateSWInterrupt:0000000000000000 EXTI_GenerateSWInterrupt
+     /tmp/cctvyOSp.s:300    .text.EXTI_GenerateSWInterrupt:0000000000000018 $d
+     /tmp/cctvyOSp.s:305    .text.EXTI_GetFlagStatus:0000000000000000 $t
+     /tmp/cctvyOSp.s:312    .text.EXTI_GetFlagStatus:0000000000000000 EXTI_GetFlagStatus
+     /tmp/cctvyOSp.s:354    .text.EXTI_GetFlagStatus:0000000000000030 $d
+     /tmp/cctvyOSp.s:359    .text.EXTI_ClearFlag:0000000000000000 $t
+     /tmp/cctvyOSp.s:366    .text.EXTI_ClearFlag:0000000000000000 EXTI_ClearFlag
+     /tmp/cctvyOSp.s:391    .text.EXTI_ClearFlag:0000000000000010 $d
+     /tmp/cctvyOSp.s:396    .text.EXTI_GetITStatus:0000000000000000 $t
+     /tmp/cctvyOSp.s:403    .text.EXTI_GetITStatus:0000000000000000 EXTI_GetITStatus
+     /tmp/cctvyOSp.s:445    .text.EXTI_GetITStatus:0000000000000030 $d
+     /tmp/cctvyOSp.s:450    .text.EXTI_ClearITPendingBit:0000000000000000 $t
+     /tmp/cctvyOSp.s:457    .text.EXTI_ClearITPendingBit:0000000000000000 EXTI_ClearITPendingBit
+     /tmp/cctvyOSp.s:482    .text.EXTI_ClearITPendingBit:0000000000000010 $d
+
+NO UNDEFINED SYMBOLS
