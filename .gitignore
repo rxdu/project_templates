@@ -34,10 +34,3 @@ mcu/stm32_gcc_ws/workspace/build
 *.out
 *.app
 
-# Cmake
-CMakeCache.txt
-CMakeFiles
-CMakeScripts
-Makefile
-cmake_install.cmake
-install_manifest.txt
