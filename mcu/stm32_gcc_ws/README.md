@@ -1,10 +1,8 @@
-# STM32 GCC Project Template
+# STM32 GCC Workspace Template
 
 ## How to use the template
 
-1. Copy src/demo to start a new project, for example src/my_proj
-2. Rename the project makefile (demo.mk -> my_proj.mk), and then update configurations in src/my_proj/my_proj.mk
-3. Update root makefile project/Makefile: set PROJECT_MAKEFILE to be "src/demo/my_proj.mk"
+1. Create a new project in src/targets, use "racer_core" as an example
 
 ## Known limitations
 

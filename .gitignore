@@ -3,6 +3,8 @@
 */Debug
 */build
 
+mcu/stm32_gcc_ws/workspace/build
+
 # Compiled Object files
 *.slo
 *.lo
