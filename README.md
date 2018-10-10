@@ -2,9 +2,10 @@
 
 This repository contains templates to create different types of projects.
 
-## 1. General
+## 1. Linux
 
-### CMake
+CMake
 
+## 2. MCU
 
-## 2. Embedded
+STM32

@@ -18,8 +18,8 @@ set(BUILD_TESTS off)
 
 ## Add sub source directories
 add_subdirectory(examples)
-add_subdirectory(lightviz)
 add_subdirectory(interface)
+add_subdirectory(module)
 add_subdirectory(libraries)
 
 ## Add test source directories
